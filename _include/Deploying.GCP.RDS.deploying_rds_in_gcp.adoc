@@ -1,0 +1,508 @@
+= 概述
+
+
+
+
+== 概述
+
+本指南将提供在 Google Cloud 中使用 NetApp 虚拟桌面服务（ Virtual Desktop Service ， VDS ）创建远程桌面服务（ Remote Desktop Service ， RDS ）部署的分步说明。
+
+本概念验证（ POC ）指南旨在帮助您在自己的测试 GCP 项目中快速部署和配置 RDS 。
+
+生产部署，尤其是在现有 AD 环境中的部署非常常见，但本 POC 指南不会考虑这一过程。复杂的 POC 和生产部署应由 NetApp VDS 销售 / 服务团队启动，而不是以自助式方式执行。
+
+本 POC 文档将带您完成整个 RDS 部署，并简要介绍 VDS 平台中部署后配置的主要方面。完成后，您将拥有一个完全部署且功能完备的 RDS 环境，其中包括会话主机，应用程序和用户。您也可以选择配置自动应用程序交付，安全组，文件共享权限， Cloud Backup 和智能成本优化。VDS 通过 GPO 部署一组最佳实践设置。此外，还提供了有关在 POC 不需要安全控制时如何选择禁用这些控制的说明，这与非受管本地设备环境类似。
+
+
+
+== 部署架构
+
+image:Reference Architecture GCP RDS.png["宽度 = 75%"]
+
+
+
+== RDS 基础知识
+
+VDS 部署一个功能完备的 RDS 环境，从零开始提供所有必要的支持服务。此功能可以包括：
+
+* RDS 网关服务器
+* Web 客户端访问服务器
+* 域控制器服务器
+* RDS 许可服务
+* ThinPrint 许可服务
+* FileZilla FTPS 服务器服务
+
+
+
+
+== 指南范围
+
+本指南将从 GCP 和 VDS 管理员的角度引导您完成使用 NetApp VDS 技术部署 RDS 的过程。您将 GCP 项目的预配置为零，本指南可帮助您端到端设置 RDS
+
+
+
+== 创建服务帐户
+
+. 在 GCP 中，导航到（或搜索） _IAM & Admin > Service Accounts_
++
+image:GCP_Deploy1.png[""]
+
+. 单击 ++ create service account_
++
+image:GCP_Deploy2.png[""]
+
+. 输入唯一的服务帐户名称，然后单击 _cre_ 。记下此服务帐户的电子邮件地址，此地址将在后续步骤中使用。
++
+image:GCP_Deploy3.png[""]
+
+. 选择服务帐户的 _owner_ 角色，然后单击 _Continue"
++
+image:GCP_Deploy4.png[""]
+
+. 下一页无需进行任何更改（ _Grant users access to this service account （ optional ） _ ），请单击 _don_
++
+image:GCP_Deploy5.png[""]
+
+. 从 _Service accounts_ 页面中，单击操作菜单并选择 _Create key_
++
+image:GCP_Deploy6.png[""]
+
+. 选择 _P12_ ，然后单击 _cre_
++
+image:GCP_Deploy7.png[""]
+
+. 下载 .p12 文件并将其保存到您的计算机中。保持 _private key password_ 不变。
++
+image:GCP_Deploy8.png[""]
+
++
+image:GCP_Deploy9.png[""]
+
+
+
+
+
+== 启用 Google 计算 API
+
+. 在 GCP 中，导航到（或搜索） _APIs & Services > Library_
++
+image:GCP_Deploy10.png[""]
+
+. 在 GCP API 库中，导航到（或搜索） _Compute Engine API_ ，然后单击 _enable_
++
+image:GCP_Deploy11.png[""]
+
+
+
+
+
+== 创建新的 VDS 部署
+
+. 在 VDS 中，导航到 _deployments_然后 单击 _+ New Deployment_
++
+image:GCP_Deploy12.png[""]
+
+. 输入部署的名称
++
+image:GCP_Deploy13.png[""]
+
+. 选择 _Google Cloud Platform_
++
+image:GCP_Deploy14.png[""]
+
+
+
+
+
+=== 基础架构平台
+
+. 输入 _Project ID_ 和 OAuth 电子邮件地址。上传本指南前面介绍的 .p12 文件，然后为此部署选择适当的分区。单击 _Test_ 以确认条目正确无误且已设置适当的权限。
++
+
+NOTE: OAuth 电子邮件是本指南前面创建的服务帐户的地址。
+
++
+image:GCP_Deploy15.png[""]
+
+. 确认后，单击 _Continue"
++
+image:GCP_Deploy16.png[""]
+
+
+
+
+
+=== —帐户
+
+
+
+==== 本地 VM 帐户
+
+. 提供本地管理员帐户的密码。记录此密码以供日后使用。
+. 提供 SQL SA 帐户的密码。记录此密码以供日后使用。
+
+
+
+NOTE: 密码复杂度要求至少包含 8 个字符，其中包含以下 4 种字符类型中的 3 种：大写，小写，数字，特殊字符
+
+
+
+==== SMTP 帐户
+
+VDS 可以通过自定义 SMTP 设置发送电子邮件通知，也可以通过选择 _Automatic_ 使用内置 SMTP 服务。
+
+. 输入在 VDS 发送电子邮件通知时用作 _from_ 地址的电子邮件地址。_no-reply@ < 您的域 >.com_ 是一种通用格式。
+. 输入成功报告应发送到的电子邮件地址。
+. 输入应定向失败报告的电子邮件地址。
+
+
+image:GCP_Deploy17.png[""]
+
+
+
+==== 3 级技术人员
+
+3 级技术人员帐户（也称为_.tech accounts_ ）是 VDS 管理员在 VDS 环境中对 VM 执行管理任务时可以使用的域级帐户。可以在此步骤和 / 或更高版本中创建其他帐户。
+
+. 输入 3 级管理员帐户的用户名和密码。".tech" 将附加到您输入的用户名中，以帮助区分最终用户和技术帐户。记录这些凭据以供日后使用。
++
+
+NOTE: 最佳实践是为所有应具有环境域级凭据的 VDS 管理员定义命名帐户。没有此类帐户的 VDS 管理员仍可通过 VDS 中内置的 _Connect to server_ 功能进行 VM 级别的管理员访问。
+
++
+image:GCP_Deploy18.png[""]
+
+
+
+
+
+=== 域
+
+
+
+==== Active Directory
+
+输入所需的 AD 域名。
+
+
+
+==== 公有域
+
+外部访问通过 SSL 证书进行保护。您可以使用自己的域和自管理 SSL 证书对其进行自定义。或者，如果选择 _Automatic_ ，则 VDS 可以管理 SSL 证书，包括自动 90 天刷新证书。在使用自动时，每个部署都使用一个唯一的子域 _cloudworkspace .app_ 。
+
+image:GCP_Deploy19.png[""]
+
+
+
+=== 虚拟机
+
+对于 RDS 部署，需要在平台服务器上安装所需的组件，例如域控制器， RDS 代理和 RDS 网关。在生产环境中，这些服务应在专用和冗余虚拟机上运行。对于概念验证部署，可以使用一个 VM 来托管所有这些服务。
+
+
+
+==== 平台 VM 配置
+
+
+
+===== 单个虚拟机
+
+这是 POC 部署的建议选择。在单个虚拟机部署中，以下角色均托管在单个虚拟机上：
+
+* CW Manager
+* HTML5 网关
+* RDS 网关
+* 远程应用程序
+* FTPS 服务器（可选）
+* 域控制器
+
+
+在此配置中，建议的 RDS 使用情形的最大用户数为 100 个用户。在此配置中，负载平衡 RS/HTML5 网关不是一个选项，这限制了冗余和未来扩展的选项。
+
+
+NOTE: 如果此环境是为多租户设计的，则不支持单个虚拟机配置。
+
+
+
+===== 多个服务器
+
+将 VDS 平台拆分为多个虚拟机时，以下角色托管在专用 VM 上：
+
+* 远程桌面网关
++
+VDS 设置可用于部署和配置一个或两个 RDS 网关。这些网关会将 RDS 用户会话从开放式 Internet 中继到部署中的会话主机 VM 。RDS 网关具有一项重要功能，可保护 RDS 免受来自开放式互联网的直接攻击，并对环境中 / 之外的所有 RDS 流量进行加密。选择两个远程桌面网关后， VDS 安装程序会部署 2 个 VM 并对其进行配置，以便对传入的 RDS 用户会话进行负载平衡。
+
+* HTML5 网关
++
+VDS 设置可用于部署和配置一个或两个 HTML5 网关。这些网关托管 VDS 和基于 Web 的 VDS 客户端（ H5 门户）中的 _Connect to Server_ 功能使用的 HTML5 服务。选择两个 HTML5 门户后， VDS 安装程序会部署 2 个 VM 并对其进行配置，以便对传入的 HTML5 用户会话进行负载平衡。
+
++
+
+NOTE: 如果使用多个服务器选项（即使用户仅通过已安装的 VDS 客户端进行连接），强烈建议至少使用一个 HTML5 网关从 VDS 启用 _Connect to Server_ 功能。
+
+* 网关可扩展性注意事项
++
+对于 RDS 使用情形，可以使用其他网关 VM 横向扩展环境的最大大小，每个 RDS 或 HTML5 网关大约支持 500 个用户。稍后，只需极少的 NetApp 专业服务协助，即可添加其他网关
+
+
+
+如果此环境是为多租户设计的，则需要选择 _Multiple servers_ 。
+
+
+
+====== 服务角色
+
+* Cwmgr1.
++
+此 VM 是 NetApp VDS 管理 VM 。它运行 SQL Express 数据库，帮助程序实用程序和其他管理服务。在 _single server_ 部署中，此 VM 也可以托管其他服务，但在 _multiple server_ 配置中，这些服务会移动到不同的 VM 。
+
+* CWPortal1 （ 2 ）
++
+第一个 HTML5 网关名为 _cbportal1_ ，第二个网关名为 _cbport2_ 。可以在部署时创建一个或两个。部署后可以添加更多服务器以增加容量（每个服务器~500 个连接）。
+
+* CWRDSGateway1 （ 2 ）
++
+第一个 RDS 网关名为 _CWRDSGateway1_ ，第二个名为 _CWRDSGateway2_ 。可以在部署时创建一个或两个。部署后可以添加更多服务器以增加容量（每个服务器~500 个连接）。
+
+* 远程应用程序
++
+App Service 是一个专用于托管 RemotApp 应用程序的集合，但使用 RDS 网关及其 RDWeb 角色来路由最终用户会话请求并托管 RDWeb 应用程序订阅列表。没有为此服务角色部署 VM 专用 VM 。
+
+* 域控制器
++
+在部署时，可以自动构建和配置一个或两个域控制器，以便与 VDS 配合使用。
+
+
+
+image:GCP_Deploy21.png[""]
+
+
+
+==== 操作系统
+
+选择要为平台服务器部署的所需服务器操作系统。
+
+
+
+==== 时区
+
+选择所需时区。此时将配置平台服务器，日志文件将反映此时区。无论此设置如何，最终用户会话仍将反映其自己的时区。
+
+
+
+==== 其他服务
+
+
+
+===== FTP
+
+VDS 可以选择安装和配置 FileZilla 来运行 FTPS 服务器，以便将数据移入和移出环境。此技术是一种较旧的技术，建议使用更现代的数据传输方法（如 Google Drive ）。
+
+image:GCP_Deploy20.png[""]
+
+
+
+=== 网络
+
+最佳做法是，根据虚拟机的用途将其隔离到不同的子网。
+
+定义网络范围并添加 /20 范围。
+
+VDS 设置会检测到一个范围，并建议一个范围，该范围应证明是成功的。根据最佳实践，子网 IP 地址必须属于专用 IP 地址范围。
+
+这些范围包括：
+
+* 192.168.0.0 到 192.168.255.255
+* 172.16.0.0 到 172.31.255.255
+* 10.0.0.0 到 10.255.255.255
+
+
+如果需要，请查看并调整，然后单击验证以确定以下每项的子网：
+
+* 租户：这是会话主机服务器和数据库服务器所在的范围
+* 服务：这是 Cloud Volumes Service 等 PaaS 服务所在的范围
+* 平台：这是平台服务器所在的范围
+* 目录：这是 AD 服务器所在的范围
+
+
+image:GCP_Deploy22.png[""]
+
+
+
+=== 许可
+
+
+
+==== SPLA 编号
+
+输入您的 SPLA 编号，以便 VDS 可以配置 RDS 许可服务，以便于进行 SPLA RDS CAL 报告。可以为 POC 部署输入一个临时数字（例如 12345 ），但在试用期（~120 天）后， RDS 会话将停止连接。
+
+
+
+==== SPLA 产品
+
+输入通过 SPLA 获得许可的任何 Office 产品的 MAK 许可证代码，以便在 VDS 报告中简化 SPLA 报告。
+
+
+
+==== ThinPrint
+
+选择安装随附的 ThinPrint 许可服务器和许可证，以简化最终用户打印机重定向。
+
+image:GCP_Deploy23.png[""]
+
+
+
+=== 审核和配置
+
+完成所有步骤后，请查看所做的选择，然后验证并配置环境。image:GCP_Deploy24.png[""]
+
+
+
+=== 后续步骤
+
+现在，部署自动化过程将使用您在整个部署向导中选择的选项部署一个新的 RDS 环境。
+
+部署完成后，您将收到多封电子邮件。完成后，您将有一个环境为您的第一个工作空间做好准备。工作空间将包含支持最终用户所需的会话主机和数据服务器。一旦部署自动化在 1-2 小时内完成，请返回本指南以执行后续步骤。
+
+
+
+== 创建新的配置集合
+
+配置集合是 VDS 中的一项功能，可用于创建，自定义和 SysPrep VM 映像。进入工作场所部署后，我们需要一个要部署的映像，以下步骤将指导您创建 VM 映像。
+
+.按照以下步骤创建基本映像以进行部署：
+. 导航到 _deployments> Provisioning Collections_ ，然后单击 _Add_
++
+image:GCP_Deploy27.png[""]
+
+. 输入名称和问题描述。选择 _Type ： Shared_ 。
++
+
+NOTE: 您可以选择共享或 VDI 。共享将支持一个会话服务器以及一个业务服务器（可选），用于数据库等应用程序。VDI 是一个虚拟机映像，专用于单个用户。
+
+. 单击 _Add_ 以定义要构建的服务器映像的类型。
++
+image:GCP_Deploy28.png[""]
+
+. 选择 TSData 作为 _server role_ ，相应的 VM 映像（此处为 Server 2016 ）以及所需的存储类型。单击 _Add Server_
++
+image:GCP_Deploy29.png[""]
+
+. 也可以选择要安装在此映像上的应用程序。
++
+.. 可用应用程序列表将从应用程序库中填充，您可以单击右上角 _Settings > App Catalog_ 页面下的 admin name 菜单来访问该应用程序。
++
+image:GCP_Deploy30.png[""]
+
+
+
+. 单击 _Add Collection_ ，然后等待虚拟机构建完成。VDS 将构建一个可以访问和自定义的 VM 。
+. 虚拟机构建完成后，请连接到服务器并进行所需的更改。
++
+.. 状态显示 _Collection Validation 后，单击收集名称。
++
+image:GCP_Deploy31.png[""]
+
+.. 然后，单击 _server template name_
++
+image:GCP_Deploy32.png[""]
+
+.. 最后，单击 _Connect to Server_ 按钮以进行连接，并使用本地管理员凭据自动登录到虚拟机。
++
+image:GCP_Deploy33.png[""]
+
++
+image:GCP_Deploy34.png[""]
+
+
+
+. 完成所有自定义设置后，单击 _Validate Collection_ ，以便 VDS 可以对映像进行系统准备并最终确定。完成后， VM 将被删除，并且映像可通过 VDS 部署向导进行部署。
++
+image:GCP_Deploy35.png[""]5.
+
+
+
+
+
+== 创建新工作空间
+
+工作空间是指支持一组用户的会话主机和数据服务器的集合。一个部署可以包含一个工作空间（单租户）或多个工作空间（多租户）。
+
+工作空间用于定义特定组的 RDS 服务器集合。在此示例中，我们将部署一个集合来演示虚拟桌面功能。但是，可以将此模型扩展到多个工作空间 /RDS 集合，以支持同一 Active Directory 域空间中的不同组和不同位置。此外，管理员还可以限制工作空间 / 集合之间的访问权限，以支持需要对应用程序和数据进行有限访问的使用情形。
+
+
+
+=== 客户端和设置
+
+. 在 NetApp VDS 中，导航到 _Workspaces_ ，然后单击 _+ New Workspace _
++
+image:GCP_Deploy25.png[""]
+
+. 单击 _Add_ 以创建新客户端。客户端详细信息通常表示公司信息或特定位置 / 部门的信息。
++
+image:GCP_Deploy26.png[""]
+
++
+.. 输入公司详细信息并选择要将此工作空间部署到的部署。
+.. * 数据驱动器： * 定义要用于公司共享映射驱动器的驱动器号。
+.. * 用户主驱动器： * 定义要用于个人映射驱动器的驱动器盘符。
+.. * 其他设置 *
++
+可以在部署时和 / 或在部署后选择以下设置。
+
++
+... _Enable Remote App ： _ 远程应用程序将应用程序呈现为流式应用程序，而不是（或除此之外）呈现完整的远程桌面会话。
+... _Enable App Blocker ： _ VDS 包含应用程序部署和授权功能，默认情况下，系统将向最终用户显示 / 隐藏应用程序。启用应用程序锁将通过 GPO 安全列表强制应用程序访问。
+... _ 启用工作空间用户数据存储： _ 确定最终用户是否需要在其虚拟桌面中拥有数据存储访问权限。对于 RDS 部署，应始终选中此设置，以便为用户配置文件启用数据访问。
+... _Disable Printer Access ： _ VDS 可能会阻止对本地打印机的访问。
+... _permit Access to Task Manager ： _ VDS 可以在 Windows 中启用 / 禁用最终用户对任务管理器的访问。
+... _Require complex User Password ： _ Require complex passwords 用于启用原生 Windows Server 复杂密码规则。它还会禁用锁定用户帐户的延迟自动解锁。因此，启用后，如果最终用户在多次密码尝试失败的情况下锁定其帐户，则需要管理员干预。
+... _ 为所有用户启用 MFA ： _ VDS 包括一个免费电子邮件 /SMS MFA 服务，可用于保护最终用户和 / 或 VDS 管理员帐户访问的安全。要启用此功能，此工作空间中的所有最终用户都需要通过 MFA 进行身份验证才能访问其桌面和 / 或应用程序。
+
+
+
+
+
+
+
+
+=== 选择应用程序
+
+选择本指南前面创建的 Windows 操作系统版本和配置集合。
+
+此时可以添加其他应用程序，但对于此 POC ，我们将在部署后处理应用程序授权问题。
+
+image:GCP_Deploy36.png[""]
+
+
+
+=== 添加用户
+
+可以通过选择现有 AD 安全组或单个用户来添加用户。在本 POC 指南中，我们将添加部署后的用户。
+
+image:GCP_Deploy37.png[""]
+
+
+
+=== 审核和配置
+
+在最后一页上，查看所选选项，然后单击 _provision_ 开始自动构建 RDS 资源。
+
+image:GCP_Deploy38.png[""]
+
+
+NOTE: 在部署过程中，系统会创建日志，并可在 "Deployment details" 页面底部附近的 _Task History_ 下访问这些日志。可通过导航到 _VDS > 部署 > 部署名称 _ 来访问
+
+
+
+=== 后续步骤
+
+现在，工作场所自动化流程将使用您在整个部署向导中选择的选项部署新的 RDS 资源。
+
+完成后，您将按照几个常见工作流自定义典型的 RDS 部署。
+
+* link:Management.User_Administration.manage_user_accounts.html["添加用户"]
+* link:Reference.end_user_access.html["最终用户访问"]
+* link:Management.Applications.application_entitlement_workflow.html["应用程序授权"]
+* link:Management.Cost_Optimization.workload_schedule.html["成本优化"]
+

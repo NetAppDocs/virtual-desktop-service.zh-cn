@@ -1,0 +1,120 @@
+---
+sidebar: sidebar 
+permalink: Deploying.Azure.AVD.Azure_Marketplace.html 
+summary: 通过 Azure Marketplace 购买 VDS 的分步指南 
+keywords:  
+---
+= Azure Marketplace 步骤
+
+
+VDS 团队很高兴地报告，自 2021 年 1 月 15 日星期五起，此服务已上线，并可通过 Azure Marketplace 进行交易。作为 NetApp/Microsoft 的联合客户，这项新的市场功能为您带来了多项主要优势：
+
+* 由于您可以使用现有的企业协议承诺为通过 Azure Marketplace 购买的服务付费，因此您无需为这一功能强大的 AVD 增强服务定义和分配全新的预算—您可以利用现有的 Azure 承诺来启用 VDS ，简化您的 AVD 环境， 并降低整体云支出！
+* 增强运营，无需管理负担— Microsoft 只需将您的 VDS 服务与您的其他基础架构和服务一起添加到现有 Azure 发票中，即可快速轻松地利用自动化和流程编排简化 AVD 部署，降低云基础架构支出。 从 AVD 投资中获得更多收益。
+
+
+
+
+=== 许可证计数常见问题解答：
+
+* Azure Marketplace 要求强制实施许可证计数容量，这意味着您将无法为比 Azure Marketplace 中购买的许可证数量更多的用户启用虚拟桌面。
++
+** 例如：如果您为一个 POC 购买了 100 个用户并希望启用其他用户，请导航回 Azure Marketplace 并增加通过 Azure Marketplace 购买的许可证数量。
+
+
+* 由于需要强制实施许可证计数，如果管理员将通过 Azure 门户购买的许可证数量减少到低于在 VDS 中配置桌面的用户数量，管理员将在登录到 VDS UI 时看到错误提示。
++
+** 因此，如果需要减少购买的 VDS 许可证数量，最佳做法是在 Azure Marketplace 中减少许可证数量之前，从 VDS 中的用户中取消配置虚拟桌面。
+
+
+
+
+
+
+== 概述
+
+. 搜索 Azure Marketplace
+
+
+image::Deploying.Azure.AVD.Azure_Marketplace-18287.png[Deploying .Azure.AVD.Azure Marketplace 18287]
+
+. 查看 " 私人优惠 "
++
+image::Deploying.Azure.AVD.Azure_Marketplace-4cba8.png[Deploying .Azure.AVD.Azure Marketplace 4cba8.]
+
+. 单击 " 设置 + 订阅 "
++
+image::Deploying.Azure.AVD.Azure_Marketplace-885e1.png[Deploying .Azure.AVD.Azure Marketplace 885e1]
+
+. 选择订阅，名称和用户计数
++
+image::Deploying.Azure.AVD.Azure_Marketplace-36efc.png[Deploying .Azure.AVD.Azure Marketplace 36efc.]
+
+. 查看术语并单击 " 订阅 "
++
+image::Deploying.Azure.AVD.Azure_Marketplace-bbe9d.png[Deploying .Azure.AVd.Azure Marketplace bbe9d]
+
+. 等待订阅完成
++
+image::Deploying.Azure.AVD.Azure_Marketplace-9a2ef.png[Deploying .Azure.AVD.Azure Marketplace 9a2ef]
+
+. 订阅完成后，单击 " 立即配置帐户 "
++
+image::Deploying.Azure.AVD.Azure_Marketplace-38a10.png[Deploying .Azure.AVD.Azure Marketplace 38a10]
+
+. 代表您的组织接受权限和同意
++
+image::Deploying.Azure.AVD.Azure_Marketplace-b914e.png[Deploying .Azure.AVD.Azure Marketplace b914e]
+
+. 输入主要联系信息
++
+image::Deploying.Azure.AVD.Azure_Marketplace-f9650.png[Deploying .Azure.AVD.Azure Marketplace f9650]
+
+. 注册 VDS 管理员帐户
++
+image::Deploying.Azure.AVD.Azure_Marketplace-4f802.png[Deploying .Azure.AVD.Azure Marketplace 4f802]
+
+. 确认条目并单击 " 注册 "
++
+image::Deploying.Azure.AVD.Azure_Marketplace-8a6d6.png[Deploying .Azure.AVd.Azure Marketplace 8a6d6.]
+
+. 启动部署向导。 link:Deploying.Azure.AVD.Deploying_AVD_in_Azure_v6.html["AVD 部署向导文档链接"]
++
+image::Deploying.Azure.AVD.Azure_Marketplace-6bb58.png[Deploying .Azure.AVD.Azure Marketplace 6bb58]
+
+
+
+
+
+== 解决常见问题
+
+
+
+=== 无法提取 Azure AD 配置文件
+
+此一般错误消息不会告诉您问题描述的实际含义。用户看到此消息的原因与 Cookie 相关 - 如果用户的浏览器中阻止了第三方 Cookie ，则可能会发生这种情况。在 Google Chrome 中处于匿名模式时，此设置默认处于激活状态。重新启用第三方 Cookie 后，您可以继续通过 Marketplace 订购 VDS 。
+
+用户可以通过每个浏览器的 " 设置 " 部分解决此问题描述。每个浏览器中的特定位置为：
+
+* Chrome ：这些设置位于隐私和安全部分
+* 边缘 / 边缘铬：这些设置位于隐私部分
+* Firefox ：这些设置位于隐私和安全部分
+* Internet Explorer ：这些设置位于可信站点部分中
+
+
+注意：如果您使用的是企业网络（ VPN 等），则您的组织可能已在浏览器中为您应用了这些控件。您可以检查另一个浏览器，查看是否仍启用了第三方 Cookie ，如果未启用，则应联系您的系统管理员。
+
+
+
+=== 无法访问 VDS
+
+另一个因素可能会阻碍 Marketplace 的购买—组织对用户可以访问的网站进行控制。遗憾的是，这通常不为用户所知，并且可能会出现用户不确定如何继续的情况。
+
+这可以通过多种方式体现出来：
+
+* 组织明确禁止访问特定网站
+* 除明确允许的网站外，组织不允许访问任何网站
+* 组织在用户首次访问任何网站时隔离该网站（通用 Cisco 伞式 /OpenDNS 功能）
+
+
+用户可以从企业网络外部或移动设备尝试相同的过程来测试此问题描述。如果该操作解决了问题描述问题，并且您可以继续操作，则它是一种企业控制的 Web 浏览器设置。请联系您的系统管理员，以允许您访问购买此服务以及将来更新此服务的权限。

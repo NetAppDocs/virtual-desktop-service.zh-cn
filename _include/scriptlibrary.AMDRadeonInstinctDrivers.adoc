@@ -1,0 +1,14 @@
+= AMD Radeon" 虚拟驱动程序 " 概述
+
+
+
+
+== AMD Radeon" 虚拟驱动程序 " 概述
+
+此脚本软件包可使用 chocolatey 软件包管理器安装 / 卸载 _AMD Radeoney instalm Drivers_ (https://chocolatey.org/)[] 以执行部署。创建 VM 时， VDS 会部署 chocolatey ，但如果缺少 chocolatey ，则此脚本还会检查并安装它作为前提条件。
+
+
+
+=== 添加活动对话框窗口屏幕截图
+
+image::scriptlibrary.activity.InstallAMDRadeonInstinctDrivers.png[scriptlibrary.active.InstallDameOnInstinctDrivers]

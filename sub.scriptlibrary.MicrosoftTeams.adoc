@@ -1,0 +1,72 @@
+---
+sidebar: sidebar 
+permalink: scriptlibrary.MicrosoftTeams.html 
+summary: 脚本文档— Microsoft 团队 
+keywords:  
+---
+= 脚本化事件文档— Microsoft 团队
+
+
+
+
+== 全局脚本概述
+
+NetApp VDS 包括一个预定义脚本化事件库，这些事件可直接在 VDS 环境中使用和 / 或进行复制，并用作自定义脚本化事件的组件。
+
+对于此应用程序，本文将介绍安装 / 启用和卸载 / 禁用操作。
+
+
+
+== 全局脚本使用
+
+此类内置脚本事件已预先填充，选中 " 全局 " 筛选器复选框将显示这些事件。
+
+此类全局脚本化事件为只读事件。它们可以按正常方式使用，也可以使用 " 克隆 " 功能创建客户副本以供编辑和使用。
+
+克隆按钮位于脚本化事件页面上的操作菜单中。
+
+image::scriptlibrary.overview-2ccb2.png[scriptlibrary.overview 2ccb2.]
+
+
+
+== Microsoft 团队概述
+
+此脚本软件包使用 chocolatey 软件包管理器安装 / 卸载 _Microsoft teams_ (https://chocolatey.org/)[] 以执行部署。创建 VM 时， VDS 会部署 chocolatey ，但如果缺少 chocolatey ，则此脚本还会检查并安装它作为前提条件。
+
+
+WARNING: 此 Microsoft Teams 安装是专门为部署到 RDS 环境而配置的。 link:scriptlibrary.MicrosoftTeamsAVD.html["不同的 Microsoft Teams 脚本"] 用于 AVD 部署。
+
+
+
+=== 默认快捷方式路径
+
+下面将输入默认快捷方式路径，对于此应用程序，快捷方式为： ` \\shortcut \Microsoft teams.lnk`
+
+
+
+=== 添加应用程序安装 / 卸载活动
+
+要使存储库中的脚本执行任何操作，必须创建一个活动，以便将该脚本与选定触发器关联。在本示例中，如果将此应用程序添加到工作空间或从工作空间中删除（在 VDS 中的 _Workspace > Applications_ 页面中），则会安装 / 卸载此应用程序。
+
+VDS 脚本化事件提供了许多其他类型的活动触发器，例如 _Create Server_ ，可用作 _Application Install_ （或 _Application Uninstall_ ）事件类型的替代项。使用 _Create Server_ 只需对 VDS 中所有新创建的 VM 运行此应用程序安装即可。_Create Server_ 和其他触发器均已记录，可供探讨 link:Management.Scripted_Events.scripted_events.html["此处"]。
+
+
+NOTE: 此应用程序需要位于 VDS 应用程序库中。这 link:Management.Applications.application_entitlement_workflow.html#add-applications-to-the-app-catalog["部分。"] 有关将应用程序添加到库的信息，请查看有关 RDS 应用程序授权的文章。
+
+.要创建活动并将此脚本链接到操作，请执行以下操作：
+. 导航到 VDS 中的 _Scripted Events_部分
+. 在 "_activities_ " 下，单击 "++ Add Activity"
+. 在打开的对话框窗口中，输入以下信息：
++
+** * 名称： * 为此活动命名
+** * 问题描述： * 可选择输入问题描述
+** * 部署 * 从下拉列表中选择所需部署
+** * 脚本： * 从下拉列表中选择安装（或卸载）脚本。这可能是您已克隆和自定义的全局脚本或客户脚本。
+** * 参数： * 留空
+** * 已启用复选框： * `选中` 复选框
+** * 事件类型： * 从下拉列表中选择 `Application Install` （或 Application 卸载）
+** * 应用程序： * 从下拉列表中选择此应用程序
+** * 快捷方式路径： * 输入此应用程序的默认快捷方式路径（如上所述）
+
+
+

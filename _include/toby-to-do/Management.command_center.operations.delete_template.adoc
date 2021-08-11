@@ -1,0 +1,8 @@
+= 概述
+
+
+
+
+== 概述
+
+image::Management.command_center.operations.delete_template-83488.png[Management.command center.operations.delete 模板 83488]

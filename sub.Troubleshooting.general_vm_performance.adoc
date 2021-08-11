@@ -1,0 +1,107 @@
+---
+sidebar: sidebar 
+permalink: Troubleshooting.general_vm_performance.html 
+summary: 解决 Internet 质量问题的分步指南 
+keywords:  
+---
+= 虚拟机性能故障排除
+
+
+NetApp 可以让客户深入了解如何对用户 / 应用程序的服务器性能进行故障排除。如果安装了 SQL Standard ，则所有公司使用资源的方式都因同时登录的最终用户数量，应用程序使用情况和使用情况而有所不同因此，能够查看用户报告性能问题时所发生的情况非常重要。
+
+
+
+== 概述
+
+每个应用程序都是不同的，即使由相同数量的用户运行的同一软件也可能具有不同的资源消耗模式。因此，它有助于了解用户正在运行的应用程序以及该应用程序的真正动力。是 CPU ， RAM 还是存储？这些注意事项有助于您集中精力进行故障排除。
+
+根据我们的经验，这些陈述一般都是真实的，可以帮助您开始：
+
+....
+CPU: this is usually the culprit/limiting factor if the app in question is home-grown and/or an Excel issue
+RAM: this is usually the culprit/limiting factor if SQL Standard is used
+Storage: this is usually a contributing factor if disk consumption is greater than 90%.
+....
+
+NOTE: 如果使用 SQL Express ，则可能是一个限制因素—它会将 RAM 消耗限制为 1 GB ，这可能会低于软件供应商的要求规格。
+
+
+
+== 使用每晚资源报告
+
+VDS 会发送每晚报告，其中包含有关每个 VM 的信息。该报告提供了许多有用的信息，包括关于是增加还是减少资源的建议。以下是一些摘录：
+
+此图显示了在给定工作空间中是否应增加或减少 VM 上的 CPU/ RAM 。image:vm_performance1.png[""]
+
+在下图中，我们可以看到一列显示了自服务器重新启动以来所经过的时间。image:vm_performance2.png[""]
+
+在此图中，我们可以看到存储已配置与已用—这是一个很好的主题，可以先对此进行简要调查，或者在您确认 CPU/RAM 不是问题描述之后再进行调查。image:vm_performance3.png[""]
+
+
+
+== 实时查看 CPU/RAM 资源消耗
+
+. 登录到 VDS ，然后单击组织模块并选择相关组织。
++
+image:vm_performance4.png[""]
+
+. 您可以通过在用户部分中找到用户登录到的服务器来找到这些服务器。
++
+image:vm_performance5.png[""]
+
+. 接下来，向下滚动，直到您看到 "Servers" 部分—找到报告问题描述的用户已登录到的服务器，然后单击设置轮，再进行连接。
++
+image:vm_performance6.png[""]
+
+. 连接到服务器后，单击开始按钮。接下来，单击任务管理器。
++
+image:vm_performance7.png[""]
+
+. 任务管理器可以深入了解当前的情况。这绝对是查看用户向您报告问题描述时影响到您的情况的最佳方式。
+. 您可以查看服务器上运行的进程，确定哪些进程导致问题描述，并与客户进行通信或现场结束这些进程。
++
+image:vm_performance8.png[""]
+
+. 此外，您还可以查看性能选项卡，以实时显示正在发生的情况。这是一个巨大的故障排除步骤—要求最终用户重复执行发生原因 a Performance 问题描述所采取的步骤，然后查看发生的情况。同样，如果他们遵循一般建议（关闭多余的 Chrome 浏览器选项卡，因为 Google Chrome 选项卡是一个常用资源使用者），则可以看到资源消耗减少。
++
+image:vm_performance9.png[""]
+
+. " 用户 " 选项卡可显示哪个用户（如果有）正在使用导致使用峰值的资源。
++
+image:vm_performance10.png[""]
+
+. 您可以扩展每个最终用户，以查看他们正在运行哪些特定进程以及每个进程占用多少资源。
++
+image:vm_performance11.png[""]
+
+. 另一个选项是查看正在运行的服务。
++
+image:vm_performance12.png[""]
+
+. 客户还可以打开资源监控器进行更详细的调查。
++
+image:vm_performance13.png[""]
+
+
+
+
+
+== 考虑存储性能
+
+虚拟机性能问题的一个常见原因是磁盘性能不足。标准（甚至 SSD ）磁盘不能用于处理 VDS 工作负载所需的高 I/O 负载。用户登录往往会出现在一个堆中，并且在加载配置文件和设置时，每个登录都需要大量 I/O 。Azure NetApp Files ， CVO 和 CVS 等 NetApp 高性能存储技术尤其适合此工作负载，应视为 VDS 工作负载的默认选项。
+
+
+
+== 考虑存储消耗
+
+Microsoft 长久以来的最佳实践是防止任何驱动器上的磁盘消耗量超过 90% 。在他们看来，这会导致性能下降，发生原因并可能引发其他许多挑战，例如没有足够的存储空间来完成备份，也不允许用户保存工作。
+
+RMM 工具可以提供存储监控服务，包括设置阈值和警报的功能。如果存储对您来说是一项挑战，建议您与 RMM 供应商合作启用这些类型的警报。
+
+要进行更深入的调查，请安装软件以查看驱动器消耗情况。
+
+通过与客户的对话，事实证明， Windirstat 或 Treesize 是检查驱动器消耗情况的首选应用程序。
+
+如果没有足够的空间在本地安装 / 运行应用程序或登录被阻止，则 Windirstat 可以通过网络检查已满的驱动器：
+
++image:vm_performance14.png[""]

@@ -1,0 +1,55 @@
+---
+sidebar: sidebar 
+permalink: Management.System_Administration.azure_key_vault.html 
+summary: 在 Az 中访问 VDS 凭据 
+keywords:  
+---
+= 在 Azure 密钥存储中访问 VDS 凭据
+
+
+
+
+== 概述
+
+CWASetup 5.4 与以前的 Azure 部署方法不同。简化了配置和验证过程，以减少开始部署所需的信息量。其中许多删除的提示都适用于凭据或帐户，例如本地 VM 管理员， SMTP 帐户，技术帐户， SQL SA 等。这些帐户现在会自动生成并存储在 Azure 密钥存储库中。默认情况下，访问这些自动生成的帐户需要执行下述附加步骤。
+
+* 找到 " 密钥存储 " 资源并单击它：
++
+image:Management.System_Administration.azure_key_vault-4d897.png["宽度 = 75%"]
+
+* 在 ‘S' 下，单击 ‘S' 日期 ' 。此时将显示一条消息，指出您未授权查看：
++
+image:Management.System_Administration.azure_key_vault-0f7b9.png["宽度 = 75%"]
+
+* 添加 ‘Access Policy ' 以授予 Azure AD 帐户（如全局管理员或系统管理员）对以下敏感密钥的访问权限：
++
+image:Management.System_Administration.azure_key_vault-fe473.png["宽度 = 75%"]
+
+* 本示例使用了全局管理员。选择主体后，单击 ‘Select ' ，然后单击 ‘Add ' ：
++
+image:Management.System_Administration.azure_key_vault-3ae42.png["宽度 = 75%"]
+
+* ‘SSave ' ：
++
+image:Management.System_Administration.azure_key_vault-15c03.png["宽度 = 75%"]
+
+* 已成功添加访问策略：
++
+image:Management.System_Administration.azure_key_vault-770dd.png["宽度 = 75%"]
+
+* 重新访问 ‘S" 记录 " 以验证帐户现在是否有权访问部署帐户：
++
+image:Management.System_Administration.azure_key_vault-e277a.png["宽度 = 75%"]
+
+* 例如，如果您需要域管理员凭据才能登录到 CMGR1 并更新组策略，请通过单击每个条目检查 cjDomainAdministratorName 和 cjDomainAdministratorPassword 下的字符串：
++
+image:Management.System_Administration.azure_key_vault-69e35.png["宽度 = 75%"]
+
++
+image:Management.System_Administration.azure_key_vault-83926.png["宽度 = 75%"]
+
+* 显示或复制此值：
++
+image:Management.System_Administration.azure_key_vault-c9405.png["宽度 = 75%"]
+
+

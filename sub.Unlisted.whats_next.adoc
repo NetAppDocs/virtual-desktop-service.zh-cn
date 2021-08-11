@@ -1,0 +1,39 @@
+---
+sidebar: sidebar 
+permalink: whats-next.html 
+summary: 下一步是什么？ 
+keywords:  
+---
+= 祝贺您开始部署新的 VDS 环境！
+
+
+
+
+== 概述
+
+部署完成后，您应收到电子邮件通知，并通过电子邮件收到大量成功和错误报告。有关这些电子邮件以及如何更改传送选项的信息，请访问： link:Unlisted.Whats_with_all_these_emails.html["所有这些电子邮件都有哪些功能？"]
+
+有关完整的文档，请参见 https://docs.netapp.com/us-en/virtual-desktop-service/[] 但是，下面的选定项是一个很好的起点：
+
+
+
+== 快速入门
+
+* link:https://www.youtube.com/playlist?list=PLQ1wYDzid2pRl74Y4SnFVvTHL7kbN9GQZ["YouTube 上的 VDS 简介视频播放列表"]
+* link:Management.User_Administration.manage_user_accounts.html["管理用户"]
+* link:Management.Applications.application_entitlement_workflow.html["管理应用程序"]
+* link:Management.User_Administration.manage_folders_and_permissions.html["管理数据和权限"]
+* link:Reference.end_user_access.html["Cloud Workspace 系统要求：最终用户概述"]
+
+
+
+
+== 优化您的部署—提示和技巧
+
+* link:Management.User_Administration.multi-factor_authentication.html["利用 MFA 增强安全性"]
+* link:Management.System_Administration.configure_backup.html["配置 Azure 备份"]
+* link:Management.System_Administration.configure_antivirus.html["配置 Anti-Virus"]
+* link:Management.Cost_Optimization.workload_schedule.html["优化服务器成本"]
+* link:Management.Scripted_Events.scripted_events.html["利用脚本化事件部署自动化"]
+* link:Architectual.migrate_data_into_vds.html["数据迁移"]
+

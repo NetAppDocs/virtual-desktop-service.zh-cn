@@ -1,0 +1,20 @@
+= 概述
+
+
+
+
+== 概述
+
+image::Management.command_center.operations.create_server_from_backup-cac47.png[Management.command center.operations.create server from backup cac47]
+
+image::Management.command_center.operations.create_server_from_backup-eabc4.png[Management.command center.operations.create server from backup eabc4.]
+
+image::Management.command_center.operations.create_server_from_backup-14061.png[Management.command center.operations.create server from backup 14061]
+
+image::Management.command_center.operations.create_server_from_backup-c7d6b.png[Management.command center.operations.create server from backup c7d6b.]
+
+image::Management.command_center.operations.create_server_from_backup-a487e.png[Management.command center.operations.create server from backup a487e]
+
+image::Management.command_center.operations.create_server_from_backup-51ac2.png[Management.command center.operations.create server from backup 51ac2.]
+
+image::Management.command_center.operations.create_server_from_backup-b0fa0.png[Management.command center.operations.create server from backup b0fa0]

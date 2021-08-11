@@ -1,0 +1,66 @@
+---
+sidebar: sidebar 
+permalink: Management.command_center.overview.html 
+summary: VDS 命令中心概述 
+keywords:  
+---
+= Command Center 命令：概述
+
+
+
+
+== 概述
+
+命令中心是在部署中的 CMGR1 平台服务器上运行的可执行文件。可以通过连接到 CMGR1 虚拟机并在该虚拟机上本地执行来访问此虚拟机。
+
+此应用程序专为故障排除，诊断和高级管理功能而设计。此应用程序主要由 NetApp 的内部开发和支持团队使用，但某些功能有时由客户管理员使用。本文档旨在为选择功能的使用提供支持。使用这些命令时应小心，并与 NetApp 支持团队协作。
+
+
+
+== 正在运行 Command Center
+
+.要运行 Command Center 应用程序，请执行以下操作：
+. 从 _VDS > 部署 > 平台服务器 _ 页面连接到服务器单击 _Actions_ 图标并选择 "Connect"
++
+image::Management.command_center_overview-68087.png[Management.command 中心概述 68087]
+
+. 当系统提示输入凭据时，输入域管理员凭据
++
+.. 用户需要是 "CW-Infrastructure" 安全组的成员。为了保持一致性，我们建议将此用户设置为 _AD > Cloud Workspace > Cloud Workspace Tech Users > Groups_ 中 "3 级技术人员 " 组的成员
++
+image::Management.command_center_overview-1c42d.png[Management.command 中心概述 1c42d]
+
+
+
+. 找到 _Command Center_ 的桌面图标并运行它
++
+image::Management.command_center_overview-3c860.png[Management.command 中心概述 3C860]
+
++
+.. 要启用高级选项卡，请使用 "-showadvancedtab" 开关启动应用程序。
+
+
+
+
+
+
+=== 操作选项卡
+
+image::Management.command_center_overview-b614e.png[Management.command 中心概述 b614e]
+
+从 * 命令 * 菜单中，您可以从操作列表中进行选择（如下所示）。
+
+选择命令后，可以通过 * 加载数据 * 按钮使用部署数据填充数据。加载数据按钮还可用于在先前选择后查询虚拟机管理程序中的数据（例如 从下拉列表中选择特定虚拟机后加载可用备份日期列表）
+
+image::Management.command_center_overview-85417.png[Management.command 中心概述 85417]
+
+在对命令进行选择后，单击 * 执行命令 * 将运行选定进程。
+
+要查看日志，请单击 * 查看所有日志 * 按钮。此时将打开原始文本文件，并在底部显示最新条目。
+
+
+
+==== 命令列表
+
+* link:Management.command_center.operations.copy_template_to_gallery.html["将模板复制到图库"]
+

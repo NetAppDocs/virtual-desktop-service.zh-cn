@@ -1,0 +1,66 @@
+---
+sidebar: sidebar 
+permalink: scriptlibrary.NvidiaGridDrivers.html 
+summary: 脚本文档— Nvidia 网格驱动程序 
+keywords:  
+---
+= 脚本化事件文档— Nvidia 网格驱动程序
+
+
+
+
+== 全局脚本概述
+
+NetApp VDS 包括一个预定义脚本化事件库，这些事件可直接在 VDS 环境中使用和 / 或进行复制，并用作自定义脚本化事件的组件。
+
+对于此应用程序，本文将介绍安装 / 启用和卸载 / 禁用操作。
+
+
+
+== 全局脚本使用
+
+此类内置脚本事件已预先填充，选中 " 全局 " 筛选器复选框将显示这些事件。
+
+此类全局脚本化事件为只读事件。它们可以按正常方式使用，也可以使用 " 克隆 " 功能创建客户副本以供编辑和使用。
+
+克隆按钮位于脚本化事件页面上的操作菜单中。
+
+image::scriptlibrary.overview-2ccb2.png[scriptlibrary.overview 2ccb2.]
+
+
+
+== NVIDIA 网格驱动程序概述
+
+此脚本软件包使用 chocolatey 软件包管理器安装 / 卸载 _Nvidia GRID Drivers_ (https://chocolatey.org/)[] 以执行部署。创建 VM 时， VDS 会部署 chocolatey ，但如果缺少 chocolatey ，则此脚本还会检查并安装它作为前提条件。
+
+
+
+=== 添加活动对话框窗口屏幕截图
+
+image::scriptlibrary.activity.InstallNvidiaGridDrivers.png[scriptlibrary.active.InstallNvidiaGridDrivers]
+
+
+
+=== 添加手动活动
+
+要使存储库中的脚本执行任何操作，必须创建一个活动，以便将该脚本与选定触发器关联。在本示例中， VDS 管理员手动触发脚本时会运行活动。
+
+VDS 脚本化事件提供了许多其他类型的活动触发器，例如 _Create Server_ ，可用作 _Manual_ 事件类型的替代方案。使用 _Create Server_ 只需在 VDS 中所有新创建的 VM 上执行此脚本即可。_Create Server_ 和其他触发器均已记录，可供探讨 link:Management.Scripted_Events.scripted_events.html["此处"]。
+
+.要创建活动并将此脚本链接到操作，请执行以下操作：
+. 导航到 VDS 中的脚本化事件部分
+. 在 "_activities_ " 下，单击 "++ Add Activity"
+. 在打开的对话框窗口中，输入以下信息：
++
+** * 名称： * 为此活动命名
+** * 问题描述： * 可选择输入问题描述
+** * 部署 * 从下拉列表中选择所需部署
+** * 脚本： * 从下拉列表中选择安装（或卸载）脚本。这可能是您已克隆和自定义的全局脚本或客户脚本。
+** * 参数： * 留空
+** * 已启用复选框： * `选中` 复选框
+** * 事件类型： * 从下拉列表中选择 `Manual`
+** * 目标类型： * 选择 `S服务器` 单选按钮
+** * 受管服务器： * `选中` 应接收此卸载的每个 VM 对应的框。
+
+
+

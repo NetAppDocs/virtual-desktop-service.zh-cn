@@ -1,0 +1,8 @@
+= 概述
+
+
+
+
+== 概述
+
+image::Management.command_center.operations.test_hypervisor_connection-fcfa3.png[Management.command center.operations.test hypervisor connection fcfa3.]

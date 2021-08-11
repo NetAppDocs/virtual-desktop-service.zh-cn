@@ -1,0 +1,135 @@
+---
+sidebar: sidebar 
+permalink: Architectural.Wildcard_SSL_certificate_renewal_process.html 
+summary: 通配符 SSL 证书续订过程 
+keywords:  
+---
+= 通配符 SSL 证书续订过程
+
+
+
+
+== 创建证书签名请求（ CSR ）：
+
+. 连接到 CWMGR1
+. 从管理员工具打开 IIS 管理器
+. 选择 CMGR1 并打开服务器证书
+. 单击操作窗格中的创建证书请求
++
+image:ssl1.png[""]
+
+. 在请求证书向导中填写可分辨名称属性，然后单击下一步：
++
+.. 公用名：通配符的 FQDN - * 。 .domain.com
+.. 组织：贵公司的合法注册名称
+.. 组织单位： ‘IT ' 工作正常
+.. City ：公司所在的城市
+.. 省 / 自治区 / 直辖市：公司所在的省 / 自治区 / 直辖市
+.. 国家 / 地区：公司所在的国家 / 地区
++
+image:ssl2.png[""]
+
+
+
+. 在加密服务提供程序属性页面上，验证是否显示以下内容，然后单击下一步：
++
+image:ssl3.png[""]
+
+. 指定文件名并浏览到要保存 CSR 的位置。如果不指定位置，则 CSR 将位于 C ： \Windows\System32 ：
++
+image:ssl4.png[""]
+
+. 完成后，单击完成。您将使用此文本文件将订单提交给证书注册商
+. 请联系注册商支持部门为您的证书购买新的通配符 SSL ： * .domain.com
+. 收到 SSL 证书后，将 SSL 证书 .cer 文件保存在 CMGR1 上的某个位置，然后按照以下步骤进行操作。
+
+
+
+
+== 安装和配置 CSR ：
+
+. 连接到 CWMGR1
+. 从管理员工具打开 IIS 管理器
+. ‘SCMGR1 并打开 " 服务器证书 "
+. 单击操作窗格中的完成证书请求
++
+image:ssl5.png[""]
+
+. 填写完整证书请求中的以下字段，然后单击确定：
++
+image:ssl6.png[""]
+
++
+.. 文件名：选择先前保存的 .cer 文件
+.. 友好名称： * 。 .domain.com
+.. 证书存储：选择 Web 托管或个人
+
+
+
+
+
+
+== 正在分配 SSL 证书：
+
+. 验证是否未启用迁移模式。您可以在 VDS 中的 "Security Settings" 下的 "Workspace Overview" 页面上找到此信息。
++
+image:ssl7.png[""]
+
+. 连接到 CWMGR1
+. 从管理员工具打开 IIS 管理器
+. ‘SCMGR1 并打开 " 服务器证书 "
+. 单击操作窗格中的导出
+. 以 .pfx 格式导出证书
+. 创建密码。存储密码，因为将来需要导入或重新使用 .pfx 文件
+. 将 .pfx 文件保存到 C ： \installs\RDPcert 目录
+. 单击确定并关闭 IIS 管理器
++
+image:ssl8.png[""]
+
+. 打开 DCConfig
+. 在通配符证书下，将证书路径更新为新的 .pfx 文件
+. 出现提示时，输入 .pfx 密码
+. 单击保存。
++
+image:ssl9.png[""]
+
+. 如果证书的有效期超过 30 天，则允许自动化在一周内的每天早晨操作任务期间应用新证书
+. 定期检查平台服务器以验证新证书是否已传播。验证并测试用户连接以确认。
++
+.. 在服务器上，转到管理工具
+.. 选择远程桌面服务 > 远程桌面网关管理器
+.. 右键单击网关服务器名称，然后选择属性。单击 SSL 证书选项卡以查看到期日期
++
+image:ssl10.png[""]
+
+
+
+. 定期检查运行连接代理角色的客户端 VM
++
+.. 转至服务器管理器 > 远程桌面服务
+.. 在部署概述下，选择任务下拉列表，然后选择编辑部署属性
++
+image:ssl11.png[""]
+
+.. 单击 Certificates ，选择 certificate ，然后单击 View Details 。此时将列出到期日期。
++
+image:ssl12.png[""]
+
++
+image:ssl13.png[""]
+
+
+
+. 如果不到 30 天，或者您希望立即推出新证书，请使用 TestVdcTools 强制更新。应在维护时段完成此操作，因为任何已登录用户的连接以及与 CMGR1 的连接都将断开。
++
+.. 转至 C ： \Program Files\CloudWorkspace\TestVdcTools ，单击 Operations 选项卡，然后选择通配符 Cert-Install 命令
+.. 将服务器字段留空
+.. 选中强制复选框
+.. 单击 Execute Command
+.. 使用上述步骤验证证书传播
++
+image:ssl14.png[""]
+
+
+
+

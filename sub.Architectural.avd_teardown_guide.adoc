@@ -1,0 +1,186 @@
+---
+sidebar: sidebar 
+permalink: Architectural.AVD_teardown_guide.html 
+summary: 从 AVD 中删除 VDS 的分步指南 
+keywords:  
+---
+= AVD 拆卸指南
+
+
+
+
+== 概述
+
+本文介绍如何在保留 AVD 最终用户访问权限的同时删除 VDS 和 NetApp 控制。未来的管理将借助原生 Azure/Windows 管理工具进行。完成此过程后，建议您联系 VDSsupport@netapp.com ，以便 NetApp 能够清理我们的后端和计费系统。
+
+
+
+== 初始状态
+
+* AVD 部署
+* HDDS1 是 FS Logix 文件共享
+* TS1 是会话主机
+* 用户已登录并在以下位置创建了 FS Logix 磁盘：
++
+....
+\\****TSD1\****-Pro$\ProfileContainers (**** = Unique Company Code)
+....
+
+
+
+
+== 删除顺时针代理服务
+
+此 CW 代理会在环境中的每台计算机上运行。应在环境中的每个 VM 上使用以下命令卸载启动此过程的服务。可以跳过 CMGR1 ，因为大多数情况下，此 VM 将关闭并最终删除。理想情况下，此操作将通过脚本化自动化运行。以下视频显示了手动完成。
+
+....
+C:\Program files\CloudWorkspace\CwAgent\CwAgent.exe -u
+....
+
+
+=== 删除顺时针代理服务视频
+
+video::l9ASmM5aap0[youtube, ]
+
+
+== 删除顺时针代理目录
+
+上次卸载将删除启动 CW Agent 的服务，但文件仍保留。删除目录：
+
+....
+"C:\Program Files\CloudWorkspace"
+....
+
+
+=== 删除 CW Agent 目录视频
+
+video::hMM_z4K2-iI[youtube, ]
+
+
+== 删除启动快捷方式
+
+启动项目录包含两个快捷方式，用于访问上一步中删除的文件。为了避免最终用户出现错误消息，应删除这些文件。
+
+....
+"C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp\Pen.lnk"
+"C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp\CwRemoteApps.lnk"
+....
+
+
+=== 删除启动快捷方式视频
+
+video::U0YLZ3Qfu9w[youtube, ]
+
+
+== 取消链接 ‘Users ' 和 ‘公司 ' GPO
+
+VDS 实施了三个 GPO 。我们建议取消其中两个链接并查看第三个的内容。
+
+取消链接：
+
+* AADDC 用户 > Cloud Workspace 公司
+* ADDC 用户 > Cloud Workspace 用户
+
+
+请查看
+
+* AADDC 计算机 > Cloud Workspace 计算机
+
+
+
+
+=== 取消链接 ‘Users ' 和 ‘公司的 GPO 视频
+
+video::cb68ri3HKUw[youtube, ]
+
+
+== 关闭 CMGR1
+
+应用 GPO 更改后，我们现在可以关闭 CMGR1 虚拟机。确认 AVD 功能是否继续后，可以永久删除此虚拟机。
+
+在极少数情况下，如果正在运行另一个服务器角色（例如 DC ， FTP 服务器… ）。在这种情况下，可以禁用三种服务来禁用 CMGR1 上的 VDS 功能：
+
+* 顺时针代理（请参见上文）
+* 顺时针自动化服务
+* CW VM 自动化
+
+
+
+
+=== 关闭 CMGR1 视频
+
+video::avk9HyIiC_s[youtube, ]
+
+
+== 删除 NetApp VDS 服务帐户
+
+可以删除 VDS 使用的 Azure AD 服务帐户。登录到 Azure 管理门户并删除用户：
+
+* CloudWorkspaceSVC
+* CloudWorkspaceCASVC
+
+
+可以保留其他用户帐户：
+
+* 最终用户
+* Azure 管理员
+* .tech 域管理员
+
+
+
+
+=== 删除 NetApp VDS 服务帐户视频
+
+video::_VToVNp49cg[youtube, ]
+
+
+== 删除应用程序注册
+
+部署 VDS 时会注册两个应用程序。可以删除这些内容：
+
+* 云工作空间 API
+* 云工作空间 AVD
+
+
+
+
+=== 删除应用程序注册视频
+
+video::iARz2nw1Oks[youtube, ]
+
+
+== 删除企业级应用程序
+
+部署 VDS 时会部署两个企业级应用程序。可以删除这些内容：
+
+* 云工作空间
+* 云工作空间管理 API
+
+
+
+
+=== 删除企业应用程序视频
+
+video::3eQzTPdilWk[youtube, ]
+
+
+== 确认已停止 CMGR1
+
+在测试最终用户是否仍可连接之前，请确认已停止 CMGR1 以进行实际测试。
+
+
+
+=== 确认 CMGR1 已停止视频
+
+video::Ux9nkDk5lU4[youtube, ]
+
+
+== 登录和最终用户
+
+要确认成功，请以最终用户身份登录并保持确认功能不变。
+
+
+
+=== 登录和最终用户视频
+
+video::SuS-OTHJz7Y[youtube, ]

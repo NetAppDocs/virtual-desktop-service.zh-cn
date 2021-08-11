@@ -1,0 +1,17 @@
+= Microsoft 团队概述
+
+
+
+
+== Microsoft 团队概述
+
+此脚本软件包使用 chocolatey 软件包管理器安装 / 卸载 _Microsoft teams_ (https://chocolatey.org/)[] 以执行部署。创建 VM 时， VDS 会部署 chocolatey ，但如果缺少 chocolatey ，则此脚本还会检查并安装它作为前提条件。
+
+
+WARNING: 此 Microsoft Teams 安装是专门为部署到 RDS 环境而配置的。 link:scriptlibrary.MicrosoftTeamsAVD.html["不同的 Microsoft Teams 脚本"] 用于 AVD 部署。
+
+
+
+=== 默认快捷方式路径
+
+下面将输入默认快捷方式路径，对于此应用程序，快捷方式为： ` \\shortcut \Microsoft teams.lnk`

@@ -1,0 +1,8 @@
+= 概述
+
+
+
+
+== 概述
+
+image::Management.command_center.operations.run_program-ea96e.png[Management.command center.operations.run program ea96e]

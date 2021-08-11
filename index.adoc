@@ -1,0 +1,111 @@
+---
+sidebar: sidebar 
+permalink: index.html 
+summary: 欢迎使用 Virtual Desktop Service 文档门户。 
+keywords:  
+---
+= 虚拟桌面服务文档
+
+
+
+
+== 概述
+
+NetApp 的虚拟桌面服务（ Virtual Desktop Service ， VDS ）可以解决在公有云中部署和管理虚拟桌面的复杂性，既可以作为管理虚拟桌面基础架构 (VDI) 的灵活软件服务提供，也可以作为完全托管的 VDI 即服务平台提供。虚拟桌面服务消除了在云中部署桌面的复杂性，将数百项任务部署到几小时内需要 2-3 天时间。
+
+
+
+=== 虚拟桌面服务的优势：
+
+* * 降低基础架构成本 *
++
+我们的可自定义资源计划系统可将基础架构支出优化多达 50% 。
+
+* * 降低风险 *
++
+根据云最佳实践将桌面部署到逻辑工作流中；例如 Microsoft Azure Virtual Desktop （ AVD ）最佳实践标准。
+
+* * 自定义自动化 *
++
+事件驱动型自动化和流程编排引擎利用您当前的脚本轻松管理，一般 IT 管理员可以管理您的云桌面！
+
+* * 多云 *
++
+通过一个图形用户界面跨 AWS ， Azure 和 Google 控制多个租户。
+
+* * 灵活控制 *
++
+通过一个门户来控制技术堆栈的每一层，最大限度地提高业务灵活性。
+
+
+
+了解更多信息。 https://cloud.netapp.com/virtual-desktop-service[]
+
+
+
+== 获取支持
+
+电子邮件支持： VDSsupport@netapp.com
+
+电话支持： 844.645.6789
+
+link:https://cloudjumper.zendesk.com["VDS 支持门户"]
+
+正常支持工作时间：星期一到星期五，中部时间上午 7 ： 00 到晚上 7 ： 00 。
+
+* 非工作时间（电话）支持仅通过电话提供。
+
+
+
+
+== 其他资源
+
+
+
+=== 成本计算器
+
+
+
+==== Azure 酒店
+
+* https://manage.vds.netapp.com/azure-cost-estimator[]
+
+
+
+
+==== Google Cloud
+
+* https://manage.vds.netapp.com/google-cost-estimator[]
+
+
+
+
+=== 下载
+
+
+
+==== 远程桌面服务（ RDS ）客户端
+
+* link:https://bin.vdsclient.app/v5client/cwc-win-setup.exe["适用于 Windows 的 VDS RDS 客户端"]
+* link:https://login.cloudworkspace.com/["VDS Web 客户端"]
+* link:https://docs.microsoft.com/en-us/windows-server/remote/remote-desktop-services/clients/remote-desktop-clients["Microsoft RD 客户端"]
+
+
+
+
+==== Azure Virtual Desktop （ AVD ）客户端
+
+* link:https://docs.microsoft.com/en-us/azure/virtual-desktop/connect-windows-7-10["适用于 Windows 客户端的 Microsoft AVD"]
+* link:https://docs.microsoft.com/en-us/azure/virtual-desktop/connect-web["Microsoft AVD Web Client"]
+* link:https://docs.microsoft.com/en-us/azure/virtual-desktop/connect-android["适用于 Android 客户端的 Microsoft AVD"]
+* link:https://docs.microsoft.com/en-us/azure/virtual-desktop/connect-macos["适用于 macOS 客户端的 Microsoft AVD"]
+* link:https://docs.microsoft.com/en-us/azure/virtual-desktop/connect-ios["适用于 iOS 客户端的 Microsoft AVD"]
+
+
+
+
+==== 其他下载
+
+* link:https://cloudjumper.com/wp-content/uploads/2019/12/RemoteScanEnterpriseUser.zip["RemoteScan 客户端"]
+* link:https://bin.vdsclient.app/v5client/cwc-designer-win-setup.exe["VDS RDS Windows 客户端设计器"]
+

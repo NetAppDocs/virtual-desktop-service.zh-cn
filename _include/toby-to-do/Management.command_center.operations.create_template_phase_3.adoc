@@ -1,0 +1,10 @@
+= 概述
+
+
+
+
+== 概述
+
+image::Management.command_center.operations.create_template_phase_3-6d3e1.png[Management.command center.operations.create template phase 3 6d3e1]
+
+image::Management.command_center.operations.create_template_phase_3-5c591.png[Management.command center.operations.create template phase 3 5c591]

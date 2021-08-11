@@ -1,0 +1,8 @@
+= 概述
+
+
+
+
+== 概述
+
+image::Management.command_center.operations.load_storage_types-e47d0.png[Management.command center.operations.load 存储类型 e47d0]

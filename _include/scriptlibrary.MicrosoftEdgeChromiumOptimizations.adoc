@@ -1,0 +1,10 @@
+= Microsoft Edge Chromium 优化
+
+
+
+
+== Microsoft Edge Chromium 优化
+
+在 Microsoft Edge Chromium 89 中， Microsoft 增加了一项功能，用于限制 Microsoft Edge Chromium 浏览器选项卡的资源消耗。此全局脚本会应用设置，将后台选项卡限制为超时，并在 15 分钟后停止占用资源。播放音频的后台选项卡不受影响。
+
+可以找到详细信息 link:https://blogs.windows.com/msedgedev/2021/03/04/edge-89-performance/["此处"]。

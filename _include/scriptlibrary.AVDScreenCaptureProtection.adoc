@@ -1,0 +1,24 @@
+= AVD 屏幕捕获保护概述
+
+
+
+
+== AVD 屏幕捕获保护概述
+
+此脚本软件包可通过对原生执行（相关）命令来启用 / 禁用 PowerShell AVD 功能 _screen capture protection_ ：
+
+-enable
+
+`reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v fEnableScreenCaptureProtection /t REG_DWORD /d 1`
+
+-disable
+
+`reg delete "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v fEnableScreenCaptureProtection /f`
+
+有关此 AVD 功能的 Microsoft 文档，请参见：https://docs.microsoft.com/en-us/azure/virtual-desktop/security-guide#session-host-security-best-practices[]
+
+
+
+=== 添加活动对话框窗口屏幕截图
+
+image::scriptlibrary.AVDScreenCaptureProtection-216a6.png[scriptlibrary.AVDScreenCaptureProtection 216a6.]

@@ -1,0 +1,23 @@
+= 缩放 VDI/AVD 概述
+
+
+
+
+== 缩放 VDI/AVD 概述
+
+此脚本包可使用 PowerShell 安装 / 卸载 _Zoom VDI-AVD_ 以执行部署。
+
+
+NOTE: 如果同时为 VDI/AVD 环境启用了音频重定向，则缩放性能将会提高。
+
+
+
+=== 默认快捷方式路径
+
+下面将输入默认快捷方式路径，对于此应用程序，快捷方式为： ` \\shortlts\Zoom VDI.lnk`
+
+
+
+=== 添加活动对话框窗口屏幕截图
+
+image::scriptlibrary.activity.InstallZoomVDI-AVD.png[scriptlibrary.active.InstallZoomVDI AVD]

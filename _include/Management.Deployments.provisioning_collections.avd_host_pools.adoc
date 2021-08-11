@@ -1,0 +1,36 @@
+= AVD 会话主机更新过程
+
+
+
+
+=== AVD 会话主机更新过程
+
+VDS 提供了一种通过使用配置收集和 * 添加会话主机 * 功能来更新 AVD 主机池中的会话主机的简单方法。可以在不影响最终用户的情况下完成此过程，并在先前映像迭代的基础上反复更新后续映像。
+
+.AVD 会话主机更新过程如下：
+. 按照上述说明构建新的 VDI 配置集合，自定义并验证此集合。
++
+.. 通常，此配置收集将基于先前的 VM 模板构建，模拟 " 打开，另存为 " 流程。
+
+
+. 验证配置集合后，导航到 _Workspace > AVD > Host Pools_ 页面，然后单击主机池的名称
+. 在 _Host Pool > Session Hosts_ 页面中，单击 * + Add Session Host*
++
+image::Management.Deployments.provisioning_collections-9ed95.png[Management.Deployments.provisioning 集合 9ed95]
+
+. 选择最新的 * 虚拟机模板 * 。根据您的要求选择适当的 * 计算机大小 * 和 * 存储类型 * 。
+. 输入 * 实例数 * ，等于所需会话主机的总数。通常，此数字与当前在主机池中的数字相同，但可以是任意数字。
++
+.. 请注意，当前位于主机池中的会话主机最终将在这些新主机联机后停用。规划输入的 * 实例数 * 足以支持此主机池中的整个工作负载。
+
+
+. 单击 * 保存 * ，会话主机将根据选定的 VM 模板构建，并在 10 到 15 分钟后开始联机（具体取决于虚拟机管理程序）。
+. 当新主机联机时，默认设置为保持在 * 禁止新会话 * 中。对于每个会话主机， * 允许新会话 * 切换可用于管理哪些主机可以接收新的用户会话。在构建了足够多的新主机并确认功能后，可以在新主机和旧主机上管理此设置，以便将所有新会话路由到新主机。将 * 允许新会话 * 设置为 * 已禁用 * 的旧主机可以继续运行和托管现有用户会话。
++
+image::Management.Deployments.provisioning_collections-be47e.png[Management.Deployments.provisioning 集合 be47e]
+
+. 当用户注销旧主机时，如果没有新的用户会话加入旧主机，则可以通过单击 * 操作 * 图标并选择 * 删除 * 来删除 * 会话 = 0* 的旧主机。
++
+image::Management.Deployments.provisioning_collections-cefb9.png[Management.Deployments.provisioning collections cefb9.]
+
+

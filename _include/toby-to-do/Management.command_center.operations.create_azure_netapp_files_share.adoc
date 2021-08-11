@@ -1,0 +1,8 @@
+= 概述
+
+
+
+
+== 概述
+
+image::Management.command_center.operations.create_azure_netapp_files_share-90774.png[Management.command center.operations.create Azure NetApp Files share 90774]

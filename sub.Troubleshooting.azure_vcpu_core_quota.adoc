@@ -1,0 +1,31 @@
+---
+sidebar: sidebar 
+permalink: Troubleshooting.azure_vcpu_core_quota.html 
+summary: Azure vCPU 核心配额故障排除分步指南 
+keywords:  
+---
+= Azure vCPU 核心配额
+
+
+
+
+== 查看当前配额
+
+. 登录到 Azure 控制台并导航到 " 订阅 " 模块，然后单击配额。接下来，在 " 提供程序 " 下拉列表中选择所有提供程序，在最右下拉列表中选择全部显示，然后选择部署了云工作空间的 Azure 区域。
++
+image:quota1.png[""]
+
+. 然后，您将看到您的消费量与您有多少配额可用。在下图中，在 BS 系列 VM 可用的 350 个 CPU 中， Cloud跳 线占用了 42 个 CPU 。增加配额
++
+image:quota2.png[""]
+
+. 如果要增加配额，请单击请求增加并告知它要增加的内容（这是计算 /CPU 所需时间的 99% ）。
++
+image:quota3.png[""]
+
+. 选择部署 Cloud Workspace 的区域以及要增加配额的 VM 系列。
++
+image:quota4.png[""]
+
+. 输入您的联系信息，然后单击创建将此请求提交给 Microsoft 。他们通常很快就会增加这一数量。
+

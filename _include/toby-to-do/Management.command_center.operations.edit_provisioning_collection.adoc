@@ -1,0 +1,10 @@
+= 概述
+
+
+
+
+== 概述
+
+image::Management.command_center.operations.edit_provisioning_collection-cc1b0.png[Management.command center.operations.edit 配置收集 cc1b0]
+
+image::Management.command_center.operations.edit_provisioning_collection-4e113.png[Management.command center.operations.edit 配置集合 4e113]

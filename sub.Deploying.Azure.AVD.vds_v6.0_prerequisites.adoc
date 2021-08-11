@@ -1,0 +1,450 @@
+---
+sidebar: sidebar 
+permalink: Deploying.Azure.AVD.vds_v6.0_prerequisites.html 
+summary: AVD 和 VDS 前提条件 
+---
+= AVD 和 VDS v6.0 的前提条件
+
+
+
+
+== AVD 和 VDS 要求和说明
+
+本文档介绍使用 NetApp 虚拟桌面服务（ Virtual Desktop Service ， VDS ）部署 Azure 虚拟桌面（ AVD ）所需的要素。" 快速检查清单 " 简要列出了确保高效部署所需的组件和部署前步骤。本指南的其余部分将根据所做的配置选择详细介绍每个元素。
+
+
+
+== 快速检查清单
+
+
+
+=== Azure 要求
+
+* Azure AD 租户
+* Microsoft 365 许可以支持 AVD
+* Azure 订阅
+* Azure 虚拟机的可用 Azure 配额
+* 具有全局管理员和订阅所有权角色的 Azure 管理员帐户
+* 域管理员帐户，具有 AD Connect 设置的 " 企业管理员 " 角色
+
+
+
+
+=== 部署前信息
+
+* 确定用户总数
+* 确定 Azure 区域
+* 确定 Active Directory 类型
+* 确定存储类型
+* 确定会话主机 VM 映像或要求
+* 评估现有 Azure 和内部网络配置
+
+
+
+
+== VDS 部署详细要求
+
+
+
+=== 最终用户连接要求
+
+.以下远程桌面客户端支持 Azure 虚拟桌面：
+* Windows 桌面
+* Web
+* macOS
+* iOS
+* IGEL 思考客户端（ Linux ）
+* Android （预览）
+
+
+
+NOTE: Azure 虚拟桌面不支持 RemoteApp and Desktop Connection （ RADC ）客户端或远程桌面连接（ MSTSC ）客户端。
+
+
+IMPORTANT: Azure 虚拟桌面当前不支持从 Windows 应用商店使用远程桌面客户端。未来版本将添加对此客户端的支持。
+
+* 远程桌面客户端必须能够访问以下 URL ： *
+
+[cols="25,25,25,25"]
+|===
+| Address | 出站 TCP 端口 | 目的 | 客户端 
+
+
+| * .AVD.microsoft.com | 443. | 服务流量 | 全部 
+
+
+| * .servicebus.windows.net 443 故障排除数据 | 全部 | go.microsoft.com | 443. 
+
+
+| Microsoft FWLinks | 全部 | 也称为 .ms | 443. 
+
+
+| Microsoft URL 缩写 | 全部 | docs.microsoft.com | 443. 
+
+
+| 文档。 | 全部 | privacy.microsoft.com | 443. 
+
+
+| 隐私声明 | 全部 | query.prod.cms.rt.microsoft.com | 443. 
+|===
+
+NOTE: 打开这些 URL 对于获得可靠的客户端体验至关重要。不支持阻止对这些 URL 的访问，并会影响服务功能。这些 URL 仅对应于客户端站点和资源，不包括 Azure Active Directory 等其他服务的 URL 。
+
+
+
+=== VDS 设置向导的起点
+
+VDS 设置向导可以处理成功部署 AVD 所需的许多前提条件设置。设置向导（link:https://cwasetup.cloudworkspace.com[""]）创建或使用以下组件。
+
+
+
+==== Azure 租户
+
+* 必填： * Azure 租户和 Azure Active Directory
+
+Azure 中的 AVD 激活是一种租户范围的设置。VDS 支持每个租户运行一个 AVD 实例。
+
+
+
+==== Azure 订阅
+
+* 必填： * Azure 订阅（请记下要使用的订阅 ID ）
+
+所有已部署的 Azure 资源应设置在一个专用订阅中。这样可以更轻松地跟踪 AVD 的成本，并简化部署过程。注意：不支持 Azure 免费试用，因为它们没有足够的抵免额来部署功能正常的 AVD 部署。
+
+
+
+==== Azure 核心配额
+
+为要使用的 VM 系列提供足够的配额—特别是在初始平台部署中， DS v3 系列至少有 10 个核心（只能使用 2 个核心，但每个初始部署可能都有 10 个核心）。
+
+
+
+==== Azure 管理员帐户
+
+* 必填： * 一个 Azure 全局管理员帐户。
+
+VDS 设置向导会请求 Azure 管理员向 VDS 服务主体授予委派的权限，并安装 VDS Azure Enterprise 应用程序。管理员必须分配以下 Azure 角色：
+
+* 租户的全局管理员
+* 订阅中的所有者角色
+
+
+
+
+==== VM 映像
+
+* 必填： * 支持多会话 Windows 10 的 Azure 映像。
+
+Azure Marketplace 提供其基本 Windows 10 映像的最新版本，所有 Azure 订阅均可自动访问这些映像。如果您要使用其他映像或自定义映像，希望 VDS 团队提供有关创建或修改其他映像的建议，或者对 Azure 映像有一些一般性问题，请告知我们，我们可以安排对话。
+
+
+
+==== Active Directory
+
+AVD 要求用户身份属于 Azure AD ，并且 VM 加入与同一 Azure AD 实例同步的 Active Directory 域。VM 不能直接连接到 Azure AD 实例，因此需要配置域控制器并与 Azure AD 同步。
+
+.支持的选项包括：
+* 在订阅中自动构建 Active Directory 实例。AD 实例通常由 VDS 在 VDS 控制虚拟机（ CMGR1 ）上为使用此选项的 Azure 虚拟桌面部署创建。在设置过程中，必须设置并配置 AD Connect 以与 Azure AD 同步。
++
+image:AD Options New.png[""]
+
+* 集成到可通过 Azure 订阅（通常通过 Azure VPN 或 Express Route ）访问的现有 Active Directory 域中，并使用 AD Connect 或第三方产品将其用户列表同步到 Azure AD 。
++
+image:AD Options Existing.png[""]
+
+
+
+
+
+==== 存储层
+
+在 AVD 中，存储策略的设计目的是， AVD 会话 VM 上不会驻留任何永久性用户 / 公司数据。用户配置文件，用户文件和文件夹以及公司 / 应用程序数据的永久性数据托管在独立数据层上托管的一个或多个数据卷上。
+
+FSLogix 是一种配置文件容器化技术，可通过在会话初始化时将用户配置文件容器（ VHD 或 VHDX 格式）挂载到会话主机来解决许多用户配置文件问题（如数据无序增长和登录速度较慢）。
+
+由于采用这种架构，需要具备数据存储功能。此功能必须能够处理每天早晨 / 下午当大部分用户同时登录 / 注销时所需的数据传输。即使规模适中的环境也可能需要大量数据传输。数据存储层的磁盘性能是最终用户性能的主要变量之一，必须特别注意适当调整此存储的性能大小，而不仅仅是存储容量。通常，存储层的大小应支持每个用户 5-15 IOPS 。
+
+.VDS 设置向导支持以下配置：
+* 设置和配置 Azure NetApp Files （ ANF ）（建议）。_ANF 标准服务级别最多支持 150 个用户，而建议使用 150-500 个用户的环境。 ANF 高级版。对于 500 多个用户，建议使用 ANF 超高级版。 _
++
+image:Storage Layer 1.png[""]
+
+* 设置和配置文件服务器虚拟机
++
+image:Storage Layer 3.png[""]
+
+
+
+
+
+==== 网络
+
+* 必填： * 所有现有网络子网的清单，包括通过 Azure Express Route 或 VPN 对 Azure 订阅可见的任何子网。此部署需要避免子网重叠。
+
+通过 VDS 设置向导，您可以在计划内与现有网络集成时定义所需或必须避免的网络范围。
+
+在部署期间确定用户的 IP 范围。根据 Azure 最佳实践，仅支持专用范围内的 IP 地址。
+
+.支持的选项包括以下，但默认为 /20 范围：
+* 192.168.0.0 到 192.168.255.255
+* 172.16.0.0 到 172.31.255.255
+* 10.0.0.0 到 10.255.255.255
+
+
+
+
+==== CMGR1
+
+VDS 的某些独特功能，例如，节省成本的工作负载计划和实时扩展功能需要在租户和订阅中具有管理功能。因此，在 VDS 设置向导自动化过程中会部署一个名为 CMGR1 的管理 VM 。除了 VDS 自动化任务之外，此 VM 还在 SQL 快速数据库，本地日志文件和一个名为 DCConfig 的高级配置实用程序中保存 VDS 配置。
+
+.根据在 VDS 设置向导中所做的选择，此虚拟机可用于托管其他功能，包括：
+* RDS 网关（仅用于 RDS 部署）
+* HTML 5 网关（仅用于 RDS 部署）
+* RDS 许可证服务器（仅用于 RDS 部署）
+* 域控制器（如果选择）
+
+
+
+
+=== 部署向导中的决策树
+
+在初始部署过程中，我们会回答一系列问题，以自定义新环境的设置。下面概述了要做出的主要决策。
+
+
+
+==== Azure 区域
+
+确定要托管 AVD 虚拟机的 Azure 区域。请注意， Azure NetApp Files 和某些 VM 系列（例如支持 GPU 的 VM ）都定义了 Azure 区域支持列表，而 AVD 则在大多数地区可用。
+
+* 此链接可用于标识 link:https://azure.microsoft.com/en-us/global-infrastructure/services/["按区域划分的 Azure 产品可用性"]
+
+
+
+
+==== Active Directory 类型
+
+确定要使用的 Active Directory 类型：
+
+* 现有内部 Active Directory
+* 请参见 link:Deploying.Azure.AVD.vds_v5.4_components_and_permissions.html["AVD VDS 组件和权限"] 文档，介绍 Azure 和本地 Active Directory 环境中所需的权限和组件
+* 基于 Azure 订阅的新 Active Directory 实例
+* Azure Active Directory 域服务
+
+
+
+
+==== 数据存储
+
+确定用户配置文件，单个文件和企业共享的数据放置位置。选项包括：
+
+* Azure NetApp Files
+* Azure 文件
+* 传统文件服务器（采用受管磁盘的 Azure VM ）
+
+
+
+
+== 现有组件的 NetApp VDS 部署要求
+
+
+
+=== 使用现有 Active Directory 域控制器部署 NetApp VDS
+
+此配置类型可扩展现有 Active Directory 域以支持 AVD 实例。在这种情况下， VDS 会将一组有限的组件部署到域中，以支持 AVD 组件的自动配置和管理任务。
+
+.此配置需要：
+* 一种现有 Active Directory 域控制器，可由 Azure vNet 上的 VM 访问，通常通过 Azure VPN 或 Express Route 或已在 Azure 中创建的域控制器进行访问。
+* 添加了 AVD 主机池和数据卷加入域时的 VDS 管理所需的 VDS 组件和权限。AVD VDS 组件和权限指南定义了所需的组件和权限，部署过程要求具有域权限的域用户运行将创建所需元素的脚本。
+* 请注意，默认情况下， VDS 部署会为 VDS 创建的 VM 创建一个 vNet 。vNet 可以与现有 Azure 网络 VNets 建立对等关系，也可以将 CMGR1 VM 移至已预先定义了所需子网的现有 vNet 。
+
+
+
+
+==== 凭据和域准备工具
+
+管理员必须在部署过程的某个时刻提供域管理员凭据。可以稍后创建，使用和删除临时域管理员凭据（部署过程完成后）。或者，在构建前提条件方面需要帮助的客户也可以使用域准备工具。
+
+
+
+=== 使用现有文件系统部署 NetApp VDS
+
+VDS 创建的 Windows 共享允许从 AVD 会话 VM 访问用户配置文件，个人文件夹和企业数据。默认情况下， VDS 将部署文件服务器或 Azure NetApp 文件选项，但如果您有现有文件存储组件，则 VDS 可以在 VDS 部署完成后将共享指向该组件。
+
+.使用和现有存储组件的要求：
+* 此组件必须支持 SMB v3
+* 组件必须与 AVD 会话主机加入同一 Active Directory 域
+* 该组件必须能够公开一个 UNC 路径以供 VDS 配置使用—所有三个共享都可以使用一个路径，或者可以为每个共享指定单独的路径。请注意， VDS 将为这些共享设置用户级别权限，因此请参阅 VDS AVD 组件和权限文档，以确保已为 VDS 自动化服务授予适当的权限。
+
+
+
+
+=== 使用现有 Azure AD 域服务部署 NetApp VDS
+
+此配置需要通过一个过程来确定现有 Azure Active Directory 域服务实例的属性。请联系您的客户经理以申请此类部署。NetApp VDS 部署与现有 AVD 部署此配置类型假定已存在所需的 Azure vNet ， Active Directory 和 AVD 组件。VDS 部署的执行方式与 " 使用现有 AD 部署 NetApp VDS " 配置相同，但增加了以下要求：
+
+* 需要为 Azure 中的 VDS 企业应用程序授予 AVD 租户的 RD 所有者角色
+* 需要使用 VDS Web App 中的 VDS 导入功能将 AVD 主机池和 AVD 主机池 VM 导入到 VDS 中此过程会收集 AVD 主机池和会话 VM 元数据并将其存储在 VDS 中，以便这些元素可通过 VDS 进行管理
+* 需要使用 CRA 工具将 AVD 用户数据导入到 VDS 用户部分中。此过程会将有关每个用户的元数据插入 VDS 控制平面，以便 VDS 可以管理其 AVD 应用程序组成员资格和会话信息
+
+
+
+
+== 附录 A ： VDS 控制面板 URL 和 IP 地址
+
+Azure 订阅中的 VDS 组件可与 VDS 全局控制平面组件进行通信，例如 VDS Web 应用程序和 VDS API 端点。要进行访问，需要在端口 443 上安全列出以下基本 URI 地址，以便进行双向访问：
+
+link:api.cloudworkspace.com[""]
+
+
+
+
+如果您的访问控制设备只能按 IP 地址安全列出，则应将以下 IP 地址列表列入安全列表。请注意， VDS 使用 Azure Traffic Manager 服务，因此此列表可能会随时间而变化：
+
+13.67.190.243 13.67.215.62 13.89.50.122 13.67.227.115 13.67.227.230 13.67.227.22723.99.136.91 40.119.157 40.78.132.166 40.78.40.129.17 122.52.167 40.70.147.2 40.86.99.202 13.68.19.178 13.68.114.184 137.11.21.208.132.132.172.1320.21.208.1721.138.172.138.172.138.1720.21.208.138.1720.21.138.132.138.1720.21.202.138.138.138.138.138.213.620.1.238.138.138.138.138.138.138.138.138.138.217.21.208.138.138.138.138.138.217.21.208.138.138.138.138.17
+
+
+
+== 附录 B ： Microsoft AVD 要求
+
+此 Microsoft AVD 要求部分汇总了 Microsoft 的 AVD 要求。要了解完整且最新的 AVD 要求，请访问：
+
+https://docs.microsoft.com/en-us/azure/virtual-desktop/overview#requirements[]
+
+
+
+=== Azure 虚拟桌面会话主机许可
+
+Azure Virtual Desktop 支持以下操作系统，因此请确保根据您计划部署的桌面和应用程序为用户提供适当的许可证：
+
+[cols="50,50"]
+|===
+| os | 所需许可证 
+
+
+| Windows 10 Enterprise 多会话或 Windows 10 Enterprise | Microsoft 365 e3 ， e5 ， a3 ， a5 ， Business Premium Windows e3 ， e5 ， a3 ， a5 
+
+
+| Windows 7 Enterprise | Microsoft 365 e3 ， e5 ， a3 ， a5 ， Business Premium Windows e3 ， e5 ， a3 ， a5 
+
+
+| Windows Server 2012 R2 ， 2016 ， 2019 | 具有软件保证的 RDS 客户端访问许可证（ CAL ） 
+|===
+
+
+=== AVD 计算机的 URL 访问
+
+您为 Azure Virtual Desktop 创建的 Azure 虚拟机必须能够访问以下 URL ：
+
+[cols="25,25,25,25"]
+|===
+| Address | 出站 TCP 端口 | 目的 | 服务标签 
+
+
+| * .AVD.microsoft.com | 443. | 服务流量 | Windows 虚拟桌面 
+
+
+| mrsglobalsteus2prod.blob.core.windows.net | 443. | 代理和 SXS 堆栈更新 | AzureCloud 
+
+
+| * .core.windows.net | 443. | 代理流量 | AzureCloud 
+
+
+| * .servicebus.windows.net | 443. | 代理流量 | AzureCloud 
+
+
+| prod.warmpath.msftcloudes.com | 443. | 代理流量 | AzureCloud 
+
+
+| catalogartifact.azureedge.net | 443. | Azure Marketplace | AzureCloud 
+
+
+| kms.core.windows.net | 1688 | Windows 激活 | 互联网 
+
+
+| AVDportalstorageblob.blob.core.windows.net | 443. | Azure 门户支持 | AzureCloud 
+|===
+下表列出了 Azure 虚拟机可以访问的可选 URL ：
+
+[cols="25,25,25,25"]
+|===
+| Address | 出站 TCP 端口 | 目的 | 服务标签 
+
+
+| * .microsoftonline.com | 443. | 对 MS Online Services 进行身份验证 | 无 
+
+
+| * .events.data.microsoft.com | 443. | 遥测服务 | 无 
+
+
+| www.msftconnecttest.com | 443. | 检测操作系统是否已连接到 Internet | 无 
+
+
+| * .prod.do.dsp.mp.microsoft.com | 443. | Windows 更新 | 无 
+
+
+| login.windows.net | 443. | 登录到 MS Online Services ， Office 365 | 无 
+
+
+| * 。 sfx.ms | 443. | OneDrive 客户端软件的更新 | 无 
+
+
+| * .digicert.com | 443. | 证书撤消检查 | 无 
+|===
+
+
+=== 最佳性能因素
+
+要获得最佳性能，请确保您的网络满足以下要求：
+
+* 从客户端网络到已部署主机池的 Azure 区域的往返（ RTT ）延迟应小于 150 毫秒。
+* 当托管桌面和应用程序的 VM 连接到管理服务时，网络流量可能会超出国家 / 地区边界。
+* 为了优化网络性能，我们建议会话主机的 VM 与管理服务位于同一 Azure 区域。
+
+
+
+
+=== 支持的虚拟机操作系统映像
+
+Azure Virtual Desktop 支持以下 x64 操作系统映像：
+
+* Windows 10 Enterprise 多会话，版本 1809 或更高版本
+* Windows 10 Enterprise ，版本 1809 或更高版本
+* Windows 7 Enterprise
+* Windows Server 2019
+* Windows Server 2016
+* Windows Server 2012 R2
+
+
+Azure 虚拟桌面不支持 x86 （ 32 位）， Windows 10 Enterprise N 或 Windows 10 Enterprise KN 操作系统映像。由于扇区大小限制， Windows 7 也不支持托管 Azure 存储上托管的任何基于 VHD 或 VHDX 的配置文件解决方案。
+
+可用的自动化和部署选项取决于您选择的操作系统和版本，如下表所示：
+
+[cols="40,15,15,15,15"]
+|===
+| 操作系统 | Azure 映像库 | 手动部署 VM | 与支撑模板集成 | 在 Azure Marketplace 上配置主机池 
+
+
+| Windows 10 多会话版本 1903 | 是的。 | 是的。 | 是的。 | 是的。 
+
+
+| Windows 10 多会话，版本 1809 | 是的。 | 是的。 | 否 | 否 
+
+
+| Windows 10 Enterprise 版本 1903 | 是的。 | 是的。 | 是的。 | 是的。 
+
+
+| Windows 10 Enterprise ，版本 1809 | 是的。 | 是的。 | 否 | 否 
+
+
+| Windows 7 Enterprise | 是的。 | 是的。 | 否 | 否 
+
+
+| Windows Server 2019 | 是的。 | 是的。 | 否 | 否 
+
+
+| Windows Server 2016 | 是的。 | 是的。 | 是的。 | 是的。 
+
+
+| Windows Server 2012 R2 | 是的。 | 是的。 | 否 | 否 
+|===

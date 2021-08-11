@@ -1,0 +1,8 @@
+= 概述
+
+
+
+
+== 概述
+
+image::Management.command_center.operations.load_machine_series-fcd2c.png[Management.command center.operations.load machine 系列 fcd2c]

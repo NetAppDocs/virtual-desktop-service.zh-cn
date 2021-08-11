@@ -1,0 +1,108 @@
+---
+sidebar: sidebar 
+permalink: Management.System_Administration.adding_moving_mapped_drives.html 
+summary: 添加和移动映射的驱动器 
+keywords:  
+---
+= 添加和移动映射的驱动器
+
+
+
+
+== 概述
+
+默认情况下，有三个共享文件夹会公开给最终用户会话。这些文件夹位于定义的存储层上。这可以位于文件服务器（ TSD1 或 D1 ）上，也可以位于存储服务上，例如 Azure 文件， Azure NetApp Files ， NetApp CVO 和 NetApp CVS 。
+
+为了便于明确起见，本文将使用公司代码为 "NECA " 的示例客户。 此示例假设已部署一个名为 NECATSD1 的 TDS1 服务器。我们将完成将文件夹移动到另一个 VM （名为 NECAD1 ）的过程。可以使用此策略在同一台计算机上的分区之间移动，也可以移动到另一台计算机，如以下示例… 所示
+
+文件夹起始位置：
+
+* 数据： NECATSD1\C ： \data\NECA\ （ TSD1 意味着它是第一个终端服务器，也充当数据服务器）
+* FTP ： NECATSD1\C ： \ftp\NECA\
+* 主页： NECATSD1\C ： \HOME\NECA\
+
+
+文件夹结束位置：
+
+* 数据： NECAD1\G ： \data\NECA\ （ D1 表示它是第一个数据服务器）
+* FTP ：相同的过程适用，无需将其描述为 3 倍
+* 主页：相同的过程适用，无需将其描述为 3 倍
+
+
+
+
+== 在 NECAD1 上为 G ：添加磁盘
+
+. 要将共享文件夹放在 E ：驱动器上，我们需要通过虚拟机管理程序（例如 Azure 管理门户），然后对其进行初始化和格式化
++
+image:mapped1.png[""]
+
+. 将现有文件夹（ NECATSD1 ， C ： \ ）路径复制到新位置（ NECAD1 ， G ： \ ）
+. 将文件夹从原始位置复制到新位置。
++
+image:mapped2.png[""]
+
+
+
+
+
+== 从原始文件夹共享（ NECATSD1 ， C ： \data\NECA\ ）收集信息
+
+. 使用与原始位置中的文件夹完全相同的路径共享新文件夹。
+. 打开新的 NECAD1 G ： \data\ 文件夹，您将在本示例中看到一个名为公司代码 "NECA " 的文件夹。
++
+image:mapped3.png[""]
+
+. 请注意原始文件夹共享的安全权限：
++
+image:mapped4.png[""]
+
+. 这是典型设置，但如果需要保留现有自定义设置，则复制原始设置非常重要。应从新文件夹共享中删除所有其他用户 / 组权限
++
+** system ：允许所有权限
+** LocalClientDHPAccess （在本地计算机上）：允许的所有权限
+** ClientDHPAccess （在域上）：允许的所有权限
+** NECA-ALL 用户（在域上）：允许除 " 完全控制 " 以外的所有权限
+
+
+
+
+
+
+== 将共享路径和安全权限复制到新共享文件夹
+
+. 返回到新位置（ NECAD1 ， G ： \data\NECA ），并使用相同的网络路径（不包括计算机）共享 NECA 文件夹，在我们的示例中为 "NECA-data$"
++
+image:mapped5.png[""]
+
+. 为确保用户安全，请添加所有用户，并将其权限设置为匹配。
++
+image:mapped6.png[""]
+
+. 删除可能已存在的任何其他用户 / 组权限。
++
+image:mapped7.png[""]
+
+
+
+
+
+== 编辑组策略（仅当文件夹移动到新计算机时）
+
+. 接下来，您将在组策略管理编辑器中编辑驱动器映射。对于 Azure AD 域服务，映射位于：
++
+....
+“Cloud Workspace Users > User Configuration > Preferences > Windows Settings> Drive Maps”
+....
++
+image:mapped8.png[""]
+
+. 更新组策略后，下次每个用户连接时，他们将看到映射的驱动器，这些驱动器会指向新位置。
+. 此时，您可以删除 NECATSD1 C ： \ 上的原始文件夹。
+
+
+
+
+== 故障排除
+
+如果最终用户看到映射的驱动器带有红色 X ，请右键单击该驱动器并选择 "disconnect （断开连接） " 。注销并重新登录驱动器将正确存在。image:mapped9.png[""]

@@ -1,0 +1,184 @@
+---
+sidebar: sidebar 
+permalink: Architectural.change_data_layer.Azure_Files.html 
+summary: 将存储平台更改为 Azure Files 的分步指南 
+keywords:  
+---
+= 将存储平台重定向到 Azure Files
+
+
+
+
+== 概述
+
+虚拟桌面服务部署技术支持多种存储选项，具体取决于底层基础架构。本指南介绍如何在部署后更改 Azure Files 的使用。
+
+
+
+=== 前提条件
+
+* 已安装并设置 AD Connect
+* Azure 全局管理员帐户
+* AZFilesHybrid PowerShell 模块 https://github.com/Azure-Samples/azure-files-samples/releases[]
+* AZ PowerShell 模块
+* ActiveDirectory PowerShell 模块
+
+
+
+
+=== 创建新的存储层
+
+. 使用全局管理员帐户登录到 Azure
+. 在与工作空间相同的位置和资源组中创建新的存储帐户
++
+image:Architectural.ChangeDataLayer.AzureFiles1.png[""]
+
+. 在存储帐户下创建数据，主目录和专业文件共享
++
+image:Architectural.ChangeDataLayer.AzureFiles2.png[""]
+
+
+
+
+
+=== 设置 Active Directory
+
+. 在云工作空间 > 云工作空间服务帐户 OU 下创建一个名为 `S存储帐户` 的新组织单位
++
+image:Architectural.ChangeDataLayer.AzureFiles3.png[""]
+
+. 启用 AD DS 身份验证（必须使用 PowerShell 完成） https://docs.microsoft.com/en-us/azure/storage/files/storage-files-identity-ad-ds-enable[]
++
+.. DomainAccountType 应为 `ServiceLogonAccount`
+.. OraganizationalUniteDistinguishedName 是上一步创建的 OU 的可分辨名称（即`OU=Storage Account ， OU=Cloud Workspace Service Accounts ， OU=Cloud Workspace ， DC=TrainingKrisG ， DC=onmicrosoft ， DC=com` ）
+
+
+
+
+
+
+=== 设置共享的角色
+
+. 在 Azure 门户中，将 " `S存储文件数据 SMB 共享提升贡献者` " 角色提供给 CloudWorkspaceSVC 和 Level3 技术人员
++
+image:Architectural.ChangeDataLayer.AzureFiles4.png[""]
+
+. 将 " 存储文件数据 SMB 共享贡献者 " 角色分配给 "` < 公司代码 >-all users` " 组
++
+image:Architectural.ChangeDataLayer.AzureFiles5.png[""]
+
+
+
+
+
+=== 创建目录
+
+. 在每个共享（ data ， home ， pro ）中使用公司代码作为名称（在此示例中，公司代码为 "`Kift` " ）创建一个目录
++
+image:Architectural.ChangeDataLayer.AzureFiles6.png[""]
+
+. 在专业共享的 < 公司代码 > 目录中，创建 "`ProfileContainers` " 目录
++
+image:Architectural.ChangeDataLayer.AzureFiles7.png[""]
+
+
+
+
+
+=== 设置 NTFS 权限
+
+. 连接到共享
++
+.. 导航到 Azure 门户中存储帐户下的共享，单击三个点，然后单击连接
++
+image:Architectural.ChangeDataLayer.AzureFiles8.png[""]
+
+.. 选择 Active Directory 进行身份验证方法，然后单击代码右下角的复制到剪贴板图标
++
+image:Architectural.ChangeDataLayer.AzureFiles9.png[""]
+
+.. 使用 Level3 技术人员组的成员帐户登录到 CMGR1 服务器
+.. 在 PowerShell 中运行复制的代码以映射驱动器
+.. 对每个共享执行相同的操作，同时为每个共享选择不同的驱动器盘符
+
+
+. 禁用 < 公司代码 > 目录的继承
+. 系统和 AD 组客户端 DHPAccess 应具有对 < 公司代码 > 目录的完全控制权限
+. 域计算机应对专业共享中的 < 公司代码 > 目录以及中的 ProfileContainers 目录具有完全控制权限
+. 公司代码 >-all 用户 AD 组应具有对主目录和专业共享中 <companycode> 目录的 List folder/read data 权限
+. 对于数据共享中的目录， <companycode>-all users AD 组应具有以下特殊权限
++
+image:Architectural.ChangeDataLayer.AzureFiles10.png[""]
+
+. 公司代码 >-all users AD 组应对 ProfileContainers 目录具有修改权限
+
+
+
+
+=== 更新组策略对象
+
+. 更新位于 Cloud Workspace > Cloud Workspace 公司 > < 公司代码 > -Desktop 用户下的 GPO < 公司代码 > 用户
++
+.. 更改主驱动器映射以指向新的主共享
++
+image:Architectural.ChangeDataLayer.AzureFiles11.png[""]
+
+.. 更改文件夹重定向以指向桌面和文档的主共享
++
+image:Architectural.ChangeDataLayer.AzureFiles12.png[""]
+
++
+image:Architectural.ChangeDataLayer.AzureFiles13.png[""]
+
+
+
+
+
+
+
+=== 更新 Active Directory 用户和计算机中的共享
+
+. 对于传统或混合 AD ，需要将公司代码 OU 中的共享更新到新位置
++
+image:Architectural.ChangeDataLayer.AzureFiles14.png[""]
+
+
+
+
+
+=== 更新 VDS 中的数据 / 主目录 /Pro 路径
+
+. 使用 Level3 技术人员组中的帐户登录到 CMGR1 ，然后启动命令中心
+. 在命令下拉列表中，选择更改数据 / 主目录 /Pro 文件夹
+. 单击加载数据按钮，然后确保从下拉列表中选择了正确的公司代码
+. 输入数据，主位置和专业位置的新 patsh
+. 取消选中 Is Windows Server 复选框
+. 单击 Execute Command 按钮
++
+image:Architectural.ChangeDataLayer.AzureFiles15.png[""]
+
+
+
+
+
+=== 更新 FSLogix 配置文件路径
+
+. 打开会话主机上的临时注册表
+. 编辑 HKLM\SOFTWARE\FSLogix \Profiles\ 中的 VHDLocations 条目，使其成为新 ProfileContainers 目录的 UNC 路径
++
+image:Architectural.ChangeDataLayer.AzureFiles16.png[""]
+
+
+
+
+
+=== 配置备份
+
+. 建议为新共享设置和配置备份策略
+. 在同一资源组中创建新的恢复服务存储
+. 导航到存储，然后在 Getting Started 下选择 Backup
+. 选择 Azure 作为工作负载的运行位置，选择 Azure 文件共享作为要备份的内容，然后单击 Backukp
+. 选择用于创建共享的存储帐户
+. 添加要备份的共享
+. 根据需要编辑和创建备份策略
+

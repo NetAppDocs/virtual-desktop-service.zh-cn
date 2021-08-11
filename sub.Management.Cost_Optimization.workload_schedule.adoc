@@ -1,0 +1,158 @@
+---
+sidebar: sidebar 
+permalink: Management.Cost_Optimization.workload_schedule.html 
+summary: 在 VDS 中为最终用户部署应用程序的分步指南 
+keywords:  
+---
+= 资源优化
+
+
+
+
+== 工作负载计划
+
+工作负载计划是一项功能，可计划环境处于活动状态的时间窗口。
+
+工作负载计划可以设置为 " 始终开启 " ， " 始终关闭 " 或 " 已计划 " 。如果设置为 " 已计划 " ，则可以将一周中每一天的 " 打开 " 和 " 关闭 " 时间设置为不同的时间窗口。
+
+image:Workload_schedule1.png[""]
+
+如果按计划关闭，则通过 " 始终关闭 " 或 " 已计划 " ，所有租户虚拟机都将关闭。平台服务器（如 CMGR1 ）将保持活动状态，以便于执行按需唤醒等功能。
+
+工作负载计划可与其他资源优化功能结合使用，包括实时扩展和按需唤醒。
+
+
+
+== 按需唤醒
+
+按需唤醒（ Wod ）是一项正在申请专利的技术，可以为最终用户唤醒适当的 VM 资源，以便于全天候无人看管地访问，即使资源计划为非活动状态也是如此。
+
+
+
+=== 适用于远程桌面服务的 Wod
+
+在 RDS 中， VDS Windows 客户端内置了 " 按需唤醒 " 集成功能，可以在不需要任何其他最终用户操作的情况下唤醒相应的资源。他们只需启动正常登录，客户端就会通知他们虚拟机已激活的短暂延迟。只有在从 Windows 设备连接到 RDS 环境时，此客户端（以及此自动按需唤醒功能）才可用。
+
+在 RDS 部署中， VDS Web 客户端内置了类似的功能。VDS Web Client 位于： link:https://login.cloudworkspace.com[""]
+
+Microsoft RD 客户端（适用于 Windows 或任何其他平台）以及任何其他第三方 RD 客户端均未内置 " 按需唤醒 " 功能。
+
+
+
+=== 按需唤醒 Azure 虚拟桌面
+
+在 AVD 中，只能使用 Microsoft 提供的客户端进行连接，因此不包含按需唤醒功能。
+
+VDS 确实包括通过 VDS Web Client 为 AVD 提供的自助式按需唤醒功能。可以使用 Web 客户端来唤醒相应的资源，然后可以通过标准 AVD 客户端启动连接。
+
+.要在 AVD 中唤醒 VM 资源，请执行以下操作：
+. 连接到 VDS Web Client ，网址为 link:https://login.cloudworkspace.com[""]
+. 使用用户 AVD 凭据登录
++
+** 此时将显示一条警告消息，提示您： " 您已获得 Microsoft 的 AVD 服务。单击此处可查看状态并启动脱机主机池。 "_
+
+
+. 单击 "_here_" 后，您将看到可用主机池列表以及状态列下 " 单击以启动 " 链接的链接
++
+image:Wake_on_Demand_h5_1.png[""]
+
+. 单击以启动链接并等待 1-5 分钟，使状态更改为 " 联机 " 并显示绿色状态图标
+. 使用常规过程连接到 AVD
+
+
+
+
+== 实时扩展
+
+实时扩展可与工作负载计划结合使用，方法是管理工作负载计划中配置的计划活动时间内的联机会话主机数量。如果计划脱机，则实时扩展不会控制会话主机的可用性。实时扩展仅会影响 RDS 和 AVD 环境中的共享用户和共享服务器， VDI 用户和 VDI VM 将从这些计算中排除。所有其他 VM 类型不受影响。
+
+
+NOTE: AVD _load Balancer type_ 设置与此配置交互，因此在选择此设置时也应小心。深度优先类型可以最大限度地节省成本，而深度优先类型则可以最大限度地提高最终用户的性能。
+
+启用实时扩展时，如果未选中任何选项，自动化引擎将自动为额外已启动的服务器数，每个服务器的共享用户数以及每个服务器的最大共享用户数选择值。
+
+* 额外已启动的服务器数 _ 默认为 0 ，表示 1 个服务器将全天候运行。
+* 每个 Server_ 的共享用户数默认为公司中的用户数除以服务器数。
+* 每个 Server_ 的最大共享用户数默认为无限。
+
+
+实时扩展可在用户登录时打开服务器，并在用户注销时关闭服务器。
+
+一旦活动用户总数达到每台服务器的共享用户数乘以已启动服务器的总数，就会自动触发为额外服务器供电。
+
+....
+e.g. With 5 Shared Users per Server set (this is the default # we’ll use for all examples in this article) and 2 servers running, a 3rd server won’t be powered up until server 1 & 2 both have 5 or more active users. Until that 3rd server is available, new connections will be load balanced all available servers. In RDS and AVD Breadth mode, Load balancing sends users to the server with the fewest active users (like water flowing to the lowest point). In AVD Depth mode, Load balancing sends users to servers in a sequential order, incrementing when the Max Shared Users number is reached.
+....
+实时扩展还会关闭服务器以节省成本。如果一个服务器没有活动用户，而另一个服务器的可用容量低于每个服务器的共享用户数，则空服务器将关闭。
+
+打开下一台服务器的电源可能需要几分钟时间。在某些情况下，登录速度可能会超过新服务器的可用性。例如，如果 15 个人在 5 分钟内登录，他们将在第二次和第三次启动时全部登录到第一台服务器（或拒绝会话）。在这种情况下，可以使用两种策略来缓解单个服务器的过载：
+
+. 启用 _number of extra Poweredon Servers_ ，以便其他服务器可以启动并接受连接，并留出时间让平台启动更多服务器。
++
+.. 激活后，该数字将添加到计算的需求中。例如，如果设置为 1 个额外的服务器（并连接了 6 个用户），则两个服务器将处于活动状态，因为用户数为，加上 _Extra Poweredon Servers_ 设置为第 3 个。
+
+
+. 启用每个服务器的最大共享用户数对每个服务器允许的用户数设置硬限制。超过此限制的新连接将被拒绝，最终用户将收到一条错误消息，需要在额外服务器可用后几分钟内重试。如果设置了此值，则此数字还会定义 AVD 共享服务器的深度。
++
+.. 假设每个服务器的 _shared users 与每个服务器的 _Max Shared Users 之间的增量合适，则在除最极端情况（异常大的登录风暴）之外的所有情况下，新服务器都应在达到最大值之前可用。
+
+
+
+
+
+
+== VM 资源扩展
+
+VM 资源扩展是一项可选功能，可用于更改环境中会话主机 VM 的大小和数量。
+
+激活后， VDS 将根据您选择的标准计算适当的会话主机 VM 大小和数量。这些选项包括： Active Users ， Named Users ， Server Load 和 Fixed 。
+
+image:VMResource2.png[""]
+
+VM 的大小包含在 UI 中选择的 VM 系列中，可通过下拉列表进行更改。（例如 _Standard dv3 系列 _ 在 Azure 中）
+
+image:VMResource1.png[""]
+
+
+
+=== 根据用户进行扩展
+
+
+NOTE: 以下功能对 " 活动用户 " 或 " 用户计数 " 的行为相同。User Count 是使用 VDS 桌面激活的所有用户的简单计数。Active Users 是根据前 2 周的用户会话数据计算得出的变量。
+
+在根据用户进行计算时，会话主机 VM 的大小（和数量）将根据定义的 RAM 和 CPU 要求进行计算。管理员可以定义 RAM 的 GB ，每个用户的 vCPU 核心数以及其他非可变资源。
+
+在下面的屏幕截图中，为每个用户分配 2 GB RAM 和 1/2 个 vCPU 核心。此外，服务器还会从 2 个 vCPU 核和 8 GB RAM 开始。
+
+image:VMResource3.png[""]
+
+此外，管理员还可以定义虚拟机可以达到的最大大小。达到此值后，环境将通过添加其他 VM 会话主机进行横向扩展。
+
+在下面的屏幕截图中，每个 VM 限制为 32 GB RAM 和 8 个 vCPU 核。
+
+image:VMResource4.png[""]
+
+定义了所有这些变量后， VDS 可以计算适当的会话主机 VM 大小和数量，从而大大简化了保持适当资源分配的过程，即使在添加和删除用户时也是如此。
+
+
+
+=== 根据服务器负载进行扩展
+
+在根据服务器负载进行计算时，会话主机 VM 的大小（和数量）将根据 VDS 在过去 2 周内观察到的平均 CPU/ RAM 利用率进行计算。
+
+超过最大阈值时， VDS 将增加大小或增加数量，以使平均使用量恢复在范围内。
+
+与基于用户的扩展一样，可以定义 VM 系列和最大 VM 大小。
+
+image:VMResource6.png[""]
+
+
+
+== 其他活动资源
+
+工作负载计划不会控制诸如 CMGR1 等平台服务器，因为需要这些服务器来触发按需唤醒功能并协助执行其他平台任务，因此，正常环境运行时应全天候运行。
+
+停用整个环境可以节省更多空间，但仅建议在非生产环境中使用。这是一项手动操作，可在 VDS 的 " 部署 " 部分执行。要将环境恢复为正常状态，还需要在同一页面上执行手动步骤。
+
+image:Stop_Deployment.png[""]
+image:Start_deployment.png[""]

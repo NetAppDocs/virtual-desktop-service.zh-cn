@@ -1,0 +1,58 @@
+---
+sidebar: sidebar 
+permalink: Troubleshooting.printing_issues.html 
+summary: 打印故障排除分步指南 
+keywords:  
+---
+= 排除打印问题
+
+
+
+
+== error
+
+无法从云桌面打印到本地打印机。
+
+
+
+== 采用 ThinPrint 的远程桌面服务
+
+VDS 可选择包括适用于远程桌面服务（ RDS ）的 ThinPrint 部署。软件和许可会在初始部署时自动配置。如果正在使用 ThinPrint ，以下各节可帮助您排除打印问题。
+
+
+
+=== 发生原因
+
+连接到云桌面的方法有多种。这些方法在执行打印功能方面有所不同，因此，要进行故障排除，必须了解正在使用的访问类型：
+
+. 在 Windows 设备上使用 Cloud跨 接的访问客户端
++
+.. ThinPrint 在本地设备上运行，并在打印机和云桌面之间中继通信
+
+
+. 在任何设备上使用 HTML5 浏览器
++
+.. 浏览器将以 PDF 格式显示打印的文档，以便在本地下载和打印
+
+
+. 在 Mac 或 Linux 计算机上使用手动配置的 RDP 客户端（通常为）
++
+.. 通过在 RDP 客户端中手动配置 " 本地资源 " ，可以将本地打印机与云桌面共享。
+
+
+
+
+
+
+=== 解决方法：
+
+. 尝试从本地设备打印文档，以确认本地设备已成功连接到打印机。
+. 如果在 Windows 设备上使用 Access Client ，请卸载并重新安装 ThinPrint 。 https://www.thinprint.com/en/resources-support/software/clientsandtools/[]
+. 在 Cloud跳 线支持的新案例中，记下访问类型以及前两个步骤的结果。
+
+
+
+
+== Azure 虚拟桌面
+
+VDS 不会为 AVD 环境实施任何打印解决方案或唯一打印配置。打印问题应发送给 Microsoft 或（如果已实施）打印技术供应商。

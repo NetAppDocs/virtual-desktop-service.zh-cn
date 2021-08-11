@@ -1,0 +1,45 @@
+= 概述
+
+
+
+
+== 概述
+
+用户无法访问主电子邮件域上的公司网站。
+
+_例如 ，如果 VDS 工作空间中的 NetApp 员工的 SSO 帐户为 user@netapp.com_ ，则他们无法访问 netapp.com
+
+专用 VDS 部署使用 Azure 租户的内部域。
+
+
+
+== 解决方法：
+
+要解决此问题，负责管理 DNS 的组织团队需要为您的内部域创建 DNS 正向查找区域，以便解析正确的外部 IP （出于 NetApp 的目的，这将使 NetApp 员工能够从其虚拟桌面中浏览到 netapp.com ）。
+
+
+
+== 分步指南
+
+. 在 CMGR1 上安装 DNS 服务器工具—这将允许您管理 DNS 。
++
+image:dns1.png[""]
+
++
+image:dns2.png[""]
+
++
+image:dns3.png[""]
+
++
+image:dns4.png[""]
+
++
+image:dns5.png[""]
+
+. 安装后，您可以转到控制面板→系统和安全→管理工具并打开 DNS 。
++
+image:dns6.png[""]
+
+. 当系统要求您提供运行 DNS 的 DNS 服务器时，您需要输入您的域名（在我们使用的示例中，此名称将为 _netapp.com ）。
+

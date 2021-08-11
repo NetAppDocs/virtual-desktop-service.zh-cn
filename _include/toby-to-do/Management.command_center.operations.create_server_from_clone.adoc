@@ -1,0 +1,16 @@
+= 概述
+
+
+
+
+== 概述
+
+image::Management.command_center.operations.create_server_from_clone-098a1.png[Management.command center.operations.create server from clone 098a1.]
+
+image::Management.command_center.operations.create_server_from_clone-2b8e0.png[Management.command center.operations.create server from clone 2b8e0]
+
+image::Management.command_center.operations.create_server_from_clone-b252d.png[Management.command center.operations.create server from clone b252d.]
+
+image::Management.command_center.operations.create_server_from_clone-3b909.png[Management.command center.operations.create server from clone 3b909]
+
+image::Management.command_center.operations.create_server_from_clone-68dc9.png[Management.command center.operations.create server from clone 68dc9]

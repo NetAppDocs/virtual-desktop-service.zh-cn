@@ -1,0 +1,14 @@
+---
+sidebar: sidebar 
+permalink: video_azure_AVD_hostpool_54.html 
+summary: 使用 NetApp VDS v5.4 创建 AVD 主机池 
+keywords:  
+---
+= 使用 NetApp VDS v5.4 创建 AVD 主机池
+
+
+
+
+== 概述
+
+video::kaHZm9yCv8g[youtube, ]

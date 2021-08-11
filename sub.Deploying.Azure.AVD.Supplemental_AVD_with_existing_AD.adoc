@@ -1,0 +1,64 @@
+---
+sidebar: sidebar 
+permalink: Deploying.Azure.AVD.Supplemental_AVD_with_existing_AD.html 
+summary: 为现有 AD 部署将 VDS 部署到 Azure 中的分步指南 
+keywords:  
+---
+= AVD 部署指南—现有 AD 补充
+
+
+
+
+== 概述
+
+VDS 安装程序可以将新部署连接到现有 AD 结构。本说明详细介绍了该选项。本文不是独立的，而是详细说明了中所述的新 AD 选项的替代方案 link:Deploying.Azure.AVD.Deploying_AVD_in_Azure.html["AVD 部署指南"]
+
+
+
+== Active Directory 类型
+
+下一节定义了 VDS 部署的 Active Directory 部署类型。在本指南中，我们将选择现有的 Windows Server Active Directory ，它将利用已存在的 AD 结构。
+
+
+
+== 现有 AD 网络
+
+VDS 设置将显示 vNets 列表，这些 vNets 可能表示现有 AD 结构与 Azure AD 之间的连接。您选择的 vNet 应具有已在 Azure 中配置的 Azure 托管 DC 。此外， vNet 还会将自定义 DNS 设置指向 Azure 托管的 DC 。
+
+image:existingDNS.png[""]
+
+
+
+== 现有 Active Directory 域名
+
+输入要使用的现有域名。注意：您不希望使用 Azure 门户中 Active Directory 模块下的域，因为它可能会出现发生原因 DNS 问题。这方面的主要示例是，用户将无法从其桌面内部访问该网站（例如 <yourdomain>.com ）。
+
+
+
+== 现有 AD 用户名和密码
+
+可以通过三种方式提供必要的凭据，以便使用现有 AD 结构进行部署。
+
+. 提供 Active Directory 域管理员用户名和密码
++
+这是最简单的方法—提供域管理员凭据，以便于部署。
+
++
+
+NOTE: 此帐户可以一次性创建，并在部署过程完成后删除。
+
+. 创建帐户匹配所需权限
++
+此方法需要客户管理员在此处手动创建权限结构，然后在此处输入 CloudWorkspaceSVC 帐户的凭据并继续操作。
+
+. 手动部署过程
++
+请联系 NetApp VDS 支持部门，以获得有关使用权限最低的帐户主体配置 AD 访问的帮助。
+
+
+
+
+
+== 后续步骤
+
+本文介绍了部署到现有 AD 环境中的独特步骤。完成这些步骤后，您可以返回到标准部署指南 link:Deploying.Azure.AVD.Deploying_AVD_in_Azure.html#active-directory-type["此处"]。

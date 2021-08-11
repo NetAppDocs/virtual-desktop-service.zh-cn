@@ -1,0 +1,31 @@
+= 添加应用程序安装 / 卸载活动
+
+
+
+
+=== 添加应用程序安装 / 卸载活动
+
+要使存储库中的脚本执行任何操作，必须创建一个活动，以便将该脚本与选定触发器关联。在本示例中，如果将此应用程序添加到工作空间或从工作空间中删除（在 VDS 中的 _Workspace > Applications_ 页面中），则会安装 / 卸载此应用程序。
+
+VDS 脚本化事件提供了许多其他类型的活动触发器，例如 _Create Server_ ，可用作 _Application Install_ （或 _Application Uninstall_ ）事件类型的替代项。使用 _Create Server_ 只需对 VDS 中所有新创建的 VM 运行此应用程序安装即可。_Create Server_ 和其他触发器均已记录，可供探讨 link:Management.Scripted_Events.scripted_events.html["此处"]。
+
+
+NOTE: 此应用程序需要位于 VDS 应用程序库中。这 link:Management.Applications.application_entitlement_workflow.html#add-applications-to-the-app-catalog["部分。"] 有关将应用程序添加到库的信息，请查看有关 RDS 应用程序授权的文章。
+
+.要创建活动并将此脚本链接到操作，请执行以下操作：
+. 导航到 VDS 中的 _Scripted Events_部分
+. 在 "_activities_ " 下，单击 "++ Add Activity"
+. 在打开的对话框窗口中，输入以下信息：
++
+** * 名称： * 为此活动命名
+** * 问题描述： * 可选择输入问题描述
+** * 部署 * 从下拉列表中选择所需部署
+** * 脚本： * 从下拉列表中选择安装（或卸载）脚本。这可能是您已克隆和自定义的全局脚本或客户脚本。
+** * 参数： * 留空
+** * 已启用复选框： * `选中` 复选框
+** * 事件类型： * 从下拉列表中选择 `Application Install` （或 Application 卸载）
+** * 应用程序： * 从下拉列表中选择此应用程序
+** * 快捷方式路径： * 输入此应用程序的默认快捷方式路径（如上所述）
+
+
+

@@ -1,0 +1,239 @@
+---
+sidebar: sidebar 
+permalink: Management.Deployments.provisioning_collections.html 
+summary: 配置收集摘要 
+keywords:  
+---
+= 配置收集
+
+
+
+
+== 概述
+
+配置收集是 VDS 与创建和管理 VM 映像相关的一项功能。
+
+.总体而言，配置收集工作流如下所示：
+. 临时虚拟机（例如 "WFT1" ）是基于现有映像（即常用映像或先前保存的配置集合）构建的。
+. VDS 管理员使用自定义临时虚拟机以满足其要求 link:Management.Scripted_Events.scripted_events.html["脚本化事件"]，  和 / 或第三方管理工具。
+. 自定义后， VDS 管理员单击 * 验证 * 并触发验证过程，以自动完成映像，运行 SysPrep ，删除临时虚拟机并使映像可在整个 VDS 中部署。
+
+
+
+
+=== 视频演示—管理 VDI 会话主机的 VM 映像
+
+video::rRDPnDzVBTw[youtube, ]
+
+
+=== 配置收集类型
+
+有两种不同类型的收集，分别具有特定使用情形： * 共享 _* 和 * VDI * 。
+
+
+
+==== 共享
+
+* 共享 _* 类型是一组 VM 映像，用于部署具有多个不同 VM 映像和 VM 角色的整个环境。
+
+
+
+==== VDI
+
+*_VDI_* 类型是一个 VM 映像，用于部署多个相同的 VM ，通常用于托管用户会话。对于所有类型的 AVD 会话主机，应选择 _VDI_ 类型，即使对于每个 VM 运行多个会话的主机也是如此。
+
+
+
+=== 创建新的配置收集
+
+配置集合位于每个部署的 VDS 界面的 * 配置集合 _* 子选项卡下。
+
+image:Management.Deployments.provisioning_collections1.png["宽度 = 75%"]
+
+.以创建新集合
+. 单击 * 添加集合 _* 按钮。
+. 填写以下字段：
++
+.. * 名称 *
+.. * 说明 * （可选）
+.. * 类型 * —共享或 VDI
+.. * 操作系统 * ：
+.. * 共享驱动器 * - 如果要使用此虚拟机托管用户配置文件或公司共享数据，请选择要托管的驱动器盘符。如果不是，请保留为 "C"
+.. * 最小缓存 * —如果您和 VDS 要创建 VM 以供即时部署使用，请指定应保留的缓存 VM 的最小数量。如果部署新 VM 可以等待虚拟机管理程序构建 VM 所需的时间，则可以将此值设置为 "0" 以节省成本。
+.. * 添加服务器 *
++
+... * 角色 * （如果选择 " 共享 " 类型）
++
+.... * TS* —此虚拟机将仅用作会话主机
+.... * 数据 * - 此虚拟机不会托管任何用户会话
+.... * TSData* - 此 VM 既是会话主机，又是存储主机（最多：每个工作空间一个 TSData ）
+
+
+... * 虚拟机模板 * - 从可用列表中选择，可以选择现有虚拟机管理程序映像和先前保存的配置收集。
++
+.... 注意： Azure Marketplace 中的 Windows 7 映像未启用 PowerShell 远程处理。要使用 Windows 7 映像，您需要在启用了 PowerShell 重新映射的情况下在共享映像库中提供自定义映像。
+.... 注意：通过使用现有配置集合，您可以在计划的映像升级过程中更新和重新部署现有映像。
+
+
+... * 存储类型 * —根据成本和性能选择操作系统磁盘的速度
+... * 数据驱动器 * —可选择启用附加到此映像的第二个磁盘，通常适用于上述 2.e 中引用的数据存储层
++
+.... * 数据驱动器类型 * - 根据成本和性能选择第二个（数据）磁盘的速度
+.... * 数据驱动器大小（ GB ） * —根据容量，成本和性能定义第二个（数据）磁盘的大小
+
+
+
+
+.. * 添加应用程序 * - 从应用程序库中选择任何应用程序，这些应用程序将（ 1 ）安装在此映像上，（ 2 ）由 VDS 应用程序授权管理。（这仅适用于 RDS 部署。对于 AVD 工作空间，此字段应保留为空）
+
+
+
+
+
+
+=== 自定义临时虚拟机
+
+VDS 包含的功能允许从 VDS Web 界面中删除 VM 访问。默认情况下，使用轮换密码创建本地 Windows 管理员帐户，并将其传递到 VM ，从而允许 VDS 管理员进行本地管理员访问，而无需了解本地管理员凭据。
+
+
+NOTE: 连接到服务器功能具有一个备用设置，在该设置中，系统将提示 VDS 管理员输入每个连接的凭据。可以通过在 VDS 的 "Admin" 部分中编辑 VDS 管理员帐户来启用 / 禁用此设置。此功能称为 _Tech Account_ ，如果选中此复选框，则在使用 Connect to Server 时需要输入凭据，取消选中此复选框将在每个连接上自动注入本地 Windows 管理员凭据。
+
+VDS 管理员只需使用连接到服务器或其他过程连接到临时虚拟机，并根据需要进行更改即可。
+
+
+
+=== 正在验证收集
+
+自定义完成后， VDS 管理员可以通过单击操作图标中的 * 验证 * 来关闭映像并对其执行 SysPrep 操作。
+
+image::Management.Deployments.provisioning_collections-ed97e.png[Management.Deployments.provisioning 集合 ed97e]
+
+
+
+=== 使用收集
+
+验证完成后，配置收集的状态将更改为 * 可用 * 。在配置集合中， VDS 管理员可以确定 * VM 模板 * 名称，该名称用于在整个 VDS 中标识此配置集合。
+
+image::Management.Deployments.provisioning_collections-f5a49.png[Management.Deployments.provisioning 集合 f5a49]
+
+
+
+==== 新服务器
+
+在 " 工作空间 ">" 服务器 " 页面中，可以创建一个新服务器，此时对话框将提示输入 VM 模板。上面的模板名称将显示在此列表中：
+
+image:Management.Deployments.provisioning_collections-fc8ad.png["宽度 = 75%"]
+
+
+TIP: VDS 可通过使用配置收集和 * 添加服务器 * 功能轻松更新 RDS 环境中的会话主机。可以在不影响最终用户的情况下完成此过程，并在先前映像迭代的基础上反复更新后续映像。有关此过程的详细工作流，请参见 link:#rds-session-host-update-process["* RDS 会话主机更新过程 *"] 部分。
+
+
+
+==== 新的 AVD 主机池
+
+在 Workspace > AVD > Host Pools 页面中，可以单击 * + Add Host Pool* 来创建新的 AVD 主机池，此时对话框将提示输入 VM 模板。上面的模板名称将显示在此列表中：
+
+image::Management.Deployments.provisioning_collections-ba2f5.png[Management.Deployments.provisioning collections ba2f5.]
+
+
+
+==== 新 AVD 会话主机
+
+在 Workspace > AVD > Host Pool > Session Hosts 页面中，可以单击 * + Add Session Host* 来创建新的 AVD 会话主机，此时对话框将提示输入 VM 模板。上面的模板名称将显示在此列表中：
+
+image::Management.Deployments.provisioning_collections-ba5e9.png[Management.Deployments.provisioning 集合 ba5e9]
+
+
+TIP: VDS 提供了一种通过使用配置收集和 * 添加会话主机 * 功能来更新 AVD 主机池中的会话主机的简单方法。可以在不影响最终用户的情况下完成此过程，并在先前映像迭代的基础上反复更新后续映像。有关此过程的详细工作流，请参见 link:#AVD-session-host-update-process["* AVD 会话主机更新进程 *"] 部分。
+
+
+
+==== 新建工作空间
+
+在 "Workspaces" 页面中，单击 * + New Workspace* 可创建一个新工作空间，此时对话框将提示您输入配置收集。共享配置收集名称位于此列表中。
+
+image::Management.Deployments.provisioning_collections-5c941.png[Management.Deployments.provisioning collections 5c941]
+
+
+
+==== 新建配置收集
+
+在 "Deployment">"Provisioning Collection" 页面中，可以通过单击 * + Add Collection* 来创建新的配置收集。向此集合添加服务器时，对话框将提示输入 VM 模板。上面的模板名称将显示在此列表中：
+
+image::Management.Deployments.provisioning_collections-9eac4.png[Management.Deployments.provisioning 集合 9eac4.]
+
+
+
+== 附录 1 — RDS 会话主机
+
+
+
+=== RDS 会话主机更新过程
+
+VDS 可通过使用配置收集和 * 添加服务器 * 功能轻松更新 RDS 环境中的会话主机。可以在不影响最终用户的情况下完成此过程，并在先前映像迭代的基础上反复更新后续映像。
+
+.RDS 会话主机更新过程如下：
+. 按照上述说明构建新的 VDI 配置集合，自定义并验证此集合。
++
+.. 通常，此配置收集将基于先前的 VM 模板构建，模拟 " 打开，另存为 " 流程。
+
+
+. 验证配置集合后，导航到 _Workspace > Servers_ 页面，单击 * + Add Server*
++
+image::Management.Deployments.provisioning_collections.rds_session_hosts-e8204.png[Management.Deployments.provisioning collections.RDS session 托管 e8204]
+
+. 选择 * TS* 作为 * 服务器角色 *
+. 选择最新的 * 虚拟机模板 * 。根据您的要求选择适当的 * 计算机大小 * 和 * 存储类型 * 。保持未选中 * 数据驱动器 * 。
+. 对环境所需的会话主机总数重复此操作。
+. 单击 * 添加服务器 * ，会话主机将根据选定的 VM 模板进行构建，并在 10 到 15 分钟后开始联机（具体取决于虚拟机管理程序）。
++
+.. 请注意，当前环境中的会话主机最终将在这些新主机联机后停用。计划构建足够多的新主机，以支持此环境中的整个工作负载。
+
+
+. 当新主机联机时，默认设置为保持在 * 禁止新会话 * 中。对于每个会话主机， * 允许新会话 * 切换可用于管理哪些主机可以接收新的用户会话。可以通过编辑每个会话主机服务器的设置来访问此设置。在构建了足够多的新主机并确认功能后，可以在新主机和旧主机上管理此设置，以便将所有新会话路由到新主机。将 * 允许新会话 * 设置为 * 已禁用 * 的旧主机可以继续运行和托管现有用户会话。
++
+image::Management.Deployments.provisioning_collections.rds_session_hosts-726d1.png[Management.Deployments.provisioning collections.RDS 会话托管 726d1]
+
+. 当用户注销旧主机时，如果没有新的用户会话加入旧主机，则可以通过单击 * 操作 * 图标并选择 * 删除 * 来删除 * 会话 = 0* 的旧主机。
++
+image::Management.Deployments.provisioning_collections.rds_session_hosts-45d32.png[Management.Deployments.provisioning collections.RDS 会话托管 45d32]
+
+
+
+
+
+== 附录 2 — AVD 会话主机
+
+
+
+=== AVD 会话主机更新过程
+
+VDS 提供了一种通过使用配置收集和 * 添加会话主机 * 功能来更新 AVD 主机池中的会话主机的简单方法。可以在不影响最终用户的情况下完成此过程，并在先前映像迭代的基础上反复更新后续映像。
+
+.AVD 会话主机更新过程如下：
+. 按照上述说明构建新的 VDI 配置集合，自定义并验证此集合。
++
+.. 通常，此配置收集将基于先前的 VM 模板构建，模拟 " 打开，另存为 " 流程。
+
+
+. 验证配置集合后，导航到 _Workspace > AVD > Host Pools_ 页面，然后单击主机池的名称
+. 在 _Host Pool > Session Hosts_ 页面中，单击 * + Add Session Host*
++
+image::Management.Deployments.provisioning_collections-9ed95.png[Management.Deployments.provisioning 集合 9ed95]
+
+. 选择最新的 * 虚拟机模板 * 。根据您的要求选择适当的 * 计算机大小 * 和 * 存储类型 * 。
+. 输入 * 实例数 * ，等于所需会话主机的总数。通常，此数字与当前在主机池中的数字相同，但可以是任意数字。
++
+.. 请注意，当前位于主机池中的会话主机最终将在这些新主机联机后停用。规划输入的 * 实例数 * 足以支持此主机池中的整个工作负载。
+
+
+. 单击 * 保存 * ，会话主机将根据选定的 VM 模板构建，并在 10 到 15 分钟后开始联机（具体取决于虚拟机管理程序）。
+. 当新主机联机时，默认设置为保持在 * 禁止新会话 * 中。对于每个会话主机， * 允许新会话 * 切换可用于管理哪些主机可以接收新的用户会话。在构建了足够多的新主机并确认功能后，可以在新主机和旧主机上管理此设置，以便将所有新会话路由到新主机。将 * 允许新会话 * 设置为 * 已禁用 * 的旧主机可以继续运行和托管现有用户会话。
++
+image::Management.Deployments.provisioning_collections-be47e.png[Management.Deployments.provisioning 集合 be47e]
+
+. 当用户注销旧主机时，如果没有新的用户会话加入旧主机，则可以通过单击 * 操作 * 图标并选择 * 删除 * 来删除 * 会话 = 0* 的旧主机。
++
+image::Management.Deployments.provisioning_collections-cefb9.png[Management.Deployments.provisioning collections cefb9.]
+
+

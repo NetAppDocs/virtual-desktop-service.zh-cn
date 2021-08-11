@@ -1,0 +1,121 @@
+= 概述
+
+
+
+
+== 概述
+
+在 Azure Virtual Desktop （ AVD ）环境中，应用程序访问由应用程序组成员资格管理。
+
+
+NOTE: 此工作流仅适用于适用场景 AVD 部署。有关 RDS 应用程序授权文档，请参见 link:Management.Applications.application_entitlement_workflow.html["适用于 RDS 的应用程序授权工作流"]
+
+
+TIP: AVD 是一项记录完善的服务，其中包括许多服务 link:https://docs.microsoft.com/en-us/azure/virtual-desktop/manage-app-groups["有关信息，请参见公有资源"]。VDS 不会为 AVD 的标准运行方式提供超群支持。相反，本文旨在说明 VDS 如何采用所有 AVD 部署中的标准概念。
+
+
+TIP: 查看 link:Management.Deployments.logical_hierarchy_overview.html["VDS 逻辑层次结构概述"] 在阅读本文之前或期间，文章可能很有用。
+
+
+
+=== 最终用户视图
+
+在 Azure 虚拟桌面中，每个最终用户都由其 AVD 管理员分配对 RemoteApp 和 / 或桌面的访问权限。这可通过 VDS 中的应用程序组分配来实现。
+
+* 远程应用程序 * 是指在会话主机上远程运行但在本地设备上显示而不具有桌面环境的应用程序。这些应用程序通常称为 " 流式应用程序 " ，看起来像本地设备上的本地应用程序，但在安全上下文中以及会话主机的存储和计算层中运行。
+
+* 桌面 * 是指在会话主机上运行并在本地设备上显示的完整 Windows 体验，通常在全屏窗口中显示。此桌面本身通常称为 " 远程桌面 " ，它包含安装在该会话主机上的任何应用程序，用户可以从桌面会话窗口中启动这些应用程序。
+
+登录时，最终用户会看到其管理员为其分配的资源。以下是最终用户使用其 AVD 客户端登录时可能看到的视图示例。这是一个更复杂的示例，通常最终用户只会分配一个 Dingle 桌面或 RemoteApp 。最终用户可以双击其中任何资源来启动该应用程序 / 桌面。
+
+image::Management.Deployments.vds_sites-0e49c.png[management.deployments.vDS 站点 0e49c]
+
+在此更复杂的示例中，此用户可以访问两个不同的桌面会话和 4 个不同的流式应用程序：
+
+* * 可用桌面 *
++
+** NVIDIA GPU 桌面
+** 共享 AVD Pool 桌面
+** 操作 2 Pool Desktop
+
+
+* * 可用的 RemoteApps*
++
+** AutoCAD2021
+** Revit 2021
+** Microsoft Edge
+** Notepad
+
+
+
+
+在后台，这些应用程序和桌面托管在各种会话主机和 AVD 工作空间中，甚至可以托管在不同的 Azure 区域。
+
+下图显示了这些资源中每个资源的托管位置以及如何将其分配给此最终用户。
+
+image::Management.Deployments.vds_sites-0e880.png[management.deployments.vDS 站点 0e880]
+
+如上所示，此最终用户可用的各种资源托管在不同的会话主机，不同的主机池中，并且可能由不同的 IT 组织在不同的 AVD 工作空间中进行管理。虽然此示例中未显示这些资源，但也可以使用 VDS 站点功能在不同的 Azure 区域和 / 或订阅中托管。
+
+
+
+=== 提供桌面访问
+
+默认情况下，每个主机池都从一个应用程序组开始，该应用程序组用于分配对 Windows 桌面体验的访问权限。分配给此应用程序组的最终用户可以访问这些会话主机上安装的所有应用程序。
+
+.要在 VDS 中为用户启用桌面资源，请执行以下操作：
+. 导航到 Workspaces > AVD > Host Pool > App Groups 页面，然后单击 "Desktop" 资源的应用组。
++
+image::Management.Applications.AVD_application_entitlement_workflow-349fe.png[Management.Applications.AVD 应用程序授权工作流 349fe]
+
+. 进入应用程序组后，单击编辑
++
+image::Management.Applications.AVD_application_entitlement_workflow-3bcfc.png[Management.Applications.AVD 应用程序授权工作流 3bcfc]
+
+. 在编辑对话框中，您可以按用户和 / 或组向此应用程序组添加或删除用户。
++
+image::Management.Applications.AVD_application_entitlement_workflow-07ff0.png[Management.Applications.AVD 应用程序授权工作流 07ff0]
+
+
+
+
+
+=== 提供 RemoteApp 访问
+
+要配置对 RemoteApp 的访问，需要在主机池中创建一个新的应用程序组。创建应用程序后，需要将相应的应用程序分配给此应用程序组。
+
+
+NOTE: 分配给此主机池的 " 桌面 "AppGroup 的任何用户都可以使用这些会话主机上的任何应用程序。此外，也无需通过 RemoteApp 应用程序组来配置访问权限，只需提供对应用程序的访问权限即可。只有在启用以流式应用程序的形式在本地设备上运行的应用程序时，才需要使用 RemoteApp 应用程序组。
+
+
+
+==== 创建新应用程序组
+
+. 导航到 Workspaces > AVD > Host Pool > App Groups 页面，然后单击 _+ Add App Group_ 按钮
++
+image::Management.Applications.AVD_application_entitlement_workflow-d33da.png[management.Applications.AVD 应用程序授权工作流 d33da]
+
+. 输入此应用程序组的名称，工作空间和友好名称。选择应分配的用户和 / 或组，然后单击 _Save_
++
+image::Management.Applications.AVD_application_entitlement_workflow-242eb.png[Management.Applications.AVD 应用程序授权工作流 242eb]
+
+
+
+
+
+==== 将应用程序添加到应用程序组
+
+. 导航到 Workspaces > AVD > Host Pool > App Groups 页面，然后单击 "RemoteApp" 资源的应用程序组。
++
+image::Management.Applications.AVD_application_entitlement_workflow-3dcde.png[Management.Applications.AVD 应用程序授权工作流 3dcde]
+
+. 进入应用程序组后，单击编辑
++
+image::Management.Applications.AVD_application_entitlement_workflow-27a41.png[Management.Applications.AVD 应用程序授权工作流 27a41]
+
+. 向下滚动到 " 远程应用程序 " 部分。由于 VDS 正在直接查询会话主机以显示可用于流式传输的应用程序，因此可能需要一段时间才能填充此部分。
++
+image::Management.Applications.AVD_application_entitlement_workflow-1e9f2.png[Management.Applications.AVD 应用程序授权工作流 1e9f2]
+
+. 搜索并选择此应用程序组中的用户应作为 RemoteApp 资源访问的任何应用程序。
+

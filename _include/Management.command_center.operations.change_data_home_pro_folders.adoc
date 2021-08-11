@@ -1,0 +1,28 @@
+= <Strong> 更改数据 / 专业 / 主文件夹 </Strong> 概述
+
+
+
+
+== 更改数据 / 专业 / 主文件夹概述
+
+image::Management.command_center.operations.change_data_home_pro_folders-678cd.png[Management.command center.operations.change data home pro 文件夹 678cd]
+
+数据，配置文件和用户主文件夹的存储位置由 Active Directory 管理。命令中心提供了一个用于更改这些位置的操作。
+
+image::Management.command_center.operations.copy_template_to_gallery-ed821.png[Management.command center.operations.copy 模板到库 ed821]
+
+
+
+== 选择资源池
+
+如果 " 资源池 " 选项为空，则这些设置将全局应用。
+
+通过选择特定资源池（也称为主机池），可以为该资源池单独定义用户的配置文件路径
+
+image::Management.command_center.operations.change_data_home_pro_folders-3ac43.png[][]
+
+
+
+== 是 Windows Server
+
+如果存储服务（例如 已选择 Azure NetApp Files ）作为存储位置。

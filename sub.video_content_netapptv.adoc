@@ -1,0 +1,18 @@
+---
+sidebar: sidebar 
+permalink: video_content_netapptv.html 
+summary: NetApp TV 上的视频内容 
+keywords:  
+---
+= NetApp TV 上的 VDS 内容
+
+
+
+
+== VDS ， GFC 和 ANF —适用于全球部署的云桌面的解决方案
+
+Azure NetApp Files 托管高性能存储，而虚拟桌面服务和全局文件缓存则通过一个控制面板为全球部署的云桌面管理工作空间和站点区域。
+
+image:netapptv1.png["链接： https://tv.netapp.com/detail/video/6182654694001"]
+
+link:https://tv.netapp.com/detail/video/6182654694001[""]

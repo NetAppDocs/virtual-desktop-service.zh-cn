@@ -1,0 +1,10 @@
+= 概述
+
+
+
+
+== 概述
+
+VDS 具有一个内置的配置文件缩减操作，该操作在夜间运行。如果可以节省 5 GB 或更多空间，此自动化功能将自动缩减用户配置文件的 FSLogix 容器。此自动化功能每晚在中午 12 ： 01 运行。5 GB 阈值可在 CCMGR1 服务器上的 DCConfig 中配置。
+
+image::Advanced.fslogix_profile_shrink-ea982.png[advanced.fslogix 配置文件缩减 ea982]

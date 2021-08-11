@@ -1,0 +1,14 @@
+= 概述
+
+
+
+
+== 概述
+
+image::Management.command_center.operations.load_resource_pool_data-e7092.png[Management.command center.operations.load resource pool data e7092]
+
+image::Management.command_center.operations.load_resource_pool_data-c9810.png[Management.command center.operations.load 资源池数据 c9810]
+
+image::Management.command_center.operations.load_resource_pool_data-cb3a8.png[Management.command center.operations.load 资源池数据 cb3a8.]
+
+image::Management.command_center.operations.load_resource_pool_data-6ae0e.png[Management.command center.operations.load resource pool data 6ae0e]

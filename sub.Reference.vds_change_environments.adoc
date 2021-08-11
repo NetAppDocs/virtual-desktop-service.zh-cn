@@ -1,0 +1,68 @@
+---
+sidebar: sidebar 
+permalink: Reference.vds_change_environments.html 
+summary: NetApp VDS 更改环境 
+keywords:  
+---
+= VDS 更改环境
+
+
+
+
+== 概述
+
+借助 NetApp 的虚拟桌面服务，企业可以管理先前版本上的部署，预览未来版本以及管理运行先前版本的环境（ N -1 方法）。
+
+
+
+=== 虚拟桌面服务 URL
+
+虚拟桌面服务是一种管理控制台，管理员可以使用它来持续管理 VDS 部署。
+
+[cols="20,20,20,20,20"]
+|===
+| environment | Description | URL | 代码库 | API 文档 
+
+
+| 预览 | 预览即将发布的版本 | https://preview.manage.cloudworksace.com/[] | 5.4 | https://api.cloudworkspace.com/5.4/swagger/ui/index[] 
+
+
+| * 当前 * | * 当前版本 * | * https://manage.vds.netapp.com/* | * 。 6.0* | * https://api.cloudworkspace.com/6.0/swagger/ui/index* 
+
+
+| 上一步 | 先前版本 | https://manage.cloudworkspace.com/[] | 5.4 | https://api.cloudworkspace.com/5.4/swagger/ui/index[] 
+|===
+
+
+=== 虚拟桌面服务部署
+
+VDS 提供了一个向导驱动的部署过程，该过程允许管理员显著简化 AVD 和 / 或虚拟桌面环境的配置过程。
+
+管理员不能为旧环境配置部署—只能在当前或预览环境中进行部署。
+
+[cols="20,20,20,20,20"]
+|===
+| environment | Description | URL | 代码库 | 部署指南 
+
+
+| * 当前 * | * 当前版本 * | * https://manage.vds.netapp.com/deployments/add* | * 。 5.4* | *link:Deploying.Azure.AVD.Deploying_AVD_in_Azure_v6.html["VDS v6.0 部署指南"]* 
+
+
+| 上一步 | 先前版本 | https://cwasetup.cloudworkspace.com[] | 5.4 | 请联系支持部门 
+|===
+
+
+=== VDS 成本估算工具
+
+VDS 成本估算工具是一款专门构建的增值工具，可让企业估算其公有云在 Azure 或 Google Cloud 中的成本。该工具包括更改和优化预算的方法，以便在组织预算范围内提供所需的解决方案。
+
+[cols="33,33,33"]
+|===
+| environment | Description | URL 
+
+
+| 验证 | 预览即将发布的版本 | https://val.manage.vds.netapp.com/cost-estimator[] 
+
+
+| * 当前 * | * 当前版本 * | * https://manage.vds.netapp.com/cost-estimator* 
+|===

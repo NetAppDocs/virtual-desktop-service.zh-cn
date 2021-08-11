@@ -1,0 +1,48 @@
+---
+sidebar: sidebar 
+permalink: Management.command_center.operations.copy_template_to_gallery.html 
+summary: VDS 命令中心功能 " 将模板复制到图库 " 概述 
+keywords:  
+---
+= 命令中心命令：将模板复制到图库
+
+
+
+
+== 命令中心警告
+
+
+CAUTION: 命令中心是一个在部署中的 CMGR1 平台服务器上运行的应用程序。此应用程序专为故障排除，诊断和高级管理功能而设计。此应用程序主要由 NetApp 的内部开发和支持团队使用，但某些功能有时由客户管理员使用。本文档旨在为选择功能的使用提供支持。使用这些命令时应小心，并与 NetApp 支持团队协作。有关详细信息，请参见 link:Management.command_center.overview.html["命令中心概述"] 文章。
+
+
+
+== 将模板复制到图库概述
+
+image::Management.command_center.operations.copy_template_to_gallery-67ea4.png[Management.command center.operations.copy template to gallery 67ea4.]
+
+VDI 配置收集完成后，此映像将作为映像存储在 Azure 中，并可部署在同一个 VDS 站点中。为了使映像可在同一订阅中的另一个 Azure 区域中部署，使用了 " 将模板复制到图库 " 功能。此操作会将虚拟机映像复制到共享库，并将其复制到所有选定区域。
+
+image::Management.command_center.operations.copy_template_to_gallery-ed821.png[Management.command center.operations.copy 模板到库 ed821]
+
+
+
+== VDS 中的 VM 模板可用性下拉列表
+
+复制完成后，此映像将显示在 VDS 的下拉列表中，用于在部署新 VM 时选择 VM 模板。共享映像可部署到复制时选择的任何区域。
+
+image::Management.command_center.operations.copy_template_to_gallery-04bd8.png[Management.command center.operations.copy 模板到库 04bd8]
+
+存储在共享库中的 VM 映像将以 "-x.x.x" 的形式附加其版本，其中版本与 Azure 门户中的映像版本匹配。
+
+image::Management.command_center.operations.copy_template_to_gallery-ee598.png[Management.command center.operations.copy template to gallery ee598]
+
+
+NOTE: 复制映像可能需要一段时间（取决于映像大小），单击版本（例如 #1.0.0# ）。
+
+
+
+== 区域可用性
+
+只能在已复制映像的区域中执行部署。可以在 Azure 门户中单击 #1.x.x# ，然后单击 _Update Replication_ 进行检查，如下所示：
+
+image::Management.command_center.operations.copy_template_to_gallery-9b63a.png[Management.command center.operations.copy template to gallery 9b63a]

@@ -1,0 +1,37 @@
+= 概述
+
+
+
+
+== 概述
+
+虚拟桌面服务（ Virtual Desktop Service ， VDS ）管理员负责监控其平台基础架构（至少包含 CMGR1 ）以及所有其他基础架构和虚拟机（ VM ）。在大多数情况下，管理员直接与数据中心 /IaaS 提供商一起安排基础架构（虚拟机管理程序 /SAN ）监控。管理员负责监控终端服务器和数据服务器，通常是部署首选的远程管理和监控（ RMM ）解决方案。
+
+防病毒是管理员的责任（对于平台基础架构和终端 / 数据服务器 VM ）。为了简化此过程，默认情况下，适用于 Azure 服务器的 VDS 会应用 Windows Defender" 。
+
+
+NOTE: 在安装第三方解决方案时，请确保不要包含防火墙或任何可能会干扰 VDS 自动化的其他组件。
+
+更具体地说，如果默认情况下设置了非常具体的防病毒策略，则在由虚拟桌面服务管理的服务器上安装这些防病毒代理时，可能会产生负面影响。
+
+我们的总体指导原则是，虽然 VDS 平台自动化通常不受防病毒或防恶意软件产品的影响，但最佳做法是在所有平台服务器（ CMGR1 ， R5275Gateways ， FTP 等）上为以下过程添加例外 / 除外情形：
+
+....
+*\paexec.exe
+*\paexec_1_25.exe
+C:\Program Files\CloudWorkspace\CwAgent\CwAgent.exe
+C:\Program Files\CloudWorkspace\CW Automation Service\cw.automation.service.exe
+C:\Program Files\CloudWorkspace\CwVmAutomationService\CwVmAutomationService.exe
+C:\Program Files (x86)\Myrtille\bin\Myrtille.Printer.exe
+C:\Program Files (x86)\Myrtille\bin\Myrtille.Services.exe
+....
+此外，我们建议在客户端服务器上安全列出以下进程：
+
+....
+C:\Program Files\CloudWorkspace\CwAgent\paexec.exe
+C:\Program Files\CloudWorkspace\CwAgent\CwAgent.exe
+C:\Program Files\CloudWorkspace\CwRemoteApps\cwra.exe
+C:\Program Files\CloudWorkspace\Pen\Pen.exe
+C:\Program Files\CloudWorkspace\MfaAgent\MFAAgent.exe
+C:\Program Files\CloudWorkspace\MfaAgent\MFAAgentMonitor.exe
+....

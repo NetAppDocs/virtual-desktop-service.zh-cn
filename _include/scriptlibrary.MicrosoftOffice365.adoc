@@ -1,0 +1,23 @@
+= Microsoft Office 365 概述
+
+
+
+
+== Microsoft Office 365 概述
+
+此脚本软件包使用 chocolatey 软件包管理器安装 / 卸载 _Microsoft Office_ (https://chocolatey.org/)[] 以执行部署。创建 VM 时， VDS 会部署 chocolatey ，但如果缺少 chocolatey ，则此脚本还会检查并安装它作为前提条件。
+
+
+WARNING: 此 Microsoft Office 365 安装脚本不包括 Microsoft Teams 或 Microsoft One Drive 。这些脚本作为独立的自动化脚本提供，可提高灵活性，因为某些部署不需要这些应用程序。可以复制和编辑此部署以将其包括在内（或更改任何其他部署） link:https://docs.microsoft.com/en-us/deployoffice/overview-office-deployment-tool["Office 部署工具"] 设置），方法是从 VDS 克隆脚本并编辑 InstallmicrosoftOffice365.ps1 ，以便在 xml 配置文件中输入不同的值。
+
+
+
+=== 默认快捷方式路径
+
+下面将输入默认快捷方式路径，对于此应用程序，快捷方式为： ` \\folders\Microsoft Office`
+
+
+
+=== 添加活动对话框窗口屏幕截图
+
+image::scriptlibrary.activity.InstallMicrosoftOffice365.png[scriptlibrary.active.InstallmicrosoftOffice365]

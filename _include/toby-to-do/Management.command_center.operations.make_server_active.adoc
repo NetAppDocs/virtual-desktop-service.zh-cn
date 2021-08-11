@@ -1,0 +1,8 @@
+= 概述
+
+
+
+
+== 概述
+
+image::Management.command_center.operations.make_server_active-6dc9b.png[Management.command center.operations.make server active 6dc9b]

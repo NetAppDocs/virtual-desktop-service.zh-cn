@@ -1,0 +1,36 @@
+= RDS 会话主机更新过程
+
+
+
+
+=== RDS 会话主机更新过程
+
+VDS 可通过使用配置收集和 * 添加服务器 * 功能轻松更新 RDS 环境中的会话主机。可以在不影响最终用户的情况下完成此过程，并在先前映像迭代的基础上反复更新后续映像。
+
+.RDS 会话主机更新过程如下：
+. 按照上述说明构建新的 VDI 配置集合，自定义并验证此集合。
++
+.. 通常，此配置收集将基于先前的 VM 模板构建，模拟 " 打开，另存为 " 流程。
+
+
+. 验证配置集合后，导航到 _Workspace > Servers_ 页面，单击 * + Add Server*
++
+image::Management.Deployments.provisioning_collections.rds_session_hosts-e8204.png[Management.Deployments.provisioning collections.RDS session 托管 e8204]
+
+. 选择 * TS* 作为 * 服务器角色 *
+. 选择最新的 * 虚拟机模板 * 。根据您的要求选择适当的 * 计算机大小 * 和 * 存储类型 * 。保持未选中 * 数据驱动器 * 。
+. 对环境所需的会话主机总数重复此操作。
+. 单击 * 添加服务器 * ，会话主机将根据选定的 VM 模板进行构建，并在 10 到 15 分钟后开始联机（具体取决于虚拟机管理程序）。
++
+.. 请注意，当前环境中的会话主机最终将在这些新主机联机后停用。计划构建足够多的新主机，以支持此环境中的整个工作负载。
+
+
+. 当新主机联机时，默认设置为保持在 * 禁止新会话 * 中。对于每个会话主机， * 允许新会话 * 切换可用于管理哪些主机可以接收新的用户会话。可以通过编辑每个会话主机服务器的设置来访问此设置。在构建了足够多的新主机并确认功能后，可以在新主机和旧主机上管理此设置，以便将所有新会话路由到新主机。将 * 允许新会话 * 设置为 * 已禁用 * 的旧主机可以继续运行和托管现有用户会话。
++
+image::Management.Deployments.provisioning_collections.rds_session_hosts-726d1.png[Management.Deployments.provisioning collections.RDS 会话托管 726d1]
+
+. 当用户注销旧主机时，如果没有新的用户会话加入旧主机，则可以通过单击 * 操作 * 图标并选择 * 删除 * 来删除 * 会话 = 0* 的旧主机。
++
+image::Management.Deployments.provisioning_collections.rds_session_hosts-45d32.png[Management.Deployments.provisioning collections.RDS 会话托管 45d32]
+
+

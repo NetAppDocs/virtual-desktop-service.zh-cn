@@ -1,0 +1,20 @@
+= Microsoft OneDrive 概述
+
+
+
+
+== Microsoft OneDrive 概述
+
+此脚本软件包使用 chocolatey 软件包管理器安装 / 卸载 _Microsoft OneDrives_ (https://chocolatey.org/)[] 以执行部署。创建 VM 时， VDS 会部署 chocolatey ，但如果缺少 chocolatey ，则此脚本还会检查并安装它作为前提条件。
+
+
+
+=== 默认快捷方式路径
+
+下面将输入默认快捷方式路径，对于此应用程序，快捷方式为： ` \\shortlts\onedone.lnk`
+
+
+
+=== 添加活动对话框窗口屏幕截图
+
+image::scriptlibrary.activity.InstallMicrosoftOneDrive.png[scriptlibrary.active.InstallmicrosoftOneDrive]

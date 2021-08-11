@@ -1,0 +1,24 @@
+---
+sidebar: sidebar 
+permalink: Unlisted.Whats_with_all_these_emails.html 
+summary: 所有这些电子邮件都有哪些功能？ 
+keywords:  
+---
+= 所有这些电子邮件都包含哪些内容？
+
+
+
+
+== 概述
+
+VDS 会发送各种每晚电子邮件报告。这些信息旨在每晚汇总环境的各个方面，以确定错误和异常情况。它们经过调整，可以帮助大型部署，其中单独监控每个租户可能是一项重要任务。
+
+对于较小的环境，这些电子邮件可能过多或不必要。
+
+接收这些报告的电子邮件地址在帐户步骤的 VDS 设置向导中定义。
+
+部署后，可以在 DCConfig 实用程序中更改这些地址。此应用程序运行在 CMGR1 VM 上，并公开了许多高级和精细设置，这些设置过于高级，无法在 VDS UI 中公开。
+
+要更改接收这些报告的电子邮件地址，请在 CCMGR1 VM 上的 DCConfig （配置 > 电子邮件）中编辑 "ToAddress" 字段。建议保留 ddcnotifications@cloudjumper.com 不变。
+
+image:why_emails.png[""]

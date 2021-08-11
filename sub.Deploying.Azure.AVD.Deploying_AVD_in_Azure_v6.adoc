@@ -1,0 +1,743 @@
+---
+sidebar: sidebar 
+permalink: Deploying.Azure.AVD.Deploying_AVD_in_Azure_v6.html 
+summary: 将 VDS v6 部署到 Azure 的分步指南 
+keywords:  
+---
+= AVD 部署指南 v6.
+
+
+
+
+== 概述
+
+本指南将提供在 Azure 中使用 NetApp 虚拟桌面服务（ Virtual Desktop Service ， VDS ）创建 Azure 虚拟桌面（ AVD ）部署的分步说明。
+
+本指南从以下位置开始： https://manage.vds.netapp.com/[]
+
+本概念验证（ POC ）指南旨在帮助您在自己的测试 Azure 订阅中快速部署和配置 AVD 。本指南假设在一个全新的非生产 Azure Active Directory 租户中进行绿色现场部署。
+
+生产部署，尤其是在现有 AD 或 Azure AD 环境中的部署非常常见，但本 POC 指南不会考虑此过程。复杂的 POC 和生产部署应由 NetApp VDS 销售 / 服务团队启动，而不是以自助式方式执行。
+
+本 POC 文档将带您完成整个 AVD 部署，并简要介绍 VDS 平台中部署后配置的主要方面。完成后，您将拥有一个完全部署且功能正常的 AVD 环境，其中包括主机池，应用程序组和用户。您也可以选择配置自动应用程序交付，安全组，文件共享权限， Azure Cloud Backup 和智能成本优化。VDS 通过 GPO 部署一组最佳实践设置。此外，还提供了有关在 POC 不需要安全控制时如何选择禁用这些控制的说明，这与非受管本地设备环境类似。
+
+
+
+== AVD 基础知识
+
+Azure 虚拟桌面是一种在云中运行的全面桌面和应用程序虚拟化服务。下面是一些关键特性和功能的快速列表：
+
+* 平台服务，包括网关，代理，许可和登录，并作为 Microsoft 的一项服务提供。这样可以最大限度地减少需要托管和管理的基础架构。
+* Azure Active Directory 可用作身份提供程序，从而可以对附加的 Azure 安全服务进行分层，例如有条件的访问。
+* 用户体验 Microsoft 服务的单点登录体验。
+* 用户会话通过专有的反向连接技术连接到会话主机。这意味着无需打开任何入站端口，而是由代理创建与 AVD 管理平面的出站连接，而 AVD 管理平面又连接到最终用户设备。
+* 反向连接甚至允许虚拟机在不暴露于公有 Internet 的情况下运行，即使在保持远程连接的情况下也能实现隔离的工作负载。
+* AVD 支持访问 Windows 10 多会话，从而提供 Windows 10 Enterprise 体验，并提高高密度用户会话的效率。
+* FSLogix 配置文件容器化技术包括，可提高用户会话性能，存储效率并增强非持久性环境中的 Office 体验。
+* AVD 支持完全桌面和 RemoteApp 访问。持久或非持久体验，以及专用和多会话体验。
+* 企业可以通过 Windows 许可节省成本，因为 AVD 可以利用 "Windows 10 Enterprise E3" 来取代对 RDS CAL 的需求，并显著降低 Azure 中会话主机 VM 的每小时成本。
+
+
+
+
+== 指南范围
+
+本指南将从 Azure 和 VDS 管理员的角度引导您完成使用 NetApp VDS 技术部署 AVD 的过程。您可以为 Azure 租户和订阅提供零预配置，本指南可帮助您端到端设置 AVD
+
+.本指南包括以下步骤：
+. <<Azure Prerequisites,确认 Azure 租户， Azure 订阅和 Azure 管理员帐户权限的前提条件>>
+. <<Collect Discovery Details,收集所需的发现详细信息>>
+. <<VDS Setup Sections,使用专门构建的适用于 Azure 的 VDS 设置向导构建 Azure 环境>>
+. <<Create AVD Host Pool,使用标准 Windows 10 EVD 映像创建第一个主机池>>
+. <<Enable VDS desktops to users,将虚拟桌面分配给 Azure AD 用户>>
+. <<Default app group,将用户添加到默认应用程序组，以便为用户提供桌面环境。>> （可选） <<Create Additional AVD App Group(s),创建其他主机池以提供 RemoteApp 服务>>
+. <<End User AVD Access,以最终用户身份通过客户端软件和 / 或 Web 客户端进行连接>>
+. <<Admin connection options,以本地和域管理员身份连接到平台和客户端服务>>
+. <<Multi-Factor Authentication (MFA),也可以为 VDS 管理员和 AVD 最终用户启用 VDS 的多因素身份验证>>
+. <<Application Entitlement Workflow,您也可以选择浏览整个应用程序授权工作流，包括填充应用程序库，应用程序安装自动化，用户和安全组屏蔽应用程序>>
+. <<Azure AD Security Groups,也可以按组创建和管理 Active Directory 安全组，文件夹权限和应用程序授权。>>
+. <<Configure Cost Optimization Options,也可以配置成本优化技术，包括工作负载计划和实时扩展>>
+. <<Create and Manage VM Images,也可以创建，更新和 SysPrep 虚拟机映像，以供将来部署时使用>>
+. <<Configure Azure Cloud Backup Service,也可以配置 Azure Cloud Backup>>
+. <<Select App Management/Policy Mode,也可以禁用默认安全控制组策略>>
+
+
+
+
+== Azure 前提条件
+
+VDS 使用原生 Azure 安全上下文部署 AVD 实例。在启动 VDS 设置向导之前，需要建立一些 Azure 前提条件。
+
+在部署期间，通过对 Azure 租户中的现有管理员帐户进行身份验证，将服务帐户和权限授予 VDS 。
+
+
+
+=== 快速前提条件检查清单
+
+* Azure 租户与 Azure AD 实例（可以是 Microsoft 365 实例）
+* Azure 订阅
+* Azure 虚拟机的可用 Azure 配额
+* 具有全局管理员和订阅所有权角色的 Azure 管理员帐户
+
+
+
+NOTE: 有关详细前提条件的文档，请参见 link:docs_components_and_permissions.html["本 PDF"]
+
+
+
+=== Azure AD 中的 Azure 管理员
+
+此现有 Azure 管理员必须是目标租户中的 Azure AD 帐户。Windows Server AD 帐户可以使用 VDS 设置进行部署，但要设置与 Azure AD 的同步，还需要执行其他步骤（本指南不在适用范围内）
+
+可以通过在 Azure 管理门户中的 "Users" （用户） >"All Users" （所有用户）下查找用户帐户来确认此情况。image:Azure Admin in Azure AD.png[""]
+
+
+
+=== 全局管理员角色
+
+必须在 Azure 租户中为 Azure 管理员分配全局管理员角色。
+
+.要检查您在 Azure AD 中的角色，请执行以下步骤：
+. 登录到 Azure 门户，网址为 https://portal.azure.com/[]
+. 搜索并选择 Azure Active Directory
+. 在右侧的下一个窗格中，单击管理部分中的用户选项
+. 单击要检查的管理员用户的名称
+. 单击目录角色。在最右侧窗格中，应列出全局管理员角色image:Global Administrator Role 1.png[""]
+
+
+.如果此用户没有全局管理员角色，您可以执行以下步骤来添加它（请注意，登录帐户必须是全局管理员才能执行这些步骤）：
+. 从上述步骤 5 中的用户目录角色详细信息页面中，单击详细信息页面顶部的添加分配按钮。
+. 单击角色列表中的全局管理员。单击添加按钮。image:Global Administrator Role 2.png[""]
+
+
+
+
+=== Azure 订阅所有权
+
+Azure 管理员还必须是要包含部署的订阅的订阅所有者。
+
+.要检查管理员是否为订阅所有者，请执行以下步骤：
+. 登录到 Azure 门户，网址为 https://portal.azure.com/[]
+. 搜索并选择订阅
+. 在右侧的下一个窗格中，单击订阅名称以查看订阅详细信息
+. 单击左边第二个窗格中的访问控制（ IAM ）菜单项
+. 单击角色分配选项卡。Azure 管理员应列在所有者部分中。image:Azure Subscription Ownership 1.png[""]
+
+
+.如果未列出 Azure 管理员，您可以按照以下步骤将帐户添加为订阅所有者：
+. 单击页面顶部的添加按钮，然后选择添加角色分配选项
+. 右侧将显示一个对话框。在角色下拉列表中选择 " 所有者 " ，然后开始在选择框中键入管理员的用户名。显示管理员的全名后，将其选中
+. 单击对话框底部的保存按钮image:Azure Subscription Ownership 2.png[""]
+
+
+
+
+=== Azure 计算核心配额
+
+CWA" 设置 " 向导和 VDS 门户将创建新虚拟机，并且 Azure 订阅必须具有可用配额才能成功运行。
+
+.要检查配额，请执行以下步骤：
+. 导航到订阅模块，然后单击 " 使用量 + 配额 "
+. 在 " 提供程序 " 下拉列表中选择所有提供程序，然后在 " 提供程序 " 下拉列表中选择 Microsoft.Compute
+. 在 " 位置 " 下拉列表中选择目标区域
+. 此时应按虚拟机系列显示可用配额列表image:Azure Compute Core Quota.png[""]如果需要增加配额，请单击 Request Increase ，然后按照提示添加更多容量。对于初始部署，请特别请求增加 " 标准 DSv3 系列 vCPU" 的报价
+
+
+
+
+=== 收集发现详细信息
+
+完成 CWA" 设置 " 向导后，需要回答几个问题。NetApp VDS 提供了一个链接的 PDF ，可用于在部署之前记录这些选择。项目包括：
+
+[cols="25,50"]
+|===
+| 项目 | Description 
+
+
+| VDS 管理员凭据 | 收集现有 VDS 管理员凭据（如果已有）。否则，将在部署期间创建新的管理员帐户。 
+
+
+| Azure 区域 | 根据服务的性能和可用性确定目标 Azure 区域。这 https://azure.microsoft.com/en-us/services/virtual-desktop/assessment/["Microsoft 工具"^] 可以根据区域估算最终用户体验。 
+
+
+| Active Directory 类型 | VM 需要加入域，但无法直接加入 Azure AD 。VDS 部署可以构建新虚拟机或使用现有域控制器。 
+
+
+| 文件管理 | 性能在很大程度上取决于磁盘速度，尤其是与用户配置文件存储相关的速度。VDS 设置向导可以部署简单的文件服务器或配置 Azure NetApp Files （ ANF ）。对于几乎任何生产环境，建议使用 ANF ，但对于 POC ，文件服务器选项可提供足够的性能。可以在部署后修改存储选项，包括使用 Azure 中的现有存储资源。有关详细信息，请参见 ANF 定价： https://azure.microsoft.com/en-us/pricing/details/netapp/[] 
+
+
+| 虚拟网络范围 | 部署需要一个可路由的 /20 网络范围。您可以通过 VDS 设置向导定义此范围。此范围不应与 Azure 或内部环境中的任何现有 vNet 重叠（如果这两个网络将通过 VPN 或 ExpressRoute 进行连接），这一点非常重要。 
+|===
+
+
+== VDS 设置部分
+
+* 登录到 https://manage.vds.netapp.com/[] 使用您的 VDS 凭据。
+* 导航到部署 > 添加部署，然后选择 Microsoft Azure 并继续
+* 使用上述前提条件中提及的 Azure 管理员帐户登录。
+* 选择相应的 Azure 订阅，然后单击添加部署
+
+
+image:Deploying.Azure.AVD.Deploying_AVD_in_Azure_v6_DRAFT-116b5.png["宽度 = 75%"]
+
+
+
+=== IaaS 和平台
+
+image:Deploying.Azure.AVD.Deploying_AVD_in_Azure_v6_DRAFT-6c76b.png["宽度 = 75%"]
+
+
+
+==== Azure AD 域名
+
+Azure AD 域名由选定租户继承。
+
+
+
+==== 位置
+
+选择适当的 "Azure Region" 。这 https://azure.microsoft.com/en-us/services/virtual-desktop/assessment/["Microsoft 工具"^] 可以根据区域估算最终用户体验。
+
+
+
+==== 网络
+
+选择 _New Network_ 将允许 VDS 根据向导稍后提供的输入在 Azure 中构建 /20 网络。
+
+选择 _existing Network_ 将允许部署到现有 Azure 网络中，并要求 Active Directory 类型（请参见下文）为现有 Windows Server AD 。
+
+
+
+==== Active Directory 类型
+
+可以使用一个 * 新虚拟机 * 来配置 VDS ，以使域控制器功能或设置利用现有域控制器。
+
+或者，如果为 VDS 提供了该域的凭据（例如 全局管理员权限）image:Deploying.Azure.AVD.Deploying_AVD_in_Azure_v6_DRAFT-e8633.png["宽度 = 75%"]
+
+在本指南中，我们将选择新的 Windows Server Active Directory ，此操作将根据在此过程中所做的选择在订阅下创建一个或两个 VM 。
+
+有关现有 AD 部署的详细文章，请参见 link:Deploying.Azure.AVD.Supplemental_AVD_with_existing_AD.html["此处"]。
+
+
+
+==== Active Directory domain name
+
+输入一个 "* 域名 "* 。建议从上述位置镜像 Azure AD 域名。
+
+
+NOTE: 如果输入的域也在外部使用，则需要完成其他步骤才能允许从 VDS 环境中访问该地址。（例如访问 https://www.companydomain.com[] 在 VDS 中）请参见此内容 link:Troubleshooting.dns_forwarding_for_azure_aadds_sso.html["有关详细信息，请参见文章"]。
+
+
+
+==== 文件管理类型
+
+VDS 可以配置简单的文件服务器虚拟机，也可以设置和配置 Azure NetApp Files 。在生产环境中， Microsoft 建议为每个用户分配 30 GB 的空间，我们发现，要获得最佳性能，需要为每个用户分配 5-15 IOPS 。
+
+
+TIP: Azure NetApp Files （ ANF ）的最小容量为 4 TiB ，而受管磁盘的最小容量则不相关。因此，对于规模较小的部署，在 ANF 上的最低支出可能会令成本难以承受。作为参考，在 NetApp 自己的受管桌面服务（ Managed Desktop Service ， VDMA ）中，对于用户超过 50 的环境，我们默认为 ANF 。
+
+在 POC （非生产环境）环境中，文件服务器是一种低成本且简单的部署选项。但是，即使是规模适中的生产部署， Azure 受管磁盘的可用性能也可能会被 IOPS 消耗所覆盖。
+
+例如， Azure 中的 4 TB 标准 SSD 磁盘最多支持 500 IOPS ，而每个用户最多只能支持 100 个用户，而每个用户只能支持 5 IOPS/ 用户。使用 ANF 高级版时，相同大小的存储设置可支持 16 ， 000 次 IOPS ，使 IOPS 增加 32 倍。
+
+对于生产 AVD 部署， Microsoft 建议使用 Azure NetApp Files 。
+
+
+IMPORTANT: Azure NetApp Files 需要提供给您要部署到的订阅 - 请联系您的 NetApp 客户代表或使用以下链接： https://aka.ms/azurenetappfiles
+
+此外，您还必须将 NetApp 注册为订阅的提供商。可通过执行以下操作来实现此目的：
+
+* 导航到 Azure 门户中的订阅
++
+** 单击资源提供程序
+** 筛选 NetApp
+** 选择提供程序，然后单击注册
+
+
+
+
+
+
+==== RDS 许可证编号
+
+NetApp VDS 可用于部署 RDS 和 / 或 AVD 环境。部署 AVD 时，此字段可以 * 保留为空 * 。
+
+
+
+==== ThinPrint
+
+NetApp VDS 可用于部署 RDS 和 / 或 AVD 环境。ThinPrint 是一种可选安装，仅与 RDS 部署兼容。部署 AVD 时，此切换可以保持为 "Off" （关闭）状态（向左切换）。
+
+
+
+==== 通知电子邮件
+
+VDS 将向提供的电子邮件 * 发送部署通知和持续运行状况报告。可以稍后更改。
+
+
+
+=== VM 和网络
+
+为了支持 VDS 环境，需要运行多种服务—这些服务统称为 " VDS 平台 " 。根据配置的不同，它们可能包括 CVMGR ，一个或两个 RDS 网关，一个或两个 HTML5 网关，一个 FTPS 服务器以及一个或两个 Active Directory VM 。
+
+大多数 AVD 部署都利用单个虚拟机选项，因为 Microsoft 将 AVD 网关作为 PaaS 服务进行管理。
+
+对于包含 RDS 使用情形的小型和简单环境，所有这些服务均可精简为 Single Virtual Machine 选项，以降低 VM 成本（可扩展性有限）。对于用户数超过 100 的 RDS 使用情形，建议使用多个虚拟机选项，以便于 RDS 和 / 或 HTML5 网关可扩展性
+
+image:Deploying.Azure.AVD.Deploying_AVD_in_Azure_v6_DRAFT-bb8b3.png["宽度 = 75%"]
+
+
+
+==== 平台 VM 配置
+
+NetApp VDS 可用于部署 RDS 和 / 或 AVD 环境。对于 RDS 部署，您需要部署和管理代理和网关等其他组件，在生产环境中，这些服务应在专用和冗余虚拟机上运行。对于 AVD ，所有这些服务均由 Azure 作为附带服务提供，因此，建议使用 "* 单个虚拟机 " 配置。
+
+
+
+===== 单个 VM
+
+对于仅使用 AVD （而不是 RDS 或两者的组合）的部署，建议选择此选项。在单个虚拟机部署中，以下角色均托管在 Azure 中的单个虚拟机上：
+
+* CW Manager
+* HTML5 网关
+* RDS 网关
+* 远程应用程序
+* FTPS 服务器（可选）
+* 域控制器角色
+
+
+在此配置中，建议的 RDS 使用情形的最大用户数为 100 个用户。在此配置中，负载平衡 RS/HTML5 网关不是一个选项，这限制了冗余和未来扩展的选项。同样，此限制不适用于 AVD 部署，因为 Microsoft 将网关作为 PaaS 服务进行管理。
+
+
+NOTE: 如果此环境是为多租户设计的，则不支持单个虚拟机配置— AVD 或 AD Connect 也不支持。
+
+
+
+===== 多个 VM
+
+将 VDS 平台拆分为多个虚拟机时， Azure 中的专用 VM 会托管以下角色：
+
+* 远程桌面网关
++
+VDS 设置可用于部署和配置一个或两个 RDS 网关。这些网关会将 RDS 用户会话从开放式 Internet 中继到部署中的会话主机 VM 。RDS 网关具有一项重要功能，可保护 RDS 免受来自开放式互联网的直接攻击，并对环境中 / 之外的所有 RDS 流量进行加密。选择两个远程桌面网关后， VDS 安装程序会部署 2 个 VM 并对其进行配置，以便对传入的 RDS 用户会话进行负载平衡。
+
+* HTML5 网关
++
+VDS 设置可用于部署和配置一个或两个 HTML5 网关。这些网关托管 VDS 和基于 Web 的 VDS 客户端（ H5 门户）中的 _Connect to Server_ 功能使用的 HTML5 服务。选择两个 HTML5 门户后， VDS 安装程序会部署 2 个 VM 并对其进行配置，以便对传入的 HTML5 用户会话进行负载平衡。
+
++
+
+NOTE: 如果使用多个服务器选项（即使用户仅通过已安装的 VDS 客户端进行连接），强烈建议至少使用一个 HTML5 网关从 VDS 启用 _Connect to Server_ 功能。
+
+* 网关可扩展性注意事项
++
+对于 RDS 使用情形，可以使用其他网关 VM 横向扩展环境的最大大小，每个 RDS 或 HTML5 网关大约支持 500 个用户。稍后，只需极少的 NetApp 专业服务协助，即可添加其他网关
+
+
+
+如果此环境是为多租户设计的，则需要选择多个虚拟机。
+
+
+
+==== 时区
+
+虽然最终用户的体验将反映其本地时区，但需要选择默认时区。选择要从其中执行环境的 "* 主管理 " 的时区。
+
+
+
+==== 虚拟网络范围
+
+最佳做法是，根据虚拟机的用途将其隔离到不同的子网。首先，定义网络范围并添加一个 /20 范围。
+
+VDS 设置会检测到一个范围，并建议一个范围，该范围应证明是成功的。根据最佳实践，子网 IP 地址必须属于专用 IP 地址范围。
+
+这些范围包括：
+
+* 192.168.0.0 到 192.168.255.255
+* 172.16.0.0 到 172.31.255.255
+* 10.0.0.0 到 10.255.255.255
+
+
+如果需要，请查看并调整，然后单击验证以确定以下每项的子网：
+
+* _Tenant ： _ 这是会话主机服务器和数据库服务器将驻留在的范围
+* _Services ： _ 这是 Azure NetApp Files 等 PaaS 服务将驻留在的范围
+* _Platform ： _ 这是平台服务器将驻留在的范围
+* _Directory ： _ 这是 AD 服务器将驻留在的范围
+
+
+
+
+=== 审核和配置
+
+在最后一页，您可以查看自己的选择。完成此审核后，单击验证按钮。VDS 安装程序将查看所有条目，并验证是否可以使用提供的信息继续部署。此验证可能需要 2 到 10 分钟。
+
+验证完成后，绿色的配置按钮将代替验证按钮。单击配置以启动部署的配置过程。
+
+image:Deploying.Azure.AVD.Deploying_AVD_in_Azure_v6_DRAFT-8dc32.png["宽度 = 75%"]
+
+
+
+=== 任务历史记录
+
+根据 Azure 工作负载和您所做的选择，配置过程需要 2 到 4 小时。您可以通过单击 _Task History_ 页面来跟踪日志中的进度，也可以等待显示部署过程已完成的电子邮件。部署可构建支持 VDS 和远程桌面或 AVD 实施所需的虚拟机和 Azure 组件。其中包括一个虚拟机，该虚拟机既可以充当远程桌面会话主机，也可以充当文件服务器。在 AVD 实施中，此虚拟机将仅充当文件服务器。
+
+image:Deploying.Azure.AVD.Deploying_AVD_in_Azure_v6_DRAFT-20da2.png["宽度 = 75%"]
+
+
+
+== 安装和配置 AD Connect
+
+成功安装后，需要立即在域控制器上安装和配置 AD Connect 。在单平台 VM 设置中， CMGR1 计算机是 DC 。AD 中的用户需要在 Azure AD 和本地域之间同步。
+
+
+NOTE: AD Connect 是 Microsoft 支持的一款产品，涉及管理和复制用户身份和密码数据。如果您计划将此配置用于生产环境，请确保您完全了解 Microsoft 所述的配置选项和安全最佳实践。例如，对同步凭据使用特定于任务的特权服务帐户比重复使用属于管理员的帐户提供更好的安全配置文件。有关完整详细信息，请参见  https://docs.microsoft.com/en-us/azure/active-directory/hybrid/[]
+
+.安装和配置 AD Connect
+. 导航到 "Deplopyment" 详细信息页面
+. 从 _more..._ 选项卡中选择 _Platform Servers_
+. 单击操作列中的 _Connect"
+. 以域管理员身份连接到域控制器。
++
+.. 在部署自动化过程中，系统会自动创建域管理员帐户。您可以从获取这些凭据 link:Management.System_Administration.azure_key_vault.html["Azure 密钥存储"]
+
+
+. 在 DC 上安装 AD Connect
++
+.. 从下载安装程序并运行 .MSI link:https://www.microsoft.com/en-us/download/details.aspx?id=47594["此处"]
+.. 选择 " 使用快速设置 " 。请参见 link:https://docs.microsoft.com/en-us/azure/active-directory/hybrid/how-to-connect-install-express["此 Microsoft 知识库"] 有关详细信息：
+.. 在初始部署中使用 Azure AD 管理员用户向 Azure AD 进行身份验证。
+.. 输入本地域上具有 _Enterprise Admin_ 角色的 Active Directory 管理员凭据。（上述 Azure 密钥存储中的 "LocalAdminName" ）
++
+... 有关本地 AD 管理员的权限要求，请参见 https://docs.microsoft.com/en-us/azure/active-directory/hybrid/reference-connect-accounts-permissions[]。以 domain\account_name 的形式输入凭据（例如： mytest.onmicrosoft.com\adsyncacct ）
+
+
+.. 在 Azure AD 登录页面上， AD-Connect 应能够自动将 VDS 域名与 Azure AD 域名匹配，因为它们是相同的。在这种情况下，请选中 " 继续而不匹配所有 UPN 后缀 " 选项以继续，因为您没有任何要匹配的自定义域名。
+.. 此步骤支持域后缀匹配，包括在 Azure AD 级别使用自定义域名–有关实施高级选项的信息，请参见 AD-Connect 文档。
+.. 在 "Ready to Configure" 屏幕上。单击安装。
+
+
+. 所有用户都需要同时位于在 Workspace 和 Azure AD 中创建的本地域中。默认情况下， AD Connect 会将本地域中的新用户同步到 Azure AD 用户列表。如果您已在 Azure AD 中有用户，则此操作正常—为其提供相同的用户名将允许 AD Connect 在这两个域中同步其身份。
++
+.. 返回 VDS ，导航到 Workspace Details > User & Groups 以管理用户。
+.. 如果用户已位于 Azure AD 中，请确保用户名部分与 Azure AD 用户名匹配，而不是与整个电子邮件地址匹配。（例如 tanya.jones@mytest.onmicrosoft.com ）
++
+
+NOTE: 用户将同步到 Azure AD ，如果用户已存在于 Azure AD 中，则用户身份将同步。从 VDS 更改的密码将同步到 Azure AD 用户，但 Azure AD 用户将无法在 Azure AD 上更改其密码，除非启用了 AD-Connect 密码回写： (https://docs.microsoft.com/en-us/azure/active-directory/authentication/tutorial-enable-writeback)[]
+
+.. 登录到 Azure 门户，导航到 Azure Active Directory > AD Connect 以确认已进行用户同步。有关其他详细信息，请参见域控制器 VM 上的应用程序事件日志。
+
+
+
+
+
+
+== 创建 AVD 主机池
+
+最终用户对 AVD 虚拟机的访问由主机池进行管理，主机池包含虚拟机，应用程序组又包含用户和用户访问类型。
+
+.构建第一个主机池
+. 导航到工作空间详细信息页面 > AVD 选项卡 > 单击 AVD 主机池部分标题右侧的添加按钮。image:Create AVD Host Pool 1.png[""]
+. 输入主机池的名称和问题描述。
+. 选择主机池类型
++
+.. "** 池化 " 表示多个用户将访问安装了相同应用程序的同一个虚拟机池。
+.. "* 个人 "* 可创建一个主机池，为用户分配自己的会话主机 VM 。
+
+
+. 选择负载平衡器类型
++
+.. 在池中的第二个虚拟机上启动之前， "Depth First" （深度优先）将使第一个共享虚拟机填充到最大用户数
+.. "* 宽度优先 "* 将以轮循方式将用户分布到池中的所有虚拟机
+
+
+. 选择一个 Azure 虚拟机模板以在此池中创建虚拟机。虽然 VDS 会显示订阅中提供的所有模板，但我们建议选择最新的 Windows 10 多用户内部版本，以获得最佳体验。当前版本为 Windows-10-20h1-EVD 。（也可以使用配置收集功能创建黄金映像，以便从自定义虚拟机映像构建主机）
+. 选择 Azure 计算机大小。出于评估目的， NetApp 建议使用 D 系列（适用于多用户的标准计算机类型）或 E 系列（适用于负载较重的多用户情形的增强型内存配置）。如果您要尝试不同的系列和大小，可以稍后在 VDS 中更改计算机大小
+. 从下拉列表中为虚拟机的受管磁盘实例选择兼容的存储类型
+. 选择要在主机池创建过程中创建的虚拟机数量。您可以稍后将虚拟机添加到池中，但 VDS 会构建您请求的虚拟机数量，并在创建主机池后将其添加到该主机池中
+. 单击添加主机池按钮以启动创建过程。您可以在 AVD 页面上跟踪进度，也可以在 "Tasks" 部分的 "Deployments/Deployment name" 页面上查看进程日志的详细信息
+. 创建主机池后，它将显示在 AVD 页面上的主机池列表中。单击主机池的名称可查看其详细信息页面，其中包括其虚拟机，应用程序组和活动用户的列表
+
+
+
+NOTE: VDS 中的 AVD 主机是使用一个禁止用户会话连接的设置创建的。按照设计，这允许在接受用户连接之前进行自定义。可以通过编辑会话主机的设置来更改此设置。 image:Create AVD Host Pool 2.png[""]
+
+
+
+== 为用户启用 VDS 桌面
+
+如上所述， VDS 会创建在部署期间支持最终用户工作空间所需的所有要素。部署完成后，下一步是为要引入 AVD 环境的每个用户启用工作空间访问。此步骤将创建配置文件配置和最终用户数据层访问，这是虚拟桌面的默认设置。VDS 会重新使用此配置将 Azure AD 最终用户链接到 AVD 应用程序池。
+
+.要为最终用户启用工作空间，请执行以下步骤：
+. 登录到 VDS https://manage.cloudworkspace.com[] 使用您在配置期间创建的 VDS 主管理员帐户。如果您不记得帐户信息，请联系 NetApp VDS 以获取检索信息的帮助
+. 单击工作空间菜单项，然后单击配置期间自动创建的工作空间的名称
+. 单击用户和组选项卡image:Enable VDS desktops to Users 1.png[""]
+. 对于要启用的每个用户，滚动用户名，然后单击齿轮图标
+. 选择 " 启用云工作空间 " 选项image:Enable VDS desktops to Users 2.png[""]
+. 完成支持过程大约需要 30 到 90 秒。请注意，用户状态将从 "Pending" 更改为 "Available"
+
+
+
+NOTE: 激活 Azure AD 域服务会在 Azure 中创建一个受管域，创建的每个 AVD 虚拟机都将加入该域。要使传统登录到虚拟机正常工作，必须同步 Azure AD 用户的密码哈希，以支持 NTLM 和 Kerberos 身份验证。完成此任务的最简单方法是在 Office.com 或 Azure 门户中更改用户密码，这将强制执行密码哈希同步。域服务服务器的同步周期最长可能需要 20 分钟。
+
+
+
+=== 启用用户会话
+
+默认情况下，会话主机无法接受用户连接。此设置通常称为 " 耗电模式 " ，因为它可以在生产环境中用于阻止新的用户会话，从而允许主机最终删除所有用户会话。如果主机允许新的用户会话，则此操作通常称为将会话主机置于 " 轮换 " 状态。
+
+在生产环境中，在耗电模式下启动新主机是有意义的，因为在主机准备好处理生产工作负载之前，通常需要完成一些配置任务。
+
+在测试和评估中，您可以立即使主机退出耗电模式，以启用用户连接并确认功能是否正常。要在会话主机上启用用户会话，请执行以下步骤：
+
+. 导航到工作空间页面的 AVD 部分。
+. 单击 "AVD 主机池 " 下的主机池名称。image:Enable User Sessions 1.png[""]
+. 单击会话主机的名称并选中允许新会话复选框，然后单击更新会话主机。对需要置于轮换状态的所有主机重复上述步骤。image:Enable User Sessions 2.png[""]
+. 对于每个主行项目， AVD 主页上也会显示当前的统计信息 " 允许新会话 " 。
+
+
+
+
+=== 默认应用程序组
+
+请注意，默认情况下，在创建主机池的过程中会创建桌面应用程序组。通过此组，可以对所有组成员进行交互式桌面访问。要向组添加成员，请执行以下操作：
+
+. 单击应用程序组的名称image:Default App Group 1.png[""]
+. 单击显示添加的用户数的链接image:Default App Group 2.png[""]
+. 选中要添加到应用程序组的用户名称旁边的框，以选择这些用户
+. 单击选择用户按钮
+. 单击更新应用程序组按钮
+
+
+
+
+=== 创建其他 AVD 应用程序组
+
+可以将其他应用程序组添加到主机池中。这些应用程序组将使用 RemoteApp 将特定应用程序从主机池虚拟机发布到应用程序组用户。
+
+
+NOTE: AVD 仅允许在同一主机池中为最终用户分配桌面应用程序组类型或 RemoteApp 应用程序组类型，但不允许同时分配这两者，因此请确保相应地隔离用户。如果用户需要访问桌面和流式应用程序，则需要第二个主机池来托管此应用程序。
+
+.要创建新的应用程序组，请执行以下操作：
+. 单击应用程序组部分标题中的添加按钮image:Create Additional AVD App Group 1.png[""]
+. 输入应用程序组的名称和问题描述
+. 单击添加用户链接，选择要添加到组的用户。单击每个用户名称旁边的复选框以选择每个用户，然后单击选择用户按钮image:Create Additional AVD App Group 2.png[""]
+. 单击添加 RemoteApps 链接将应用程序添加到此应用程序组。AVD 会通过扫描虚拟机上安装的应用程序列表自动生成可能的应用程序列表。单击应用程序名称旁边的复选框以选择应用程序，然后单击选择 RemoteApps 按钮。image:Create Additional AVD App Group 3.png[""]
+. 单击添加应用程序组按钮以创建应用程序组
+
+
+
+
+== 最终用户 AVD 访问
+
+最终用户可以使用 Web Client 或在各种平台上安装的客户端访问 AVD 环境
+
+* Web 客户端： https://docs.microsoft.com/en-us/azure/virtual-desktop/connect-web[]
+* Web Client 登录 URL ： http://aka.ms/AVDweb[]
+* Windows 客户端： https://docs.microsoft.com/en-us/azure/virtual-desktop/connect-windows-7-and-10[]
+* Android 客户端： https://docs.microsoft.com/en-us/azure/virtual-desktop/connect-android[]
+* macOS 客户端： https://docs.microsoft.com/en-us/azure/virtual-desktop/connect-macos[]
+* IOS 客户端： https://docs.microsoft.com/en-us/azure/virtual-desktop/connect-ios[]
+* IGEL 瘦客户端： https://www.igel.com/igel-solution-family/windows-virtual-desktop/[]
+
+
+使用最终用户用户用户名和密码登录。请注意，远程应用程序和桌面连接（ RADC ），远程桌面连接（ mstsc ）以及适用于 Windows 的 CloudWorksapce 客户端应用程序当前不支持登录到 AVD 实例。
+
+
+
+== 监控用户登录
+
+主机池详细信息页面还会在活动用户登录到 AVD 会话时显示其列表。
+
+
+
+== 管理连接选项
+
+VDS 管理员可以通过多种方式连接到环境中的虚拟机。
+
+
+
+=== 连接到服务器
+
+在整个门户中， VDS 管理员将找到 " 连接到服务器 " 选项。默认情况下，此功能通过动态生成本地管理员凭据并将其注入 Web 客户端连接来将管理员连接到虚拟机。管理员无需知道（也不会向其提供）凭据即可进行连接。
+
+可以按管理员禁用此默认行为，如下一节所述。
+
+
+
+=== .tech/3 级管理员帐户
+
+在 CWA 设置过程中，会创建一个 "Level II" 管理员帐户。用户名的格式为 username.tech@domain.xyz
+
+这些帐户通常称为 ".tech" 帐户，名为域级管理员帐户。VDS 管理员可以在连接到 CMGR1 （平台）服务器时使用其 .tech 帐户，也可以在连接到环境中的所有其他虚拟机时使用。
+
+要禁用自动本地管理员登录功能并强制使用级别 III 帐户，请更改此设置。导航到 VDS > 管理员 > 管理员名称 > 选中 " 已启用技术帐户 " 。 选中此框后， VDS 管理员不会以本地管理员身份自动登录到虚拟机，而是会提示输入其 .tech 凭据。
+
+这些凭据以及其他相关凭据会自动存储在 _Azure 密钥存储库 _ 中，并可从 Azure 管理门户访问，网址为 https://portal.azure.com/[]。
+
+
+
+== 可选的部署后操作
+
+
+
+=== 多因素身份验证（ MFA ）
+
+NetApp VDS 免费提供 SMS/Email MFA 。此功能可用于保护 VDS 管理员帐户和 / 或最终用户帐户的安全。link:Management.User_Administration.multi-factor_authentication.html["MFA 文章"]
+
+
+
+=== 应用程序授权工作流
+
+VDS 提供了一种机制，可从称为应用程序目录的预定义应用程序列表中为最终用户分配对应用程序的访问权限。此应用程序目录涵盖所有受管部署。
+
+
+NOTE: 自动部署的 TSD1 服务器必须保持原样，以支持应用程序授权。具体而言，请勿对此虚拟机运行 " 转换为数据 " 功能。
+
+应用程序管理在本文中进行了详细介绍： link:Management.Applications.application_entitlement_workflow.html[""]
+
+
+
+=== Azure AD 安全组
+
+VDS 包括创建，填充和删除由 Azure AD 安全组支持的用户组的功能。这些组可以像任何其他安全组一样在 VDS 外部使用。在 VDS 中，可以使用这些组分配文件夹权限和应用程序授权。
+
+
+
+==== 创建用户组
+
+在工作空间中的 " 用户和组 " 选项卡上创建用户组。
+
+
+
+==== 按组分配文件夹权限
+
+可以将查看和编辑公司共享中的文件夹的权限分配给用户或组。
+
+link:Management.User_Administration.manage_folders_and_permissions.html[""]
+
+
+
+==== 按组分配应用程序
+
+除了将应用程序单独分配给用户之外，还可以将应用程序配置给组。
+
+. 导航到用户和组详细信息。image:Assign Applications by Group 1.png[""]
+. 添加新组或编辑现有组。image:Assign Applications by Group 2.png[""]
+. 将用户和应用程序分配给组。image:Assign Applications by Group 3.png[""]
+
+
+
+
+=== 配置成本优化选项
+
+工作空间管理还扩展到管理支持 AVD 实施的 Azure 资源。VDS 允许您配置工作负载计划和实时扩展，以便根据最终用户活动打开和关闭 Azure 虚拟机。这些功能可以将 Azure 资源利用率和支出与最终用户的实际使用模式进行匹配。此外，如果您配置了概念验证 AVD 实施，则可以从 VDS 界面转换整个部署。
+
+
+
+==== 工作负载计划
+
+工作负载计划是一项功能，可使管理员为要运行的 Workspace 虚拟机创建一个设置的计划，以支持最终用户会话。当一周中的特定日期达到计划时间段结束时， VDS 会停止 / 取消分配 Azure 中的虚拟机，从而停止每小时收费。
+
+.启用工作负载计划：
+. 登录到 VDS https://manage.cloudworkspace.com[] 使用您的 VDS 凭据。
+. 单击 Workspace 菜单项，然后单击列表中的 Workspace 名称。 image:Workload Scheduling 1.png[""]
+. 单击工作负载计划选项卡。 image:Workload Scheduling 2.png[""]
+. 单击工作负载计划标题中的管理链接。 image:Workload Scheduling 3.png[""]
+. 从状态下拉列表中选择默认状态：始终打开（默认），始终关闭或已计划。
+. 如果选择已计划，则计划选项包括：
++
+.. 每天按分配的间隔运行。此选项会将一周中所有七天的计划设置为相同的开始时间和结束时间。 image:Workload Scheduling 4.png[""]
+.. 按指定间隔运行指定天数。此选项仅会将一周中选定日期的计划设置为相同的开始时间和结束时间。如果未选择一周中的某些天，则发生原因 VDS 将在这些天内不会打开虚拟机。 image:Workload Scheduling 5.png[""]
+.. 以不同的时间间隔和天数运行。此选项会将每个选定日期的计划设置为不同的开始时间和结束时间。 image:Workload Scheduling 6.png[""]
+.. 设置完计划后，单击 Update schedule 按钮。 image:Workload Scheduling 7.png[""]
+
+
+
+
+
+
+==== 实时扩展
+
+实时扩展会根据并发用户负载自动打开和关闭共享主机池中的虚拟机。当每个服务器填满时，会打开一个额外的服务器，以便在主机池负载平衡器发送用户会话请求时，该服务器可以随时运行。要有效使用实时扩展，请选择 " 深度优先 " 作为负载平衡器类型。
+
+.启用实时扩展：
+. 登录到 VDS https://manage.cloudworkspace.com[] 使用您的 VDS 凭据。
+. 单击 Workspace 菜单项，然后单击列表中的 Workspace 名称。 image:Live Scaling 1.png[""]
+. 单击工作负载计划选项卡。 image:Live Scaling 2.png[""]
+. 单击实时扩展部分中的已启用单选按钮。 image:Live Scaling 3.png[""]
+. 单击每个服务器的最大用户数，然后输入最大数量。根据虚拟机大小，此数字通常介于 4 到 20 之间。 image:Live Scaling 4.png[""]
+. 可选—单击 Additional Poweredon Servers Enabled ，然后输入要用于主机池的多个其他服务器。此设置除了激活正在填充的服务器之外，还会激活指定数量的服务器，以便为在同一时间窗口中登录的大型用户组提供缓冲区。 image:Live Scaling 5.png[""]
+
+
+
+NOTE: 实时扩展当前适用场景所有共享资源池。在不久的将来，每个池都将具有独立的实时扩展选项。
+
+
+
+==== 关闭整个部署
+
+如果您计划仅在非生产环境下零星使用评估部署，则可以在不使用此部署中的所有虚拟机时将其关闭。
+
+.要打开或关闭部署（即关闭部署中的虚拟机），请按照以下步骤操作：
+. 登录到 VDS https://manage.cloudworkspace.com[] 使用您的 VDS 凭据。
+. 单击部署菜单项。 image:Power Down the Entire Deployment 1.png[""]将光标滚动到目标部署所在的行上，以显示配置齿轮图标。 image:Power Down the Entire Deployment 2.png[""]
+. 单击齿轮，然后选择停止。 image:Power Down the Entire Deployment 3.png[""]
+. 要重新启动或启动，请按照步骤 1-3 进行操作，然后选择启动。 image:Power Down the Entire Deployment 4.png[""]
+
+
+
+NOTE: 停止或启动部署中的所有虚拟机可能需要几分钟的时间。
+
+
+
+=== 创建和管理 VM 映像
+
+VDS 包含用于创建和管理虚拟机映像以供将来部署的功能。要访问此功能，请导航到： VDS > 部署 > 部署名称 > 配置集合。下面介绍了 "VDI 映像收集 " 功能： https://flightschool.cloudjumper.com/cwms/provisioning-collections/[]
+
+
+
+=== 配置 Azure Cloud Backup Service
+
+VDS 可以本机配置和管理 Azure Cloud Backup ，这是一种用于备份虚拟机的 Azure PaaS 服务。可以按类型或主机池将备份策略分配给单个计算机或一组计算机。有关详细信息，请参见： link:Management.System_Administration.configure_backup.html[""]
+
+
+
+=== 选择应用程序管理 / 策略模式
+
+默认情况下， VDS 会实施许多组策略对象（ GPO ）来锁定最终用户工作空间。这些策略会阻止访问两个核心数据层位置（例如 C ： \ ），并阻止以最终用户身份执行应用程序安装。
+
+此评估旨在演示 Window 虚拟桌面的功能，因此您可以选择删除 GPO ，以便实施一个 " 基本工作空间 " ，该工作空间提供与物理工作空间相同的功能和访问权限。要执行此操作，请按照 " 基本工作空间 " 选项中的步骤进行操作。
+
+您还可以选择使用完整的虚拟桌面管理功能集来实施 " 受控工作空间 " 。这些步骤包括为最终用户应用程序授权创建和管理应用程序目录，以及使用管理员级别权限管理对应用程序和数据文件夹的访问。按照 " 受控工作空间 " 一节中的步骤在 AVD 主机池上实施此类工作空间。
+
+
+
+==== 受控 AVD 工作空间（默认策略）
+
+VDS 部署的默认模式是使用受控工作空间。策略将自动应用。此模式要求 VDS 管理员安装应用程序，然后通过会话桌面上的快捷方式为最终用户授予对该应用程序的访问权限。同样，通过创建映射的共享文件夹并设置权限以仅查看这些映射的驱动器号，而不是标准启动和 / 或数据驱动器，可以为最终用户分配对数据文件夹的访问权限。要管理此环境，请按照以下步骤安装应用程序并提供最终用户访问权限。
+
+
+
+==== 还原到基本 AVD 工作空间
+
+要创建基本工作空间，需要禁用默认创建的默认 GPO 策略。
+
+.要执行此操作，请执行以下一次性过程：
+. 登录到 VDS https://manage.cloudworkspace.com[] 使用主管理员凭据。
+. 单击左侧的部署菜单项。 image:Reverting to Basic AVD Workspace 1.png[""]
+. 单击部署的名称。 image:Reverting to Basic AVD Workspace 2.png[""]
+. 在 Platform Servers 部分（右中页面）下，滚动到 CMGR1 行的右侧，直到出现相应的齿轮为止。 image:Reverting to Basic AVD Workspace 3.png[""]
+. 单击相应设备，然后选择 Connect 。 image:Reverting to Basic AVD Workspace 4.png[""]
+. 输入您在配置期间创建的 "Tech" 凭据，以便使用 HTML5 访问登录到 CMGR1 服务器。 image:Reverting to Basic AVD Workspace 5.png[""]
+. 单击开始（ Windows ）菜单，然后选择 Windows 管理工具。 image:Reverting to Basic AVD Workspace 6.png[""]
+. 单击组策略管理图标。 image:Reverting to Basic AVD Workspace 7.png[""]
+. 单击左窗格列表中的 AADDC 用户项。 image:Reverting to Basic AVD Workspace 8.png[""]
+. 右键单击右窗格列表中的 " 云工作空间用户 " 策略，然后取消选择 " 已启用链接 " 选项。单击确定确认此操作。 image:Reverting to Basic AVD Workspace 9_1.png[""] image:Reverting to Basic AVD Workspace 9_2.png[""]
+. 从菜单中选择操作，组策略更新，然后确认要在这些计算机上强制更新策略。 image:Reverting to Basic AVD Workspace 10.png[""]
+. 重复步骤 9 和 10 ，但选择 "AADDC 用户 " 和 " 云工作空间公司 " 作为策略以禁用此链接。完成此步骤后，您无需强制更新组策略。 image:Reverting to Basic AVD Workspace 11_1.png[""] image:Reverting to Basic AVD Workspace 11_2.png[""]
+. 关闭组策略管理编辑器和管理工具窗口，然后注销。 image:Reverting to Basic AVD Workspace 12.png[""]这些步骤将为最终用户提供一个基本的工作空间环境。要进行确认，请以最终用户帐户之一的身份登录—会话环境不应具有任何受控的工作空间限制，例如隐藏的 " 开始 " 菜单，锁定对 C ： \ 驱动器的访问以及隐藏的 " 控制面板 " 。
+
+
+
+NOTE: 在部署期间创建的 .tech 帐户可以完全访问在独立于 VDS 的文件夹上安装应用程序和更改安全性。但是，如果您希望 Azure AD 域中的最终用户具有类似的完全访问权限，则应将其添加到每个虚拟机上的本地管理员组。

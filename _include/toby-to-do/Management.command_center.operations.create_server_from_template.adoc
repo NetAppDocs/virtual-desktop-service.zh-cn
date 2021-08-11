@@ -1,0 +1,20 @@
+= 概述
+
+
+
+
+== 概述
+
+image::Management.command_center.operations.create_server_from_template-83e84.png[Management.command center.operations.create server from template 83e84]
+
+image::Management.command_center.operations.create_server_from_template-82622.png[Management.command center.operations.create server from template 82622]
+
+image::Management.command_center.operations.create_server_from_template-83e84.png[Management.command center.operations.create server from template 83e84]
+
+image::Management.command_center.operations.create_server_from_template-211d7.png[Management.command center.operations.create server from template 2111d7.]
+
+image::Management.command_center.operations.create_server_from_template-644c1.png[Management.command center.operations.create server from template 644c1.]
+
+image::Management.command_center.operations.create_server_from_template-4a22f.png[Management.command center.operations.create server from template 4a22f]
+
+image::Management.command_center.operations.create_server_from_template-70fa8.png[Management.command center.operations.create server from template 70fa8.]

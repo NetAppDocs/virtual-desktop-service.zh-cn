@@ -1,0 +1,118 @@
+---
+sidebar: sidebar 
+permalink: Management.Applications.install_office_365.html 
+summary: Office 365 安装指南 
+keywords:  
+---
+= 安装 Microsoft Office 365
+
+
+
+
+== 手动步骤概述
+
+许可规则可防止管理员从已登录用户的帐户下载 Microsoft Office 并将其安装到共享终端服务器上，从而使多个用户能够按预期运行。管理员需要按照特定的过程安装 Office Pro Plus ，并激活共享计算机激活标志。
+
+
+
+=== 流程步骤摘要
+
+. 首先从下载 Office 部署工具 https://www.microsoft.com/en-us/download/details.aspx?id=49117[]
+. 导航到 Office Config 工具： https://config.office.com/deploymentsettings[]。
+
+
+
+NOTE: 本指南将跳过超出最低要求和共享计算机激活范围的选项。如果需要其他选项，您可以通过以下 Microsoft 指南了解更多信息： https://docs.microsoft.com/en-us/deployoffice/deploy-office-365-proplus-from-the-cloud)[]
+
+. 为您的部署选择适当的架构—建议使用 64 位，除非有特定原因使用 32 位（例如，需要 32 位版本 Office 的旧版 Office 插件）。
++
+image:office1.png[""]
+
+. 选择所需的 Office 应用程序和版本：注意：共享计算机激活仅支持 Office Pro Plus 。无论您使用的是哪个版本的 Office （ Office 365 Pro Plus ， Office 365 e3 。Office 365 E5 ， Microsoft 365 Business ， Microsoft 365 e3 ， Microsoft 365 e5 ）您仍将在此处安装 Office 365 Pro Plus 。
++
+image:office2.png[""]
+
+. 选择所需语言，然后单击下一步继续。
++
+image:office3.png[""]
+
+. 在 " 安装选项 " 下，建议您取消选择 " 将图标固定到任务栏 " ：
++
+image:office4.png[""]
+
+. 这是最重要的一步—将产品激活设置为共享计算机。管理员可以选择单击自动接受 EULA 的切换，以获得用户体验。
++
+image:office5.png[""]
+
+. 返回页面顶部，然后单击导出。
++
+image:office6.png[""]
+
+. 选择 Keep Current Settings ，然后单击 OK 继续。
++
+image:office7.png[""]
+
+. 接受协议条款，保留或更改安装文件的名称，然后单击导出以继续。本指南将假定您保留默认的 " 配置 " 名称。
++
+image:office8.png[""]
+
+. 单击 " 导出 " 后，将开始下载 "Configuration.xml " 。
+. 运行先前下载的 officedeploymenttool Exe/Self Extracting 文件（ officedeploymenttool_11901-20022.exe 是此写入时的文件版本），将其解压缩到新文件夹（我们假定在此示例中使用的是 C ： \Office ）， 并将 configuration.xml 文件复制到同一目录（覆盖已提取的示例文件）。
+. 接下来，以管理员身份打开命令提示符并将目录更改为 C ： \Office （运行 cd \Office ）。
+. 接下来，运行 setup.exe /download Configuration.xml （更改 "Configuration.xml " 以匹配您在第 10 步中导出的 XML 文件），如果似乎未发生任何情况，请勿担心，此步骤可能需要一段时间。
+. 最后，运行 setup.exe /configure Configuration.xml （再次调整 XML 文件名以匹配您的文件）。
+
+
+
+
+== 不支持的自动部署
+
+
+WARNING: 此自动化过程依赖于自定义 ps1 和预构建的 xml 。不支持此功能，因为 NetApp 不保证它可以正常工作或对任何目标计算机造成影响。ps1 由 NetApp 托管，可能随时更改 / 消失。我们建议将此方法用作构建和托管您自己的自动化流程的模板。此过程已于 2019 年 8 月 30 日在 Azure 中的 Windows Server 2016 Datacenter 10.0.14393 和 Windows 10 Enterprise for Virtual Desktop 10.0.18362 上进行了验证。
+
+
+
+=== 流程步骤摘要
+
+. 运行命令以下载并运行托管的 .ps1
+. ps1 下载托管 Office 部署配置 .xml （此处为用于此 XML 的 Office 配置工具设置的屏幕截图）
+. ps1 使用 .xml 运行 ProPlus 安装
+. ps1 会将 Microsoft Office 快捷方式复制到一个文件夹中，以用于发布应用程序
+
+
+
+
+=== 自定义步骤
+
+. 从下载并编辑托管的 ps1 http://getAVD.com/proplus_minus_onedrive.ps1[]
++
+.. 构建您自己的 xml 文件（如上所述）并上传至您自己的 URL
+.. 编辑 "$download" 变量以指向您自己的 URL 您自己的配置 xml 文件
+.. 编辑 "$officeapps" 变量，以包含由配置 xml 文件安装的所有快捷方式
++
+image:office9.png[""]
+
+
+
+. 将编辑后的 ps1 文件上传到您自己的托管 URL
+. 编辑脚本化事件脚本以下载并运行自定义的自行托管 ps1 （步骤 3.1 。。
+
+
+
+
+=== 脚本化事件步骤
+
+此操作遵循与普通应用程序安装脚本事件相同的工作流。以下说明假定已按照应用程序管理计划中的步骤安装了 chocolatey 。Office 365 ProPlus 自动安装，含巧克力
+
+要安装 O365 ProPlus ，您将使用以下设置创建一个新脚本：
+
+. 无脚本文件
+. 运行方式： powershell.exe
+. 参数（可选）： Set-ExecutionPolicy Bypass -scope process -Force ； EX （（ New-Object System.Net.WebClient).DownloadString(‘http://getAVD.com/proplus_minus_onedrive.ps1’ ））
+. 编辑 http://getAVD.com/proplus_minus_onedrive.ps1[] 并替换为您自己托管的 ps1 文件的 URL 。
++
+image:office10.png[""]
+
+
+
+保存脚本后，下一步是将该脚本与触发器关联。在这种情况下，在 VDS 中请求应用程序安装时，我们将触发该脚本。有关详细信息，请参见《应用程序管理指南》。

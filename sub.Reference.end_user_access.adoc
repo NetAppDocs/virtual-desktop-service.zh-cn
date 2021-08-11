@@ -1,0 +1,279 @@
+---
+sidebar: sidebar 
+permalink: Reference.end_user_access.html 
+summary: 最终用户访问 
+keywords:  
+---
+= 最终用户要求
+
+
+
+
+== 概述
+
+NetApp VDS 不会跟踪或建议使用不同的用户端点设备。我们建议使用一些基础知识，但这并不排除其他可能的端点选择。
+
+远程桌面环境可以从各种端点设备进行访问。客户可直接从 Microsoft 和第三方供应商处获得。NetApp VDS 为 Windows 设备提供了一个自定义连接客户端（ _NetApp VDS Client for Windows_ ），并提供了一个与 HTML 5 浏览器兼容的 Web 客户端。
+
+可以从各种端点设备访问 Azure 虚拟桌面环境。与 RDS 不同， AVD 环境只能由 Microsoft 原生客户端访问。Microsoft 已发布适用于 Windows ， MacOS ， Android ， iOS 的客户端以及 Web 客户端。此外，他们还与 IGEL 合作，提供基于 Linux 的瘦客户端产品。
+
+
+
+== 最终用户连接选项
+
+
+
+=== 远程桌面服务
+
+
+
+==== 适用于 Windows 的 NetApp VDS 客户端
+
+适用于 Windows 的 NetApp VDS 客户端是用户连接到其 RDS 环境的最佳方式。这种简单的安装程序允许用户仅使用其用户名和密码进行连接。不需要配置服务器或网关。打印和本地驱动器映射会自动启用，此方法的性能最高。
+
+
+
+===== VDS 客户端 URL 安全列表
+
+如果出站网络连接是控制器，并且为了保证它们可以继续使用适用于 Windows 的 NetApp VDS 客户端，我们建议将以下内容添加到安全列表中： * api.cloudworkspace.com * vdsclient.app * api.vdsclient.app * bin.vdsclient.app
+
+根据要求，可以使用合作伙伴的标识和联系信息创建此应用程序的品牌版本。请联系支持部门以申请此服务。
+
+NetApp VDS 客户端可从以下位置下载： https://cwc.cloudworkspace.com/download/cwc-win-setup.exe[]
+
+* 正在打印： * 在连接到适用于 Windows 的 NetApp VDS 客户端时，将使用 ThinPrint 自动设置打印。
+
+* 本地文件访问： * 默认情况下，适用于 Windows 的 NetApp VDS 客户端与云用户会话共享本地设备驱动器（ HDD ， USB 和网络）。用户可以从 Windows 资源管理器中的 "This PC" 位置来回浏览和传输数据。可以通过在 VDS 中编辑工作空间或用户来禁用此功能。
+
+_VDS > 工作空间 > 用户和组 > 安全设置 _image:win_client_disk_access.png[""]
+
+
+
+==== NetApp VDS Web 客户端
+
+NetApp VDS Web 客户端可通过访问 https://login.cloudworkspace.com/[]
+
+最终用户还可以通过网页访问其桌面，前提是其浏览器支持 HTML5 。有关 HTML5 的浏览器兼容性，请访问 https://html5test.com/[]
+
+可以为 NetApp VDS 合作伙伴创建此页面的全品牌版本。合作伙伴需要提供 SSL 证书，实施需要支付少量专业服务费用。请联系支持部门以开始此过程。
+
+* 打印： * 通过 HTML5 连接时，从虚拟桌面打印会生成一个 PDF ，该 PDF 可在浏览器中下载，然后可在本地打印。
+
+* 本地文件访问： * 通过 HTML5 进行连接时，用户可以将文件上传到 Cloud Drive 。为此，用户将单击浮动云图标，上传文件并导航到 " 此电脑 > 云位置… " 在 Windows 资源管理器中的位置，以便在虚拟桌面用户会话中访问该文件。
+
+
+
+==== 手动配置的 RDS 客户端
+
+第二种最佳连接方法是手动配置 Microsoft 远程桌面应用程序。这是 macOS ， Linux ， iOS ， Android 和 ThinClient 的理想选择。唯一的要求是设备 / 软件能够通过 RDP 连接并配置 RDS 网关。
+
+手动配置 RDP 客户端所需的信息为（链接指向可查找此信息的位置）：
+
+* Username
+* Password
+* 服务器地址（也称为PC 名称）
+* 网关地址
+
+
+* 打印： * 配置本地 RDP 客户端时，用户可以选择将其打印机转发到云环境进行打印。
+
+* 本地文件访问： * 手动配置 RDP 客户端时，用户可以选择与虚拟桌面用户会话共享特定文件夹。
+
+
+
+===== 查找 RDS 网关地址
+
+. 导航到 VDS (https://manage.cloudworkspace.com)[]
+. 单击部署
+. 单击部署的名称
+. 在 "Deployment Details" 下找到 "RDP Gateway"
+
+
+image:manual_client1.png[""]
+
+
+
+===== 在共享会话主机上查找用户的服务器地址
+
+导航到 VDS (https://manage.cloudworkspace.com)[]
+
+. 单击 Workspaces
+. 单击工作空间的名称
+. 在 "Company Details" 下找到 "Server Address"image:manual_client2.png[""]
+
+
+
+
+===== 查找 VDI 用户的服务器地址
+
+. 导航到 VDS (https://manage.cloudworkspace.com)[]
+. 单击 Workspaces
+. 单击工作空间的名称
+. 在 "Company Details" 下找到 "Server Address"image:manual_client3.png[""]
+. 单击用户和组选项卡
+. 单击用户名
+. 找到 VDI 服务器地址image:manual_client4.png[""]
+. 此 VDI 用户的服务器地址为服务器地址： dvy.ada.cloudworkplace.app ，但公司代码（例如 dvy ）会替换为 VDI Server 值（例如 DVYTS1 ）…
++
+....
+e.g. DVYTS1.ada.cloudworkspace.app
+....
+
+
+
+
+==== RDS 要求表
+
+[cols="25,25,25,25"]
+|===
+| Type | 操作系统 | RDS 客户端访问方法 | RDS Web 客户端 
+
+
+| Windows PC | 安装了 Microsoft RDP 8 应用程序的 Windows 7 或更高版本 | NetApp VDS 客户端手动配置客户端 | https://login.cloudworkspace.com/[] 
+
+
+| macOS | macOS 10.10 或更高版本以及 Microsoft Remote Desktop 8 应用程序 | 手动配置客户端 | https://login.cloudworkspace.com/[] 
+
+
+| iOS | iOS 8.0 或更高版本以及任何 link:https://itunes.apple.com/us/app/microsoft-remote-desktop/id714464092?mt=8["远程桌面应用程序"] 支持 RD 网关 | 手动配置客户端 | https://login.cloudworkspace.com/[] 
+
+
+| Android | 支持运行的 Android 版本 link:https://play.google.com/store/apps/details?id=com.microsoft.rdc.android&hl=en_US["Microsoft 远程桌面应用程序"] | 手动配置客户端 | https://login.cloudworkspace.com/[] 
+
+
+| Linux | 几乎所有版本都包含支持 RD 网关的任何 RDS 应用程序 | 手动配置客户端 | https://login.cloudworkspace.com/[] 
+
+
+| 瘦客户端 | 多种瘦客户端均可正常工作，但前提是它们支持 RD 网关。建议使用基于 Windows 的瘦客户端 | 手动配置客户端 | https://login.cloudworkspace.com/[] 
+|===
+
+
+===== 比较表
+
+[cols="20,20,20,20,20,20"]
+|===
+| 要素 / 功能 | HTML5 浏览器 | 适用于 Windows 的 VDS 客户端 | macOS RDP 客户端 | 移动设备上的 RDP 客户端 | 移动设备上的 HTML5 客户端 
+
+
+| 本地驱动器访问 | 单击背景，然后单击屏幕顶部中央显示的云图标 | 可在 Windows 资源管理器中使用 | 右键单击编辑 RDP 。转到重定向选项卡。然后选择要映射的文件夹。登录到桌面，桌面将显示为映射的驱动器。 | 不适用 | 不适用 
+
+
+| 显示扩展 | 可以调整大小，并根据浏览器窗口的大小进行更改。如果存在多个监控器，则此分辨率绝不能大于端点（主端点监控器，端点监控器）的分辨率 | 可以重新扩展，但始终等于端点的屏幕分辨率（主端点监控器，如果有多个监控器，则为端点监控器） | 可以重新扩展，但始终等于端点的屏幕分辨率（主端点监控器，如果有多个监控器，则为端点监控器） | 不适用 | 不适用 
+
+
+| 复制 / 粘贴 | 通过剪贴板重定向启用。 | 通过剪贴板重定向启用。 | 通过剪贴板重定向启用。在虚拟桌面中，使用 control + C 或 V ，而不是命令 + C 或 V | 通过剪贴板重定向启用。 | 通过剪贴板重定向启用。 
+
+
+| 打印机映射 | 通过 PDF 打印驱动程序进行打印，浏览器使用该驱动程序检测本地和网络打印机 | 通过 ThinPrint 实用程序映射的所有本地和网络打印机 | 通过 ThinPrint 实用程序映射的所有本地和网络打印机 | 通过 ThinPrint 实用程序映射的所有本地和网络打印机 | 通过 PDF 打印驱动程序进行打印，浏览器使用该驱动程序检测本地和网络打印机 
+
+
+| 性能 | 未启用 RemoteFX （音频和视频增强功能） | 通过 RDP 启用 RemoteFX ，可提高音频 / 视频性能 | 通过 RDP 启用 RemoteFX ，可提高音频 / 视频性能 | 已启用 RemoteFX ，可提高音频 / 视频性能 | 未启用 RemoteFX （音频 / 视频增强功能） 
+
+
+| 在移动设备上使用鼠标 | 不适用 | 不适用 | 不适用 | 点击屏幕以移动鼠标，然后单击 | 按住屏幕并拖动以移动鼠标，然后点击以单击 
+|===
+
+
+==== 外围设备
+
+
+
+===== 打印
+
+* Virtual Desktop Client 包括 ThinPrint ，可将本地打印机无缝地传输到云桌面。
+* HTML5 连接方法会在浏览器中下载 PDF 以进行本地打印。
+* 使用 MacOS 上的 Microsoft Remote Desktop 8 应用程序，用户可以将打印机共享到云桌面
+
+
+
+
+===== USB 外围设备
+
+扫描程序，摄像机，读卡器，音频设备等项目会产生混合结果。Virtual Desktop 部署没有什么独特之处可以阻止这种情况发生，但最佳选择是测试所需的任何设备。如果需要，您的销售代表可以帮助设置测试帐户。
+
+
+
+===== 带宽
+
+* NetApp 建议每个用户的带宽至少为 150 KB 。容量越高，用户体验越好。
+* 互联网延迟不到 100 毫秒且抖动极低同样重要。知识库文章
+* 贵公司使用 VoIP ，视频流，音频流和常规 Internet 浏览将增加带宽需求。
+* 在计算用户带宽需求时，虚拟桌面本身占用的带宽量将是最小的组件之一。
+
+
+
+
+====== Microsoft 带宽建议
+
+https://docs.microsoft.com/en-us/azure/virtual-desktop/bandwidth-recommendations[]
+
+
+
+====== 应用程序建议
+
+[cols="20,60,20"]
+|===
+| 工作负载 | 示例应用程序 | 建议带宽 
+
+
+| 任务员工 | Microsoft Word ， Outlook ， Excel ， Adobe Reader | 1.5 Mbps 
+
+
+| 办公室员工 | Microsoft Word ， Outlook ， Excel ， Adobe Reader ， PowerPoint ， 照片查看器 | 3 Mbps 
+
+
+| 知识型员工 | Microsoft Word ， Outlook ， Excel ， Adobe Reader ， PowerPoint ， 照片查看器， Java | 5 Mbps 
+
+
+| 高级员工 | Microsoft Word ， Outlook ， Excel ， Adobe Reader ， PowerPoint ， 照片查看器， Java ， CAD/CAM ，插图 / 发布 | 15 Mbps 
+|===
+
+NOTE: 无论会话中有多少用户，这些建议都适用。
+
+
+
+===== 显示解决建议
+
+[cols="60,40"]
+|===
+| 30 帧 / 秒的典型显示分辨率 | 建议带宽 
+
+
+| 大约 1024 × 768 像素 | 1.5 Mbps 
+
+
+| 大约 1280 × 720 像素 | 3 Mbps 
+
+
+| 大约 1920 × 1080 像素 | 5 Mbps 
+
+
+| 关于 3840 × 2160 px （ 4k ） | 15 Mbps 
+|===
+
+
+===== 本地设备系统资源
+
+* RAM ， CPU ，网卡和图形功能等本地系统资源会在用户体验中出现发生原因变化。
+* 这一点在网络和图形功能方面最为适用。
+* 1 GB RAM 和一个低功耗处理器，位于一个经济实惠的 Windows 设备上。建议最小 RAM 为 2 到 4 GB 。
+
+
+
+
+=== Azure 虚拟桌面
+
+
+
+==== AVD Windows 客户端
+
+从下载 Windows 7/10 客户端 https://docs.microsoft.com/en-us/azure/virtual-desktop/connect-windows-7-10[] 并使用最终用户用户用户名和密码登录。请注意，远程应用程序和桌面连接（ RADC ），远程桌面连接（ mstsc ）以及适用于 Windows 的 NetApp VDS 客户端应用程序当前不支持登录到 AVD 实例。
+
+
+
+==== AVD Web 客户端
+
+在浏览器中，导航到 Azure Resource Manager 集成的 Azure Virtual Desktop Web Client 版本，网址为 https://rdweb.AVD.microsoft.com/arm/webclient[] 并使用您的用户帐户登录。
+
+
+NOTE: 如果您使用的是未集成 Azure Resource Manager 的 Azure 虚拟桌面（经典），请通过连接到您的资源 https://rdweb.AVD.microsoft.com/webclient[] 而是。

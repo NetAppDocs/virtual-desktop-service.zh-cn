@@ -1,0 +1,118 @@
+= 概述
+
+
+
+
+== 概述
+
+虚拟桌面服务部署技术支持多种存储选项，具体取决于底层基础架构，本指南介绍了如何在部署后进行更改。
+
+虚拟桌面性能取决于各种关键资源，存储性能是主要变量之一。随着需求的变化和工作负载的变化，需要更改存储基础架构也是一项常见任务。在几乎所有情况下，这都涉及从文件服务器平台迁移到 NetApp 存储技术（例如 Azure NetApp Files ， Google 中的 NetApp Cloud Volumes Service 或 AWS 中的 NetApp Cloud Volumes ONTAP ），因为这些技术通常可为最终用户计算环境提供最佳性能。
+
+
+
+=== 创建新存储层
+
+由于各种云和 HCI 基础架构提供商的潜在存储服务种类繁多，因此本指南假定已建立一个新的存储服务，并且 SMB 路径已知。
+
+
+
+=== 创建存储文件夹
+
+. 在新存储服务中，创建三个文件夹：
++
+** 数据
+** 主页
+** /Pro
++
+image:storage1.png[""]
+
+
+
+. 设置文件夹权限
++
+.. 在文件夹属性上，选择 _Security ， > 高级 > 禁用继承 _
++
+image:storage2.png[""]
+
+.. 调整其余设置，使其与部署自动化最初创建的原始存储层上的设置相匹配。
+
+
+
+
+
+
+=== 移动数据
+
+可以通过多种方式移动目录，数据，文件和安全设置。以下 Robocopy 语法将实现必要的更改。需要根据您的环境更改路径。
+
+....
+robocopy c:\data\zucd \\uyy-1c37.deskapps.mobi\zucd-data /xd ~snapshot /MIR /CopyAll /R:1 /W:1 /tee /log:C:\temp\roboitD.txt
+....
+
+
+=== 在转换时重定向 SMB 路径
+
+在转换时间结束后，一些更改会将所有存储功能重定向到整个 VDS 环境。
+
+
+
+==== 更新 GPOs
+
+. 需要使用新的共享路径更新用户 GPO （名为 _<company-code>-users_ ）。选择 _User Configuration > Windows Settings > Preferences > Drive Maps_
++
+image:storage3.png[""]
+
+. 右键单击 _H ： _ ，选择属性 > 编辑 > 操作：替换 _ 并输入新路径
++
+image:storage4.png[""]
+
+. 使用经典或混合 AD 更新在公司 OU 中的 ADUC 中定义的共享。这反映在 VDS 文件夹管理中。
++
+image:storage5.png[""]
+
+
+
+
+
+==== 更新 FSLogix 配置文件路径
+
+. 在原始文件服务器和任何其他已配置的会话主机上打开 Regedit 。
++
+
+NOTE: 如果需要，也可以通过 GPO 策略进行设置。
+
+. 使用新值编辑 _VHD Locations_value 。此路径应为新的 SMB 路径加上 _pro/profilecontainers_ ，如以下屏幕截图所示。
++
+image:storage6.png[""]
+
+
+
+
+
+==== 更新主目录的文件夹重定向设置
+
+. 打开组策略管理，选择链接到 DC= 域， DC=mobi/ 云工作空间 / 云工作空间公司 /< 公司代码 >/< 公司代码 >-Desktop 用户的用户 GPO 。
+. 在用户配置 > 策略 > Windows 设置 > 文件夹重定向下编辑文件夹重定向路径。
+. 只需要更新桌面和文档，并且路径应与主卷的新 SMB 路径挂载点匹配。
++
+image:storage7.png[""]
+
+
+
+
+
+==== 使用命令中心更新 VDS SQL 数据库
+
+CMGR1 包含一个名为 Command Center 的帮助程序实用程序应用程序，该应用程序可以批量更新 VDS 数据库。
+
+.要进行最终数据库更新，请执行以下操作：
+. 连接到 CMGR1 ，导航并运行 CommandCenter.exe
++
+image:storage10.png[""]
+
+. 导航到 _Operals_ 选项卡，单击 _Load Data_ 以填充公司代码下拉列表，选择公司代码并输入存储层的新存储路径，然后单击 _Execute Command_ 。
++
+image:storage11.png[""]
+
+

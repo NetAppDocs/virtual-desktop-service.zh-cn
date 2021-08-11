@@ -1,0 +1,58 @@
+---
+sidebar: sidebar 
+permalink: Management.System_Administration.create_domain_admin_account.html 
+summary: 如何创建 3 级管理员帐户 
+keywords:  
+---
+= 创建域管理员（ " 级别 3" ）帐户
+
+
+
+
+== 概述
+
+有时， VDS 管理员需要域级凭据来管理环境。在 VDS 中，这些帐户称为 "3 级 " 或 ".tech" 帐户。
+
+这些说明说明说明了如何使用适当的权限创建这些帐户。
+
+
+
+=== Windows Server 域控制器
+
+在运行内部托管域控制器（或通过 VPN/Express 路由链接到 Azure 的本地 DC ）时，可以直接在 Active Directory Manager 中管理 .tech 帐户。
+
+. 使用域管理员（ .tech ）帐户连接到域控制器（ CMGR1 ， DC01 或现有 VM ）。
+. 创建新用户（如果需要）。
+. 将此用户添加到 "Level3 技术人员 " 安全组
++
+image::Management.System_Administration.create_domain_admin_account-9ee17.png[management.System Administration.create domain admin account 9ee17]
+
++
+.. 如果缺少 "Level3 技术人员 " 安全组，请创建该组并使其成为 "CW-Infrastructure" 安全组的成员。
++
+image::Management.System_Administration.create_domain_admin_account-0fc27.png[management.System Administration.create domain admin account 0fc27]
+
+
+
+
+
+
+NOTE: 建议在用户名末尾添加 ".tech" ，以帮助从最终用户帐户中划分管理员帐户。
+
+
+
+=== Azure AD 域服务
+
+如果在 Azure AD 域服务中运行或在 Azure AD 中管理用户，则可以在 Azure 管理门户中以普通 Azure AD 用户的身份管理这些帐户（即密码更改）。
+
+可以创建新帐户，将其添加到这些角色后，应为其提供所需的权限：
+
+. AAD DC 管理员
+. 客户端 HPAccess
+. 目录中的全局管理员。
+
+
+
+NOTE: 建议在用户名末尾添加 ".tech" ，以帮助从最终用户帐户中划分管理员帐户。
+
+image:l33.png[""]
