@@ -16,9 +16,7 @@
 * TS1 是会话主机
 * 用户已登录并在以下位置创建了 FS Logix 磁盘：
 +
-....
-\\****TSD1\****-Pro$\ProfileContainers (**** = Unique Company Code)
-....
+ \\****TSD1\****-Pro$\ProfileContainers (**** = Unique Company Code)
 
 
 
@@ -27,9 +25,7 @@
 
 此 CW 代理会在环境中的每台计算机上运行。应在环境中的每个 VM 上使用以下命令卸载启动此过程的服务。可以跳过 CMGR1 ，因为大多数情况下，此 VM 将关闭并最终删除。理想情况下，此操作将通过脚本化自动化运行。以下视频显示了手动完成。
 
-....
-C:\Program files\CloudWorkspace\CwAgent\CwAgent.exe -u
-....
+ C:\Program files\CloudWorkspace\CwAgent\CwAgent.exe -u
 
 
 === 删除顺时针代理服务视频
@@ -41,9 +37,7 @@ video::l9ASmM5aap0[youtube, ]
 
 上次卸载将删除启动 CW Agent 的服务，但文件仍保留。删除目录：
 
-....
-"C:\Program Files\CloudWorkspace"
-....
+ "C:\Program Files\CloudWorkspace"
 
 
 === 删除 CW Agent 目录视频

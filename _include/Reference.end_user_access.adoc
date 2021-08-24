@@ -109,9 +109,7 @@ image:manual_client1.png[""]
 . 找到 VDI 服务器地址image:manual_client4.png[""]
 . 此 VDI 用户的服务器地址为服务器地址： dvy.ada.cloudworkplace.app ，但公司代码（例如 dvy ）会替换为 VDI Server 值（例如 DVYTS1 ）…
 +
-....
-e.g. DVYTS1.ada.cloudworkspace.app
-....
+ e.g. DVYTS1.ada.cloudworkspace.app
 
 
 

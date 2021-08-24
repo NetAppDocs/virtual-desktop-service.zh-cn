@@ -15,9 +15,7 @@ keywords:
 
 在 VDS v5.4+ 中，日志位于以下文件夹路径中：
 
-....
-C:\programdata\cloudworkspace
-....
+ C:\programdata\cloudworkspace
 在先前版本的 VDS 中，它们可以位于以下路径中：
 
 ....
@@ -36,9 +34,7 @@ NOTE: 文件类型也因 VDS 版本而异，日志文件为 .txt 或 .log 文件
 
 === CW VM Automation Service 日志
 
-....
-CwVmAutomationService.log
-....
+ CwVmAutomationService.log
 顺时针 VM 自动化服务是一项 Windows 服务，负责管理部署中的所有虚拟机。作为 Windows 服务，它始终在部署中运行，但有两种主要操作模式：计划任务模式和事件模式。
 
 计划任务模式包含在计划中对 VM 执行的活动，包括收集规模估算和性能数据，重新启动 VM ，检查工作负载计划和实时扩展功能生成的状态（打开或关闭）与规则集。日志在第 5 列中表示这些操作类型，其名称类似于 " 每日操作 " ， " 每周操作 " 和 " 每日维护 " 。如果您要对诸如 " 为什么服务器 X 在昨天晚上凌晨 2 ： 00 重新启动 " 或 " 当我认为该服务器应该关闭时为什么会启动 " 等问题进行故障排除，则通常最好查看这些特定虚拟机的计划任务。
@@ -49,9 +45,7 @@ CwVmAutomationService.log
 
 === CW Automation Service 日志
 
-....
-CWAutomationService.log
-....
+ CWAutomationService.log
 在管理 Workspace 部署的各个组件时，可以使用主要的 Windows 服务来管理此计算机自动化服务日志。它可运行管理用户，应用程序，数据设备和策略所需的任务。此外，如果需要更改部署中 VM 的大小，数量或状态， IT 可以为该 VM Automation Service 创建任务。
 
 与顺时针 VM 自动化服务一样，顺时针自动化服务可同时执行已计划的任务和事件驱动型任务，后者的类型更频繁。此 CW Automation Service 的日志会从每一行开始，并显示正在处理的实体和操作（例如：启动服务器 NNXTS1 ），因此，从文件底部搜索实体名称是查找适用于此任务的特定日志行的最快方法。
@@ -60,36 +54,28 @@ CWAutomationService.log
 
 === CW 代理服务日志
 
-....
-CwAgent.log
-....
+ CwAgent.log
 此 CW 代理服务将执行特定虚拟机本地的所有任务，包括检查虚拟机的资源级别和利用率，检查虚拟机是否具有有效的 TLS 流量证书，以及检查是否已达到强制重新启动期限。除了检查有关这些任务的详细信息之外，此日志还可用于检查虚拟机是否意外重新启动或网络或资源活动。
 
 
 
 === CWManagerX 日志
 
-....
-CWManagerX.log
-....
+ CWManagerX.log
 CWManagerX 是一种 Web 服务，可在本地部署和 VDS 全局控制平面之间提供通信链路。源自 VDS Web 应用程序或 VDS API 的任务和数据请求将通过此 Web 服务传递到本地部署。在该处，任务和请求会定向到相应的 Web 服务（如上所述），或者在极少数情况下直接定向到 Active Directory 。由于此日志主要是一个通信链路，因此在正常通信期间不会记录太多日志，但如果通信链路损坏或运行不正确，此日志将包含错误。
 
 
 
 === DC 配置日志
 
-....
-DCConfig.log
-....
+ DCConfig.log
 DC Config 是一个 Windows 应用程序，可提供 VDS Web 应用程序界面中未显示的部署特定配置参数。DC 配置日志详细介绍了在 DC 配置中更改配置时运行的活动。
 
 
 
 === CAVDCDeployment 日志
 
-....
-CAVDCDeployment.log
-....
+ CAVDCDeployment.log
 顺时针 VDC 部署是一款 Windows 应用程序，用于执行在 Azure 中创建部署所需的任务。此日志可跟踪 Cloud Workspace 窗口服务的配置，默认 GPO 以及路由和资源规则。
 
 

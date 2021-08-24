@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar 
 permalink: Management.command_center.operations.copy_template_to_gallery.html 
-summary: VDS 命令中心功能 " 将模板复制到图库 " 概述 
+summary: 'VDS 命令中心功能 " 将模板复制到图库 " 概述' 
 keywords:  
 ---
 = 命令中心命令：将模板复制到图库

@@ -46,9 +46,7 @@ image:storage2.png[""]
 
 可以通过多种方式移动目录，数据，文件和安全设置。以下 Robocopy 语法将实现必要的更改。需要根据您的环境更改路径。
 
-....
-robocopy c:\data\zucd \\uyy-1c37.deskapps.mobi\zucd-data /xd ~snapshot /MIR /CopyAll /R:1 /W:1 /tee /log:C:\temp\roboitD.txt
-....
+ robocopy c:\data\zucd \\uyy-1c37.deskapps.mobi\zucd-data /xd ~snapshot /MIR /CopyAll /R:1 /W:1 /tee /log:C:\temp\roboitD.txt
 
 
 === 在转换时重定向 SMB 路径

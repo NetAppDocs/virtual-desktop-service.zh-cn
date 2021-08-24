@@ -85,9 +85,7 @@ image:mapped7.png[""]
 
 . 接下来，您将在组策略管理编辑器中编辑驱动器映射。对于 Azure AD 域服务，映射位于：
 +
-....
-“Cloud Workspace Users > User Configuration > Preferences > Windows Settings> Drive Maps”
-....
+ “Cloud Workspace Users > User Configuration > Preferences > Windows Settings> Drive Maps”
 +
 image:mapped8.png[""]
 

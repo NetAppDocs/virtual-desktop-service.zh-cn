@@ -4684,4 +4684,7 @@
   <block id="40b4efb37895d327a4e6134b05f98845" category="sidebar">管理资源并最大程度地降低成本</block>
   <block id="b0e9038d535164893f7c6af3eac68b19" category="sidebar">自动管理 AVD 和 RDS 的应用程序</block>
   <block id="160a4c43add4282278f715aef7950d51" category="sidebar">将 v1 AVD 主机池升级到 v2</block>
+  <block id="e843f35dfdebff58f200188ad0e61f0f" category="section-title">VDS v6 版本： 2021 年 8 月 26 日星期四</block>
+  <block id="656b3efb7c44dbbb5309d95823a49700" category="paragraph">_ 组件： _ Virtual Desktop Service v6_when ： _ 2021 年 8 月 26 日星期四晚上 10 点至晚上 11 点东部 _ 影响： _ 最终用户对桌面和应用程序服务的访问将保持不间断。仍然可以访问虚拟桌面服务。</block>
+  <block id="eed4bb6e8e1ea5ed9c8b43e3bad1dbad" category="list-text">在授予用户对 VDS 管理 UI 的访问权限后，更新放置在用户桌面上的 URL</block>
 </blocks>

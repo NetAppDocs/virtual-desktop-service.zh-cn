@@ -80,9 +80,7 @@ NOTE: AVD _load Balancer type_ 设置与此配置交互，因此在选择此设�
 
 一旦活动用户总数达到每台服务器的共享用户数乘以已启动服务器的总数，就会自动触发为额外服务器供电。
 
-....
-e.g. With 5 Shared Users per Server set (this is the default # we’ll use for all examples in this article) and 2 servers running, a 3rd server won’t be powered up until server 1 & 2 both have 5 or more active users. Until that 3rd server is available, new connections will be load balanced all available servers. In RDS and AVD Breadth mode, Load balancing sends users to the server with the fewest active users (like water flowing to the lowest point). In AVD Depth mode, Load balancing sends users to servers in a sequential order, incrementing when the Max Shared Users number is reached.
-....
+ e.g. With 5 Shared Users per Server set (this is the default # we’ll use for all examples in this article) and 2 servers running, a 3rd server won’t be powered up until server 1 & 2 both have 5 or more active users. Until that 3rd server is available, new connections will be load balanced all available servers. In RDS and AVD Breadth mode, Load balancing sends users to the server with the fewest active users (like water flowing to the lowest point). In AVD Depth mode, Load balancing sends users to servers in a sequential order, incrementing when the Max Shared Users number is reached.
 实时扩展还会关闭服务器以节省成本。如果一个服务器没有活动用户，而另一个服务器的可用容量低于每个服务器的共享用户数，则空服务器将关闭。
 
 打开下一台服务器的电源可能需要几分钟时间。在某些情况下，登录速度可能会超过新服务器的可用性。例如，如果 15 个人在 5 分钟内登录，他们将在第二次和第三次启动时全部登录到第一台服务器（或拒绝会话）。在这种情况下，可以使用两种策略来缓解单个服务器的过载：

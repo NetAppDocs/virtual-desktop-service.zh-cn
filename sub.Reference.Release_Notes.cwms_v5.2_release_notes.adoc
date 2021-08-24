@@ -592,6 +592,4 @@ CWA" 设置向导中的其他帮助 / 支持内容向 CWA" 设置向导添加协
 
 === 5.2 REST API
 
-....
-Release API to production to enable the features found in the overview above
-....
+ Release API to production to enable the features found in the overview above
