@@ -574,10 +574,6 @@
   <block id="197edaf4c7851f674ab9badf7bca0731" category="list-text">需要使用 CRA 工具将 AVD 用户数据导入到 VDS 用户部分中。此过程会将有关每个用户的元数据插入 VDS 控制平面，以便 VDS 可以管理其 AVD 应用程序组成员资格和会话信息</block>
   <block id="03bdce188592d893432d2293af68dc41" category="section-title">附录 A ： VDS 控制面板 URL 和 IP 地址</block>
   <block id="90d94494594130e7bedd83cf775cefba" category="paragraph">Azure 订阅中的 VDS 组件可与 VDS 全局控制平面组件进行通信，例如 VDS Web 应用程序和 VDS API 端点。要进行访问，需要在端口 443 上安全列出以下基本 URI 地址，以便进行双向访问：</block>
-  <block id="2ed8671be67b9008de01c18248d10cee" category="paragraph"><block ref="9db87c7641c1ab1472d905e82b4d0277" category="inline-link-macro-rx"></block>
-<block ref="6836ae331c6c887eaa655f521729766d" category="inline-link-macro-rx"></block>
-<block ref="86996d491c217bbf2b6aa038a142ee00" category="inline-link-macro-rx"></block>
-<block ref="6547dcd392389b74866a17f59d0802c2" category="inline-link-macro-rx"></block></block>
   <block id="352becec85a3b6bfc016dface359723b" category="paragraph">如果您的访问控制设备只能按 IP 地址安全列出，则应将以下 IP 地址列表列入安全列表。请注意， VDS 使用 Azure Traffic Manager 服务，因此此列表可能会随时间而变化：</block>
   <block id="a9fdbd2f1ab0e439672fcbb7e548db1e" category="paragraph">13.67.190.243 13.67.215.62 13.89.50.122 13.67.227.115 13.67.227.230 13.67.227.22723.99.136.91 40.119.157 40.78.132.166 40.78.40.129.17 122.52.167 40.70.147.2 40.86.99.202 13.68.19.178 13.68.114.184 137.11.21.208.132.132.172.1320.21.208.1721.138.172.138.172.138.1720.21.208.138.1720.21.138.132.138.1720.21.202.138.138.138.138.138.213.620.1.238.138.138.138.138.138.138.138.138.138.217.21.208.138.138.138.138.138.217.21.208.138.138.138.138.17</block>
   <block id="3da0c831636bd4cd813ea3ba925c3ff0" category="section-title">附录 B ： Microsoft AVD 要求</block>
@@ -4687,4 +4683,14 @@
   <block id="e843f35dfdebff58f200188ad0e61f0f" category="section-title">VDS v6 版本： 2021 年 8 月 26 日星期四</block>
   <block id="656b3efb7c44dbbb5309d95823a49700" category="paragraph">_ 组件： _ Virtual Desktop Service v6_when ： _ 2021 年 8 月 26 日星期四晚上 10 点至晚上 11 点东部 _ 影响： _ 最终用户对桌面和应用程序服务的访问将保持不间断。仍然可以访问虚拟桌面服务。</block>
   <block id="eed4bb6e8e1ea5ed9c8b43e3bad1dbad" category="list-text">在授予用户对 VDS 管理 UI 的访问权限后，更新放置在用户桌面上的 URL</block>
+  <block id="d07ca50f8f4f48dd15f7c42702b0bc60" category="paragraph"><block ref="9db87c7641c1ab1472d905e82b4d0277" category="inline-link-macro-rx"></block>
+<block ref="6836ae331c6c887eaa655f521729766d" category="inline-link-macro-rx"></block>
+<block ref="86996d491c217bbf2b6aa038a142ee00" category="inline-link-macro-rx"></block>
+<block ref="6547dcd392389b74866a17f59d0802c2" category="inline-link-macro-rx"></block>
+<block ref="918cdd039be74c39ce34f51b683ccec9" category="inline-link-macro-rx"></block></block>
+  <block id="7f8e326b72c37ef1d6ebeacf5ffd2aa9" category="paragraph"><block ref="9db87c7641c1ab1472d905e82b4d0277" category="inline-link-macro-rx"></block>
+<block ref="6836ae331c6c887eaa655f521729766d" category="inline-link-macro-rx"></block>
+<block ref="e0073e63660235d8984c4a2d7e6f19b7" category="inline-link-macro-rx"></block>
+<block ref="6547dcd392389b74866a17f59d0802c2" category="inline-link-macro-rx"></block>
+<block ref="918cdd039be74c39ce34f51b683ccec9" category="inline-link-macro-rx"></block></block>
 </blocks>

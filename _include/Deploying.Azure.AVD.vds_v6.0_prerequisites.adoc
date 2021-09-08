@@ -293,6 +293,7 @@ link:api.cloudworkspace.com[""]
 
 
 
+link:https://cjdownload3.file.core.windows.net/media[]
 
 如果您的访问控制设备只能按 IP 地址安全列出，则应将以下 IP 地址列表列入安全列表。请注意， VDS 使用 Azure Traffic Manager 服务，因此此列表可能会随时间而变化：
 
