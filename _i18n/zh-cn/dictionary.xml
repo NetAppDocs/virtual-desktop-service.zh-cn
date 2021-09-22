@@ -4695,4 +4695,12 @@
 <block ref="918cdd039be74c39ce34f51b683ccec9" category="inline-link-macro-rx"></block></block>
   <block id="a06eca35a4a303d1a5917ec7a8c5f662" category="section-title">VDS v6 版本： 2021 年 9 月 9 日星期四</block>
   <block id="57f65434986188deb735c763ff106134" category="paragraph">_ 组件： _ Virtual Desktop Service v6 _when ： _ 2021 年 9 月 9 日星期四晚上 10 点至晚上 11 点东部 _ 影响： _ 最终用户对桌面和应用程序服务的访问将保持不间断。仍然可以访问虚拟桌面服务。</block>
+  <block id="23418db08eec39dbf21b38e1922d00be" category="cell">* .wvd.microsoft.com</block>
+  <block id="6abd230193c1c6e9ab8ffca4c282cd74" category="cell">对数据进行故障排除</block>
+  <block id="ad2447f1ac90c7a09cc1726bed959254" category="cell">客户端更新</block>
+  <block id="643d0f53a556486f82737acc0a4b1257" category="section-title">VDS v6 版本： 2021 年 9 月 23 日星期四</block>
+  <block id="21b9d79497ba74579492e348a210851b" category="paragraph">_ 组件： _ Virtual Desktop Service v6 _when ： _ 2021 年 9 月 23 日星期四晚上 10 点至晚上 11 点东部 _ 影响： _ 最终用户对桌面和应用程序服务的访问将保持不间断。仍然可以访问虚拟桌面服务。</block>
+  <block id="abf22eb7cec06c7b842b0289626014d6" category="list-text">更新到 PAM 以与基于 ADDS 的部署集成</block>
+  <block id="19337faa70eb68a5c71e82ea2627b281" category="list-text">在非 AVD 部署的 Workspace 模块中显示 RemoteApp URL</block>
+  <block id="b98f0201c72cb7aeb2c258e76a423024" category="list-text">错误修复：在特定内部 Active Directory 配置中使最终用户成为管理员的情形</block>
 </blocks>

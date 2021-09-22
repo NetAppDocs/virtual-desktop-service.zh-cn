@@ -70,22 +70,25 @@ IMPORTANT: Azure 虚拟桌面当前不支持从 Windows 应用商店使用远程
 | Address | 出站 TCP 端口 | 目的 | 客户端 
 
 
-| * .AVD.microsoft.com | 443. | 服务流量 | 全部 
+| * .wvd.microsoft.com | 443. | 服务流量 | 全部 
 
 
-| * .servicebus.windows.net 443 故障排除数据 | 全部 | go.microsoft.com | 443. 
+| * .servicebus.windows.net | 443. | 对数据进行故障排除 | 全部 
 
 
-| Microsoft FWLinks | 全部 | 也称为 .ms | 443. 
+| go.microsoft.com | 443. | Microsoft FWLinks | 全部 
 
 
-| Microsoft URL 缩写 | 全部 | docs.microsoft.com | 443. 
+| 也称为 .ms | 443. | Microsoft URL 缩写 | 全部 
 
 
-| 文档。 | 全部 | privacy.microsoft.com | 443. 
+| docs.microsoft.com | 443. | 文档。 | 全部 
 
 
-| 隐私声明 | 全部 | query.prod.cms.rt.microsoft.com | 443. 
+| privacy.microsoft.com | 443. | 隐私声明 | 全部 
+
+
+| query.prod.cms.rt.microsoft.com | 443. | 客户端更新 | Windows 桌面 
 |===
 
 NOTE: 打开这些 URL 对于获得可靠的客户端体验至关重要。不支持阻止对这些 URL 的访问，并会影响服务功能。这些 URL 仅对应于客户端站点和资源，不包括 Azure Active Directory 等其他服务的 URL 。
