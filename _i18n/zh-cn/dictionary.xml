@@ -4703,4 +4703,7 @@
   <block id="abf22eb7cec06c7b842b0289626014d6" category="list-text">更新到 PAM 以与基于 ADDS 的部署集成</block>
   <block id="19337faa70eb68a5c71e82ea2627b281" category="list-text">在非 AVD 部署的 Workspace 模块中显示 RemoteApp URL</block>
   <block id="b98f0201c72cb7aeb2c258e76a423024" category="list-text">错误修复：在特定内部 Active Directory 配置中使最终用户成为管理员的情形</block>
+  <block id="c4dee9bb16767ce36fb36087c44ede20" category="section-title">VDS v6 版本： 2021 年 10 月 7 日星期四</block>
+  <block id="66163011d7a14225448be644c405ec99" category="paragraph">_ 组件： _ Virtual Desktop Service v6 _when ： _ 2021 年 10 月 7 日星期四晚上 10 点至晚上 11 点东部 _ 影响： _ 最终用户对桌面和应用程序服务的访问将保持不间断。仍然可以访问虚拟桌面服务。</block>
+  <block id="43c7c4d6a4664828ff7e567ce4741eaf" category="list-text">针对未正确保存特定配置收集配置的情况修复错误</block>
 </blocks>
