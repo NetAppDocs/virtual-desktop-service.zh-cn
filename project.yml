@@ -1,4 +1,12 @@
 ---
+settings:
+  name: Virtual Desktop Service
+  internal:
+    pdf_enabled: true
+  prod:
+    pdf_enabled: true
+    harmony_enabled: true
+    langs: zh-cn,us-en,ja-jp
 sidebar:
   entries:
   - title: Virtual Desktop Service 文档

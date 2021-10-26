@@ -4706,4 +4706,9 @@
   <block id="c4dee9bb16767ce36fb36087c44ede20" category="section-title">VDS v6 版本： 2021 年 10 月 7 日星期四</block>
   <block id="66163011d7a14225448be644c405ec99" category="paragraph">_ 组件： _ Virtual Desktop Service v6 _when ： _ 2021 年 10 月 7 日星期四晚上 10 点至晚上 11 点东部 _ 影响： _ 最终用户对桌面和应用程序服务的访问将保持不间断。仍然可以访问虚拟桌面服务。</block>
   <block id="43c7c4d6a4664828ff7e567ce4741eaf" category="list-text">针对未正确保存特定配置收集配置的情况修复错误</block>
+  <block id="3cf9ceda9bbdfc151a0c9626a9cb8b32" category="section-title">VDS v6 版本： 2021 年 10 月 21 日星期四</block>
+  <block id="23f65eafb0e711038b4b23b8e6db3e1b" category="paragraph">_ 组件： _ Virtual Desktop Service v6 _when ： _ 2021 年 10 月 21 日星期四晚上 10 点至晚上 11 点东部 _ 影响： _ 最终用户对桌面和应用程序服务的访问将保持不间断。仍然可以访问虚拟桌面服务。</block>
+  <block id="2eae6dfa076cf992837f747ec270df54" category="list-text">引入 Command Center 选项以禁用 FSLogix 配置文件的自动缩减</block>
+  <block id="6b12d7bd8f5b63f582e624ba202e35e1" category="list-text">改进了每晚报告，用于说明 FSLogix 配置文件的挂载位置</block>
+  <block id="cb8cd4f84533c86225f410f35dda1714" category="list-text">将 Azure US 中南部地区用于 CMGR1 （平台 VM ）的默认 VM 系列 / 大小更新为 D2 v4</block>
 </blocks>
