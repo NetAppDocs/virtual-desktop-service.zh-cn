@@ -4711,4 +4711,8 @@
   <block id="2eae6dfa076cf992837f747ec270df54" category="list-text">引入 Command Center 选项以禁用 FSLogix 配置文件的自动缩减</block>
   <block id="6b12d7bd8f5b63f582e624ba202e35e1" category="list-text">改进了每晚报告，用于说明 FSLogix 配置文件的挂载位置</block>
   <block id="cb8cd4f84533c86225f410f35dda1714" category="list-text">将 Azure US 中南部地区用于 CMGR1 （平台 VM ）的默认 VM 系列 / 大小更新为 D2 v4</block>
+  <block id="bc34110048106096f312b8dbea545c3a" category="section-title">VDS v6 版本： 2021 年 11 月 7 日星期日</block>
+  <block id="65c960fc290381a75c639fcb69a9e5ed" category="paragraph">_ 组件： _ Virtual Desktop Service v6 _when ： _ 2021 年 11 月 7 日星期日晚上 10 点至晚上 11 点东部 _ 影响： _ 最终用户对桌面和应用程序服务的访问将保持不间断。仍然可以访问虚拟桌面服务。</block>
+  <block id="78a318ee196a4d3b2938fb875b7cddc2" category="list-text">当部署利用 Azure Active Directory 域服务（ AADDS ）时 PAM 的错误修复</block>
+  <block id="f2c5f4ad1f7dcbe830da1db224021dd3" category="list-text">更新了各个地区提供的服务</block>
 </blocks>
