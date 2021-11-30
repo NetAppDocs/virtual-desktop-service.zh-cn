@@ -4719,4 +4719,10 @@
   <block id="2a6729c210918051ec468ef1ad5ad1fc" category="paragraph">_ 组件： _ Virtual Desktop Service v6 _when ： _ 2021 年 11 月 8 日星期一晚上 10 点至晚上 11 点东部 _ 影响： _ 最终用户对桌面和应用程序服务的访问将保持不间断。仍然可以访问虚拟桌面服务。</block>
   <block id="ca2049c3d984599d427c3ccbf2e16e9f" category="list-text">在 VDS UI 中为所有用户启用聊天框</block>
   <block id="6c440504598232d62be667e9d2f7a3c4" category="list-text">对部署选项的唯一组合进行错误修复</block>
+  <block id="d58c5328f9566308ad9d43a3e87014ae" category="doc">VDS v6 版本： 2021 年 12 月 2 日星期四</block>
+  <block id="c4a27f4770502025e564e83d6d195c06" category="paragraph">_ 组件： _ Virtual Desktop Service v6 _when ： _ 2021 年 12 月 2 日星期四晚上 10 点至晚上 11 点东部 _ 影响： _ 最终用户对桌面和应用程序服务的访问将保持不间断。仍然可以访问虚拟桌面服务。</block>
+  <block id="f2021ab4d846a6f7bb90792103cc97db" category="list-text">在主 SMS 提供程序发生中断时引入额外的 SMS 冗余</block>
+  <block id="d0df9a4239bde0b32d586dd901c86e80" category="section-title">VDS v6 热修补程序： 2021 年 11 月 18 日星期四</block>
+  <block id="2bc297d9693967d15152013b2afa0350" category="paragraph">_ 组件： _ Virtual Desktop Service v6 _when ： _ 2021 年 11 月 18 日星期四晚上 10 点至晚上 11 点东部 _ 影响： _ 最终用户对桌面和应用程序服务的访问将保持不间断。仍然可以访问虚拟桌面服务。</block>
+  <block id="4c19aa496505fde321909908b037b50a" category="list-text">修复了 AAD 基于 AADDS 的 PAM 问题描述的错误</block>
 </blocks>
