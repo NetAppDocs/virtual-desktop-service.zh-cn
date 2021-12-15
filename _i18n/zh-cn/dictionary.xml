@@ -4724,4 +4724,8 @@
   <block id="4c19aa496505fde321909908b037b50a" category="list-text">修复了 AAD 基于 AADDS 的 PAM 问题描述的错误</block>
   <block id="711ee60888a942ab910e7b40e0f8d557" category="doc">VDS v6 版本： 2021 年 12 月 2 日星期四—未计划更改</block>
   <block id="b7495b5bde185d05dd4ccefb1dee6e82" category="paragraph">_ 组件： _ Virtual Desktop Service v6 _when ： _ 2021 年 12 月 2 日星期四晚上 10 点至晚上 11 点东部 _ 影响： _ 无</block>
+  <block id="3af34f2497a5fe51f5474da8bda0df56" category="doc">VDS v6 版本： 2021 年 12 月 16 日星期四</block>
+  <block id="1e1c69b4681faa525c7a9733ee620e4f" category="paragraph">_ 组件： _ Virtual Desktop Service v6 _when ： _ 2021 年 12 月 16 日星期四晚上 10 点至晚上 11 点东部 _ 影响： _ 最终用户对桌面和应用程序服务的访问将保持不间断。仍然可以访问虚拟桌面服务。</block>
+  <block id="413641edf414c5feb0cdb353d6172be3" category="list-text">改进了在主 SMS 提供程序不可用时 MFA 的二级 SMS 消息传输</block>
+  <block id="6dbe4cf4cc31c64ef98bb59980eca87b" category="list-text">更新用于适用于 Windows 的 VDS 客户端的证书</block>
 </blocks>
