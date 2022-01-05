@@ -1,0 +1,2903 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head class="at-element-marker">
+  <title>Virtual Desktop Service – v5.4 发行说明</title>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge,chrome=1">
+  <meta http-equiv="language" content="en">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta property="og:title" content="Virtual Desktop Service – v5.4 发行说明" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://docs.netapp.com/zh-cn/virtual-desktop-service/Reference.Release_Notes.vds_v5.4_release_notes.html" />
+	<meta property="og:description" content="NetApp VDS 发行说明 v5.4" />
+  <meta property="og:image" content="https://docs.netapp.com/zh-cn/virtual-desktop-service/images/logo-tophat-social.png" />
+  <meta property="og:image:alt" content="NetApp Logo" />
+  <meta name="format-detection" content="telephone=no">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="encoding" content="utf-8">
+  <meta http-equiv="nss-type" content="Product Documentation"/>
+  <meta http-equiv="nss-subtype" content="User Guide"/>
+  
+  <meta name="description" content="NetApp VDS 发行说明 v5.4">
+  <meta name="keywords" content=" ">
+  
+  
+
+  <!-- Icons -->
+  <link rel="icon" href="/zh-cn/virtual-desktop-service/images/favicon.ico" type="image/x-icon">
+
+  <!-- RSS Feed -->
+  
+
+  <!-- CSS Definitions: NetApp CSS should be defined after generic css -->
+
+  <!-- Elastic Search -->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/searchkit/0.10.0/theme.css">
+
+  <!-- Controls AsciiDoctor Admonition Blocks -->
+  <link rel="stylesheet" type="text/css" href="/zh-cn/virtual-desktop-service/css/font-awesome.min.css">
+
+  <!-- Controls the shadow effect for search dropdown menu -->
+  <link rel="stylesheet" href="/zh-cn/virtual-desktop-service/css/boxshadowproperties.css">
+
+  <!-- NetApp CSS controls the technical content -->
+  <link rel="stylesheet" type="text/css" href="/zh-cn/virtual-desktop-service/css/netapp.css">
+
+  <!-- WWW CSS Content -->
+  <link rel="stylesheet" type="text/css" href="/zh-cn/virtual-desktop-service/css/www-luci-dotcom.min.css">
+  <link rel="stylesheet" type="text/css" href="/zh-cn/virtual-desktop-service/css/www-netapp-dotcom.css">
+  <link rel="stylesheet" href="/zh-cn/virtual-desktop-service/css/www-netapp-library-critical.min.css" media="all" >
+  <link rel="stylesheet" href="/zh-cn/virtual-desktop-service/css/www-netapp-library-non-critical.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="stylesheet" href="/zh-cn/virtual-desktop-service/css/www-netapp-library-global-header-footer.min.css">
+
+  <!-- NetApp IE Customizations -->
+  <link rel="stylesheet" href='/zh-cn/virtual-desktop-service/css/na-utility.css' type='text/css'>
+  <link rel="stylesheet" href='/zh-cn/virtual-desktop-service/css/na-sidebar.css' type='text/css'>
+  <link rel='stylesheet' href='/zh-cn/virtual-desktop-service/css/clouddocs.css' type='text/css'>
+  <link rel='stylesheet' href='/zh-cn/virtual-desktop-service/css/na-pagenav.css' type='text/css'>
+
+  
+  <link rel="stylesheet" href="/zh-cn/virtual-desktop-service/css/landing-page.css" type="text/css">
+  <link rel="stylesheet" href="/zh-cn/virtual-desktop-service/css/tabbed-blocks.css" type="text/css">
+  <link rel="stylesheet" href='/zh-cn/virtual-desktop-service/css/product-family.css' type="text/css">
+  
+
+  
+  <link rel='stylesheet' href='/zh-cn/virtual-desktop-service/css/na-feature.css' type='text/css'>
+  
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+  <!-- Used to import Promise for IE. Required for SearchKit -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.5/bluebird.min.js"></script>
+  
+    <script src='/zh-cn/virtual-desktop-service/js/na-search.js'></script>
+  
+
+  
+  <script src='/zh-cn/virtual-desktop-service/js/na-pagenav.js'></script>
+  
+
+  <link rel='stylesheet' href='/zh-cn/virtual-desktop-service/css/prism.css' type='text/css'>
+  <link rel='stylesheet' href='/zh-cn/virtual-desktop-service/css/prism-netapp.css' type='text/css'>
+
+
+  <script src='/zh-cn/virtual-desktop-service/js/na-utility.js'></script>
+  <script src='/zh-cn/virtual-desktop-service/js/clouddocs.js'></script>
+  <script>
+  if (document.location.hostname === "docs.netapp.com") {
+    var head = document.getElementsByTagName('head')[0];
+    var adobe = document.createElement("script");
+    adobe.type = "text/javascript";
+    adobe.src = "//assets.adobedtm.com/60287eadf1ee/c284da483c83/launch-e9ff3acac59f.min.js";
+    head.appendChild(adobe);
+  }
+  </script>
+  <script src='/zh-cn/virtual-desktop-service/js/jquery.navgoco.min.js'></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <script src='/zh-cn/virtual-desktop-service/js/toc.js'></script>
+  <script src='/zh-cn/virtual-desktop-service/js/customscripts.js'></script>
+
+  <script>
+      $(document).ready(function() {
+          
+          var collapseOnInit = true;
+          
+
+          var navSettings = {
+              "caretHtml": '',
+              "accordion": collapseOnInit,
+              "openClass": 'active', // open
+              "save": false, // leave false or nav highlighting doesn't work right
+              "cookie": {
+                  "name": 'navgoco',
+                  "expires": false,
+                  "path": '/'
+              },
+              "slide": {
+                  "duration": 400,
+                  "easing": 'swing'
+              }
+          };
+
+          // Initialize navgoco with default options
+          $("#mysidebar").navgoco(navSettings);
+          
+
+          $("#collapseAll").click(function(e) {
+              e.preventDefault();
+              $("#mysidebar").navgoco('toggle', false);
+          });
+
+          $("#expandAll").click(function(e) {
+              e.preventDefault();
+              $("#mysidebar").navgoco('toggle', true);
+          });
+
+      });
+
+  </script>
+  <script>
+      $(document).ready(function() {
+          $("#tg-sb-link").click(function() {
+              $("#tg-sb-sidebar").toggle();
+              $("#tg-sb-content").toggleClass('col-md-9');
+              $("#tg-sb-content").toggleClass('col-md-12');
+              $("#tg-sb-icon").toggleClass('fa-toggle-on');
+              $("#tg-sb-icon").toggleClass('fa-toggle-off');
+          });
+      });
+  </script><script async src="https://www.googletagmanager.com/gtag/js?id=UA-81697994-3"></script>
+  <script>
+  if (document.location.hostname === "docs.netapp.com") {
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-81697994-3');
+  }
+  </script>
+  <script src='/zh-cn/virtual-desktop-service/js/version-dropdown.js'></script>
+  <script src='/zh-cn/virtual-desktop-service/js/product-family.js'></script>
+  <script src='/zh-cn/virtual-desktop-service/js/FileSaver.min.js'></script>
+  <script src='/zh-cn/virtual-desktop-service/js/jszip-utils.min.js'></script>
+  <script src='/zh-cn/virtual-desktop-service/js/jszip.min.js'></script>
+  <script src='/zh-cn/virtual-desktop-service/js/pdf-ux.js'></script>
+</head>
+
+
+  <body class role="document">
+    <div id="page" class="n-off-canvas-menu">
+      <div class="n-off-canvas-menu__menu"><!--TODO: Add offcanvas code --></div>
+      <div class="n-off-canvas-menu__content-wrap">
+        <header class="site-header" id="banner">
+  <!-- Start top_hat -->
+  <div class="n-top-hat">
+    <div class="n-container">
+      <div class="n-top-hat__cross-property-nav">
+        <ul class="n-top-hat__list">
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/products-a-z/" class="n-top-hat__link">产品和解决方案</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/support-and-training/netapp-university/" class="n-top-hat__link">支持和培训</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://cloud.netapp.com" class="n-top-hat__link">云中心</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://community.netapp.com/" class="n-top-hat__link">社区</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://blog.netapp.com/" class="n-top-hat__link">日志</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://customers.netapp.com/en/" class="n-top-hat__link">客户案例</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/us/contact-us/index.aspx" target="_self" class="n-top-hat__link" data-ntap-ui="contact-us">联系人</a>
+          </li>
+        </ul>
+      </div>
+      <div class="n-top-hat__utils">
+        <ul class="n-top-hat__list">
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/us/contact-us/index.aspx" target="_self" class="n-top-hat__link" data-ntap-ui="contact-us">联系人</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!-- End top_hat -->
+
+  <!-- Start property bar -->
+  <style>
+    .n-property-navigation-bar__menus--desktop-experience .n-menu--mega__default-content__heading span {
+    color: #34B0FF;
+    }
+  </style>
+  <div class="n-property-bar " data-ntap-ui="sticky-nav">
+    <div class="n-property-bar__inner-wrap">
+      <div class="n-property-bar__menu-toggle">
+        <a href="#" class="n-property-bar__menu-toggle-link">
+          <span class="n-property-bar__menu-toggle-text">Menu</span>
+          <svg class="n-icon-bars n-property-bar__menu-toggle-icon" aria-labelledby="title">
+            <title>bars</title>
+            <use xlink:href="/zh-cn/virtual-desktop-service/common/svg/sprite.svg#bars"></use>
+          </svg>
+        </a>
+      </div>
+      <div class="n-property-bar__property-mark ">
+        <a href="https://www.netapp.com" class="n-property-bar__property-link">
+          <div class="n-property-bar__logo">
+            <svg class="n-icon-netapp-mark n-icon-netapp-mark n-property-bar__netapp-mark-icon" aria-labelledby="title">
+              <title>netapp-mark</title>
+              <use xlink:href="/zh-cn/virtual-desktop-service/common/svg/sprite.svg#netapp-mark"></use>
+            </svg>
+            <svg class="n-icon-netapp-logo n-property-bar__logo-svg" aria-labelledby="title">
+              <title>netapp-logo</title>
+              <use xlink:href="/zh-cn/virtual-desktop-service/common/svg/sprite.svg#netapp-logo"></use>
+            </svg>
+          </div>
+        </a>
+      </div>
+
+      
+      <div class="search-property-bar">
+        <div id="search-demo-container" class="searchbox n-property-bar__search">
+          <div id="react-search" 
+          data-search-html="/zh-cn/virtual-desktop-service/search.html"
+          data-type="widget" 
+          data-placeholder="搜索文档" 
+          data-no-results-found="未找到与 {query} 匹配的结果。" 
+          data-did-you-mean="搜索 {suggestion}。" 
+          data-no-results-found-did-you-mean="未找到与 {query} 匹配的结果。您是否要搜索 {suggestion}?" 
+          data-results-found="找到 {hitCount} 个结果"  
+          data-sk-es-pf-indexes=""></div>
+          <button class="n-property-bar__search-toggle-button" type="button">
+            <svg class="n-icon-search n-property-bar__search-toggle-button-icon" aria-labelledby="title">
+              <title>search</title>
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/zh-cn/virtual-desktop-service/common/svg/sprite.svg#search"></use>
+            </svg>
+          </button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  <div class="n-property-bar__toolbar">
+    <!-- Start Language Selector --><div id="ie-i18n" class="n-property-bar__lang-selector">
+      <div id="ie-i18n-menu">
+      <span class="ie-i18n-lang">简体中文</span>
+        <button class="ie-i18n-icon-container" type="button">
+          <svg class="n-globe__icon" aria-labelledby="title">
+            <title>globe</title>
+            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/zh-cn/virtual-desktop-service/common/svg/sprite.svg#globe"></use>
+          </svg>
+        </button>
+      </div>
+      <div id="n-property-navigation-bar__menu--language-selector" class="ie-i18n-results-container n-menu n-menu--v3 n-menu--is-active" style="display: none;">
+        <div class="n-language-selector-menu">
+          <ul class="n-menu__list">
+            <li class="n-menu__list-column">
+              <ul class="n-menu__list"><li class="n-menu__list-item n-menu__list-item--level-1">
+                  <a href="https://docs.netapp.com/zh-cn/virtual-desktop-service/Reference.Release_Notes.vds_v5.4_release_notes.html" class="n-menu__header-text"><span translate="no" class="notranslate">简体中文</span></a>
+                </li><li class="n-menu__list-item n-menu__list-item--level-1">
+                  <a href="https://docs.netapp.com/us-en/virtual-desktop-service/Reference.Release_Notes.vds_v5.4_release_notes.html" class="n-menu__header-text"><span translate="no" class="notranslate">English</span></a>
+                </li><li class="n-menu__list-item n-menu__list-item--level-1">
+                  <a href="https://docs.netapp.com/ja-jp/virtual-desktop-service/Reference.Release_Notes.vds_v5.4_release_notes.html" class="n-menu__header-text"><span translate="no" class="notranslate">日本語</span></a>
+                </li></ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div><!-- End Language Selector -->
+
+    <div class="n-property-bar__cta"></div>
+  </div>
+  <script>
+    $(function(){
+        var currentLocalization = $('html').attr('lang');
+
+        var localizationsDictionary = {
+            "en-CA" : "https://www.netapp.com/search/index.aspx?for_cr=canada&",
+            "en-IN" : "https://www.netapp.com/search/index.aspx?for_cr=india&",
+            "nl-NL" : "https://www.netapp.com/search/index.aspx?for_cr=netherlands&",
+            "ru-RU" : "https://www.netapp.com/search/index.aspx?for_cr=russia&",
+            "sv-SE" : "https://www.netapp.com/search/index.aspx?for_cr=sweden&",
+            "it-IT" : "https://www.netapp.com/search/index.aspx?for_cr=italy&",
+            "he-IL" : "https://www.netapp.com/search/index.aspx?for_cr=israel&",
+            "ko-KR" : "https://www.netapp.com/search/index.aspx?for_cr=korea&",
+            "zh-TW" : "https://www.netapp.com/search/index.aspx?for_cr=taiwan&",
+            "en-GB" : "https://www.netapp.com/search/index.aspx?for_cr=unitedkingdom&",
+            "en-SG" : "https://www.netapp.com/search/index.aspx?for_cr=asean&",
+            "en-AU" : "https://www.netapp.com/search/index.aspx?for_cr=australia&",
+            "pt-BR" : "https://www.netapp.com/search/index.aspx?for_cr=brasil&",
+            "de-CH" : "https://www.netapp.com/search/index.aspx?for_cr=switzerland&",
+            "es-MX" : "https://www.netapp.com/search/index.aspx?for_cr=mexico&"
+        };
+
+        if($('html').hasClass('ntap-whitelisted') && localizationsDictionary.hasOwnProperty(currentLocalization)) {
+            $('.n-property-bar__property-link').attr('href', '/');
+        }
+    });
+  </script>
+  <!-- End property bar -->
+</header>
+
+
+        <main id="n-main-content" class="n-main-content">
+          <!-- Start Documentation Content -->
+<div class="ie-main">
+  <!-- Sidebar Column -->
+  
+  <div class="col-md-3" >
+      <div class="n-pdf-header">
+  <a id="toggleButtonPdf" class="n-pdf-button" type="button">
+    <img src="/zh-cn/virtual-desktop-service/images/pdf.png" width="16" height="16"/>可用的 PDF<span>
+    </span>
+  </a>
+</div>
+<div class="n-pdf-body-container">
+  <ul id="toggleContainerPdf" class="n-pdf-body" style="display:none;"><li class="pdf-ux-container">
+        <a target="_blank" href="/zh-cn/virtual-desktop-service/pdfs/fullsite-sidebar/虚拟桌面服务文档.pdf" >
+          <img src="/zh-cn/virtual-desktop-service/images/pdf.png" width="16" height="16"/>此文档站点的 PDF</a>
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/zh-cn/virtual-desktop-service/pdfs/sidebar/使用_VDS_部署.pdf" 
+            
+          >
+            <img src="/zh-cn/virtual-desktop-service/images/pdf.png" width="16" height="16"/>
+            使用 VDS 部署
+          </a>
+          
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/zh-cn/virtual-desktop-service/pdfs/sidebar/Azure_酒店.pdf" 
+            
+          >
+            <img src="/zh-cn/virtual-desktop-service/images/pdf.png" width="16" height="16"/>
+            Azure 酒店
+          </a>
+          
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/zh-cn/virtual-desktop-service/pdfs/sidebar/Azure_虚拟桌面.pdf" 
+            
+          >
+            <img src="/zh-cn/virtual-desktop-service/images/pdf.png" width="16" height="16"/>
+            Azure 虚拟桌面
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/zh-cn/virtual-desktop-service/pdfs/sidebar/Google.pdf" 
+            
+          >
+            <img src="/zh-cn/virtual-desktop-service/images/pdf.png" width="16" height="16"/>
+            Google
+          </a>
+          
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/zh-cn/virtual-desktop-service/pdfs/sidebar/架构.pdf" 
+            
+          >
+            <img src="/zh-cn/virtual-desktop-service/images/pdf.png" width="16" height="16"/>
+            架构
+          </a>
+          
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/zh-cn/virtual-desktop-service/pdfs/sidebar/更改数据层.pdf" 
+            
+          >
+            <img src="/zh-cn/virtual-desktop-service/images/pdf.png" width="16" height="16"/>
+            更改数据层
+          </a>
+          
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/zh-cn/virtual-desktop-service/pdfs/sidebar/管理.pdf" 
+            
+          >
+            <img src="/zh-cn/virtual-desktop-service/images/pdf.png" width="16" height="16"/>
+            管理
+          </a>
+          
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/zh-cn/virtual-desktop-service/pdfs/sidebar/部署.pdf" 
+            
+          >
+            <img src="/zh-cn/virtual-desktop-service/images/pdf.png" width="16" height="16"/>
+            部署
+          </a>
+          
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/zh-cn/virtual-desktop-service/pdfs/sidebar/应用程序.pdf" 
+            
+          >
+            <img src="/zh-cn/virtual-desktop-service/images/pdf.png" width="16" height="16"/>
+            应用程序
+          </a>
+          
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/zh-cn/virtual-desktop-service/pdfs/sidebar/脚本化事件.pdf" 
+            
+          >
+            <img src="/zh-cn/virtual-desktop-service/images/pdf.png" width="16" height="16"/>
+            脚本化事件
+          </a>
+          
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/zh-cn/virtual-desktop-service/pdfs/sidebar/命令中心.pdf" 
+            
+          >
+            <img src="/zh-cn/virtual-desktop-service/images/pdf.png" width="16" height="16"/>
+            命令中心
+          </a>
+          
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/zh-cn/virtual-desktop-service/pdfs/sidebar/操作.pdf" 
+            
+          >
+            <img src="/zh-cn/virtual-desktop-service/images/pdf.png" width="16" height="16"/>
+            操作
+          </a>
+          
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/zh-cn/virtual-desktop-service/pdfs/sidebar/用户管理.pdf" 
+            
+          >
+            <img src="/zh-cn/virtual-desktop-service/images/pdf.png" width="16" height="16"/>
+            用户管理
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/zh-cn/virtual-desktop-service/pdfs/sidebar/系统管理.pdf" 
+            
+          >
+            <img src="/zh-cn/virtual-desktop-service/images/pdf.png" width="16" height="16"/>
+            系统管理
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/zh-cn/virtual-desktop-service/pdfs/sidebar/故障排除.pdf" 
+            
+          >
+            <img src="/zh-cn/virtual-desktop-service/images/pdf.png" width="16" height="16"/>
+            故障排除
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/zh-cn/virtual-desktop-service/pdfs/sidebar/参考.pdf" 
+            
+          >
+            <img src="/zh-cn/virtual-desktop-service/images/pdf.png" width="16" height="16"/>
+            参考
+          </a>
+          
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/zh-cn/virtual-desktop-service/pdfs/sidebar/发行说明.pdf" 
+            
+          >
+            <img src="/zh-cn/virtual-desktop-service/images/pdf.png" width="16" height="16"/>
+            发行说明
+          </a>
+          
+
+
+    <ul class="subfolders" style="display:none;"><li class="active pdf-hide">
+  <a target="_blank" href="/zh-cn/virtual-desktop-service/pdfs/pages/Reference.Release_Notes.vds_v5.4_release_notes.pdf" >
+    <img src="/zh-cn/virtual-desktop-service/images/pdf.png" width="16" height="16"/>
+    PDF of this page
+  </a>
+</li>
+
+</ul>
+  
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/zh-cn/virtual-desktop-service/pdfs/sidebar/先前版本.pdf" 
+            
+          >
+            <img src="/zh-cn/virtual-desktop-service/images/pdf.png" width="16" height="16"/>
+            先前版本
+          </a>
+          
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/zh-cn/virtual-desktop-service/pdfs/sidebar/脚本库文档.pdf" 
+            
+          >
+            <img src="/zh-cn/virtual-desktop-service/images/pdf.png" width="16" height="16"/>
+            脚本库文档
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/zh-cn/virtual-desktop-service/pdfs/sidebar/高级.pdf" 
+            
+          >
+            <img src="/zh-cn/virtual-desktop-service/images/pdf.png" width="16" height="16"/>
+            高级
+          </a>
+          
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/zh-cn/virtual-desktop-service/pdfs/sidebar/NetApp_VDS_v5_4_视频.pdf" 
+            
+          >
+            <img src="/zh-cn/virtual-desktop-service/images/pdf.png" width="16" height="16"/>
+            NetApp VDS v5.4 视频
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+</li></ul>
+  <div class="zip-pdf-link-container" style="display: none;">   
+    <a href="#" id="zipPdf">
+      <img src="/zh-cn/virtual-desktop-service/images/pdf-zip.png" width="16" height="16"/>
+      <pre>收集单独的 PDF 文档<span class="zip-size"></span></pre>
+    </a><div id="zip-link-popup" class="hide">
+    <div class="inner-modal">
+        <div class="downloading-progress">
+            <div class="spinner"></div>
+            <h1>Creating your file...</h1>
+            <div>This may take a few minutes. Thanks for your patience.</div>
+            <button class="cancel-download-btn" type="button">Cancel</button>
+        </div>
+        <div class="download-complete hide">
+            <div class="done-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/></svg>
+            </div>
+            <div>Your file is ready</div>
+            <button class="cancel-download-btn" type="button">OK</button>
+        </div>
+    </div>
+</div>
+<script>
+    $(".cancel-download-btn").click(function(){
+        $("#zip-link-popup").addClass("hide");
+        $("#zip-link-popup .downloading-progress").removeClass("hide");
+        $("#zip-link-popup .download-complete").addClass("hide");
+    });
+</script></div>
+</div>
+<script>
+  $("#toggleContainerPdf li.active:last-child").parents('ul.subfolders').toggle('display');
+  $("#toggleButtonPdf").click(function () {
+    $("#toggleContainerPdf").toggle('display');
+    $(".n-pdf-body-container .zip-pdf-link-container").toggle('display');
+  });
+</script><div class="sidebar-nav-container">
+  <ul id="mysidebar" class="nav"><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/index.html">
+        Virtual Desktop Service 文档
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 使用 VDS 部署</div>
+      </a>
+      <ul><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Azure 酒店</div>
+      </a>
+      <ul><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Azure 虚拟桌面</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Deploying.Azure.AVD.Deploying_AVD_in_Azure.html">
+        在 Azure 中部署 AVD
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Deploying.Azure.AVD.Supplemental_AVD_with_existing_AD.html">
+        补充— AVD 与现有 AD
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Deploying.Azure.AVD.vds_v5.4_components_and_permissions.html">
+        VDS v5.4 组件和权限（ AVD ）
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Deploying.Azure.AVD.vds_v5.4_prerequisites.html">
+        VDS v5.4 前提条件（ AVD ）
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Deploying.Azure.AVD.vds_v6.0_prerequisites.html">
+        VDS v6.0 前提条件（ AVD ）
+      </a></li></ul></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Google</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Deploying.GCP.RDS.deploying_rds_in_gcp.html">
+        在 Google 中部署 RDS
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Deploying.GCP.vds_v5.4_prerequisites.html">
+        VDS v5.4 前提条件（ RDS/GCP ）
+      </a></li></ul></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 架构</div>
+      </a>
+      <ul><li class="subfolders "><a href="/zh-cn/virtual-desktop-service/Architectural.change_data_layer.html">
+        <div class="na-navbar-padding"> 更改数据层</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Architectural.change_data_layer.Azure_Files.html">
+        Azure 文件
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Architectual.migrate_data_into_vds.html">
+        将数据迁移到 VDS 中
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Architectual.upgrade_AVD_v1_to_v2.html">
+        将 AVD v1 升级到 v2
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Architectural.Wildcard_SSL_certificate_renewal_process.html">
+        续订 SSL 证书
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Architectural.AVD_teardown_guide.html">
+        VDS 拆卸指南
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 管理</div>
+      </a>
+      <ul><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 部署</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Management.Deployments.provisioning_collections.html">
+        配置收集
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Management.Deployments.logical_hierarchy_overview.html">
+        VDS 逻辑层次结构概述
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 应用程序</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Management.Applications.application_entitlement_workflow.html">
+        RDS 的应用程序授权
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Management.Applications.AVD_application_entitlement_workflow.html">
+        AVD 应用程序授权
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 脚本化事件</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Management.Scripted_Events.scripted_events.html">
+        已划线事件概述
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 命令中心</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Management.command_center.overview.html">
+        管理命令中心概述
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 操作</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Management.command_center.operations.copy_template_to_gallery.html">
+        将模板复制到图库
+      </a></li></ul></li></ul></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Management.Cost_Optimization.workload_schedule.html">
+        配置成本优化
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 用户管理</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Management.User_Administration.manage_user_accounts.html">
+        管理用户帐户
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Management.User_Administration.manage_folders_and_permissions.html">
+        管理文件夹和权限
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Management.Applications.application_entitlement_workflow.html">
+        管理应用程序访问
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Management.User_Administration.reset_user_password.html">
+        重置用户密码
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Management.User_Administration.multi-factor_authentication.html">
+        配置 MFA
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 系统管理</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Management.System_Administration.create_domain_admin_account.html">
+        创建域管理员帐户
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Management.System_Administration.provide_3rd_party_access.html">
+        提供第三方访问
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Management.System_Administration.configure_backup.html">
+        配置备份
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Management.System_Administration.clone_virtual_machines.html">
+        克隆虚拟机
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Management.System_Administration.auto_add_disk_space.html">
+        自动添加磁盘空间
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Management.System_Administration.azure_key_vault.html">
+        Azure 密钥存储
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Management.System_Administration.configure_antivirus.html">
+        配置防病毒
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Management.System_Administration.adding_moving_mapped_drives.html">
+        添加和移动映射的驱动器
+      </a></li></ul></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 故障排除</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Troubleshooting.reviewing_vds_logs.html">
+        查看 VDS 日志
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Troubleshooting.internet_connection_quality.html">
+        Internet 连接质量
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Troubleshooting.enable_user_wallpaper.html">
+        启用用户墙纸
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Troubleshooting.printing_issues.html">
+        打印问题
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Troubleshooting.azure_vcpu_core_quota.html">
+        Azure vCPU 核心配额
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Troubleshooting.unlocking_user_accounts.html">
+        解锁用户帐户
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Troubleshooting.general_vm_performance.html">
+        常规虚拟机性能
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Troubleshooting.dns_forwarding_for_azure_aadds_sso.html">
+        适用于 Azure 的 DNS 转发可添加 SSO
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Troubleshooting.application_issues.html">
+        应用程序问题
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 参考</div>
+      </a>
+      <ul><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 发行说明</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Reference.Release_Notes.vds_v6.0_release_notes.html">
+        VDS v6.0 发行说明
+      </a></li><li class="  active "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Reference.Release_Notes.vds_v5.4_release_notes.html">
+        VDS v5.4 发行说明
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Reference.Release_Notes.vds_windows_client_release_notes.html">
+        VDS Windows 客户端发行说明
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 先前版本</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Reference.Release_Notes.vds_v5.3_release_notes.html">
+        VDS v5.3 发行说明
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Reference.Release_Notes.cwms_v5.2_release_notes.html">
+        CWMS v5.2 发行说明
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Reference.Release_Notes.cws_v5.1_release_notes.html">
+        CWS v5.1 发行说明
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Reference.Release_Notes.cws_v5.0_release_notes.html">
+        CWS 5.0 发行说明
+      </a></li></ul></li></ul></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Reference.end_user_access.html">
+        最终用户访问
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Reference.vds_change_environments.html">
+        VDS 更改环境
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 脚本库文档</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/scriptlibrary.AdobeReader.html">
+        Adobe Reader DC
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/scriptlibrary.AMDRadeonInstinctDrivers.html">
+        AMD radeon 虚拟驱动程序
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/scriptlibrary.EzeepPrintApp.html">
+        Ezeep 打印应用程序
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/scriptlibrary.GoogleChrome.html">
+        Google Chrome
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/scriptlibrary.MicrosoftEdgeChromium.html">
+        Microsoft Edge Chromium
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/scriptlibrary.MicrosoftOffice365.html">
+        Microsoft Office 365
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/scriptlibrary.MicrosoftOneDrive.html">
+        Microsoft One Drive
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/scriptlibrary.MicrosoftTeams.html">
+        Microsoft 团队
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/scriptlibrary.MicrosoftTeamsAVD.html">
+        适用于 AVD 的 Microsoft 团队
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/scriptlibrary.NvidiaCudaDrivers.html">
+        NVIDIA Cudas 驱动程序
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/scriptlibrary.NvidiaGridDrivers.html">
+        NVIDIA 网格驱动程序
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/scriptlibrary.AVDScreenCaptureProtection.html">
+        AVD 屏幕捕获保护
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/scriptlibrary.ZoomVDI-AVD.html">
+        AVD 缩放
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 高级</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Advanced.fslogix_profile_shrink.html">
+        FSLogix 配置文件缩减
+      </a></li></ul></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> NetApp VDS v5.4 视频</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/video_content_netapptv.html">
+        NetApp TV 内容
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/video_azure_AVDRDS_deploy_54.html">
+        部署 AVD 或 RDS
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/video_azure_AVD_hostpool_54.html">
+        在 Azure 中添加 AVD 主机池
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/video_azure_AVD_users_appgroups_54.html">
+        管理 AVD 用户和应用程序组
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/video_azure_AVDRDS_optimize_resources_54.html">
+        管理资源并最大程度地降低成本
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/video_VDS_day_in_the_life.html">
+        自动管理 AVD 和 RDS 的应用程序
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Architectual.upgrade_AVD_v1_to_v2.html">
+        将 v1 AVD 主机池升级到 v2
+      </a></li></ul></li></ul>
+</div>
+<!-- this highlights the active parent class in the navgoco sidebar. this is critical so that the parent expands when you're viewing a page. This must appear below the sidebar code above. Otherwise, if placed inside customscripts.js, the script runs before the sidebar code runs and the class never gets inserted.-->
+<script>$("li.active").parents('li').toggleClass("active");</script>
+
+  </div>
+  
+
+  <div class="ie-content-pane n-doc__component-detail-content n-doc__component-detail-content--show-code">
+    <!-- Begin of page container -->
+    <article class="page-content">
+      <div class="ie-utility">
+  <div class="ie-menu">
+    <div class="n-breadcrumb">
+      <ul class="n-breadcrumb__list">
+        <li class="n-breadcrumb__list-item">
+          <a href="https://www.netapp.com">主页</a>
+        </li>
+        <li class="n-breadcrumb__list-item">
+          <a href="https://docs.netapp.com">文档</a>
+        </li>
+        
+
+        <li class="n-breadcrumb__list-item">
+          <a href="/zh-cn/virtual-desktop-service/">Virtual&nbsp;Desktop&nbsp;Service</a>
+        </li>
+        <li class="n-breadcrumb__list-item">
+          Virtual Desktop Service – v5.4 发行说明
+        </li>
+      </ul>
+    </div>
+    <div style="clear: both"></div><!-- Main needs to have height -->
+  </div>
+</div>
+
+      <div class="ie-nmt-disclaimer">
+  <span>
+    <div class="ie-nmt-disclaimer-container">
+      <div class="ie-nmt-disclaimer-icon">
+        <svg class="luci-icon" aria-hidden="true">
+          <use xlink:href="/zh-cn/virtual-desktop-service/common/svg/sprite.svg#circle-info">
+        </svg>
+      </div>
+      <div class="ie-nmt-disclaimer-content">
+        <span> 简体中文版经机器翻译而成，仅供参考。如与英语版出现任何冲突，应以英语版为准。 </span>
+      </div>
+      <div style="clear:both;"></div>
+    </div>
+  </span>
+</div><div class="n-doc__component-detail-heading-wrap">
+  <h1 class="n-doc__component-detail-heading">Virtual Desktop Service – v5.4 发行说明</h1>
+</div>
+
+
+<p class="page-details">
+  
+    
+    <time datetime="2021-08-11 06:00:53 +0000">08/11/2021</time>
+    
+  
+
+<span>提供者
+  <a target="_blank" href="https://github.com/tvanroo">
+    <img  class="avatar avatar-small"
+          alt="tvanroo"
+          width="20" height="20"
+          src="https://avatars.githubusercontent.com/u/29737083?v=4"
+          style="border-radius: 50%;"/>
+  </a>
+  
+</span>
+
+
+</p>
+
+
+<div class="sect1">
+<h2 id="vds-5-4-版本-2021-年-8-月-12-日星期四">VDS 5.4 版本： 2021 年 8 月 12 日星期四</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>_ 组件： _ 5.4 虚拟桌面服务 _ 时间： _ 2021 年 8 月 12 日星期四晚上 10 点至晚上 11 点东部 _ 影响： _ 最终用户对桌面和应用程序服务的访问将保持不间断。仍然可以访问虚拟桌面服务。</p>
+</div>
+<div class="sect2">
+<h3 id="虚拟桌面服务">虚拟桌面服务</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>已更新 AVD 主机池链接</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="vds-5-4-版本-2021-年-5-月-13-日星期四">VDS 5.4 版本： 2021 年 5 月 13 日星期四</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>_ 组件： _ 5.4 虚拟桌面服务 _ 时间： _ 2021 年 5 月 13 日星期四晚上 10 点至晚上 11 点东部 _ 影响： _ 最终用户对桌面和应用程序服务的访问将保持不间断。仍然可以访问虚拟桌面服务。</p>
+</div>
+<div class="sect2">
+<h3 id="虚拟桌面服务-2">虚拟桌面服务</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>使用特殊字符时 AVD 主机池创建的错误修复</p>
+</li>
+<li>
+<p>在 CWA" 设置 " 部署向导中为长域名提供了自动化增强功能</p>
+</li>
+<li>
+<p>在 GCP 部署中的一小部分情形下克隆服务器的错误修复</p>
+</li>
+<li>
+<p>错误修复了删除快照未按预期运行的情形</p>
+</li>
+<li>
+<p>更新电子邮件地址发送通知 / 消息—现在将从 <a href="mailto:noreply@vds.netapp.com">noreply@vds.netapp.com</a> 发送消息</p>
+<div class="ulist">
+<ul>
+<li>
+<p>安全地发布入站电子邮件地址的客户应添加此电子邮件地址</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="vds-5-4-版本-2021-年-4-月-29-日星期四">VDS 5.4 版本： 2021 年 4 月 29 日星期四</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>_ 组件： _ 5.4 虚拟桌面服务 _ 时间： _ 2021 年 4 月 29 日星期四晚上 10 点至晚上 11 点东部 _ 影响： _ 最终用户对桌面和应用程序服务的访问将保持不间断。仍然可以访问虚拟桌面服务。</p>
+</div>
+<div class="paragraph">
+<p>（此版本无更新）</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="vds-5-4-热修补程序-2021-年-4-月-16-日星期五">VDS 5.4 热修补程序： 2021 年 4 月 16 日星期五</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>_ 组件： _ 5.4 虚拟桌面服务 _ 时间： _ 2021 年 4 月 16 日星期五晚上 10 点至晚上 11 点东部 _ 影响： _ 最终用户对桌面和应用程序服务的访问将保持不间断。仍然可以访问虚拟桌面服务。</p>
+</div>
+<div class="sect2">
+<h3 id="虚拟桌面服务-3">虚拟桌面服务</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>通过在上晚更新后自动创建证书来解决问题描述问题，从而改进了自动化证书管理</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="vds-5-4-版本-2021-年-4-月-15-日星期四">VDS 5.4 版本： 2021 年 4 月 15 日星期四</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>_ 组件： _ 5.4 虚拟桌面服务 _ 时间： _ 2021 年 4 月 15 日星期四晚上 10 点至晚上 11 点东部 _ 影响： _ 最终用户对桌面和应用程序服务的访问将保持不间断。仍然可以访问虚拟桌面服务。</p>
+</div>
+<div class="sect2">
+<h3 id="虚拟桌面服务-4">虚拟桌面服务</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>持续进行更新，以改善与 vSphere/vCloud 虚拟机管理程序的连接和通信</p>
+</li>
+<li>
+<p>针对用户无法克隆 AVD 会话主机的单个情形修复的错误</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="vds-5-4-热修补程序-2021-年-3-月-23-日星期二">VDS 5.4 热修补程序： 2021 年 3 月 23 日星期二</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>_ 组件： _ 5.4 虚拟桌面服务 _ 时间： _ 2021 年 3 月 23 日星期二晚上 10 点至晚上 11 点东部 _ 影响： _ 最终用户对桌面和应用程序服务的访问将保持不间断。仍然可以访问虚拟桌面服务。</p>
+</div>
+<div class="sect2">
+<h3 id="虚拟桌面服务-5">虚拟桌面服务</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>更新显示的主机池—在新创建的主机池已成功完成但未及时显示在 VDS UI 中的部分情形下解决问题描述</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="vds-5-4-版本-2021-年-3-月-18-日星期四">VDS 5.4 版本： 2021 年 3 月 18 日星期四</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>_ 组件： _ 5.4 虚拟桌面服务 _ 时间： _ 2021 年 3 月 18 日星期四晚上 10 点至晚上 11 点东部 _ 影响： _ 最终用户对桌面和应用程序服务的访问将保持不间断。仍然可以访问虚拟桌面服务。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>虚拟桌面服务</p>
+</li>
+<li>
+<p>允许在禁止最终用户连接到虚拟机时连接到服务器功能</p>
+</li>
+<li>
+<p>对用户通过 SMS 接收的 PAM 消息进行的表述调整</p>
+</li>
+<li>
+<p>各种主动式安全性和性能增强功能</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="vds-5-4-热修补程序-2021-年-3-月-9-日星期二">VDS 5.4 热修补程序： 2021 年 3 月 9 日星期二</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>_ 组件： _ 5.4 虚拟桌面服务 _ 时间： _ 2021 年 3 月 9 日星期二下午 5 点至下午 5 ： 15 东部 _ 影响： _ 最终用户对桌面和应用程序服务的访问将保持无中断。仍然可以访问虚拟桌面服务。</p>
+</div>
+<div class="sect2">
+<h3 id="虚拟桌面服务-6">虚拟桌面服务</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>应用更新以解决在部分情形下连接到服务器问题描述的问题</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="vds-5-4-版本星期四-3-月4-2021">VDS 5.4 版本：星期四， 3 月4 ， 2021</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>_ 组件： _ 5.4 虚拟桌面服务 _ 时间： _ 2021 年 3 月 4 日星期四晚上 10 点 - 晚上 11 点东部 _ 影响： _ 最终用户对桌面和应用程序服务的访问将保持不间断。仍然可以访问虚拟桌面服务。</p>
+</div>
+<div class="sect2">
+<h3 id="虚拟桌面服务-7">虚拟桌面服务</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>为 Google Cloud Platform 部署引入了 DSC 驱动的部署模式</p>
+</li>
+<li>
+<p>脚本化事件会更新，以防止脚本在活动运行期间被删除</p>
+</li>
+<li>
+<p>针对现有 Active Directory 环境对部署向导处理 NetBIOS 的自动化增强功能</p>
+</li>
+<li>
+<p>支持为单个平台服务器应用不同的备份计划</p>
+</li>
+<li>
+<p>支持更改用户的密码，以要求用户在下次登录时在同一命令中重置密码</p>
+</li>
+<li>
+<p>错误修复—允许将单个 VM 设置为迁移模式以覆盖部署范围的迁移模式设置</p>
+</li>
+<li>
+<p>vSphere 中的错误修复：一次性发送过多 API 命令会导致虚拟机启动延迟</p>
+</li>
+<li>
+<p>更新新部署以支持 .NET 4.8.0</p>
+</li>
+<li>
+<p>各种主动式安全性和性能增强功能</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="vds-5-4-版本-2-月星期四2021-年-8-月-18-日">VDS 5.4 版本： 2 月，星期四2021 年 8 月 18 日</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>_ 组件： _ 5.4 虚拟桌面服务 _ 时间： _ 2021 年 2 月 18 日星期四晚上 10 点 - 晚上 11 点东部 _ 影响： _ 最终用户对桌面和应用程序服务的访问将保持不间断。仍然可以访问虚拟桌面服务。</p>
+</div>
+<div class="sect2">
+<h3 id="虚拟桌面服务-8">虚拟桌面服务</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>根据 Microsoft 最佳实践更新了 FSLogix 的默认安装方法</p>
+</li>
+<li>
+<p>主动升级到平台组件以支持更多的用户活动</p>
+</li>
+<li>
+<p>提高了处理证书管理变量的自动化程度</p>
+</li>
+<li>
+<p>支持在更改用户密码时在下次登录时强制重置用户的 MFA 设置</p>
+</li>
+<li>
+<p>在 AADDS 部署中，从组模块 VDS 中管理 VDS 管理组</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="成本估算工具">成本估算工具</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>更新内容，以反映某些 VM 不再具有促销价格点</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="vds-5-4-版本-2-月星期四4-2021">VDS 5.4 版本： 2 月，星期四4 ， 2021</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>_ 组件： _ 5.4 虚拟桌面服务 _ 时间： _ 2021 年 2 月 4 日星期四晚上 10 点 - 晚上 11 点东部 _ 影响： _ 最终用户对桌面和应用程序服务的访问将保持不间断。仍然可以访问虚拟桌面服务。</p>
+</div>
+<div class="sect2">
+<h3 id="虚拟桌面服务-9">虚拟桌面服务</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>改进了使用 " 连接到服务器 " 功能时的变量处理</p>
+</li>
+<li>
+<p>API —用于重新启动和多选重新启动功能的端功能</p>
+</li>
+<li>
+<p>Google Cloud Platform 中的部署自动化增强功能</p>
+</li>
+<li>
+<p>改进了关闭的 Google Cloud Platform 部署的处理方式</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="vds-5-4-版本-2021-年-1-月-21-日星期四">VDS 5.4 版本： 2021 年 1 月 21 日，星期四</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>_ 组件： _ 5.4 虚拟桌面服务 _ 时间： _ 2021 年 1 月 21 日星期四晚上 10 点 - 晚上 11 点东部 _ 影响： _ 最终用户对桌面和应用程序服务的访问将保持不间断。仍然可以访问虚拟桌面服务。</p>
+</div>
+<div class="sect2">
+<h3 id="虚拟桌面服务-10">虚拟桌面服务</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>从选择 PaaS 服务进行数据管理的部署中删除 TSD1 VM</p>
+</li>
+<li>
+<p>各种主动式安全性和性能增强功能</p>
+</li>
+<li>
+<p>简化多服务器部署配置的流程</p>
+</li>
+<li>
+<p>GCP 中部署的特定配置的错误修复</p>
+</li>
+<li>
+<p>通过命令中心创建 Azure 文件共享的错误修复</p>
+</li>
+<li>
+<p>更新以在 GCP 中将 Server 2019 作为操作系统提供</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="成本估算工具-2">成本估算工具</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>各种主动式安全性和性能增强功能</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="vds-5-4-热修补程序2021年1月">VDS 5.4 热修补程序：2021年1月</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>_ 组件： _ 5.4 虚拟桌面服务 _ 时间： _ 2021 年 1 月 18 日星期一晚上 10 点至晚上 11 点东部 _ 影响： _ 最终用户对桌面和应用程序服务的访问将保持不间断。仍然可以访问虚拟桌面服务。</p>
+</div>
+<div class="sect2">
+<h3 id="虚拟桌面服务-11">虚拟桌面服务</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>VDS 将对使用 SendGrid 进行 SMTP 中继的部署应用更新</p>
+</li>
+<li>
+<p>SendGrid 将于 20 日星期三推出突破性变更</p>
+</li>
+<li>
+<p>VDS 团队已经在调查如何升级到 SendGrid</p>
+</li>
+<li>
+<p>我们已经意识到这一即将发生的变化，并测试和验证了一种替代方案（ Postmark ）</p>
+</li>
+<li>
+<p>除了缓解突发的变化之外， VDS 团队还发现，利用 Postmark 而非 SendGrid 进行部署时，可靠性和性能都得到了提高</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="vds-5-4-热修补程序-fr-2021年1月">VDS 5.4 热修补程序： Fr.2021年1月</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>_ 组件： _ 5.4 虚拟桌面服务 _ 时间： _ 2021 年 1 月 8 日星期三中午 12 ： 00 至晚上 12 ： 05 东部 _ 影响： _ 最终用户对桌面和应用程序服务的访问将保持无中断。仍然可以访问虚拟桌面服务。</p>
+</div>
+<div class="sect2">
+<h3 id="虚拟桌面服务-12">虚拟桌面服务</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>进行简短的后续更新，以确保 VDCTools 在所有部署中均为最新版本</p>
+<div class="ulist">
+<ul>
+<li>
+<p>按照设计， VDCTools 的更新会智能地应用—更新会等待，直到没有执行任何操作，然后自动完成在短暂更新期间采取的所有操作</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="vds-5-4-版本-2021-年-1-月-7-日星期四">VDS 5.4 版本： 2021 年 1 月 7 日，星期四</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>_ 组件： _ 5.4 虚拟桌面服务 _ 时间： _ 2021 年 1 月 7 日星期四晚上 10 点 - 晚上 11 点东部 _ 影响： _ 最终用户对桌面和应用程序服务的访问将保持不间断。仍然可以访问虚拟桌面服务。</p>
+</div>
+<div class="sect2">
+<h3 id="虚拟桌面服务-13">虚拟桌面服务</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>各种主动式安全性和性能增强功能</p>
+</li>
+<li>
+<p>文本更新—将命令中心操作从创建 Azure 文件共享更改为创建 Azure 文件共享</p>
+</li>
+<li>
+<p>使用命令中心更新数据 / 主页 /Pro 文件夹的过程增强功能</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="成本估算工具-3">成本估算工具</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>各种主动式安全性和性能增强功能</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="vds-5-4-版本-2020-年-12-月-17-日星期四">VDS 5.4 版本： 2020 年 12 月 17 日，星期四</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>_ 组件： _ 5.4 虚拟桌面服务 _ 时间： _ 2020 年 12 月 17 日星期四晚上 10 点 - 晚上 11 点东部 _ 影响： _ 最终用户对桌面和应用程序服务的访问将保持不间断。仍然可以访问虚拟桌面服务。</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/virtual-desktop-service/images/note.svg" alt="注">
+</td>
+<td class="content">
+下一个版本将在 2021 年 1 月 7 日星期四发布，而不是在 2020 年的除夕夜发布。
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="虚拟桌面服务-14">虚拟桌面服务</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>提高了使用 Azure NetApp Files 时的部署自动化程度</p>
+</li>
+<li>
+<p>增强了使用更新的 Windows 10 映像配置集合的功能</p>
+</li>
+<li>
+<p>更新到 VCC 以更好地支持多站点配置中的变量</p>
+</li>
+<li>
+<p>站点功能的主动式安全性增强较小</p>
+</li>
+<li>
+<p>实时扩展中峰值实时扩展功能的 API 增强功能</p>
+</li>
+<li>
+<p>DC 配置中的一般可用性和文本清晰性改进</p>
+</li>
+<li>
+<p>各种后台错误修复和安全增强功能</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="vds-5-4-版本-2020-年-12-月-3-日星期四">VDS 5.4 版本： 2020 年 12 月 3 日，星期四</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>_ 组件： _ 5.4 虚拟桌面服务 _ 时间： _ 2020 年 12 月 3 日星期四晚上 10 点 - 晚上 11 点东部 _ 影响： _ 最终用户对桌面和应用程序服务的访问将保持不间断。仍然可以访问虚拟桌面服务。</p>
+</div>
+<div class="sect2">
+<h3 id="虚拟桌面服务-15">虚拟桌面服务</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>更新到 FSLogix 安装方法</p>
+</li>
+<li>
+<p>持续主动式安全措施</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="vds-设置">VDS 设置</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Azure NetApp Files 部署自动化更新—支持创建：</p>
+</li>
+<li>
+<p>至少 4 TB 容量池 / 卷</p>
+</li>
+<li>
+<p>最大容量为 500 TB 的容量池 /100 TB 的卷</p>
+</li>
+<li>
+<p>改进了高级部署选项的变量处理</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="成本估算工具-4">成本估算工具</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>从 Google 成本估算工具中删除磁盘操作</p>
+</li>
+<li>
+<p>更新反映了 Azure 成本估算工具中按区域提供的新服务</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="vds-5-4-版本-2020-年-11-月-19-日星期四">VDS 5.4 版本： 2020 年 11 月 19 日，星期四</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>_ 组件： _ 5.4 虚拟桌面服务 _ 时间： _ 2020 年 11 月 19 日星期四晚上 10 点 - 晚上 11 点东部 _ 影响： _ 最终用户对桌面和应用程序服务的访问将保持不间断。仍然可以访问虚拟桌面服务。</p>
+</div>
+<div class="sect2">
+<h3 id="vds">VDS</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>特权帐户管理（ PAM ）电子邮件现在包含部署代码详细信息</p>
+</li>
+<li>
+<p>简化 Azure Active Directory 域服务（ AADDS ）部署的权限</p>
+</li>
+<li>
+<p>对于希望在完全关闭的部署中执行管理任务的管理员来说，更加清晰</p>
+</li>
+<li>
+<p>VDS 管理员查看已关闭的主机池的 RemoteApp App Group 详细信息时出现的错误提示的错误修复</p>
+</li>
+<li>
+<p>对 API 用户进行更新，以反映他们是 VDS API 用户</p>
+</li>
+<li>
+<p>更快地返回数据中心状态报告</p>
+</li>
+<li>
+<p>改进了虚拟机每日操作（例如夜间重新启动）变量的处理方式</p>
+</li>
+<li>
+<p>错误修复了在 DC 配置中输入的 IP 地址未正确保存的情形</p>
+</li>
+<li>
+<p>错误修复了解除管理员帐户锁定无法按预期工作的情形</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="vds-设置-2">VDS 设置</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>外形规格更新—解决 VDS 设置向导中的操作按钮被截断的情况</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="vds-5-4-版本-2020-年-11-月-5-日星期四">VDS 5.4 版本： 2020 年 11 月 5 日，星期四</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>_ 组件： _ 5.4 虚拟桌面服务 _ 时间： _ 2020 年 11 月 5 日星期四晚上 10 点 - 晚上 11 点东部 _ 影响： _ 最终用户对桌面和应用程序服务的访问将保持不间断。仍然可以访问虚拟桌面服务。</p>
+</div>
+<div class="sect2">
+<h3 id="vds-2">VDS</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>在 Command Center 中为站点引入横向扩展机制—使用具有相同租户 ID 和客户端 ID 的另一个 Azure 订阅</p>
+</li>
+<li>
+<p>现在，创建具有 " 数据 " 角色的 VM 时，将作为 VDS UI 中选择的 VM 进行部署，但如果选定的 VM 不可用，则会回退到为部署指定的默认值</p>
+</li>
+<li>
+<p>工作负载计划和实时扩展的常规增强功能</p>
+</li>
+<li>
+<p>管理权限的 Apply All 复选框的错误修复</p>
+</li>
+<li>
+<p>显示在远程应用程序应用程序组中选定的应用程序时显示问题描述的错误修复</p>
+</li>
+<li>
+<p>修复了访问命令中心时部分用户看到的错误提示的错误</p>
+</li>
+<li>
+<p>对 HTML5 网关 VM 上手动安装证书的过程进行了自动化改进</p>
+</li>
+<li>
+<p>持续主动式安全措施</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="vds-设置-3">VDS 设置</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>改进了 Azure NetApp Files 流程编排</p>
+</li>
+<li>
+<p>持续增强功能，可妥善处理 Azure 部署变量</p>
+</li>
+<li>
+<p>新的 Active Directory 部署将自动启用 Active Directory 回收站功能</p>
+</li>
+<li>
+<p>改进了 Google Cloud Platform 的部署流程编排</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="vds-5-4-热修补程序-wed-2020年10月">VDS 5.4 热修补程序： Wed.2020年10月</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>_ 组件： _ 5.4 虚拟桌面服务 _ 时间： _ 2020 年 10 月 28 日星期三晚上 10 点 - 晚上 11 点东部 _ 影响： _ 最终用户对桌面和应用程序服务的访问将保持不间断。仍然可以访问虚拟桌面服务。</p>
+</div>
+<div class="sect2">
+<h3 id="vds-设置-4">VDS 设置</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>无法在部署向导中正确输入网络详细信息的情况下的错误修复</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="vds-5-4-版本-2020-年-10-月-22-日星期四">VDS 5.4 版本： 2020 年 10 月 22 日，星期四</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>_ 组件： _ 5.4 虚拟桌面服务 _ 时间： _ 2020 年 10 月 22 日星期四晚上 10 点 - 晚上 11 点东部 _ 影响： _ 最终用户对桌面和应用程序服务的访问将保持不间断。仍然可以访问虚拟桌面服务。</p>
+</div>
+<div class="sect2">
+<h3 id="vds-3">VDS</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>如果 VDS 管理员删除了 AVD 主机池，则会自动从该主机池中取消分配用户</p>
+</li>
+<li>
+<p>在 CCMGR1 中引入经过改进且重命名的自动化驱动程序— Command Center</p>
+</li>
+<li>
+<p>工作负载计划行为的错误修复用于更新位于 AWS 中的站点详细信息的错误修复</p>
+</li>
+<li>
+<p>应用了特定实时扩展设置的按需唤醒激活错误修复</p>
+</li>
+<li>
+<p>修复了在原始站点中设置不正确时创建第二个站点的错误</p>
+</li>
+<li>
+<p>DC 配置中静态 IP 详细信息的易用性改进</p>
+</li>
+<li>
+<p>将命名约定更新为管理员权限—将数据中心权限更新为部署权限</p>
+</li>
+<li>
+<p>更新以反映在单个服务器部署构建中所需的数据库条目更少</p>
+</li>
+<li>
+<p>更新为手动 AADDS 部署过程更新，以简化权限</p>
+</li>
+<li>
+<p>更改报告应返回的日期时在 VDS 中报告的错误修复</p>
+</li>
+<li>
+<p>通过配置收集创建 Windows Server 2012 R2 模板的错误修复</p>
+</li>
+<li>
+<p>各种性能改进</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="vds-设置-5">VDS 设置</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>为部署中的主域控制器和 DNS 组件提供了部署自动化增强功能</p>
+</li>
+<li>
+<p>各种更新，支持在未来版本中从可用网络列表中进行选择</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="成本估算工具-5">成本估算工具</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>改进了向 VM 添加 SQL 的处理方式</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="rest-api">REST API</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>新的 API 调用，用于确定哪些 Azure 区域有效且可用于订阅</p>
+</li>
+<li>
+<p>新的 API 调用，用于确定客户是否具有 Cloud Insights 访问权限</p>
+</li>
+<li>
+<p>新的 API 调用，用于确定客户是否已为其云工作空间环境激活 Cloud Insights</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="vds-5-4-热修补程序-2020-年-10-月-13-日星期三">VDS 5.4 热修补程序： 2020 年 10 月 13 日，星期三</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>_ 组件： _ 5.4 虚拟桌面服务 _ 时间： _ 2020 年 10 月 13 日星期三晚上 10 点至晚上 11 点东部 _ 影响： _ 最终用户对桌面和应用程序服务的访问将保持不间断。仍然可以访问虚拟桌面服务。</p>
+</div>
+<div class="sect2">
+<h3 id="成本估算工具-6">成本估算工具</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>问题描述错误修复： Azure 成本估算器中 RDS VM 应用操作系统定价不正确的情形</p>
+</li>
+<li>
+<p>错误修复了在 Azure 成本估算器和 Google 成本估算器中选择存储 PaaS 服务导致每个 VDI 用户的价格过高的情形</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="vds-5-4-版本-2020-年-10-月-8-日星期四">VDS 5.4 版本： 2020 年 10 月 8 日，星期四</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>_ 组件： _ 5.4 虚拟桌面服务 _ 时间： _ 2020 年 10 月 8 日星期四晚上 10 点 - 晚上 11 点东部 _ 影响： _ 最终用户对桌面和应用程序服务的访问将保持不间断。仍然可以访问虚拟桌面服务。</p>
+</div>
+<div class="sect2">
+<h3 id="vds-4">VDS</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>在应用工作负载计划的时段创建 VM 时可增强稳定性</p>
+</li>
+<li>
+<p>创建新应用程序服务时显示问题描述的错误修复</p>
+</li>
+<li>
+<p>动态确认适用于非 Azure 部署的 .NET 和 ThinPrint</p>
+</li>
+<li>
+<p>查看工作空间的配置状态时显示问题描述的错误修复</p>
+</li>
+<li>
+<p>修复了在 vSphere 中使用特定设置组合创建 VM 的错误</p>
+</li>
+<li>
+<p>针对一组权限下的复选框错误的错误修复</p>
+</li>
+<li>
+<p>对 DCConfig 中显示重复网关的显示问题描述进行的错误修复</p>
+</li>
+<li>
+<p>品牌更新</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="成本估算工具-7">成本估算工具</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>更新为显示每个工作负载类型的 CPU 扩展详细信息</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="vds-5-4-热修补程序-2020-年-9-月-30-日星期三">VDS 5.4 热修补程序： 2020 年 9 月 30 日，星期三</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>_ 组件： _ 5.4 虚拟桌面服务 _ 时间： _ 2020 年 9 月 30 日星期三晚上 9 点至晚上 10 点东部 _ 影响： _ 最终用户对桌面和应用程序服务的访问将保持无中断。仍然可以访问虚拟桌面服务。</p>
+</div>
+<div class="sect2">
+<h3 id="vds-5">VDS</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>问题描述的错误修复，其中一部分应用服务 VM 未正确标记为缓存 VM</p>
+</li>
+<li>
+<p>升级到底层 SMTP 配置以缓解电子邮件中继帐户配置问题</p>
+<div class="ulist">
+<ul>
+<li>
+<p>注意：由于这现在是一项控制平面服务，因此可以减少客户租户中的权限 / 组件，从而减少部署占用空间</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>错误修复，防止使用 DCConfig 的管理员重置服务帐户的密码</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="vds-设置-6">VDS 设置</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>改进了 Azure NetApp Files 部署环境变量的处理方式</p>
+</li>
+<li>
+<p>增强的部署自动化—改进了环境变量的处理方式，以确保存在所需的 PowerShell 组件</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="rest-api-2">REST API</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>引入了对 Azure 部署的 API 支持，以利用现有资源组</p>
+</li>
+<li>
+<p>引入了对具有不同域名 /NetBIOS 名称的现有 AD 部署的 API 支持</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="vds-5-4-版本-2020-年-9-月-24-日星期四">VDS 5.4 版本： 2020 年 9 月 24 日，星期四</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>_ 组件： _ 5.4 虚拟桌面服务 _ 时间： _ 2020 年 9 月 24 日星期四晚上 10 点 - 晚上 11 点东部 _ 影响： _ 最终用户对桌面和应用程序服务的访问将保持不间断。仍然可以访问虚拟桌面服务。</p>
+</div>
+<div class="sect2">
+<h3 id="vds-6">VDS</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>性能增强—现在，可以启用云工作空间的用户列表将更快地填充</p>
+</li>
+<li>
+<p>用于处理特定站点的 AVD 会话主机服务器导入的错误修复</p>
+</li>
+<li>
+<p>部署自动化增强功能—引入了一个可选设置，用于将 AD 请求定向到 CMGR1</p>
+</li>
+<li>
+<p>改进了导入服务器时对变量的处理，以确保正确安装了 CWAgent</p>
+</li>
+<li>
+<p>引入对 TestVDCTools 的其他 RBAC 控制—需要具有 CW-Infrastructure 组成员资格才能进行访问</p>
+</li>
+<li>
+<p>权限微调—为 CW-CWMGRAccess 组中的管理员授予对 VDS 设置的注册表项的访问权限</p>
+</li>
+<li>
+<p>更新个人 AVD 主机池的按需唤醒功能，以反映春季版本的更新—仅启动分配给用户的虚拟机</p>
+</li>
+<li>
+<p>更新 Azure 部署中的公司代码命名约定—这样可以防止问题描述无法从以数字开头的虚拟机还原 Azure 备份</p>
+</li>
+<li>
+<p>将部署自动化使用 SendGrid 进行 SMTP 传输的情况替换为使用 SendGrid 后端解决问题描述的全局控制平面—这样就可以减少部署占用空间，减少权限 / 组件</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="vds-设置-7">VDS 设置</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>对多服务器部署中提供的 VM 数量选择进行了更新</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="rest-api-3">REST API</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>添加 Windows 2019 以获取 /DataCenterProvisioning/operatingsystems 方法</p>
+</li>
+<li>
+<p>通过 API 方法创建管理员时自动填充 VDS 管理员的名字和姓氏</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="成本估算工具-8">成本估算工具</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>引入 Google 成本估算工具并提示您要使用哪个超大规模估算工具— Azure 或 GCP</p>
+</li>
+<li>
+<p>在 Azure 成本估算器中引入预留实例</p>
+</li>
+<li>
+<p>按区域更新了每个更新的 Azure 产品可用的服务列表</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="vds-5-4-版本-2020-年-9-月-10-日星期四">VDS 5.4 版本： 2020 年 9 月 10 日，星期四</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>_ 组件： _ 5.4 虚拟桌面服务 _ 时间： _ 2020 年 9 月 10 日星期四晚上 10 点 - 晚上 11 点东部 _ 影响： _ 最终用户对桌面和应用程序服务的访问将保持不间断。仍然可以访问虚拟桌面服务。</p>
+</div>
+<div class="sect2">
+<h3 id="虚拟桌面服务-16">虚拟桌面服务</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>改进了用于确认已安装 FSLogix 的强制实施机制</p>
+</li>
+<li>
+<p>支持为现有 AD 部署配置多服务器</p>
+</li>
+<li>
+<p>减少用于返回 Azure 模板列表的 API 调用数量</p>
+</li>
+<li>
+<p>改进了 AVD Spring Release/v2 主机池中用户的管理</p>
+</li>
+<li>
+<p>服务器资源每晚报告中的参考链接更新</p>
+</li>
+<li>
+<p>修复了更改管理密码以支持 AD 中更精简的改进权限集的问题</p>
+</li>
+<li>
+<p>修复了通过 CMGR1 上的工具使用模板创建 VM 的错误</p>
+</li>
+<li>
+<p>现在，在 VDS 中搜索时会指向 docs.netapp.com 上的内容</p>
+</li>
+<li>
+<p>在启用了 MFA 的情况下，最终用户访问 VDS 管理界面的响应时间有所缩短</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="vds-设置-8">VDS 设置</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>配置后链接现在指向此处的说明</p>
+</li>
+<li>
+<p>更新了现有 AD 部署的平台配置选项</p>
+</li>
+<li>
+<p>改进了 Google Cloud Platform 部署的自动化流程</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="vds-5-4-热修补程序-tues-2020-年-9-月-1-日">VDS 5.4 热修补程序： Tues. ， 2020 年 9 月 1 日</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>_ 组件： _ 5.4 虚拟桌面服务 _ 时间： _ 2020 年 9 月 1 日星期二晚上 10 点 -10 ： 15 东部 _ 影响： _ 最终用户对桌面和应用程序服务的访问将保持无中断。仍然可以访问虚拟桌面服务。</p>
+</div>
+<div class="sect2">
+<h3 id="vds-设置-9">VDS 设置</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>AVD 选项卡中引用链接的错误修复</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="vds-5-4-版本-2020-年-8-月-27-日星期四">VDS 5.4 版本： 2020 年 8 月 27 日，星期四</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>_ 组件： _ 5.4 虚拟桌面服务 _ 时间： _ 2020 年 8 月 27 日星期四晚上 10 点至晚上 11 点东部 _ 影响： _ 最终用户对桌面和应用程序服务的访问将保持不间断。仍然可以访问虚拟桌面服务。</p>
+</div>
+<div class="sect2">
+<h3 id="虚拟桌面服务-17">虚拟桌面服务</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>引入了使用 VDS 界面自动将 AVD 主机池从秋季版更新到春季版的功能</p>
+</li>
+<li>
+<p>简化了自动化流程，以反映最近的更新，因此需要更精简的权限集</p>
+</li>
+<li>
+<p>适用于 GCP ， AWS 和 vSphere 部署的部署自动化增强功能</p>
+</li>
+<li>
+<p>针对脚本化事件场景的错误修复，其中日期和时间信息显示为当前日期和时间</p>
+</li>
+<li>
+<p>同时部署大量 AVD 会话主机 VM 的错误修复</p>
+</li>
+<li>
+<p>支持更多的 Azure VM 类型</p>
+</li>
+<li>
+<p>支持更多的 GCP VM 类型</p>
+</li>
+<li>
+<p>改进了在部署期间对变量的处理</p>
+</li>
+<li>
+<p>vSphere 部署自动化的错误修复</p>
+</li>
+<li>
+<p>为用户禁用云工作空间时返回意外结果时的错误修复</p>
+</li>
+<li>
+<p>已启用 MFA 的第三方应用程序和 RemoteApp 应用程序的错误修复</p>
+</li>
+<li>
+<p>提高部署脱机时的服务板性能</p>
+</li>
+<li>
+<p>更新以反映 NetApp 标识 / 表述</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="vds-设置-10">VDS 设置</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>为本机 / 绿色 Active Directory 部署引入多服务器部署选项</p>
+</li>
+<li>
+<p>进一步增强了部署自动化功能</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="azure-成本估算工具">Azure 成本估算工具</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>发布 Azure Hybrid 优势功能</p>
+</li>
+<li>
+<p>在 VM 详细信息中输入自定义名称信息时显示问题描述的错误修复</p>
+</li>
+<li>
+<p>用于按特定顺序调整存储详细信息的错误修复</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="vds-5-4-热修补程序-2020-年-8-月-19-日星期三">VDS 5.4 热修补程序： 2020 年 8 月 19 日，星期三</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>_ 组件： _ 5.4 虚拟桌面服务 _ 时间： _ 2020 年 8 月 19 日星期三下午 5 ： 20 – 5 ： 25 东部 _ 影响： _ 最终用户对桌面和应用程序服务的访问将保持无中断。仍然可以访问虚拟桌面服务。</p>
+</div>
+<div class="sect2">
+<h3 id="vds-设置-11">VDS 设置</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>修复可变处理的错误，以实现灵活的自动化</p>
+</li>
+<li>
+<p>修复了单个部署情形中 DNS 处理的错误</p>
+</li>
+<li>
+<p>降低了 CW-Infrastructure 组的成员资格要求</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="vds-5-4-热修补程序-tues-2020-年-8-月-18-日">VDS 5.4 热修补程序： Tues. ， 2020 年 8 月 18 日</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>_ 组件： _ 5.4 虚拟桌面服务 _ 时间： _ 2020 年 8 月 18 日星期二晚上 10 点至晚上 10 ： 15 东部 _ 影响： _ 最终用户对桌面和应用程序服务的访问将保持无中断。仍然可以访问虚拟桌面服务。</p>
+</div>
+<div class="sect2">
+<h3 id="azure-成本估算工具-2">Azure 成本估算工具</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>修复了在某些虚拟机类型上添加其他驱动器的错误</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="vds-5-4-版本-2020-年-8-月-13-日星期四">VDS 5.4 版本： 2020 年 8 月 13 日，星期四</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>_ 组件： _ 5.4 虚拟桌面服务 _ 时间： _ 2020 年 8 月 13 日星期四晚上 10 点至晚上 11 点东部 _ 影响： _ 最终用户对桌面和应用程序服务的访问将保持不间断。仍然可以访问虚拟桌面服务。</p>
+</div>
+<div class="sect2">
+<h3 id="虚拟桌面服务-18">虚拟桌面服务</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>为 AVD 模块中的 AVD 会话主机添加 Connect to Server 选项</p>
+</li>
+<li>
+<p>针对无法创建其他管理员帐户的部分情形的错误修复</p>
+</li>
+<li>
+<p>更新资源默认值的命名约定—将高级用户更改为 VDI 用户</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="vds-设置-12">VDS 设置</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>自动验证预先批准的网络设置，进一步简化部署工作流</p>
+</li>
+<li>
+<p>减少了现有 AD 部署所需的权限集</p>
+</li>
+<li>
+<p>允许域名长度超过 15 个字符</p>
+</li>
+<li>
+<p>对所选内容的唯一组合进行文本布局修复</p>
+</li>
+<li>
+<p>如果 SendGrid 组件出现临时错误，则允许 Azure 部署继续进行</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="vds-工具和服务">VDS 工具和服务</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>后台主动式安全增强功能</p>
+</li>
+<li>
+<p>其他实时扩展性能增强功能</p>
+</li>
+<li>
+<p>增强了对数百个站点的超大规模部署的支持</p>
+</li>
+<li>
+<p>错误修复了在一个命令中部署多个 VM 只能部分成功的情形</p>
+</li>
+<li>
+<p>改进了将无效路径分配为数据，主目录和配置文件数据位置的目标时的消息提示</p>
+</li>
+<li>
+<p>错误修复了通过 Azure Backup 创建虚拟机的情形无法按预期运行</p>
+</li>
+<li>
+<p>在 GCP 和 AWS 部署过程中添加了其他部署验证步骤</p>
+</li>
+<li>
+<p>用于管理外部 DNS 条目的其他选项</p>
+</li>
+<li>
+<p>支持为 VM ， VNET ， Azure NetApp Files 等服务，日志分析工作空间使用单独的资源组</p>
+</li>
+<li>
+<p>配置收集 / 映像创建过程的后端改进较小</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="azure-成本估算工具-3">Azure 成本估算工具</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>添加临时操作系统磁盘支持</p>
+</li>
+<li>
+<p>改进了存储选择的工具提示</p>
+</li>
+<li>
+<p>禁止用户输入负用户数的情形</p>
+</li>
+<li>
+<p>使用 AVD 和文件服务器选项时显示文件服务器</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="vds-5-4-热修补程序-2020-年-8-月-3-日星期一">VDS 5.4 热修补程序： 2020 年 8 月 3 日，星期一</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>_ 组件： _ 5.4 虚拟桌面服务 _ 时间： _ 2020 年 8 月 3 日星期一晚上 11 点至晚上 11 ： 05 东部 _ 影响： _ 最终用户对桌面和应用程序服务的访问将保持无中断。仍然可以访问虚拟桌面服务。</p>
+</div>
+<div class="sect2">
+<h3 id="vds-工具和服务-2">VDS 工具和服务</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>改进了部署自动化期间对变量的处理</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="vds-5-4-版本-2020-年-7-月-30-日星期四">VDS 5.4 版本： 2020 年 7 月 30 日，星期四</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>_ 组件： _ 5.4 虚拟桌面服务 _ 时间： _ 2020 年 7 月 30 日星期四晚上 10 点至晚上 11 点东部 _ 影响： _ 最终用户对桌面和应用程序服务的访问将保持不间断。仍然可以访问虚拟桌面服务。</p>
+</div>
+<div class="sect2">
+<h3 id="虚拟桌面服务-19">虚拟桌面服务</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>后台主动式安全增强功能</p>
+</li>
+<li>
+<p>改进后台性能监控</p>
+</li>
+<li>
+<p>错误修复了创建新 VDS 管理员时出现误报警报的情形</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="vds-设置-13">VDS 设置</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>在 Azure 中部署过程中应用于管理帐户的权限集减少</p>
+</li>
+<li>
+<p>修复了部分试用帐户注册的错误</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="vds-工具和服务-3">VDS 工具和服务</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>改进了 FSLogix 安装过程的处理方式</p>
+</li>
+<li>
+<p>后台主动式安全增强功能</p>
+</li>
+<li>
+<p>改进了为并发使用收集数据点的功能</p>
+</li>
+<li>
+<p>改进了对 HTML5 连接证书的处理</p>
+</li>
+<li>
+<p>调整 DNS 部分布局以提高清晰度</p>
+</li>
+<li>
+<p>调整 Solarwinds 监控工作流</p>
+</li>
+<li>
+<p>更新了静态 IP 地址的处理方式</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="azure-成本估算工具-4">Azure 成本估算工具</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>询问客户的数据是否需要高可用性，如果需要，请利用 Azure NetApp Files 等 PaaS 服务来定义是否可以节省成本和人力</p>
+</li>
+<li>
+<p>将 AVD 和 RDS 工作负载的默认存储类型更新并标准化为高级 SSD</p>
+</li>
+<li>
+<p>幕后性能增强功能 * = VDS 5.4 热修补程序： 2020 年 7 月 23 日，星期四</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>_ 组件： _ 5.4 虚拟桌面服务 _ 时间： _ 2020 年 7 月 23 日星期四晚上 10 点至晚上 11 点东部 _ 影响： _ 最终用户对桌面和应用程序服务的访问将保持不间断。仍然可以访问虚拟桌面服务。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="vds-设置-14">VDS 设置</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Azure 部署中 DNS 设置的自动化增强功能</p>
+</li>
+<li>
+<p>常规部署自动化检查和改进</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="vds-5-4-版本-2020-年-7-月-16-日星期四">VDS 5.4 版本： 2020 年 7 月 16 日，星期四</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>_ 组件： _ 5.4 虚拟桌面服务 _ 时间： _ 2020 年 7 月 16 日星期四晚上 10 点至晚上 11 点东部 _ 影响： _ 最终用户对桌面和应用程序服务的访问将保持不间断。仍然可以访问虚拟桌面服务。</p>
+</div>
+<div class="sect2">
+<h3 id="虚拟桌面服务-20">虚拟桌面服务</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>后台主动式安全增强功能</p>
+</li>
+<li>
+<p>如果仅存在一个 AVD 工作空间，则可以自动选择 AVD 工作空间，从而简化 AVD 应用程序组配置过程</p>
+</li>
+<li>
+<p>通过在用户和组选项卡下分页组来提高 Workspace 模块的性能</p>
+</li>
+<li>
+<p>如果 VDS 管理员在部署选项卡中选择 Azure ，请指示用户登录到 VDS 设置</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="vds-设置-15">VDS 设置</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>后台主动式安全增强功能</p>
+</li>
+<li>
+<p>改进了布局以简化部署工作流</p>
+</li>
+<li>
+<p>增强了使用现有 Active Directory 结构进行部署的说明</p>
+</li>
+<li>
+<p>部署自动化的常规增强功能和错误修复</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="vds-工具和服务-4">VDS 工具和服务</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>针对单个服务器部署中 TestVDCTools 性能的错误修复</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="rest-api-4">REST API</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Azure 部署中 API 使用的可用性增强功能—即使未在 Azure AD 中为用户定义名字，也会返回收集的用户名</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="html5-登录体验">HTML5 登录体验</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>利用 AVD Spring Release （ AVD v2 ）的会话主机的按需唤醒错误修复</p>
+</li>
+<li>
+<p>更新以反映 NetApp 品牌 / 表述</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="azure-成本估算工具-5">Azure 成本估算工具</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>按区域动态显示定价</p>
+</li>
+<li>
+<p>显示区域是否提供相关服务选择以确保用户了解所需功能是否在该区域可用。这些服务包括：</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Azure NetApp Files</p>
+</li>
+<li>
+<p>Azure Active Directory 域服务</p>
+</li>
+<li>
+<p>NV 和 NV v4 （启用 GPU ）虚拟机</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="vds-5-4-版本-fr-2020-年-6-月-26-日">VDS 5.4 版本： Fr. ， 2020 年 6 月 26 日</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>_ 组件： _ 5.4 虚拟桌面服务 _ 时间： _ 2020 年 6 月 26 日星期四晚上 10 点至晚上 11 点东部 _ 影响： _ 最终用户对桌面和应用程序服务的访问将保持不间断。仍然可以访问虚拟桌面服务。</p>
+</div>
+<div class="sect2">
+<h3 id="虚拟桌面服务-21">虚拟桌面服务</h3>
+<div class="paragraph">
+<p>自 2020 年 7 月 17 日星期五起， v5.4 的版本可作为生产版本提供支持。</p>
+</div>
+</div>
+</div>
+</div>
+
+    </article>
+    <!-- Page Container -->
+  </div>
+
+  
+  <!-- Start Page Toolbar -->
+  <div class="page-nav-toolbar">
+    <div id="version-dropdown"></div>
+    <div class="page-nav-contribute"  >
+      <a target="_blank" href="https://github.com/NetAppDocs/virtual-desktop-service/issues/new?body=Page%3A%20[Virtual Desktop Service – v5.4 发行说明](https://docs.netapp.com/zh-cn/virtual-desktop-service/Reference.Release_Notes.vds_v5.4_release_notes.html)" class="page-nav-contribute-link" role="button"><img src="/zh-cn/virtual-desktop-service/images/discuss-sm.svg" class="github-icon" />请求文档变更</a>
+      <a target="_blank" href="https://github.com/NetAppDocs/virtual-desktop-service/blob/main/sub.Reference.Release_Notes.vds_v5.4_release_notes.adoc" class="page-nav-contribute-link" role="button"><img src="/zh-cn/virtual-desktop-service/images/edit-sm.svg" class="github-icon" />在 GitHub 上编辑</a>
+      <a target="_blank" href="https://docs.netapp.com/us-en/contribute/" class="page-nav-contribute-link"  ><img src="/zh-cn/virtual-desktop-service/images/article-sm.svg" class="github-icon" />提供者指南</a>
+    </div>
+    <div class="page-nav-container">
+      <nav class="page-nav-fixed">
+        <div class="page-nav-title">在此页面上</div>
+        <div class="page-nav-links">
+          <ul class="page-nav-inner" id="page-menu"></ul>
+        </div>
+      </nav>
+    </div>
+  </div>
+  
+  <div style="clear: both"></div><!-- Main needs to have height -->
+</div>
+
+        </main>
+
+        <footer class="n-footer">
+  <div class="n-footer__bottom">
+    <div class="n-container">
+      <div class="n-footer__bottom-left">
+
+        <div class="n-footer__copyright">
+          <ul class="n-footer__copyright-list">
+            <li class="n-footer__copyright-link">
+            <a href="https://www.netapp.com/us/legal/copyright.aspx">© 2022 NetApp, Inc.</a>
+            </li>
+
+</ul>
+</div>
+<div class="n-footer__social-links">
+<ul class="n-footer__social-link-list">
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-blog" href="https://blog.netapp.com" target="_blank" title="blog" alt="blog">
+<span class="n-footer__social-link-text">blog</span>
+<svg class="n-icon-blog n-footer__social-link-icon" aria-labelledby="title">
+  <title>blog@</title>
+  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/zh-cn/virtual-desktop-service/common/svg/sprite.svg#blog"></use>
+</svg>
+
+</a>
+</li>
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-community" href="https://community.netapp.com/" target="_blank" title="community" alt="community">
+<span class="n-footer__social-link-text">community</span>
+<svg class="n-icon-community n-footer__social-link-icon" aria-labelledby="title">
+<title>community@</title>
+<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/zh-cn/virtual-desktop-service/common/svg/sprite.svg#comments"></use>
+</svg>
+
+</a>
+</li>
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-twitter" href="https://twitter.com/netapp" target="_blank" title="twitter" alt="twitter">
+<span class="n-footer__social-link-text">twitter</span>
+<svg class="n-icon-twitter n-footer__social-link-icon" aria-labelledby="title">
+<title>twitter@</title>
+<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/zh-cn/virtual-desktop-service/common/svg/sprite.svg#twitter"></use>
+</svg>
+
+</a>
+</li>
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-facebook" href="https://www.facebook.com/NetApp" target="_blank" title="facebook" alt="facebook">
+<span class="n-footer__social-link-text">facebook</span>
+<svg class="n-icon-facebook n-footer__social-link-icon" aria-labelledby="title">
+<title>facebook@</title>
+<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/zh-cn/virtual-desktop-service/common/svg/sprite.svg#facebook"></use>
+</svg>
+
+</a>
+</li>
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-linkedin" href="https://www.linkedin.com/company/netapp" target="_blank" title="linkedin" alt="linkedin">
+<span class="n-footer__social-link-text">linkedin</span>
+<svg class="n-icon-linkedin n-footer__social-link-icon" aria-labelledby="title">
+<title>linkedin@</title>
+<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/zh-cn/virtual-desktop-service/common/svg/sprite.svg#linkedin"></use>
+</svg>
+
+</a>
+</li>
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-youtube" href="https://www.youtube.com/user/NetAppTV" target="_blank" title="youtube" alt="youtube">
+<span class="n-footer__social-link-text">youtube</span>
+<svg class="n-icon-youtube n-footer__social-link-icon" aria-labelledby="title">
+<title>youtube@</title>
+<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/zh-cn/virtual-desktop-service/common/svg/sprite.svg#youtube"></use>
+</svg>
+
+</a>
+</li>
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-slideshare" href="https://www.slideshare.net/NetApp" target="_blank" title="slideshare" alt="slideshare">
+<span class="n-footer__social-link-text">slideshare</span>
+<svg class="n-icon-slideshare n-footer__social-link-icon" aria-labelledby="title">
+<title>slideshare@</title>
+<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/zh-cn/virtual-desktop-service/common/svg/sprite.svg#slideshare"></use>
+</svg>
+
+</a>
+</li>
+</ul>
+</div>
+
+</div>
+<div class="n-footer__bottom-right">
+  <p class="n-footer__fine-print">想就我们的网站提供反馈?<a target="_self" href="javascript:netapp_mailto()" class="n-footer__copyright">请告诉我们</a>
+  <a href="https://docs.netapp.com/zh-cn/announcements/" class="n-footer__copyright">通知</a>
+  </p>
+</div>
+</div>
+</div>
+</footer>
+
+      </div>
+
+      <!-- Elasticsearch JS -->
+      <script type="text/javascript" src='/zh-cn/virtual-desktop-service/js/bundle.js'></script>
+
+      <!-- Syntax Highlighting -->
+      <script type="text/javascript" src='/zh-cn/virtual-desktop-service/js/prism.js'></script>
+      <script type="text/javascript" src='/zh-cn/virtual-desktop-service/js/prism-curl.js'></script>
+    </div>
+    <script>
+      document.body.offsetWidth=1903;
+      cookieLaw = {}
+      cookieLaw.euCountry = "US";
+      cookieLaw.invoke = function(){return false;}
+    </script>
+    <script src='/zh-cn/virtual-desktop-service/js/www-ntap.js'></script>
+    <script src='/zh-cn/virtual-desktop-service/js/tabbed-blocks.js'></script>
+  </body>
+
+  
+</html>

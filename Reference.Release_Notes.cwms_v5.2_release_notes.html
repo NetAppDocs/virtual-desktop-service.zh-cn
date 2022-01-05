@@ -1,0 +1,2100 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head class="at-element-marker">
+  <title>Cloud Workspace Management Suite —版本 5.2</title>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge,chrome=1">
+  <meta http-equiv="language" content="en">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta property="og:title" content="Cloud Workspace Management Suite —版本 5.2" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://docs.netapp.com/zh-cn/virtual-desktop-service/Reference.Release_Notes.cwms_v5.2_release_notes.html" />
+	<meta property="og:description" content="NetApp VDS 发行说明 v5.2" />
+  <meta property="og:image" content="https://docs.netapp.com/zh-cn/virtual-desktop-service/images/logo-tophat-social.png" />
+  <meta property="og:image:alt" content="NetApp Logo" />
+  <meta name="format-detection" content="telephone=no">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="encoding" content="utf-8">
+  <meta http-equiv="nss-type" content="Product Documentation"/>
+  <meta http-equiv="nss-subtype" content="User Guide"/>
+  
+  <meta name="description" content="NetApp VDS 发行说明 v5.2">
+  <meta name="keywords" content=" ">
+  
+  
+
+  <!-- Icons -->
+  <link rel="icon" href="/zh-cn/virtual-desktop-service/images/favicon.ico" type="image/x-icon">
+
+  <!-- RSS Feed -->
+  
+
+  <!-- CSS Definitions: NetApp CSS should be defined after generic css -->
+
+  <!-- Elastic Search -->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/searchkit/0.10.0/theme.css">
+
+  <!-- Controls AsciiDoctor Admonition Blocks -->
+  <link rel="stylesheet" type="text/css" href="/zh-cn/virtual-desktop-service/css/font-awesome.min.css">
+
+  <!-- Controls the shadow effect for search dropdown menu -->
+  <link rel="stylesheet" href="/zh-cn/virtual-desktop-service/css/boxshadowproperties.css">
+
+  <!-- NetApp CSS controls the technical content -->
+  <link rel="stylesheet" type="text/css" href="/zh-cn/virtual-desktop-service/css/netapp.css">
+
+  <!-- WWW CSS Content -->
+  <link rel="stylesheet" type="text/css" href="/zh-cn/virtual-desktop-service/css/www-luci-dotcom.min.css">
+  <link rel="stylesheet" type="text/css" href="/zh-cn/virtual-desktop-service/css/www-netapp-dotcom.css">
+  <link rel="stylesheet" href="/zh-cn/virtual-desktop-service/css/www-netapp-library-critical.min.css" media="all" >
+  <link rel="stylesheet" href="/zh-cn/virtual-desktop-service/css/www-netapp-library-non-critical.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="stylesheet" href="/zh-cn/virtual-desktop-service/css/www-netapp-library-global-header-footer.min.css">
+
+  <!-- NetApp IE Customizations -->
+  <link rel="stylesheet" href='/zh-cn/virtual-desktop-service/css/na-utility.css' type='text/css'>
+  <link rel="stylesheet" href='/zh-cn/virtual-desktop-service/css/na-sidebar.css' type='text/css'>
+  <link rel='stylesheet' href='/zh-cn/virtual-desktop-service/css/clouddocs.css' type='text/css'>
+  <link rel='stylesheet' href='/zh-cn/virtual-desktop-service/css/na-pagenav.css' type='text/css'>
+
+  
+  <link rel="stylesheet" href="/zh-cn/virtual-desktop-service/css/landing-page.css" type="text/css">
+  <link rel="stylesheet" href="/zh-cn/virtual-desktop-service/css/tabbed-blocks.css" type="text/css">
+  <link rel="stylesheet" href='/zh-cn/virtual-desktop-service/css/product-family.css' type="text/css">
+  
+
+  
+  <link rel='stylesheet' href='/zh-cn/virtual-desktop-service/css/na-feature.css' type='text/css'>
+  
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+  <!-- Used to import Promise for IE. Required for SearchKit -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.5/bluebird.min.js"></script>
+  
+    <script src='/zh-cn/virtual-desktop-service/js/na-search.js'></script>
+  
+
+  
+  <script src='/zh-cn/virtual-desktop-service/js/na-pagenav.js'></script>
+  
+
+  <link rel='stylesheet' href='/zh-cn/virtual-desktop-service/css/prism.css' type='text/css'>
+  <link rel='stylesheet' href='/zh-cn/virtual-desktop-service/css/prism-netapp.css' type='text/css'>
+
+
+  <script src='/zh-cn/virtual-desktop-service/js/na-utility.js'></script>
+  <script src='/zh-cn/virtual-desktop-service/js/clouddocs.js'></script>
+  <script>
+  if (document.location.hostname === "docs.netapp.com") {
+    var head = document.getElementsByTagName('head')[0];
+    var adobe = document.createElement("script");
+    adobe.type = "text/javascript";
+    adobe.src = "//assets.adobedtm.com/60287eadf1ee/c284da483c83/launch-e9ff3acac59f.min.js";
+    head.appendChild(adobe);
+  }
+  </script>
+  <script src='/zh-cn/virtual-desktop-service/js/jquery.navgoco.min.js'></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <script src='/zh-cn/virtual-desktop-service/js/toc.js'></script>
+  <script src='/zh-cn/virtual-desktop-service/js/customscripts.js'></script>
+
+  <script>
+      $(document).ready(function() {
+          
+          var collapseOnInit = true;
+          
+
+          var navSettings = {
+              "caretHtml": '',
+              "accordion": collapseOnInit,
+              "openClass": 'active', // open
+              "save": false, // leave false or nav highlighting doesn't work right
+              "cookie": {
+                  "name": 'navgoco',
+                  "expires": false,
+                  "path": '/'
+              },
+              "slide": {
+                  "duration": 400,
+                  "easing": 'swing'
+              }
+          };
+
+          // Initialize navgoco with default options
+          $("#mysidebar").navgoco(navSettings);
+          
+
+          $("#collapseAll").click(function(e) {
+              e.preventDefault();
+              $("#mysidebar").navgoco('toggle', false);
+          });
+
+          $("#expandAll").click(function(e) {
+              e.preventDefault();
+              $("#mysidebar").navgoco('toggle', true);
+          });
+
+      });
+
+  </script>
+  <script>
+      $(document).ready(function() {
+          $("#tg-sb-link").click(function() {
+              $("#tg-sb-sidebar").toggle();
+              $("#tg-sb-content").toggleClass('col-md-9');
+              $("#tg-sb-content").toggleClass('col-md-12');
+              $("#tg-sb-icon").toggleClass('fa-toggle-on');
+              $("#tg-sb-icon").toggleClass('fa-toggle-off');
+          });
+      });
+  </script><script async src="https://www.googletagmanager.com/gtag/js?id=UA-81697994-3"></script>
+  <script>
+  if (document.location.hostname === "docs.netapp.com") {
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-81697994-3');
+  }
+  </script>
+  <script src='/zh-cn/virtual-desktop-service/js/version-dropdown.js'></script>
+  <script src='/zh-cn/virtual-desktop-service/js/product-family.js'></script>
+  <script src='/zh-cn/virtual-desktop-service/js/FileSaver.min.js'></script>
+  <script src='/zh-cn/virtual-desktop-service/js/jszip-utils.min.js'></script>
+  <script src='/zh-cn/virtual-desktop-service/js/jszip.min.js'></script>
+  <script src='/zh-cn/virtual-desktop-service/js/pdf-ux.js'></script>
+</head>
+
+
+  <body class role="document">
+    <div id="page" class="n-off-canvas-menu">
+      <div class="n-off-canvas-menu__menu"><!--TODO: Add offcanvas code --></div>
+      <div class="n-off-canvas-menu__content-wrap">
+        <header class="site-header" id="banner">
+  <!-- Start top_hat -->
+  <div class="n-top-hat">
+    <div class="n-container">
+      <div class="n-top-hat__cross-property-nav">
+        <ul class="n-top-hat__list">
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/products-a-z/" class="n-top-hat__link">产品和解决方案</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/support-and-training/netapp-university/" class="n-top-hat__link">支持和培训</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://cloud.netapp.com" class="n-top-hat__link">云中心</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://community.netapp.com/" class="n-top-hat__link">社区</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://blog.netapp.com/" class="n-top-hat__link">日志</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://customers.netapp.com/en/" class="n-top-hat__link">客户案例</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/us/contact-us/index.aspx" target="_self" class="n-top-hat__link" data-ntap-ui="contact-us">联系人</a>
+          </li>
+        </ul>
+      </div>
+      <div class="n-top-hat__utils">
+        <ul class="n-top-hat__list">
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/us/contact-us/index.aspx" target="_self" class="n-top-hat__link" data-ntap-ui="contact-us">联系人</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!-- End top_hat -->
+
+  <!-- Start property bar -->
+  <style>
+    .n-property-navigation-bar__menus--desktop-experience .n-menu--mega__default-content__heading span {
+    color: #34B0FF;
+    }
+  </style>
+  <div class="n-property-bar " data-ntap-ui="sticky-nav">
+    <div class="n-property-bar__inner-wrap">
+      <div class="n-property-bar__menu-toggle">
+        <a href="#" class="n-property-bar__menu-toggle-link">
+          <span class="n-property-bar__menu-toggle-text">Menu</span>
+          <svg class="n-icon-bars n-property-bar__menu-toggle-icon" aria-labelledby="title">
+            <title>bars</title>
+            <use xlink:href="/zh-cn/virtual-desktop-service/common/svg/sprite.svg#bars"></use>
+          </svg>
+        </a>
+      </div>
+      <div class="n-property-bar__property-mark ">
+        <a href="https://www.netapp.com" class="n-property-bar__property-link">
+          <div class="n-property-bar__logo">
+            <svg class="n-icon-netapp-mark n-icon-netapp-mark n-property-bar__netapp-mark-icon" aria-labelledby="title">
+              <title>netapp-mark</title>
+              <use xlink:href="/zh-cn/virtual-desktop-service/common/svg/sprite.svg#netapp-mark"></use>
+            </svg>
+            <svg class="n-icon-netapp-logo n-property-bar__logo-svg" aria-labelledby="title">
+              <title>netapp-logo</title>
+              <use xlink:href="/zh-cn/virtual-desktop-service/common/svg/sprite.svg#netapp-logo"></use>
+            </svg>
+          </div>
+        </a>
+      </div>
+
+      
+      <div class="search-property-bar">
+        <div id="search-demo-container" class="searchbox n-property-bar__search">
+          <div id="react-search" 
+          data-search-html="/zh-cn/virtual-desktop-service/search.html"
+          data-type="widget" 
+          data-placeholder="搜索文档" 
+          data-no-results-found="未找到与 {query} 匹配的结果。" 
+          data-did-you-mean="搜索 {suggestion}。" 
+          data-no-results-found-did-you-mean="未找到与 {query} 匹配的结果。您是否要搜索 {suggestion}?" 
+          data-results-found="找到 {hitCount} 个结果"  
+          data-sk-es-pf-indexes=""></div>
+          <button class="n-property-bar__search-toggle-button" type="button">
+            <svg class="n-icon-search n-property-bar__search-toggle-button-icon" aria-labelledby="title">
+              <title>search</title>
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/zh-cn/virtual-desktop-service/common/svg/sprite.svg#search"></use>
+            </svg>
+          </button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  <div class="n-property-bar__toolbar">
+    <!-- Start Language Selector --><div id="ie-i18n" class="n-property-bar__lang-selector">
+      <div id="ie-i18n-menu">
+      <span class="ie-i18n-lang">简体中文</span>
+        <button class="ie-i18n-icon-container" type="button">
+          <svg class="n-globe__icon" aria-labelledby="title">
+            <title>globe</title>
+            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/zh-cn/virtual-desktop-service/common/svg/sprite.svg#globe"></use>
+          </svg>
+        </button>
+      </div>
+      <div id="n-property-navigation-bar__menu--language-selector" class="ie-i18n-results-container n-menu n-menu--v3 n-menu--is-active" style="display: none;">
+        <div class="n-language-selector-menu">
+          <ul class="n-menu__list">
+            <li class="n-menu__list-column">
+              <ul class="n-menu__list"><li class="n-menu__list-item n-menu__list-item--level-1">
+                  <a href="https://docs.netapp.com/zh-cn/virtual-desktop-service/Reference.Release_Notes.cwms_v5.2_release_notes.html" class="n-menu__header-text"><span translate="no" class="notranslate">简体中文</span></a>
+                </li><li class="n-menu__list-item n-menu__list-item--level-1">
+                  <a href="https://docs.netapp.com/us-en/virtual-desktop-service/Reference.Release_Notes.cwms_v5.2_release_notes.html" class="n-menu__header-text"><span translate="no" class="notranslate">English</span></a>
+                </li><li class="n-menu__list-item n-menu__list-item--level-1">
+                  <a href="https://docs.netapp.com/ja-jp/virtual-desktop-service/Reference.Release_Notes.cwms_v5.2_release_notes.html" class="n-menu__header-text"><span translate="no" class="notranslate">日本語</span></a>
+                </li></ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div><!-- End Language Selector -->
+
+    <div class="n-property-bar__cta"></div>
+  </div>
+  <script>
+    $(function(){
+        var currentLocalization = $('html').attr('lang');
+
+        var localizationsDictionary = {
+            "en-CA" : "https://www.netapp.com/search/index.aspx?for_cr=canada&",
+            "en-IN" : "https://www.netapp.com/search/index.aspx?for_cr=india&",
+            "nl-NL" : "https://www.netapp.com/search/index.aspx?for_cr=netherlands&",
+            "ru-RU" : "https://www.netapp.com/search/index.aspx?for_cr=russia&",
+            "sv-SE" : "https://www.netapp.com/search/index.aspx?for_cr=sweden&",
+            "it-IT" : "https://www.netapp.com/search/index.aspx?for_cr=italy&",
+            "he-IL" : "https://www.netapp.com/search/index.aspx?for_cr=israel&",
+            "ko-KR" : "https://www.netapp.com/search/index.aspx?for_cr=korea&",
+            "zh-TW" : "https://www.netapp.com/search/index.aspx?for_cr=taiwan&",
+            "en-GB" : "https://www.netapp.com/search/index.aspx?for_cr=unitedkingdom&",
+            "en-SG" : "https://www.netapp.com/search/index.aspx?for_cr=asean&",
+            "en-AU" : "https://www.netapp.com/search/index.aspx?for_cr=australia&",
+            "pt-BR" : "https://www.netapp.com/search/index.aspx?for_cr=brasil&",
+            "de-CH" : "https://www.netapp.com/search/index.aspx?for_cr=switzerland&",
+            "es-MX" : "https://www.netapp.com/search/index.aspx?for_cr=mexico&"
+        };
+
+        if($('html').hasClass('ntap-whitelisted') && localizationsDictionary.hasOwnProperty(currentLocalization)) {
+            $('.n-property-bar__property-link').attr('href', '/');
+        }
+    });
+  </script>
+  <!-- End property bar -->
+</header>
+
+
+        <main id="n-main-content" class="n-main-content">
+          <!-- Start Documentation Content -->
+<div class="ie-main">
+  <!-- Sidebar Column -->
+  
+  <div class="col-md-3" >
+      <div class="n-pdf-header">
+  <a id="toggleButtonPdf" class="n-pdf-button" type="button">
+    <img src="/zh-cn/virtual-desktop-service/images/pdf.png" width="16" height="16"/>可用的 PDF<span>
+    </span>
+  </a>
+</div>
+<div class="n-pdf-body-container">
+  <ul id="toggleContainerPdf" class="n-pdf-body" style="display:none;"><li class="pdf-ux-container">
+        <a target="_blank" href="/zh-cn/virtual-desktop-service/pdfs/fullsite-sidebar/虚拟桌面服务文档.pdf" >
+          <img src="/zh-cn/virtual-desktop-service/images/pdf.png" width="16" height="16"/>此文档站点的 PDF</a>
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/zh-cn/virtual-desktop-service/pdfs/sidebar/使用_VDS_部署.pdf" 
+            
+          >
+            <img src="/zh-cn/virtual-desktop-service/images/pdf.png" width="16" height="16"/>
+            使用 VDS 部署
+          </a>
+          
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/zh-cn/virtual-desktop-service/pdfs/sidebar/Azure_酒店.pdf" 
+            
+          >
+            <img src="/zh-cn/virtual-desktop-service/images/pdf.png" width="16" height="16"/>
+            Azure 酒店
+          </a>
+          
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/zh-cn/virtual-desktop-service/pdfs/sidebar/Azure_虚拟桌面.pdf" 
+            
+          >
+            <img src="/zh-cn/virtual-desktop-service/images/pdf.png" width="16" height="16"/>
+            Azure 虚拟桌面
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/zh-cn/virtual-desktop-service/pdfs/sidebar/Google.pdf" 
+            
+          >
+            <img src="/zh-cn/virtual-desktop-service/images/pdf.png" width="16" height="16"/>
+            Google
+          </a>
+          
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/zh-cn/virtual-desktop-service/pdfs/sidebar/架构.pdf" 
+            
+          >
+            <img src="/zh-cn/virtual-desktop-service/images/pdf.png" width="16" height="16"/>
+            架构
+          </a>
+          
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/zh-cn/virtual-desktop-service/pdfs/sidebar/更改数据层.pdf" 
+            
+          >
+            <img src="/zh-cn/virtual-desktop-service/images/pdf.png" width="16" height="16"/>
+            更改数据层
+          </a>
+          
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/zh-cn/virtual-desktop-service/pdfs/sidebar/管理.pdf" 
+            
+          >
+            <img src="/zh-cn/virtual-desktop-service/images/pdf.png" width="16" height="16"/>
+            管理
+          </a>
+          
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/zh-cn/virtual-desktop-service/pdfs/sidebar/部署.pdf" 
+            
+          >
+            <img src="/zh-cn/virtual-desktop-service/images/pdf.png" width="16" height="16"/>
+            部署
+          </a>
+          
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/zh-cn/virtual-desktop-service/pdfs/sidebar/应用程序.pdf" 
+            
+          >
+            <img src="/zh-cn/virtual-desktop-service/images/pdf.png" width="16" height="16"/>
+            应用程序
+          </a>
+          
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/zh-cn/virtual-desktop-service/pdfs/sidebar/脚本化事件.pdf" 
+            
+          >
+            <img src="/zh-cn/virtual-desktop-service/images/pdf.png" width="16" height="16"/>
+            脚本化事件
+          </a>
+          
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/zh-cn/virtual-desktop-service/pdfs/sidebar/命令中心.pdf" 
+            
+          >
+            <img src="/zh-cn/virtual-desktop-service/images/pdf.png" width="16" height="16"/>
+            命令中心
+          </a>
+          
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/zh-cn/virtual-desktop-service/pdfs/sidebar/操作.pdf" 
+            
+          >
+            <img src="/zh-cn/virtual-desktop-service/images/pdf.png" width="16" height="16"/>
+            操作
+          </a>
+          
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/zh-cn/virtual-desktop-service/pdfs/sidebar/用户管理.pdf" 
+            
+          >
+            <img src="/zh-cn/virtual-desktop-service/images/pdf.png" width="16" height="16"/>
+            用户管理
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/zh-cn/virtual-desktop-service/pdfs/sidebar/系统管理.pdf" 
+            
+          >
+            <img src="/zh-cn/virtual-desktop-service/images/pdf.png" width="16" height="16"/>
+            系统管理
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/zh-cn/virtual-desktop-service/pdfs/sidebar/故障排除.pdf" 
+            
+          >
+            <img src="/zh-cn/virtual-desktop-service/images/pdf.png" width="16" height="16"/>
+            故障排除
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/zh-cn/virtual-desktop-service/pdfs/sidebar/参考.pdf" 
+            
+          >
+            <img src="/zh-cn/virtual-desktop-service/images/pdf.png" width="16" height="16"/>
+            参考
+          </a>
+          
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/zh-cn/virtual-desktop-service/pdfs/sidebar/发行说明.pdf" 
+            
+          >
+            <img src="/zh-cn/virtual-desktop-service/images/pdf.png" width="16" height="16"/>
+            发行说明
+          </a>
+          
+
+
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/zh-cn/virtual-desktop-service/pdfs/sidebar/先前版本.pdf" 
+            
+          >
+            <img src="/zh-cn/virtual-desktop-service/images/pdf.png" width="16" height="16"/>
+            先前版本
+          </a>
+          
+
+
+    <ul class="subfolders" style="display:none;"><li class="active pdf-hide">
+  <a target="_blank" href="/zh-cn/virtual-desktop-service/pdfs/pages/Reference.Release_Notes.cwms_v5.2_release_notes.pdf" >
+    <img src="/zh-cn/virtual-desktop-service/images/pdf.png" width="16" height="16"/>
+    PDF of this page
+  </a>
+</li>
+
+</ul>
+  
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/zh-cn/virtual-desktop-service/pdfs/sidebar/脚本库文档.pdf" 
+            
+          >
+            <img src="/zh-cn/virtual-desktop-service/images/pdf.png" width="16" height="16"/>
+            脚本库文档
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/zh-cn/virtual-desktop-service/pdfs/sidebar/高级.pdf" 
+            
+          >
+            <img src="/zh-cn/virtual-desktop-service/images/pdf.png" width="16" height="16"/>
+            高级
+          </a>
+          
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/zh-cn/virtual-desktop-service/pdfs/sidebar/NetApp_VDS_v5_4_视频.pdf" 
+            
+          >
+            <img src="/zh-cn/virtual-desktop-service/images/pdf.png" width="16" height="16"/>
+            NetApp VDS v5.4 视频
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+</li></ul>
+  <div class="zip-pdf-link-container" style="display: none;">   
+    <a href="#" id="zipPdf">
+      <img src="/zh-cn/virtual-desktop-service/images/pdf-zip.png" width="16" height="16"/>
+      <pre>收集单独的 PDF 文档<span class="zip-size"></span></pre>
+    </a><div id="zip-link-popup" class="hide">
+    <div class="inner-modal">
+        <div class="downloading-progress">
+            <div class="spinner"></div>
+            <h1>Creating your file...</h1>
+            <div>This may take a few minutes. Thanks for your patience.</div>
+            <button class="cancel-download-btn" type="button">Cancel</button>
+        </div>
+        <div class="download-complete hide">
+            <div class="done-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/></svg>
+            </div>
+            <div>Your file is ready</div>
+            <button class="cancel-download-btn" type="button">OK</button>
+        </div>
+    </div>
+</div>
+<script>
+    $(".cancel-download-btn").click(function(){
+        $("#zip-link-popup").addClass("hide");
+        $("#zip-link-popup .downloading-progress").removeClass("hide");
+        $("#zip-link-popup .download-complete").addClass("hide");
+    });
+</script></div>
+</div>
+<script>
+  $("#toggleContainerPdf li.active:last-child").parents('ul.subfolders').toggle('display');
+  $("#toggleButtonPdf").click(function () {
+    $("#toggleContainerPdf").toggle('display');
+    $(".n-pdf-body-container .zip-pdf-link-container").toggle('display');
+  });
+</script><div class="sidebar-nav-container">
+  <ul id="mysidebar" class="nav"><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/index.html">
+        Virtual Desktop Service 文档
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 使用 VDS 部署</div>
+      </a>
+      <ul><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Azure 酒店</div>
+      </a>
+      <ul><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Azure 虚拟桌面</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Deploying.Azure.AVD.Deploying_AVD_in_Azure.html">
+        在 Azure 中部署 AVD
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Deploying.Azure.AVD.Supplemental_AVD_with_existing_AD.html">
+        补充— AVD 与现有 AD
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Deploying.Azure.AVD.vds_v5.4_components_and_permissions.html">
+        VDS v5.4 组件和权限（ AVD ）
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Deploying.Azure.AVD.vds_v5.4_prerequisites.html">
+        VDS v5.4 前提条件（ AVD ）
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Deploying.Azure.AVD.vds_v6.0_prerequisites.html">
+        VDS v6.0 前提条件（ AVD ）
+      </a></li></ul></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Google</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Deploying.GCP.RDS.deploying_rds_in_gcp.html">
+        在 Google 中部署 RDS
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Deploying.GCP.vds_v5.4_prerequisites.html">
+        VDS v5.4 前提条件（ RDS/GCP ）
+      </a></li></ul></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 架构</div>
+      </a>
+      <ul><li class="subfolders "><a href="/zh-cn/virtual-desktop-service/Architectural.change_data_layer.html">
+        <div class="na-navbar-padding"> 更改数据层</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Architectural.change_data_layer.Azure_Files.html">
+        Azure 文件
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Architectual.migrate_data_into_vds.html">
+        将数据迁移到 VDS 中
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Architectual.upgrade_AVD_v1_to_v2.html">
+        将 AVD v1 升级到 v2
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Architectural.Wildcard_SSL_certificate_renewal_process.html">
+        续订 SSL 证书
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Architectural.AVD_teardown_guide.html">
+        VDS 拆卸指南
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 管理</div>
+      </a>
+      <ul><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 部署</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Management.Deployments.provisioning_collections.html">
+        配置收集
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Management.Deployments.logical_hierarchy_overview.html">
+        VDS 逻辑层次结构概述
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 应用程序</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Management.Applications.application_entitlement_workflow.html">
+        RDS 的应用程序授权
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Management.Applications.AVD_application_entitlement_workflow.html">
+        AVD 应用程序授权
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 脚本化事件</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Management.Scripted_Events.scripted_events.html">
+        已划线事件概述
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 命令中心</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Management.command_center.overview.html">
+        管理命令中心概述
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 操作</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Management.command_center.operations.copy_template_to_gallery.html">
+        将模板复制到图库
+      </a></li></ul></li></ul></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Management.Cost_Optimization.workload_schedule.html">
+        配置成本优化
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 用户管理</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Management.User_Administration.manage_user_accounts.html">
+        管理用户帐户
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Management.User_Administration.manage_folders_and_permissions.html">
+        管理文件夹和权限
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Management.Applications.application_entitlement_workflow.html">
+        管理应用程序访问
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Management.User_Administration.reset_user_password.html">
+        重置用户密码
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Management.User_Administration.multi-factor_authentication.html">
+        配置 MFA
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 系统管理</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Management.System_Administration.create_domain_admin_account.html">
+        创建域管理员帐户
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Management.System_Administration.provide_3rd_party_access.html">
+        提供第三方访问
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Management.System_Administration.configure_backup.html">
+        配置备份
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Management.System_Administration.clone_virtual_machines.html">
+        克隆虚拟机
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Management.System_Administration.auto_add_disk_space.html">
+        自动添加磁盘空间
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Management.System_Administration.azure_key_vault.html">
+        Azure 密钥存储
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Management.System_Administration.configure_antivirus.html">
+        配置防病毒
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Management.System_Administration.adding_moving_mapped_drives.html">
+        添加和移动映射的驱动器
+      </a></li></ul></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 故障排除</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Troubleshooting.reviewing_vds_logs.html">
+        查看 VDS 日志
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Troubleshooting.internet_connection_quality.html">
+        Internet 连接质量
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Troubleshooting.enable_user_wallpaper.html">
+        启用用户墙纸
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Troubleshooting.printing_issues.html">
+        打印问题
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Troubleshooting.azure_vcpu_core_quota.html">
+        Azure vCPU 核心配额
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Troubleshooting.unlocking_user_accounts.html">
+        解锁用户帐户
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Troubleshooting.general_vm_performance.html">
+        常规虚拟机性能
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Troubleshooting.dns_forwarding_for_azure_aadds_sso.html">
+        适用于 Azure 的 DNS 转发可添加 SSO
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Troubleshooting.application_issues.html">
+        应用程序问题
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 参考</div>
+      </a>
+      <ul><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 发行说明</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Reference.Release_Notes.vds_v6.0_release_notes.html">
+        VDS v6.0 发行说明
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Reference.Release_Notes.vds_v5.4_release_notes.html">
+        VDS v5.4 发行说明
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Reference.Release_Notes.vds_windows_client_release_notes.html">
+        VDS Windows 客户端发行说明
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 先前版本</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Reference.Release_Notes.vds_v5.3_release_notes.html">
+        VDS v5.3 发行说明
+      </a></li><li class="  active "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Reference.Release_Notes.cwms_v5.2_release_notes.html">
+        CWMS v5.2 发行说明
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Reference.Release_Notes.cws_v5.1_release_notes.html">
+        CWS v5.1 发行说明
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Reference.Release_Notes.cws_v5.0_release_notes.html">
+        CWS 5.0 发行说明
+      </a></li></ul></li></ul></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Reference.end_user_access.html">
+        最终用户访问
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Reference.vds_change_environments.html">
+        VDS 更改环境
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 脚本库文档</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/scriptlibrary.AdobeReader.html">
+        Adobe Reader DC
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/scriptlibrary.AMDRadeonInstinctDrivers.html">
+        AMD radeon 虚拟驱动程序
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/scriptlibrary.EzeepPrintApp.html">
+        Ezeep 打印应用程序
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/scriptlibrary.GoogleChrome.html">
+        Google Chrome
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/scriptlibrary.MicrosoftEdgeChromium.html">
+        Microsoft Edge Chromium
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/scriptlibrary.MicrosoftOffice365.html">
+        Microsoft Office 365
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/scriptlibrary.MicrosoftOneDrive.html">
+        Microsoft One Drive
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/scriptlibrary.MicrosoftTeams.html">
+        Microsoft 团队
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/scriptlibrary.MicrosoftTeamsAVD.html">
+        适用于 AVD 的 Microsoft 团队
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/scriptlibrary.NvidiaCudaDrivers.html">
+        NVIDIA Cudas 驱动程序
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/scriptlibrary.NvidiaGridDrivers.html">
+        NVIDIA 网格驱动程序
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/scriptlibrary.AVDScreenCaptureProtection.html">
+        AVD 屏幕捕获保护
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/scriptlibrary.ZoomVDI-AVD.html">
+        AVD 缩放
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 高级</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Advanced.fslogix_profile_shrink.html">
+        FSLogix 配置文件缩减
+      </a></li></ul></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> NetApp VDS v5.4 视频</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/video_content_netapptv.html">
+        NetApp TV 内容
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/video_azure_AVDRDS_deploy_54.html">
+        部署 AVD 或 RDS
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/video_azure_AVD_hostpool_54.html">
+        在 Azure 中添加 AVD 主机池
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/video_azure_AVD_users_appgroups_54.html">
+        管理 AVD 用户和应用程序组
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/video_azure_AVDRDS_optimize_resources_54.html">
+        管理资源并最大程度地降低成本
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/video_VDS_day_in_the_life.html">
+        自动管理 AVD 和 RDS 的应用程序
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Architectual.upgrade_AVD_v1_to_v2.html">
+        将 v1 AVD 主机池升级到 v2
+      </a></li></ul></li></ul>
+</div>
+<!-- this highlights the active parent class in the navgoco sidebar. this is critical so that the parent expands when you're viewing a page. This must appear below the sidebar code above. Otherwise, if placed inside customscripts.js, the script runs before the sidebar code runs and the class never gets inserted.-->
+<script>$("li.active").parents('li').toggleClass("active");</script>
+
+  </div>
+  
+
+  <div class="ie-content-pane n-doc__component-detail-content n-doc__component-detail-content--show-code">
+    <!-- Begin of page container -->
+    <article class="page-content">
+      <div class="ie-utility">
+  <div class="ie-menu">
+    <div class="n-breadcrumb">
+      <ul class="n-breadcrumb__list">
+        <li class="n-breadcrumb__list-item">
+          <a href="https://www.netapp.com">主页</a>
+        </li>
+        <li class="n-breadcrumb__list-item">
+          <a href="https://docs.netapp.com">文档</a>
+        </li>
+        
+
+        <li class="n-breadcrumb__list-item">
+          <a href="/zh-cn/virtual-desktop-service/">Virtual&nbsp;Desktop&nbsp;Service</a>
+        </li>
+        <li class="n-breadcrumb__list-item">
+          Cloud Workspace Management Suite —版本 5.2
+        </li>
+      </ul>
+    </div>
+    <div style="clear: both"></div><!-- Main needs to have height -->
+  </div>
+</div>
+
+      <div class="ie-nmt-disclaimer">
+  <span>
+    <div class="ie-nmt-disclaimer-container">
+      <div class="ie-nmt-disclaimer-icon">
+        <svg class="luci-icon" aria-hidden="true">
+          <use xlink:href="/zh-cn/virtual-desktop-service/common/svg/sprite.svg#circle-info">
+        </svg>
+      </div>
+      <div class="ie-nmt-disclaimer-content">
+        <span> 简体中文版经机器翻译而成，仅供参考。如与英语版出现任何冲突，应以英语版为准。 </span>
+      </div>
+      <div style="clear:both;"></div>
+    </div>
+  </span>
+</div><div class="n-doc__component-detail-heading-wrap">
+  <h1 class="n-doc__component-detail-heading">Cloud Workspace Management Suite —版本 5.2</h1>
+</div>
+
+
+<p class="page-details">
+  
+    
+    <time datetime="2021-08-24 20:36:21 +0000">08/24/2021</time>
+    
+  
+
+<span>提供者
+  <a target="_blank" href="https://github.com/tvanroo">
+    <img  class="avatar avatar-small"
+          alt="tvanroo"
+          width="20" height="20"
+          src="https://avatars.githubusercontent.com/u/29737083?v=4"
+          style="border-radius: 50%;"/>
+  </a>
+  
+</span>
+
+
+</p>
+
+
+<div id="preamble">
+<div class="sectionbody">
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/virtual-desktop-service/images/note.svg" alt="注">
+</td>
+<td class="content">
+对于 WCMS 5.2 版，不再重复发布任何版本—所有版本都将视为修补程序。
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="wcms-5-2-版本-2019-年-12-月-2-日星期一">WCMS 5.2 版本： 2019 年 12 月 2 日，星期一</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>组件： 5.2 Cloud Workspace Management Suite 时间： 2019 年 12 月 2 日星期一晚上 10 点至晚上 11 点东部影响：最终用户可以无中断访问 Cloud Workspace 桌面和应用程序服务。您仍可访问 Cloud Workspace Management Suite 。</p>
+</div>
+<div class="paragraph">
+<p>此版本周期无更新。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="wcms-5-2-版本-2019-年-11-月-14-日星期四">WCMS 5.2 版本： 2019 年 11 月 14 日，星期四</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>组件： 5.2 Cloud Workspace Management Suite 时间： 2019 年 11 月 14 日星期四晚上 10 点至晚上 11 点东部影响：最终用户可以无中断访问 Cloud Workspace 桌面和应用程序服务。您仍可访问 Cloud Workspace Management Suite 。</p>
+</div>
+<div class="paragraph">
+<p>此版本周期无更新。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="wcms-5-2-版本-2019-年-10-月-31-日星期四">WCMS 5.2 版本： 2019 年 10 月 31 日，星期四</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>组件： 5.2 Cloud Workspace Management Suite ；时间： 2019 年 10 月 31 日星期四晚上 10 点至晚上 11 点东部影响：最终用户可以无中断访问 Cloud Workspace 桌面和应用程序服务。您仍可访问 Cloud Workspace Management Suite 。</p>
+</div>
+<div class="paragraph">
+<p>此版本周期无更新。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="wcms-5-2-版本-2019-年-10-月-17-日星期四">WCMS 5.2 版本： 2019 年 10 月 17 日，星期四</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>组件： 5.2 Cloud Workspace Management Suite ；时间： 2019 年 10 月 17 日星期四晚上 10 点至晚上 11 点东部影响：最终用户可以无中断访问 Cloud Workspace 桌面和应用程序服务。您仍可访问 Cloud Workspace Management Suite 。</p>
+</div>
+<div class="paragraph">
+<p>此版本周期无更新。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="wcms-5-2-版本-2019-年-10-月-3-日星期四">WCMS 5.2 版本： 2019 年 10 月 3 日，星期四</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>组件： 5.2 Cloud Workspace Management Suite ；时间： 2019 年 10 月 3 日星期四晚上 10 点至晚上 11 点东部影响：最终用户可以无中断访问 Cloud Workspace 桌面和应用程序服务。您仍可访问 Cloud Workspace Management Suite 。</p>
+</div>
+<div class="paragraph">
+<p>此版本周期无更新。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="wcms-5-2-版本-2019-年-9-月-19-日星期四">WCMS 5.2 版本： 2019 年 9 月 19 日，星期四</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>组件： 5.2 Cloud Workspace Management Suite 时间： 2019 年 9 月 19 日星期四晚上 10 点至晚上 11 点东部影响：最终用户可以无中断访问 Cloud Workspace 桌面和应用程序服务。您仍可访问 Cloud Workspace Management Suite 。</p>
+</div>
+<div class="sect2">
+<h3 id="云工作空间管理套件">云工作空间管理套件</h3>
+<div class="paragraph">
+<p>默认情况下， Azure 部署的资源分配类型为 " 已修复 " ； 如果选择的 VM 系列 / 大小是由管理员在 WCMS 中定义的 VM ，则添加用户活动的搜索功能审核功能错误修复 5 分钟后错误显示会话非活动超时警告的错误修复，而不是 55 分钟用户支持角色修复—这是具有此角色的一部分管理员 无法查看其组织的用户列表用户排序修复程序—按用户名排序可以正常运行，而不是按状态排序确保主客户端报告存在；为非主软件合作伙伴隐藏不适用的 SPLA 报告</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="云工作空间工具和服务">云工作空间工具和服务</h3>
+<div class="paragraph">
+<p>增强了后台密码加密如果管理员在 CMGR1 中将密码到期日期设置为空，则密码强制实施通知（ Pen ）的错误修复功能无法按预期使用 " 下次登录时更改密码 " 功能</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="适用于-azure-的-cloud-workspace-设置应用">适用于 Azure 的 Cloud Workspace 设置应用</h3>
+<div class="paragraph">
+<p>适用于国际管理员的修复方法—如果国家或地区不是美国，则此方法需要使用州。通过合作伙伴管理链接（ PAL ）应用 Cloud跨 接以在订阅级别呈现和未来的 Azure 部署</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="wcms-5-2-版本-2019-年-9-月-5-日星期四">WCMS 5.2 版本： 2019 年 9 月 5 日，星期四</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>组件： 5.2 Cloud Workspace Management Suite 时间： 2019 年 9 月 5 日星期四晚上 10 点至晚上 11 点东部影响：最终用户可以无中断访问 Cloud Workspace 桌面和应用程序服务。您仍可访问 Cloud Workspace Management Suite 。</p>
+</div>
+<div class="sect2">
+<h3 id="云工作空间管理套件-2">云工作空间管理套件</h3>
+<div class="paragraph">
+<p>仅用户支持角色的更新： * 添加搜索 / 筛选用户功能 * 包括用户及其连接的连接状态列 * 提供对 " 下次登录时强制更改密码 " 功能的访问权限 * 删除删除客户端功能的可见性在一小时不活动后强制注销 CWMS 对于显示的问题描述进行修复 对于工作负载计划设置为始终关闭的环境显示的显示问题描述，如果查看资源分配类型设置为 " 固定修复 " 的 VM 角色时 VM 系列 / 大小显示不正确， 尽管在后台权限更新后已正确设置为始终关闭，但如果 CMS 管理员无法访问 CEMS 中的资源功能，请删除资源计划选项卡</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="云资源应用程序">云资源应用程序</h3>
+<div class="paragraph">
+<p>更新了功能—支持使用命令行</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="云工作空间工具和服务-2">云工作空间工具和服务</h3>
+<div class="paragraph">
+<p>支持 vCloud REST 接口</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="wcms-5-2-版本-2019-年-8-月-22-日星期四">WCMS 5.2 版本： 2019 年 8 月 22 日，星期四</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>组件： 5.2 Cloud Workspace Management Suite ；时间： 2019 年 8 月 22 日星期四晚上 10 点至晚上 11 点东部影响：最终用户对 Cloud Workspace 桌面和应用程序服务的访问将保持不间断。您仍可访问 Cloud Workspace Management Suite 。</p>
+</div>
+<div class="sect2">
+<h3 id="云工作空间管理套件-3">云工作空间管理套件</h3>
+<div class="paragraph">
+<p>修复某些监控器大小在用户配置文件中显示的问题描述为非动态应用程序服务添加澄清消息，通知管理员更改可能需要几分钟才能生效为非动态应用程序服务添加重新刷新按钮，以便更容易判断是否有新的客户端 / 用户 已添加</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="适用于-azure-的-cloud-workspace-设置">适用于 Azure 的 Cloud Workspace 设置</h3>
+<div class="paragraph">
+<p>在链接到现有的 CWMS 帐户改进后，添加对 MFA 注册流程的支持—链接到新的和改进的公有 KB 改进后的配置说明—链接将在新选项卡中打开</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="云工作空间工具和服务-3">云工作空间工具和服务</h3>
+<div class="paragraph">
+<p>修复旧版（ 2008 R2 ）环境中 SSL 证书管理的错误为证书强制实施和生命周期管理提供了额外的运行状况检查</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="wcms-5-2-版本-2019-年-8-月-8-日星期四">WCMS 5.2 版本： 2019 年 8 月 8 日，星期四</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>组件： 5.2 Cloud Workspace Management Suite ；时间： 2019 年 8 月 8 日星期四晚上 10 点至晚上 11 点东部影响：最终用户可以无中断访问 Cloud Workspace 桌面和应用程序服务。您仍可访问 Cloud Workspace Management Suite 。</p>
+</div>
+<div class="paragraph">
+<p>此版本无更新。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="wcms-5-2-版本-2019-年-7-月-25-日星期四">WCMS 5.2 版本： 2019 年 7 月 25 日，星期四</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>组件： 5.2 Cloud Workspace Management Suite ；时间： 2019 年 7 月 25 日星期四晚上 10 点至晚上 11 点东部影响：最终用户可以无中断访问 Cloud Workspace 桌面和应用程序服务。您仍可访问 Cloud Workspace Management Suite 。</p>
+</div>
+<div class="sect2">
+<h3 id="5-2-cwa-设置">5.2 CWA" 设置 "</h3>
+<div class="paragraph">
+<p>显示一条消息 " 配置后 " ，指示 CWA" 设置用户访问 Cloud跳 线公有知识库，他们可以在该知识库中查看后续步骤以及如何优化部署改进了在注册过程中对美国以外国家 / 地区的处理方式。添加了一个字段来确认新创建的 的密码 在 CWA 设置过程中登录在不需要 RDS 许可证的情况下删除 SPLA 许可部分</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="5-2-云工作空间管理套件">5.2 云工作空间管理套件</h3>
+<div class="paragraph">
+<p>改进了在单个服务器部署中对 CCMS 管理员的 HTML5 连接处理错误修复了重新启动用户处理（以前失败时）的情形 导致出现 "Internal Server Error" 消息 Remove SPLA licensing section under circumstances where RDS licenses will not be required include Automatic SSL certificate handling and Automatic SMTP to the Provising Wizard in CWMS</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="5-2-cloud-workspace-工具和服务">5.2 Cloud Workspace 工具和服务</h3>
+<div class="paragraph">
+<p>当 VDI 用户在将其虚拟机设置为关闭时注销虚拟机时，请关闭此 VM Azure Backup 增强功能—将 TSD1 服务器还原为虚拟机时， 还原为 TS VM ，而不是另一个 TSD VM 以 Steam内联 方式准备 Azure VM for Azure Backup ，以提高后端处理速度和安全性</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="5-2-rest-api">5.2 REST API</h3>
+<div class="paragraph">
+<p>改进了服务器信息的处理方式，从而加快了按需唤醒服务器的加载速度</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="wcms-5-2-版本-2019-年-7-月-11-日星期四">WCMS 5.2 版本： 2019 年 7 月 11 日，星期四</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>组件： 5.2 Cloud Workspace Management Suite ；时间： 2019 年 7 月 11 日星期四晚上 10 点至晚上 11 点东部影响：最终用户可以无中断访问 Cloud Workspace 桌面和应用程序服务。您仍可访问 Cloud Workspace Management Suite 。</p>
+</div>
+<div class="sect2">
+<h3 id="5-2-cloud-workspace-工具和服务-2">5.2 Cloud Workspace 工具和服务</h3>
+<div class="paragraph">
+<p>持续后台安全增强持续增强自动生成证书的稳定性增强最低特权方法改进—调整使用权限较少 / 受通用锁定影响较小的帐户以执行夜间重新启动 Azure 部署的集成备份改进 GCP 部署的集成备份改进错误修复 如果服务器已经进行了正确的过程增强，可以根据需要手动管理证书，则不再需要重新启动服务器以应用资源调整</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="wcms-5-2-版本-2019-年-6-月-20-日星期四">WCMS 5.2 版本： 2019 年 6 月 20 日，星期四</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>组件： 5.2 Cloud Workspace Management Suite ；时间： 2019 年 6 月 20 日星期四晚上 10 点至晚上 11 点东部影响：最终用户可以无中断访问 Cloud Workspace 桌面和应用程序服务。您仍可访问 Cloud Workspace Management Suite 。</p>
+</div>
+<div class="sect2">
+<h3 id="5-2-云工作空间管理套件-2">5.2 云工作空间管理套件</h3>
+<div class="paragraph">
+<p>改进了通过 CRA 流程导入到 CEMS 中的用户的处理方式在工作空间模块的服务器部分中正确显示存储，以显示一组在 WCMS Web 界面底部进行了年度更新的场景</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="5-2-cloud-workspace-工具和服务-3">5.2 Cloud Workspace 工具和服务</h3>
+<div class="paragraph">
+<p>增强的自动化证书自动化功能</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="5-2-rest-api-2">5.2 REST API</h3>
+<div class="paragraph">
+<p>显示更正—再次打开实时扩展功能允许为高级用户角色（ VDI 用户）创建默认备份计划时，显示先前在实时扩展功能中输入的正确值。</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="wcms-5-2-版本-2019-年-6-月-6-日星期四">WCMS 5.2 版本： 2019 年 6 月 6 日，星期四</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>组件： 5.2 Cloud Workspace Management Suite ；时间： 2019 年 6 月 6 日星期四晚上 10 点至晚上 11 点东部影响：最终用户可以无中断访问 Cloud Workspace 桌面和应用程序服务。您仍可访问 Cloud Workspace Management Suite 。</p>
+</div>
+<div class="sect2">
+<h3 id="5-2-cloud-workspace-工具和服务-4">5.2 Cloud Workspace 工具和服务</h3>
+<div class="paragraph">
+<p>改进了对平台通知的多封电子邮件的处理错误修复了工作负载计划未正确关闭服务器的部分情形错误修复了从 Azure Backup 还原服务器未还原正确存储类型与的部分情形默认存储类型</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="5-2-cwa-设置-2">5.2 CWA" 设置 "</h3>
+<div class="paragraph">
+<p>在 CWA 设置过程中持续增强的安全性改进了子网和网关设置的自动处理改进了注册过程中在后台处理用户帐户的过程，其中包括在用户在 CWA 设置过程中保留超过 1 小时时刷新令牌的过程</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="wcms-5-2-版本-2019-年-5-月-23-日星期四">WCMS 5.2 版本： 2019 年 5 月 23 日，星期四</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>组件： 5.2 Cloud Workspace Management Suite ；时间： 2019 年 5 月 23 日星期四晚上 10 点至晚上 11 点东部影响：最终用户可以无中断访问 Cloud Workspace 桌面和应用程序服务。您仍可访问 Cloud Workspace Management Suite 。</p>
+</div>
+<div class="sect2">
+<h3 id="5-2-云工作空间管理套件-3">5.2 云工作空间管理套件</h3>
+<div class="paragraph">
+<p>改进了 " 工作空间 " 模块中 AVD 选项卡中的链接错误修复，适用于以下情形：单击数据中心模块中指向工作空间的链接不会将您转至该工作空间错误修复：更新主管理员的联系信息将删除其 指定为主管理员</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="wcms-5-2-版本-2019-年-5-月-9-日星期四">WCMS 5.2 版本： 2019 年 5 月 9 日，星期四</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>组件： 5.2 Cloud Workspace Management Suite ；时间： 2019 年 5 月 9 日星期四晚上 10 点至晚上 11 点东部影响：最终用户可以无中断访问 Cloud Workspace 桌面和应用程序服务。您仍可访问 Cloud Workspace Management Suite 。</p>
+</div>
+<div class="sect2">
+<h3 id="5-2-cloud-workspace-工具和服务-5">5.2 Cloud Workspace 工具和服务</h3>
+<div class="paragraph">
+<p>改进了包含数百到数千个 VM 的部署的可扩展性</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="wcms-5-2-版本-2019-年-4-月-25-日星期四">WCMS 5.2 版本： 2019 年 4 月 25 日，星期四</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>组件： 5.2 Cloud Workspace Management Suite ；时间： 2019 年 4 月 25 日星期四晚上 10 点至晚上 11 点东部影响：最终用户可以无中断访问 Cloud Workspace 桌面和应用程序服务。您仍可访问 Cloud Workspace Management Suite 。</p>
+</div>
+<div class="sect2">
+<h3 id="5-2-云工作空间管理套件-4">5.2 云工作空间管理套件</h3>
+<div class="paragraph">
+<p>接口改进—如果 Azure 或 GCP 中的服务器未启用备份，请从服务器的备份部分中删除大小列</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="5-2-cloud-workspace-工具和服务-6">5.2 Cloud Workspace 工具和服务</h3>
+<div class="paragraph">
+<p>错误修复：资源更改完成后，更改 RDP 和 / 或 HTML5 网关服务器的资源无法使其恢复联机的情形</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="5-2-rest-api-3">5.2 REST API</h3>
+<div class="paragraph">
+<p>改进了初始 MFA 配置的处理方式，无论何种情形</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="5-2-cwa-设置-3">5.2 CWA" 设置 "</h3>
+<div class="paragraph">
+<p>支持现有的 WCMs 帐户，支持间接 CSP 正确配置并简化现有合作伙伴的流程 Azure Active Directory 域服务的额外验证—如果选择了 Azure Active Directory 域服务，但该服务已到位，则会显示错误</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="wcms-5-2-版本-2019-年-4-月-11-日星期四">WCMS 5.2 版本： 2019 年 4 月 11 日，星期四</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>组件： 5.2 Cloud Workspace Management Suite ；时间： 2019 年 4 月 11 日星期四晚上 10 点至晚上 11 点东部影响：最终用户可以无中断访问 Cloud Workspace 桌面和应用程序服务。您仍可访问 Cloud Workspace Management Suite 。</p>
+</div>
+<div class="sect2">
+<h3 id="5-2-云工作空间管理套件-5">5.2 云工作空间管理套件</h3>
+<div class="paragraph">
+<p>配置收集的错误修复—使用未显示桌面图标的应用程序保存配置收集将不再显示错误，错误修复—解决从问题描述启动已停止的平台服务器时由于没有合作伙伴而显示错误的问题 已附加代码</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="5-2-cloud-workspace-工具和服务-7">5.2 Cloud Workspace 工具和服务</h3>
+<div class="paragraph">
+<p>在 vCloud 部署中删除服务器的稳定性增强—如果在一个 vApp 中发现多个 FMS ， 仅删除虚拟机而不是删除 vApp 添加不在基础架构服务器上安装通配符证书的选项 AzureAD 中克隆 TSD 服务器的改进服务器资源报告—处理具有多个 IP 地址的服务器如果列出，则对部分情形进行错误修复 在 Azure Classic 中尝试使用前缀克隆 VM 时，服务器备份不会加载以供审核错误修复（所有新部署和最新部署均使用 AzureRM ） Server 2008 R2 服务器资源报告中未正确报告 DNS 错误的错误修复错误修复在虚拟机管理程序（而不是 AD ）中删除虚拟机时未发送公司资源报告的错误修复 并且，在虚拟机管理程序本身中找不到 Azure 备份（仅在 AzureRM 部署中）</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="5-2-cwa-设置-4">5.2 CWA" 设置 "</h3>
+<div class="paragraph">
+<p>添加一种方法以验证所选配置到的区域是否可用 Azure Active Directory 域服务添加其他检查以解决部分场景中的 DNS 超时问题删除 B2S 作为 CMGR1 部署的目标，因为它会减慢部署过程的速度</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="wcms-5-2-版本-2019-年-3-月-28-日星期四">WCMS 5.2 版本： 2019 年 3 月 28 日，星期四</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>组件： 5.2 Cloud Workspace Management Suite ；时间： 2019 年 3 月 28 日星期四晚上 10 点至晚上 11 点东部影响：最终用户可以无中断访问 Cloud Workspace 桌面和应用程序服务。您仍可访问 Cloud Workspace Management Suite 。</p>
+</div>
+<div class="sect2">
+<h3 id="5-2-云工作空间管理套件-6">5.2 云工作空间管理套件</h3>
+<div class="paragraph">
+<p>将 Azure Virtual Desktop 部分添加到 CWMS 界面允许 CEMS 管理员在 " 设置 "&#8594;" 标识 " 下设置公司标识更新自定义应用程序目录中的应用程序时添加外部 ID 要求</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="5-2-cloud-workspace-工具和服务-8">5.2 Cloud Workspace 工具和服务</h3>
+<div class="paragraph">
+<p>进一步简化和改进适用于 Azure 的云工作空间（ CWA） 部署流程不再需要高级存储帐户在 Azure RM 部署中创建具有高级存储的 VM 解决了应用程序使用情况跟踪报告未捕获使用情况数据的部分情形下的问题描述解决方案 更新 HTML5 门户服务器上的证书可能会导致错误的问题描述，因为 HTML5 门户服务器许可已更新密码到期通知的错误修复使用 Azure Active Directory 域服务时不更新密码调整了密码到期通知写入日志文件的位置</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="5-2-rest-api-4">5.2 REST API</h3>
+<div class="paragraph">
+<p>在数据中心模块中启动 / 停止平台服务器（非客户服务器）的错误修复</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="5-2-cwa-设置-5">5.2 CWA" 设置 "</h3>
+<div class="paragraph">
+<p>改进了部署期间的 FTP 角色设置改进了确保管理员每次访问 CWA 设置过程时都能看到最新版本的机制改进了对部署期间超时元素的处理在部署中错误标记为使用 Azure AD 的情况下修复了错误</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="wcms-5-2-次要版本-2019-年-3-月-14-日星期四">WCMS 5.2 次要版本： 2019 年 3 月 14 日，星期四</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>组件： 5.2 Cloud Workspace Management Suite ；时间： 2019 年 3 月 14 日星期四晚上 10 点至晚上 11 点东部影响：最终用户可以无中断访问 Cloud Workspace 桌面和应用程序服务。您仍可访问 Cloud Workspace Management Suite 。</p>
+</div>
+<div class="sect2">
+<h3 id="5-2-云工作空间管理套件-7">5.2 云工作空间管理套件</h3>
+<div class="paragraph">
+<p>将 " 应用程序监控 " 功能的名称更改为 " 应用程序使用情况跟踪 " 应用修复程序，修复程序刷新对脚本化事件的搜索不会重新使用选定的开始 / 结束日期默认文件审核以日期筛选器设置为当前日期前一天开始， 简化返回的数据量 Azure 集成备份的错误修复在部分情形下，将备份还原到服务器的功能无法按预期运行解决了更新属于应用程序服务的客户端时出现的应用程序错误提示</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="5-2-rest-api-5">5.2 REST API</h3>
+<div class="paragraph">
+<p>Azure 安全保护—添加 Azure AD 用户时，请确保其电子邮件地址尚未添加到帐户中。错误修复—为客户端添加应用程序并同时创建组时， 按预期将用户添加到组在禁用对 RDSH 服务器的访问时添加验证步骤，以确保在服务器重新启动后仍可应用此步骤在将应用程序添加到受影响的组时， CWA" 工作流自动化的常规改进 " 错误修复部分情形 该组的其他用户</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="5-2-cwa-设置-6">5.2 CWA" 设置 "</h3>
+<div class="paragraph">
+<p>在部署过程中为订阅列表添加一个刷新选项将旧版已降级的 MobileDrive 服务的部署标志自动设置为 False Azure 中的其他自动化保护和检查</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="wcms-5-2-次要版本-2019-年-2-月-28-日星期四">WCMS 5.2 次要版本： 2019 年 2 月 28 日，星期四</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>组件： 5.2 Cloud Workspace Management Suite ；时间： 2019 年 2 月 28 日星期四晚上 10 点至晚上 11 点东部影响：最终用户可以无中断访问 Cloud Workspace 桌面和应用程序服务。您仍可访问 Cloud Workspace Management Suite 。</p>
+</div>
+<div class="sect2">
+<h3 id="5-2-云工作空间管理套件-8">5.2 云工作空间管理套件</h3>
+<div class="paragraph">
+<p>提高了对在 CEMS 界面中取消为用户选择 "VDI User" 复选框时会发生什么情况（删除 VDI 用户的服务器）以及在不希望删除服务器后端对时间戳处理的改进时如何继续显示的清晰性和确认消息</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="5-2-cloud-workspace-工具和服务-9">5.2 Cloud Workspace 工具和服务</h3>
+<div class="paragraph">
+<p>更新了 Azure 域服务中许可证服务器名称的设置后台改进了用户在登录到云工作空间后可以更改自己密码的过程更新了原生 2FA 以反映启用了罕见设置时为 2FA 修复的 Cloud跨 接图像错误</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="5-2-cwa-设置-7">5.2 CWA" 设置 "</h3>
+<div class="paragraph">
+<p>CWA" 设置向导中的其他帮助 / 支持内容向 CWA" 设置向导添加协议条款和定价改进了检测订阅配额和权限的机制简化了基于 Azure Active Directory 域服务的部署在后台改进了存储帐户名称格式 FTP 服务器的错误修复 设置</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="wcms-5-2-次要版本-2019-年-2-月-14-日星期四">WCMS 5.2 次要版本： 2019 年 2 月 14 日，星期四</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>组件： 5.2 Cloud Workspace Management Suite ；时间： 2019 年 2 月 14 日星期四晚上 10 点至晚上 11 点东部影响：最终用户可以无中断访问 Cloud Workspace 桌面和应用程序服务。您仍可访问 Cloud Workspace Management Suite 。</p>
+</div>
+<div class="sect2">
+<h3 id="5-2-云工作空间管理套件-9">5.2 云工作空间管理套件</h3>
+<div class="paragraph">
+<p>提高用户管理操作的性能启用了其他日志记录以显示谁请求在数据中心任务历史记录中更改组。解决标准应用程序目录中应用程序未显示在部分情形中的问题描述使用动态解决应用程序服务中的问题描述 配置如果两个同名应用程序从 CWMS 5.1 界面删除 SDDC 创建向导 * 如果您运行的是 5.1 上的 SDDC ，并且您希望配置新的 SDDC ， 请联系 <a href="mailto:support@cloudjumper.com">support@cloudjumper.com</a> 以计划升级到 CWMS 5.2 ，更正在 CWMS 的 API 用户创建屏幕中出现的拼写错误</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="5-2-cloud-workspace-工具和服务-10">5.2 Cloud Workspace 工具和服务</h3>
+<div class="paragraph">
+<p>在基于 vCloud 的 SDDC 中，如果基于 vCloud 的 SDDC 中的连接到期，请重新登录到虚拟机管理程序，并增加等待服务器启动时的默认超时值。改进了 Cloud跳 线管理访问的限制</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="5-2-rest-api-6">5.2 REST API</h3>
+<div class="paragraph">
+<p>在通过 CEMS 5.1 界面配置新 SDDC 时，显示的消息将为 " 只有在使用 WCMS 5.2 版时才支持创建新数据中心 " 。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="5-2-cwa-设置-8">5.2 CWA" 设置 "</h3>
+<div class="paragraph">
+<p>改进了自动错误处理功能</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="wcms-5-2-次要版本-2019-年-1-月-31-日星期四">WCMS 5.2 次要版本： 2019 年 1 月 31 日，星期四</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>组件： 5.2 Cloud Workspace Management Suite ；时间： 2019 年 1 月 31 日星期四晚上 10 点至晚上 11 点东部影响：最终用户可以无中断访问 Cloud Workspace 桌面和应用程序服务。您仍可访问 Cloud Workspace Management Suite 。</p>
+</div>
+<div class="sect2">
+<h3 id="5-2-云工作空间管理套件-10">5.2 云工作空间管理套件</h3>
+<div class="paragraph">
+<p>将 Cloud Workspace 客户端服务器的连接信息添加到 Cloud Workspace 客户端的概述部分在 CCMS 帐户设置中添加一个可编辑字段，用于输入 Azure AD 租户 ID 在新 Azure 部署中使用最新版本的 Microsoft 标准存储改进了 Azure 集成， 要求 Azure 部署中的集成备份至少保留 1 天改进应用程序服务部署动态配置中的处理方式将服务器存储资源的清点日期添加到 " 服务器 " 模块的该部分显示应用程序是在配置时配置给用户的 用户的状态仍为待定云工作空间如果用户是 VDI 用户，则在用户页面上显示 VDI 服务器如果服务器是为 VDI 用户提供的， 在 " 服务器 " 页面上显示用户解决问题描述在某些情况下，如果用户的用户名具有打开的服务板任务，则从 远程访问虚拟机失败</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="5-2-cloud-workspace-工具和服务-11">5.2 Cloud Workspace 工具和服务</h3>
+<div class="paragraph">
+<p>改进了用户全天登录时实时扩展的处理方式添加了未来按需唤醒的自动化前提条件改进添加了未来工作负载计划的自动化前提条件改进解决了使用适用于 VDI 服务器的 Windows 10 无法在 Azure Active 中正确启用远程注册表服务的问题描述问题 目录域服务部署解决了在 Azure Active Directory 域服务部署中使用适用于 VDI 服务器的 Windows 10 未正确为本地远程桌面用户组设置安全组的问题描述修改 PCI 合规性设置功能，使其在未启用时不执行任何操作，而不是强制执行 默认配置设置可在工作负载计划中解决问题描述，以便在计划关闭服务器时注销并启用了按需唤醒的用户可以关闭服务器。修复在 ProfitBricks 公有云中克隆服务器时的错误修复克隆服务器检查的错误 在 VDI 用户方案中，服务器名称的服务器前缀不会重复添加在每晚报告中检查是否存在未使用有效配置收集的缓存客户代码改进了在虚拟机管理程序中不存在虚拟机管理程序且 CWAgent 需要更新时处理异常的方式解决问题描述 通过密码到期通知重置密码以正确强制实施密码历史记录</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="cwa-设置">CWA" 设置 "</h3>
+<div class="paragraph">
+<p>实施选项以自动配置 SMTP 设置为位置列表添加验证选项以检查订阅是否具有足够的配额和权限以在选定 Azure 区域中创建 VM 添加了功能，可在结束时删除不需要的 CloudWorkspace 和其他具有管理权限的服务帐户 Azure 中的配置过程通知手动上传 DNS 证书的用户已通过验证解决了在某些情况下 ThinPrint 安装不按预期安装的问题描述问题</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="wcms-5-2-次要版本-2019-年-1-月-17-日星期四">WCMS 5.2 次要版本： 2019 年 1 月 17 日，星期四</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>组件： 5.2 Cloud Workspace Management Suite ；时间： 2019 年 1 月 17 日星期四晚上 10 点至晚上 11 点东部影响：最终用户可以无中断访问 Cloud Workspace 桌面和应用程序服务。您仍可访问 Cloud Workspace Management Suite 。</p>
+</div>
+<div class="sect2">
+<h3 id="5-2-云工作空间管理套件-11">5.2 云工作空间管理套件</h3>
+<div class="paragraph">
+<p>现在，工作负载计划界面会将问题描述显示为第一列，并将计划名称更改为自定义计划错误修复用于在 Azure 部署中显示平台服务器备份的错误修复适用于最终用户自行管理应用程序服务的使用情形组织不会使用的情形 已设置任何 Cloud Workspace 服务</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="5-2-cloud-workspace-工具和服务-12">5.2 Cloud Workspace 工具和服务</h3>
+<div class="paragraph">
+<p>添加了对 PCI v3 合规性安全性增强功能的支持：新的 CWMS 部署将使用本地管理员而不是用于运行 CWAgent 进程的域管理员。支持 AzureRM 部署中的 Windows Server 2019 * 注意： Microsoft 在此版本中不支持 Microsoft Office ，但改进了按需唤醒用户的处理方式—如果其组织计划关闭 VM ，但具有按需唤醒功能的用户仍在积极工作， 克隆 VM 时，请勿关闭组织的 VM 稳定性提高功能—从克隆的 VM 中新创建的 VM 中删除 Connection Broker 等角色。改进了 ThinPrint 许可证服务器角色的安装过程改进了 AzureRM 模板处理方式—根据虚拟机运行的硬件返回 Azure 中 VM 可用的所有模板， 不仅租户 Azure 区域提供的模板改进了 vSphere 部署的自动化测试，还包括在每晚电子邮件报告中检查是否安装了 ThinPrint 许可证服务器。在有限的部分情形下，实时扩展的错误修复在某些情形下克隆服务器的错误修复 vCloud 部署 AzureRM 部署中 VM 名称前缀的错误修复在 Google Cloud Platform 中使用自定义计算机大小时报告错误错误修复对启用了 ThinPrint 功能的报告用户的错误修复从 AzureRM 中提供的模板列表中排除了中文版的 Windows</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="cwa-设置-2">CWA" 设置 "</h3>
+<div class="paragraph">
+<p>修复不接受满足所需最少字符数的密码的情形在 CSP 的租户选择过程中将 ID 列更改为客户域更新为简化信用卡输入的注册过程</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="wcms-5-2-次要版本-2018-年-12-月-20-日星期四">WCMS 5.2 次要版本： 2018 年 12 月 20 日，星期四</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>组件： 5.2 Cloud Workspace Management Suite 时间： 2018 年 12 月 20 日星期四晚上 10 点至晚上 11 点东部影响：最终用户可以无中断访问 Cloud Workspace 桌面和应用程序服务。您仍可访问 Cloud Workspace Management Suite 。</p>
+</div>
+<div class="sect2">
+<h3 id="5-2-云工作空间设置">5.2 云工作空间设置</h3>
+<div class="paragraph">
+<p>增加了一项 FTP DNS 注册功能，用于在部署单服务器时进行注册，并在部署过程中选择了自动 SSL 自动填充 Azure AD 信息。（租户 ID ，客户端 ID ，密钥）到后端表中，自动安装过程现在将安装 ThinPrint 许可证服务器 11 ，而不是 10</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="5-2-cwa-设置-9">5.2 CWA" 设置 "</h3>
+<div class="paragraph">
+<p>修复注册过程完成后将管理员重定向到登录页面的问题描述</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="wcms-5-2-次要版本-2018-年-12-月-6-日星期四">WCMS 5.2 次要版本： 2018 年 12 月 6 日，星期四</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>组件： 5.2 Cloud Workspace Management Suite 时间： 2018 年 12 月 6 日星期四晚上 10 点至晚上 11 点东部影响：最终用户可以无中断访问 Cloud Workspace 桌面和应用程序服务。您仍可访问 Cloud Workspace Management Suite 。</p>
+</div>
+<div class="sect2">
+<h3 id="5-2-云工作空间工具和服务">5.2 云工作空间工具和服务</h3>
+<div class="paragraph">
+<p>支持使用 Win10 操作系统创建服务器提高从虚拟机管理程序加载虚拟机时的速度在 Azure 中创建服务器时返回正确的可用存储类型将每日报告日志记录添加到控制平面的后端，避免出现临时驱动器可能在 Azure 中自动扩展的情况 为未来选择配置模板时显示服务器操作系统的更改奠定基础。错误修复：在 GCP 中不自动扩展驱动器错误修复：使用 Azure Active Directory 域服务时的部署自动化如果配置了多个管理器服务器， 请注意每晚报告中的错误公有云（ Azure ， GCP ）自动测试的错误修复 VMware 部署中的备份错误修复用于确定通过 HyperV 部署创建的新虚拟机上的磁盘空间错误修复用于在 AD 根 OU 为空时收集服务器数据的错误修复在基于配置不当的虚拟机管理程序克隆服务器时提高稳定性</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="5-2-rest-api-7">5.2 REST API</h3>
+<div class="paragraph">
+<p>在公有云化部署中启用对计算机系列的支持允许为 SDDC 禁用默认资源分配将 DataCollectedDateUTC 添加到服务器的存储详细信息添加计算资源值的功能添加获取详细用户连接状态的新方法在 CMS 中显示错误 删除具有管理员权限的用户时，对于已启用数据的应用程序服务，使用驱动器映射的 Fixed 问题描述并不总是显示 Fixed 问题描述正在通过 CWA Fixed 问题描述导入的客户端和 / 或用户。创建新用户并将应用程序分配到后，此 CWA Fixed 将更新此客户端和 / 或用户 如果是所有用户组，则新用户不会收到应用程序快捷方式。</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="wcms-5-2-次要版本-2018-年-11-月-1-日星期四">WCMS 5.2 次要版本： 2018 年 11 月 1 日，星期四</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>组件： 5.2 Cloud Workspace Management Suite 时间： 2018 年 11 月 1 日星期四晚上 10 点至晚上 11 点东部影响：最终用户可以无中断访问 Cloud Workspace 桌面和应用程序服务。您仍可访问 Cloud Workspace Management Suite 。</p>
+</div>
+<div class="sect2">
+<h3 id="5-2-云工作空间管理套件-12">5.2 云工作空间管理套件</h3>
+<div class="paragraph">
+<p>集成备份的错误修复 CRA 部署中特定用例的错误修复</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="5-2-cloud-workspace-工具和服务-13">5.2 Cloud Workspace 工具和服务</h3>
+<div class="paragraph">
+<p>启用在创建服务器时返回 Azure arm 部署中可用的存储类型支持多站点 Active Directory 拓扑使用 TestVDCTools 修复使用 Azure Active Directory 域服务时使用问题描述在 AD 根 OU 为空时修复夜间电子邮件报告的错误</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="5-2-rest-api-8">5.2 REST API</h3>
+<div class="paragraph">
+<p>支持在 Azure Active Directory 域服务时解除用户锁定。注意：请注意，由于复制，可能会有长达 20 分钟的延迟。</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="wcms-5-2-次要版本-2018-年-10-月-18-日星期四">WCMS 5.2 次要版本： 2018 年 10 月 18 日，星期四</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>组件： 5.2 Cloud Workspace Management Suite ；时间： 2018 年 10 月 18 日星期四晚上 10 点至晚上 11 点东部影响：最终用户可以无中断访问 Cloud Workspace 桌面和应用程序服务。您仍可访问 Cloud Workspace Management Suite 。</p>
+</div>
+<div class="sect2">
+<h3 id="5-2-云工作空间管理套件-13">5.2 云工作空间管理套件</h3>
+<div class="paragraph">
+<p>在数据中心向导中， 启用通配符证书验证常规后台改进和错误修复在应用程序表中添加搜索功能改进了应用程序表中的排序在数据中心配置过程中添加完成 DNS 注册的详细信息包括动态 API 调用响应中的所有子合作伙伴用户和组 应用程序服务修复了在特定实例中租户无法保持迁移模式的错误添加额外已启动的服务器， 每个服务器的共享用户数和每个服务器的最大共享用户数实时扩展详细信息在通过新的数据中心向导进行配置时，将 DNS 验证添加到通配符证书测试中</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="5-2-云工作空间工具和服务-2">5.2 云工作空间工具和服务</h3>
+<div class="paragraph">
+<p>启用一个选项以返回按 VM 系列分组的所有 VM 大小返回虚拟机管理程序中提供的所有 VM 大小计算应用程序服务用户时修复资源分配为 CMGR1 的自动资源更新启用选项包括通配符证书状态 DataCenterResources Report 启用未来 DNS 增强功能错误修复 修复了 GCP 部署中的驱动器自动扩展问题</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="5-2-rest-api-9">5.2 REST API</h3>
+<div class="paragraph">
+<p>列出客户端 / 用户时的性能改进支持新的实时扩展功能—配置特 PoweredOnServer ， SharedUsersPerServer 和 MaxSharedUsersPerServer API 现在支持在创建新平台部署时验证通配符证书域可通过新的 API 方法获取所有合作伙伴客户端的用户活动数据</p>
+</div>
+<div class="paragraph">
+<p>已知问题描述：使用 " 活动用户 " 或 " 用户计数 " 动态分配方法在 Azure 臂部署中估算资源池规模时， " 每台服务器计算的资源 " 摘要错误地将计算机大小显示为基本 A 系列类型，而不是正确的标准 D 系列类型。</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="wcms-5-2-次要版本-2018-年-9-月-27-日星期四">WCMS 5.2 次要版本： 2018 年 9 月 27 日，星期四</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>组件： 5.2 Cloud Workspace Management Suite ；时间： 2018 年 9 月 27 日星期四晚上 10 点至晚上 11 点东部影响：最终用户可以无中断访问 Cloud Workspace 桌面和应用程序服务。您仍可访问 Cloud Workspace Management Suite 。</p>
+</div>
+<div class="sect2">
+<h3 id="5-2-云工作空间管理套件-14">5.2 云工作空间管理套件</h3>
+<div class="paragraph">
+<p>简化配置收集 VM 在缓存中的显示修复管理应用程序服务时的显示问题</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="5-2-cloud-workspace-工具和服务-14">5.2 Cloud Workspace 工具和服务</h3>
+<div class="paragraph">
+<p>针对最终用户 MFA 更新 API 与 Azure RM 最新更新测试相结合的模糊用例的错误修复，该测试使用最新的 API 将高级用户术语替换为 VDI 用户更新电子邮件报告，以便为服务器添加额外的 CPU 和 RAM 更新地址报告来自—而不是来自 <a href="mailto:dcnotifications@independenceit.com">dcnotifications@independenceit.com</a> 的 <a href="mailto:dcnotfications@cloudjumper.com">dcnotfications@cloudjumper.com</a> 消息允许通过实时扩展来定义每个服务器的用户以及其他 VM 在启动停止的 SDDC/ 部署增强功能时保持启用状态—禁止具有多个 SDDC/ 部署的合作伙伴从一个连接到 另一项稳定性提升—在自动化无法返回用户计数的情况下，请勿对资源计数进行任何更改</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="wcms-5-2-次要版本-2018-年-9-月-6-日星期四">WCMS 5.2 次要版本： 2018 年 9 月 6 日，星期四</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>组件： 5.2 Cloud Workspace Management Suite ；时间： 2018 年 9 月 6 日星期四晚上 10 点至晚上 11 点东部影响：最终用户可以无中断访问 Cloud Workspace 桌面和应用程序服务。您仍可访问 Cloud Workspace Management Suite 。</p>
+</div>
+<div class="sect2">
+<h3 id="5-2-云工作空间管理套件-15">5.2 云工作空间管理套件</h3>
+<div class="paragraph">
+<p>添加了在自定义应用程序目录中搜索子合作伙伴的功能修复了一个错误，在数据中心模块中刷新屏幕会导致错误提示删除有关最大文件夹名称大小的限制并使浏览文件夹更容易确保资源在 VM 上计数 从不低于指定的最小 CPU 和 RAM 值将高级用户术语重新短语给 VDI 用户修复了一个错误，在该错误中，尽管后端过程成功完成了改进后的服务器名称显示在数据中心创建向导中修复了帐户到期未显示已保存的到期日期，但仍显示了一个通用错误 在 WCMS 中</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="5-2-cloud-workspace-工具和服务-15">5.2 Cloud Workspace 工具和服务</h3>
+<div class="paragraph">
+<p>修复了 MFA 中的一个错误，即选择电子邮件的用户有时未收到代码允许为用户计数资源分配类型输入额外的 CPU 和 RAM 修复了一个错误，即自动化引擎未在固定的时间问题描述上为所有计算机类型供电有时会使用发生原因 克隆服务器以错误地自动执行先前手动在 FTP 服务器上安装的通配符证书。添加了一个在更新通配符证书后清除旧证书的过程，用于解析问题描述，在使用启用了数据的应用程序服务时， X ：驱动器不会始终映射到最终用户。</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="wcms-5-2-全面上市版本-2018-年-8-月-10-日星期四">WCMS 5.2 全面上市版本： 2018 年 8 月 10 日，星期四</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>组件： 5.2 Cloud Workspace Management Suite ；时间： 2018 年 8 月 10 日星期四晚上 10 点东部影响：最终用户可以无中断访问 Cloud Workspace 桌面和应用程序服务。您仍可访问 Cloud Workspace Management Suite 。</p>
+</div>
+<div class="sect2">
+<h3 id="5-2-云工作空间管理套件-16">5.2 云工作空间管理套件</h3>
+<div class="paragraph">
+<p>释放 Web 界面组件以启用上述概述中的功能</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="5-2-cloud-workspace-工具和服务-16">5.2 Cloud Workspace 工具和服务</h3>
+<div class="paragraph">
+<p>释放后端工具以启用上述概述中的功能</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="5-2-rest-api-10">5.2 REST API</h3>
+<div class="literalblock">
+<div class="content">
+<pre>Release API to production to enable the features found in the overview above</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    </article>
+    <!-- Page Container -->
+  </div>
+
+  
+  <!-- Start Page Toolbar -->
+  <div class="page-nav-toolbar">
+    <div id="version-dropdown"></div>
+    <div class="page-nav-contribute"  >
+      <a target="_blank" href="https://github.com/NetAppDocs/virtual-desktop-service/issues/new?body=Page%3A%20[Cloud Workspace Management Suite —版本 5.2](https://docs.netapp.com/zh-cn/virtual-desktop-service/Reference.Release_Notes.cwms_v5.2_release_notes.html)" class="page-nav-contribute-link" role="button"><img src="/zh-cn/virtual-desktop-service/images/discuss-sm.svg" class="github-icon" />请求文档变更</a>
+      <a target="_blank" href="https://github.com/NetAppDocs/virtual-desktop-service/blob/main/sub.Reference.Release_Notes.cwms_v5.2_release_notes.adoc" class="page-nav-contribute-link" role="button"><img src="/zh-cn/virtual-desktop-service/images/edit-sm.svg" class="github-icon" />在 GitHub 上编辑</a>
+      <a target="_blank" href="https://docs.netapp.com/us-en/contribute/" class="page-nav-contribute-link"  ><img src="/zh-cn/virtual-desktop-service/images/article-sm.svg" class="github-icon" />提供者指南</a>
+    </div>
+    <div class="page-nav-container">
+      <nav class="page-nav-fixed">
+        <div class="page-nav-title">在此页面上</div>
+        <div class="page-nav-links">
+          <ul class="page-nav-inner" id="page-menu"></ul>
+        </div>
+      </nav>
+    </div>
+  </div>
+  
+  <div style="clear: both"></div><!-- Main needs to have height -->
+</div>
+
+        </main>
+
+        <footer class="n-footer">
+  <div class="n-footer__bottom">
+    <div class="n-container">
+      <div class="n-footer__bottom-left">
+
+        <div class="n-footer__copyright">
+          <ul class="n-footer__copyright-list">
+            <li class="n-footer__copyright-link">
+            <a href="https://www.netapp.com/us/legal/copyright.aspx">© 2022 NetApp, Inc.</a>
+            </li>
+
+</ul>
+</div>
+<div class="n-footer__social-links">
+<ul class="n-footer__social-link-list">
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-blog" href="https://blog.netapp.com" target="_blank" title="blog" alt="blog">
+<span class="n-footer__social-link-text">blog</span>
+<svg class="n-icon-blog n-footer__social-link-icon" aria-labelledby="title">
+  <title>blog@</title>
+  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/zh-cn/virtual-desktop-service/common/svg/sprite.svg#blog"></use>
+</svg>
+
+</a>
+</li>
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-community" href="https://community.netapp.com/" target="_blank" title="community" alt="community">
+<span class="n-footer__social-link-text">community</span>
+<svg class="n-icon-community n-footer__social-link-icon" aria-labelledby="title">
+<title>community@</title>
+<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/zh-cn/virtual-desktop-service/common/svg/sprite.svg#comments"></use>
+</svg>
+
+</a>
+</li>
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-twitter" href="https://twitter.com/netapp" target="_blank" title="twitter" alt="twitter">
+<span class="n-footer__social-link-text">twitter</span>
+<svg class="n-icon-twitter n-footer__social-link-icon" aria-labelledby="title">
+<title>twitter@</title>
+<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/zh-cn/virtual-desktop-service/common/svg/sprite.svg#twitter"></use>
+</svg>
+
+</a>
+</li>
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-facebook" href="https://www.facebook.com/NetApp" target="_blank" title="facebook" alt="facebook">
+<span class="n-footer__social-link-text">facebook</span>
+<svg class="n-icon-facebook n-footer__social-link-icon" aria-labelledby="title">
+<title>facebook@</title>
+<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/zh-cn/virtual-desktop-service/common/svg/sprite.svg#facebook"></use>
+</svg>
+
+</a>
+</li>
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-linkedin" href="https://www.linkedin.com/company/netapp" target="_blank" title="linkedin" alt="linkedin">
+<span class="n-footer__social-link-text">linkedin</span>
+<svg class="n-icon-linkedin n-footer__social-link-icon" aria-labelledby="title">
+<title>linkedin@</title>
+<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/zh-cn/virtual-desktop-service/common/svg/sprite.svg#linkedin"></use>
+</svg>
+
+</a>
+</li>
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-youtube" href="https://www.youtube.com/user/NetAppTV" target="_blank" title="youtube" alt="youtube">
+<span class="n-footer__social-link-text">youtube</span>
+<svg class="n-icon-youtube n-footer__social-link-icon" aria-labelledby="title">
+<title>youtube@</title>
+<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/zh-cn/virtual-desktop-service/common/svg/sprite.svg#youtube"></use>
+</svg>
+
+</a>
+</li>
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-slideshare" href="https://www.slideshare.net/NetApp" target="_blank" title="slideshare" alt="slideshare">
+<span class="n-footer__social-link-text">slideshare</span>
+<svg class="n-icon-slideshare n-footer__social-link-icon" aria-labelledby="title">
+<title>slideshare@</title>
+<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/zh-cn/virtual-desktop-service/common/svg/sprite.svg#slideshare"></use>
+</svg>
+
+</a>
+</li>
+</ul>
+</div>
+
+</div>
+<div class="n-footer__bottom-right">
+  <p class="n-footer__fine-print">想就我们的网站提供反馈?<a target="_self" href="javascript:netapp_mailto()" class="n-footer__copyright">请告诉我们</a>
+  <a href="https://docs.netapp.com/zh-cn/announcements/" class="n-footer__copyright">通知</a>
+  </p>
+</div>
+</div>
+</div>
+</footer>
+
+      </div>
+
+      <!-- Elasticsearch JS -->
+      <script type="text/javascript" src='/zh-cn/virtual-desktop-service/js/bundle.js'></script>
+
+      <!-- Syntax Highlighting -->
+      <script type="text/javascript" src='/zh-cn/virtual-desktop-service/js/prism.js'></script>
+      <script type="text/javascript" src='/zh-cn/virtual-desktop-service/js/prism-curl.js'></script>
+    </div>
+    <script>
+      document.body.offsetWidth=1903;
+      cookieLaw = {}
+      cookieLaw.euCountry = "US";
+      cookieLaw.invoke = function(){return false;}
+    </script>
+    <script src='/zh-cn/virtual-desktop-service/js/www-ntap.js'></script>
+    <script src='/zh-cn/virtual-desktop-service/js/tabbed-blocks.js'></script>
+  </body>
+
+  
+</html>

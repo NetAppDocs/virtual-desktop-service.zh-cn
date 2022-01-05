@@ -1,0 +1,2229 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head class="at-element-marker">
+  <title>VDS 组件和权限</title>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge,chrome=1">
+  <meta http-equiv="language" content="en">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta property="og:title" content="VDS 组件和权限" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://docs.netapp.com/zh-cn/virtual-desktop-service/Deploying.Azure.AVD.vds_v5.4_components_and_permissions.html" />
+	<meta property="og:description" content="VDS 组件和权限" />
+  <meta property="og:image" content="https://docs.netapp.com/zh-cn/virtual-desktop-service/images/logo-tophat-social.png" />
+  <meta property="og:image:alt" content="NetApp Logo" />
+  <meta name="format-detection" content="telephone=no">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="encoding" content="utf-8">
+  <meta http-equiv="nss-type" content="Product Documentation"/>
+  <meta http-equiv="nss-subtype" content="User Guide"/>
+  
+  <meta name="description" content="VDS 组件和权限">
+  <meta name="keywords" content=" ">
+  
+  
+
+  <!-- Icons -->
+  <link rel="icon" href="/zh-cn/virtual-desktop-service/images/favicon.ico" type="image/x-icon">
+
+  <!-- RSS Feed -->
+  
+
+  <!-- CSS Definitions: NetApp CSS should be defined after generic css -->
+
+  <!-- Elastic Search -->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/searchkit/0.10.0/theme.css">
+
+  <!-- Controls AsciiDoctor Admonition Blocks -->
+  <link rel="stylesheet" type="text/css" href="/zh-cn/virtual-desktop-service/css/font-awesome.min.css">
+
+  <!-- Controls the shadow effect for search dropdown menu -->
+  <link rel="stylesheet" href="/zh-cn/virtual-desktop-service/css/boxshadowproperties.css">
+
+  <!-- NetApp CSS controls the technical content -->
+  <link rel="stylesheet" type="text/css" href="/zh-cn/virtual-desktop-service/css/netapp.css">
+
+  <!-- WWW CSS Content -->
+  <link rel="stylesheet" type="text/css" href="/zh-cn/virtual-desktop-service/css/www-luci-dotcom.min.css">
+  <link rel="stylesheet" type="text/css" href="/zh-cn/virtual-desktop-service/css/www-netapp-dotcom.css">
+  <link rel="stylesheet" href="/zh-cn/virtual-desktop-service/css/www-netapp-library-critical.min.css" media="all" >
+  <link rel="stylesheet" href="/zh-cn/virtual-desktop-service/css/www-netapp-library-non-critical.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="stylesheet" href="/zh-cn/virtual-desktop-service/css/www-netapp-library-global-header-footer.min.css">
+
+  <!-- NetApp IE Customizations -->
+  <link rel="stylesheet" href='/zh-cn/virtual-desktop-service/css/na-utility.css' type='text/css'>
+  <link rel="stylesheet" href='/zh-cn/virtual-desktop-service/css/na-sidebar.css' type='text/css'>
+  <link rel='stylesheet' href='/zh-cn/virtual-desktop-service/css/clouddocs.css' type='text/css'>
+  <link rel='stylesheet' href='/zh-cn/virtual-desktop-service/css/na-pagenav.css' type='text/css'>
+
+  
+  <link rel="stylesheet" href="/zh-cn/virtual-desktop-service/css/landing-page.css" type="text/css">
+  <link rel="stylesheet" href="/zh-cn/virtual-desktop-service/css/tabbed-blocks.css" type="text/css">
+  <link rel="stylesheet" href='/zh-cn/virtual-desktop-service/css/product-family.css' type="text/css">
+  
+
+  
+  <link rel='stylesheet' href='/zh-cn/virtual-desktop-service/css/na-feature.css' type='text/css'>
+  
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+  <!-- Used to import Promise for IE. Required for SearchKit -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.5/bluebird.min.js"></script>
+  
+    <script src='/zh-cn/virtual-desktop-service/js/na-search.js'></script>
+  
+
+  
+  <script src='/zh-cn/virtual-desktop-service/js/na-pagenav.js'></script>
+  
+
+  <link rel='stylesheet' href='/zh-cn/virtual-desktop-service/css/prism.css' type='text/css'>
+  <link rel='stylesheet' href='/zh-cn/virtual-desktop-service/css/prism-netapp.css' type='text/css'>
+
+
+  <script src='/zh-cn/virtual-desktop-service/js/na-utility.js'></script>
+  <script src='/zh-cn/virtual-desktop-service/js/clouddocs.js'></script>
+  <script>
+  if (document.location.hostname === "docs.netapp.com") {
+    var head = document.getElementsByTagName('head')[0];
+    var adobe = document.createElement("script");
+    adobe.type = "text/javascript";
+    adobe.src = "//assets.adobedtm.com/60287eadf1ee/c284da483c83/launch-e9ff3acac59f.min.js";
+    head.appendChild(adobe);
+  }
+  </script>
+  <script src='/zh-cn/virtual-desktop-service/js/jquery.navgoco.min.js'></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <script src='/zh-cn/virtual-desktop-service/js/toc.js'></script>
+  <script src='/zh-cn/virtual-desktop-service/js/customscripts.js'></script>
+
+  <script>
+      $(document).ready(function() {
+          
+          var collapseOnInit = true;
+          
+
+          var navSettings = {
+              "caretHtml": '',
+              "accordion": collapseOnInit,
+              "openClass": 'active', // open
+              "save": false, // leave false or nav highlighting doesn't work right
+              "cookie": {
+                  "name": 'navgoco',
+                  "expires": false,
+                  "path": '/'
+              },
+              "slide": {
+                  "duration": 400,
+                  "easing": 'swing'
+              }
+          };
+
+          // Initialize navgoco with default options
+          $("#mysidebar").navgoco(navSettings);
+          
+
+          $("#collapseAll").click(function(e) {
+              e.preventDefault();
+              $("#mysidebar").navgoco('toggle', false);
+          });
+
+          $("#expandAll").click(function(e) {
+              e.preventDefault();
+              $("#mysidebar").navgoco('toggle', true);
+          });
+
+      });
+
+  </script>
+  <script>
+      $(document).ready(function() {
+          $("#tg-sb-link").click(function() {
+              $("#tg-sb-sidebar").toggle();
+              $("#tg-sb-content").toggleClass('col-md-9');
+              $("#tg-sb-content").toggleClass('col-md-12');
+              $("#tg-sb-icon").toggleClass('fa-toggle-on');
+              $("#tg-sb-icon").toggleClass('fa-toggle-off');
+          });
+      });
+  </script><script async src="https://www.googletagmanager.com/gtag/js?id=UA-81697994-3"></script>
+  <script>
+  if (document.location.hostname === "docs.netapp.com") {
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-81697994-3');
+  }
+  </script>
+  <script src='/zh-cn/virtual-desktop-service/js/version-dropdown.js'></script>
+  <script src='/zh-cn/virtual-desktop-service/js/product-family.js'></script>
+  <script src='/zh-cn/virtual-desktop-service/js/FileSaver.min.js'></script>
+  <script src='/zh-cn/virtual-desktop-service/js/jszip-utils.min.js'></script>
+  <script src='/zh-cn/virtual-desktop-service/js/jszip.min.js'></script>
+  <script src='/zh-cn/virtual-desktop-service/js/pdf-ux.js'></script>
+</head>
+
+
+  <body class role="document">
+    <div id="page" class="n-off-canvas-menu">
+      <div class="n-off-canvas-menu__menu"><!--TODO: Add offcanvas code --></div>
+      <div class="n-off-canvas-menu__content-wrap">
+        <header class="site-header" id="banner">
+  <!-- Start top_hat -->
+  <div class="n-top-hat">
+    <div class="n-container">
+      <div class="n-top-hat__cross-property-nav">
+        <ul class="n-top-hat__list">
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/products-a-z/" class="n-top-hat__link">产品和解决方案</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/support-and-training/netapp-university/" class="n-top-hat__link">支持和培训</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://cloud.netapp.com" class="n-top-hat__link">云中心</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://community.netapp.com/" class="n-top-hat__link">社区</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://blog.netapp.com/" class="n-top-hat__link">日志</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://customers.netapp.com/en/" class="n-top-hat__link">客户案例</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/us/contact-us/index.aspx" target="_self" class="n-top-hat__link" data-ntap-ui="contact-us">联系人</a>
+          </li>
+        </ul>
+      </div>
+      <div class="n-top-hat__utils">
+        <ul class="n-top-hat__list">
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/us/contact-us/index.aspx" target="_self" class="n-top-hat__link" data-ntap-ui="contact-us">联系人</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!-- End top_hat -->
+
+  <!-- Start property bar -->
+  <style>
+    .n-property-navigation-bar__menus--desktop-experience .n-menu--mega__default-content__heading span {
+    color: #34B0FF;
+    }
+  </style>
+  <div class="n-property-bar " data-ntap-ui="sticky-nav">
+    <div class="n-property-bar__inner-wrap">
+      <div class="n-property-bar__menu-toggle">
+        <a href="#" class="n-property-bar__menu-toggle-link">
+          <span class="n-property-bar__menu-toggle-text">Menu</span>
+          <svg class="n-icon-bars n-property-bar__menu-toggle-icon" aria-labelledby="title">
+            <title>bars</title>
+            <use xlink:href="/zh-cn/virtual-desktop-service/common/svg/sprite.svg#bars"></use>
+          </svg>
+        </a>
+      </div>
+      <div class="n-property-bar__property-mark ">
+        <a href="https://www.netapp.com" class="n-property-bar__property-link">
+          <div class="n-property-bar__logo">
+            <svg class="n-icon-netapp-mark n-icon-netapp-mark n-property-bar__netapp-mark-icon" aria-labelledby="title">
+              <title>netapp-mark</title>
+              <use xlink:href="/zh-cn/virtual-desktop-service/common/svg/sprite.svg#netapp-mark"></use>
+            </svg>
+            <svg class="n-icon-netapp-logo n-property-bar__logo-svg" aria-labelledby="title">
+              <title>netapp-logo</title>
+              <use xlink:href="/zh-cn/virtual-desktop-service/common/svg/sprite.svg#netapp-logo"></use>
+            </svg>
+          </div>
+        </a>
+      </div>
+
+      
+      <div class="search-property-bar">
+        <div id="search-demo-container" class="searchbox n-property-bar__search">
+          <div id="react-search" 
+          data-search-html="/zh-cn/virtual-desktop-service/search.html"
+          data-type="widget" 
+          data-placeholder="搜索文档" 
+          data-no-results-found="未找到与 {query} 匹配的结果。" 
+          data-did-you-mean="搜索 {suggestion}。" 
+          data-no-results-found-did-you-mean="未找到与 {query} 匹配的结果。您是否要搜索 {suggestion}?" 
+          data-results-found="找到 {hitCount} 个结果"  
+          data-sk-es-pf-indexes=""></div>
+          <button class="n-property-bar__search-toggle-button" type="button">
+            <svg class="n-icon-search n-property-bar__search-toggle-button-icon" aria-labelledby="title">
+              <title>search</title>
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/zh-cn/virtual-desktop-service/common/svg/sprite.svg#search"></use>
+            </svg>
+          </button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  <div class="n-property-bar__toolbar">
+    <!-- Start Language Selector --><div id="ie-i18n" class="n-property-bar__lang-selector">
+      <div id="ie-i18n-menu">
+      <span class="ie-i18n-lang">简体中文</span>
+        <button class="ie-i18n-icon-container" type="button">
+          <svg class="n-globe__icon" aria-labelledby="title">
+            <title>globe</title>
+            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/zh-cn/virtual-desktop-service/common/svg/sprite.svg#globe"></use>
+          </svg>
+        </button>
+      </div>
+      <div id="n-property-navigation-bar__menu--language-selector" class="ie-i18n-results-container n-menu n-menu--v3 n-menu--is-active" style="display: none;">
+        <div class="n-language-selector-menu">
+          <ul class="n-menu__list">
+            <li class="n-menu__list-column">
+              <ul class="n-menu__list"><li class="n-menu__list-item n-menu__list-item--level-1">
+                  <a href="https://docs.netapp.com/zh-cn/virtual-desktop-service/Deploying.Azure.AVD.vds_v5.4_components_and_permissions.html" class="n-menu__header-text"><span translate="no" class="notranslate">简体中文</span></a>
+                </li><li class="n-menu__list-item n-menu__list-item--level-1">
+                  <a href="https://docs.netapp.com/us-en/virtual-desktop-service/Deploying.Azure.AVD.vds_v5.4_components_and_permissions.html" class="n-menu__header-text"><span translate="no" class="notranslate">English</span></a>
+                </li><li class="n-menu__list-item n-menu__list-item--level-1">
+                  <a href="https://docs.netapp.com/ja-jp/virtual-desktop-service/Deploying.Azure.AVD.vds_v5.4_components_and_permissions.html" class="n-menu__header-text"><span translate="no" class="notranslate">日本語</span></a>
+                </li></ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div><!-- End Language Selector -->
+
+    <div class="n-property-bar__cta"></div>
+  </div>
+  <script>
+    $(function(){
+        var currentLocalization = $('html').attr('lang');
+
+        var localizationsDictionary = {
+            "en-CA" : "https://www.netapp.com/search/index.aspx?for_cr=canada&",
+            "en-IN" : "https://www.netapp.com/search/index.aspx?for_cr=india&",
+            "nl-NL" : "https://www.netapp.com/search/index.aspx?for_cr=netherlands&",
+            "ru-RU" : "https://www.netapp.com/search/index.aspx?for_cr=russia&",
+            "sv-SE" : "https://www.netapp.com/search/index.aspx?for_cr=sweden&",
+            "it-IT" : "https://www.netapp.com/search/index.aspx?for_cr=italy&",
+            "he-IL" : "https://www.netapp.com/search/index.aspx?for_cr=israel&",
+            "ko-KR" : "https://www.netapp.com/search/index.aspx?for_cr=korea&",
+            "zh-TW" : "https://www.netapp.com/search/index.aspx?for_cr=taiwan&",
+            "en-GB" : "https://www.netapp.com/search/index.aspx?for_cr=unitedkingdom&",
+            "en-SG" : "https://www.netapp.com/search/index.aspx?for_cr=asean&",
+            "en-AU" : "https://www.netapp.com/search/index.aspx?for_cr=australia&",
+            "pt-BR" : "https://www.netapp.com/search/index.aspx?for_cr=brasil&",
+            "de-CH" : "https://www.netapp.com/search/index.aspx?for_cr=switzerland&",
+            "es-MX" : "https://www.netapp.com/search/index.aspx?for_cr=mexico&"
+        };
+
+        if($('html').hasClass('ntap-whitelisted') && localizationsDictionary.hasOwnProperty(currentLocalization)) {
+            $('.n-property-bar__property-link').attr('href', '/');
+        }
+    });
+  </script>
+  <!-- End property bar -->
+</header>
+
+
+        <main id="n-main-content" class="n-main-content">
+          <!-- Start Documentation Content -->
+<div class="ie-main">
+  <!-- Sidebar Column -->
+  
+  <div class="col-md-3" >
+      <div class="n-pdf-header">
+  <a id="toggleButtonPdf" class="n-pdf-button" type="button">
+    <img src="/zh-cn/virtual-desktop-service/images/pdf.png" width="16" height="16"/>可用的 PDF<span>
+    </span>
+  </a>
+</div>
+<div class="n-pdf-body-container">
+  <ul id="toggleContainerPdf" class="n-pdf-body" style="display:none;"><li class="pdf-ux-container">
+        <a target="_blank" href="/zh-cn/virtual-desktop-service/pdfs/fullsite-sidebar/虚拟桌面服务文档.pdf" >
+          <img src="/zh-cn/virtual-desktop-service/images/pdf.png" width="16" height="16"/>此文档站点的 PDF</a>
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/zh-cn/virtual-desktop-service/pdfs/sidebar/使用_VDS_部署.pdf" 
+            
+          >
+            <img src="/zh-cn/virtual-desktop-service/images/pdf.png" width="16" height="16"/>
+            使用 VDS 部署
+          </a>
+          
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/zh-cn/virtual-desktop-service/pdfs/sidebar/Azure_酒店.pdf" 
+            
+          >
+            <img src="/zh-cn/virtual-desktop-service/images/pdf.png" width="16" height="16"/>
+            Azure 酒店
+          </a>
+          
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/zh-cn/virtual-desktop-service/pdfs/sidebar/Azure_虚拟桌面.pdf" 
+            
+          >
+            <img src="/zh-cn/virtual-desktop-service/images/pdf.png" width="16" height="16"/>
+            Azure 虚拟桌面
+          </a>
+          
+
+
+
+
+    <ul class="subfolders" style="display:none;"><li class="active pdf-hide">
+  <a target="_blank" href="/zh-cn/virtual-desktop-service/pdfs/pages/Deploying.Azure.AVD.vds_v5.4_components_and_permissions.pdf" >
+    <img src="/zh-cn/virtual-desktop-service/images/pdf.png" width="16" height="16"/>
+    PDF of this page
+  </a>
+</li>
+
+</ul>
+  
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/zh-cn/virtual-desktop-service/pdfs/sidebar/Google.pdf" 
+            
+          >
+            <img src="/zh-cn/virtual-desktop-service/images/pdf.png" width="16" height="16"/>
+            Google
+          </a>
+          
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/zh-cn/virtual-desktop-service/pdfs/sidebar/架构.pdf" 
+            
+          >
+            <img src="/zh-cn/virtual-desktop-service/images/pdf.png" width="16" height="16"/>
+            架构
+          </a>
+          
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/zh-cn/virtual-desktop-service/pdfs/sidebar/更改数据层.pdf" 
+            
+          >
+            <img src="/zh-cn/virtual-desktop-service/images/pdf.png" width="16" height="16"/>
+            更改数据层
+          </a>
+          
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/zh-cn/virtual-desktop-service/pdfs/sidebar/管理.pdf" 
+            
+          >
+            <img src="/zh-cn/virtual-desktop-service/images/pdf.png" width="16" height="16"/>
+            管理
+          </a>
+          
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/zh-cn/virtual-desktop-service/pdfs/sidebar/部署.pdf" 
+            
+          >
+            <img src="/zh-cn/virtual-desktop-service/images/pdf.png" width="16" height="16"/>
+            部署
+          </a>
+          
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/zh-cn/virtual-desktop-service/pdfs/sidebar/应用程序.pdf" 
+            
+          >
+            <img src="/zh-cn/virtual-desktop-service/images/pdf.png" width="16" height="16"/>
+            应用程序
+          </a>
+          
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/zh-cn/virtual-desktop-service/pdfs/sidebar/脚本化事件.pdf" 
+            
+          >
+            <img src="/zh-cn/virtual-desktop-service/images/pdf.png" width="16" height="16"/>
+            脚本化事件
+          </a>
+          
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/zh-cn/virtual-desktop-service/pdfs/sidebar/命令中心.pdf" 
+            
+          >
+            <img src="/zh-cn/virtual-desktop-service/images/pdf.png" width="16" height="16"/>
+            命令中心
+          </a>
+          
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/zh-cn/virtual-desktop-service/pdfs/sidebar/操作.pdf" 
+            
+          >
+            <img src="/zh-cn/virtual-desktop-service/images/pdf.png" width="16" height="16"/>
+            操作
+          </a>
+          
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/zh-cn/virtual-desktop-service/pdfs/sidebar/用户管理.pdf" 
+            
+          >
+            <img src="/zh-cn/virtual-desktop-service/images/pdf.png" width="16" height="16"/>
+            用户管理
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/zh-cn/virtual-desktop-service/pdfs/sidebar/系统管理.pdf" 
+            
+          >
+            <img src="/zh-cn/virtual-desktop-service/images/pdf.png" width="16" height="16"/>
+            系统管理
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/zh-cn/virtual-desktop-service/pdfs/sidebar/故障排除.pdf" 
+            
+          >
+            <img src="/zh-cn/virtual-desktop-service/images/pdf.png" width="16" height="16"/>
+            故障排除
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/zh-cn/virtual-desktop-service/pdfs/sidebar/参考.pdf" 
+            
+          >
+            <img src="/zh-cn/virtual-desktop-service/images/pdf.png" width="16" height="16"/>
+            参考
+          </a>
+          
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/zh-cn/virtual-desktop-service/pdfs/sidebar/发行说明.pdf" 
+            
+          >
+            <img src="/zh-cn/virtual-desktop-service/images/pdf.png" width="16" height="16"/>
+            发行说明
+          </a>
+          
+
+
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/zh-cn/virtual-desktop-service/pdfs/sidebar/先前版本.pdf" 
+            
+          >
+            <img src="/zh-cn/virtual-desktop-service/images/pdf.png" width="16" height="16"/>
+            先前版本
+          </a>
+          
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/zh-cn/virtual-desktop-service/pdfs/sidebar/脚本库文档.pdf" 
+            
+          >
+            <img src="/zh-cn/virtual-desktop-service/images/pdf.png" width="16" height="16"/>
+            脚本库文档
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/zh-cn/virtual-desktop-service/pdfs/sidebar/高级.pdf" 
+            
+          >
+            <img src="/zh-cn/virtual-desktop-service/images/pdf.png" width="16" height="16"/>
+            高级
+          </a>
+          
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          <a target="_blank" 
+            
+              href="/zh-cn/virtual-desktop-service/pdfs/sidebar/NetApp_VDS_v5_4_视频.pdf" 
+            
+          >
+            <img src="/zh-cn/virtual-desktop-service/images/pdf.png" width="16" height="16"/>
+            NetApp VDS v5.4 视频
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+        </li>
+      </ul>
+    
+
+  
+
+
+</li></ul>
+  <div class="zip-pdf-link-container" style="display: none;">   
+    <a href="#" id="zipPdf">
+      <img src="/zh-cn/virtual-desktop-service/images/pdf-zip.png" width="16" height="16"/>
+      <pre>收集单独的 PDF 文档<span class="zip-size"></span></pre>
+    </a><div id="zip-link-popup" class="hide">
+    <div class="inner-modal">
+        <div class="downloading-progress">
+            <div class="spinner"></div>
+            <h1>Creating your file...</h1>
+            <div>This may take a few minutes. Thanks for your patience.</div>
+            <button class="cancel-download-btn" type="button">Cancel</button>
+        </div>
+        <div class="download-complete hide">
+            <div class="done-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/></svg>
+            </div>
+            <div>Your file is ready</div>
+            <button class="cancel-download-btn" type="button">OK</button>
+        </div>
+    </div>
+</div>
+<script>
+    $(".cancel-download-btn").click(function(){
+        $("#zip-link-popup").addClass("hide");
+        $("#zip-link-popup .downloading-progress").removeClass("hide");
+        $("#zip-link-popup .download-complete").addClass("hide");
+    });
+</script></div>
+</div>
+<script>
+  $("#toggleContainerPdf li.active:last-child").parents('ul.subfolders').toggle('display');
+  $("#toggleButtonPdf").click(function () {
+    $("#toggleContainerPdf").toggle('display');
+    $(".n-pdf-body-container .zip-pdf-link-container").toggle('display');
+  });
+</script><div class="sidebar-nav-container">
+  <ul id="mysidebar" class="nav"><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/index.html">
+        Virtual Desktop Service 文档
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 使用 VDS 部署</div>
+      </a>
+      <ul><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Azure 酒店</div>
+      </a>
+      <ul><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Azure 虚拟桌面</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Deploying.Azure.AVD.Deploying_AVD_in_Azure.html">
+        在 Azure 中部署 AVD
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Deploying.Azure.AVD.Supplemental_AVD_with_existing_AD.html">
+        补充— AVD 与现有 AD
+      </a></li><li class="  active "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Deploying.Azure.AVD.vds_v5.4_components_and_permissions.html">
+        VDS v5.4 组件和权限（ AVD ）
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Deploying.Azure.AVD.vds_v5.4_prerequisites.html">
+        VDS v5.4 前提条件（ AVD ）
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Deploying.Azure.AVD.vds_v6.0_prerequisites.html">
+        VDS v6.0 前提条件（ AVD ）
+      </a></li></ul></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Google</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Deploying.GCP.RDS.deploying_rds_in_gcp.html">
+        在 Google 中部署 RDS
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Deploying.GCP.vds_v5.4_prerequisites.html">
+        VDS v5.4 前提条件（ RDS/GCP ）
+      </a></li></ul></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 架构</div>
+      </a>
+      <ul><li class="subfolders "><a href="/zh-cn/virtual-desktop-service/Architectural.change_data_layer.html">
+        <div class="na-navbar-padding"> 更改数据层</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Architectural.change_data_layer.Azure_Files.html">
+        Azure 文件
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Architectual.migrate_data_into_vds.html">
+        将数据迁移到 VDS 中
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Architectual.upgrade_AVD_v1_to_v2.html">
+        将 AVD v1 升级到 v2
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Architectural.Wildcard_SSL_certificate_renewal_process.html">
+        续订 SSL 证书
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Architectural.AVD_teardown_guide.html">
+        VDS 拆卸指南
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 管理</div>
+      </a>
+      <ul><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 部署</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Management.Deployments.provisioning_collections.html">
+        配置收集
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Management.Deployments.logical_hierarchy_overview.html">
+        VDS 逻辑层次结构概述
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 应用程序</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Management.Applications.application_entitlement_workflow.html">
+        RDS 的应用程序授权
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Management.Applications.AVD_application_entitlement_workflow.html">
+        AVD 应用程序授权
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 脚本化事件</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Management.Scripted_Events.scripted_events.html">
+        已划线事件概述
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 命令中心</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Management.command_center.overview.html">
+        管理命令中心概述
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 操作</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Management.command_center.operations.copy_template_to_gallery.html">
+        将模板复制到图库
+      </a></li></ul></li></ul></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Management.Cost_Optimization.workload_schedule.html">
+        配置成本优化
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 用户管理</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Management.User_Administration.manage_user_accounts.html">
+        管理用户帐户
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Management.User_Administration.manage_folders_and_permissions.html">
+        管理文件夹和权限
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Management.Applications.application_entitlement_workflow.html">
+        管理应用程序访问
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Management.User_Administration.reset_user_password.html">
+        重置用户密码
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Management.User_Administration.multi-factor_authentication.html">
+        配置 MFA
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 系统管理</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Management.System_Administration.create_domain_admin_account.html">
+        创建域管理员帐户
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Management.System_Administration.provide_3rd_party_access.html">
+        提供第三方访问
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Management.System_Administration.configure_backup.html">
+        配置备份
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Management.System_Administration.clone_virtual_machines.html">
+        克隆虚拟机
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Management.System_Administration.auto_add_disk_space.html">
+        自动添加磁盘空间
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Management.System_Administration.azure_key_vault.html">
+        Azure 密钥存储
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Management.System_Administration.configure_antivirus.html">
+        配置防病毒
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Management.System_Administration.adding_moving_mapped_drives.html">
+        添加和移动映射的驱动器
+      </a></li></ul></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 故障排除</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Troubleshooting.reviewing_vds_logs.html">
+        查看 VDS 日志
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Troubleshooting.internet_connection_quality.html">
+        Internet 连接质量
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Troubleshooting.enable_user_wallpaper.html">
+        启用用户墙纸
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Troubleshooting.printing_issues.html">
+        打印问题
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Troubleshooting.azure_vcpu_core_quota.html">
+        Azure vCPU 核心配额
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Troubleshooting.unlocking_user_accounts.html">
+        解锁用户帐户
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Troubleshooting.general_vm_performance.html">
+        常规虚拟机性能
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Troubleshooting.dns_forwarding_for_azure_aadds_sso.html">
+        适用于 Azure 的 DNS 转发可添加 SSO
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Troubleshooting.application_issues.html">
+        应用程序问题
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 参考</div>
+      </a>
+      <ul><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 发行说明</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Reference.Release_Notes.vds_v6.0_release_notes.html">
+        VDS v6.0 发行说明
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Reference.Release_Notes.vds_v5.4_release_notes.html">
+        VDS v5.4 发行说明
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Reference.Release_Notes.vds_windows_client_release_notes.html">
+        VDS Windows 客户端发行说明
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 先前版本</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Reference.Release_Notes.vds_v5.3_release_notes.html">
+        VDS v5.3 发行说明
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Reference.Release_Notes.cwms_v5.2_release_notes.html">
+        CWMS v5.2 发行说明
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Reference.Release_Notes.cws_v5.1_release_notes.html">
+        CWS v5.1 发行说明
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Reference.Release_Notes.cws_v5.0_release_notes.html">
+        CWS 5.0 发行说明
+      </a></li></ul></li></ul></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Reference.end_user_access.html">
+        最终用户访问
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Reference.vds_change_environments.html">
+        VDS 更改环境
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 脚本库文档</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/scriptlibrary.AdobeReader.html">
+        Adobe Reader DC
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/scriptlibrary.AMDRadeonInstinctDrivers.html">
+        AMD radeon 虚拟驱动程序
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/scriptlibrary.EzeepPrintApp.html">
+        Ezeep 打印应用程序
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/scriptlibrary.GoogleChrome.html">
+        Google Chrome
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/scriptlibrary.MicrosoftEdgeChromium.html">
+        Microsoft Edge Chromium
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/scriptlibrary.MicrosoftOffice365.html">
+        Microsoft Office 365
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/scriptlibrary.MicrosoftOneDrive.html">
+        Microsoft One Drive
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/scriptlibrary.MicrosoftTeams.html">
+        Microsoft 团队
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/scriptlibrary.MicrosoftTeamsAVD.html">
+        适用于 AVD 的 Microsoft 团队
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/scriptlibrary.NvidiaCudaDrivers.html">
+        NVIDIA Cudas 驱动程序
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/scriptlibrary.NvidiaGridDrivers.html">
+        NVIDIA 网格驱动程序
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/scriptlibrary.AVDScreenCaptureProtection.html">
+        AVD 屏幕捕获保护
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/scriptlibrary.ZoomVDI-AVD.html">
+        AVD 缩放
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> 高级</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Advanced.fslogix_profile_shrink.html">
+        FSLogix 配置文件缩减
+      </a></li></ul></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> NetApp VDS v5.4 视频</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/video_content_netapptv.html">
+        NetApp TV 内容
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/video_azure_AVDRDS_deploy_54.html">
+        部署 AVD 或 RDS
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/video_azure_AVD_hostpool_54.html">
+        在 Azure 中添加 AVD 主机池
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/video_azure_AVD_users_appgroups_54.html">
+        管理 AVD 用户和应用程序组
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/video_azure_AVDRDS_optimize_resources_54.html">
+        管理资源并最大程度地降低成本
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/video_VDS_day_in_the_life.html">
+        自动管理 AVD 和 RDS 的应用程序
+      </a></li><li class=" "><a class="na-navbar-padding" href="/zh-cn/virtual-desktop-service/Architectual.upgrade_AVD_v1_to_v2.html">
+        将 v1 AVD 主机池升级到 v2
+      </a></li></ul></li></ul>
+</div>
+<!-- this highlights the active parent class in the navgoco sidebar. this is critical so that the parent expands when you're viewing a page. This must appear below the sidebar code above. Otherwise, if placed inside customscripts.js, the script runs before the sidebar code runs and the class never gets inserted.-->
+<script>$("li.active").parents('li').toggleClass("active");</script>
+
+  </div>
+  
+
+  <div class="ie-content-pane n-doc__component-detail-content n-doc__component-detail-content--show-code">
+    <!-- Begin of page container -->
+    <article class="page-content">
+      <div class="ie-utility">
+  <div class="ie-menu">
+    <div class="n-breadcrumb">
+      <ul class="n-breadcrumb__list">
+        <li class="n-breadcrumb__list-item">
+          <a href="https://www.netapp.com">主页</a>
+        </li>
+        <li class="n-breadcrumb__list-item">
+          <a href="https://docs.netapp.com">文档</a>
+        </li>
+        
+
+        <li class="n-breadcrumb__list-item">
+          <a href="/zh-cn/virtual-desktop-service/">Virtual&nbsp;Desktop&nbsp;Service</a>
+        </li>
+        <li class="n-breadcrumb__list-item">
+          VDS 组件和权限
+        </li>
+      </ul>
+    </div>
+    <div style="clear: both"></div><!-- Main needs to have height -->
+  </div>
+</div>
+
+      <div class="ie-nmt-disclaimer">
+  <span>
+    <div class="ie-nmt-disclaimer-container">
+      <div class="ie-nmt-disclaimer-icon">
+        <svg class="luci-icon" aria-hidden="true">
+          <use xlink:href="/zh-cn/virtual-desktop-service/common/svg/sprite.svg#circle-info">
+        </svg>
+      </div>
+      <div class="ie-nmt-disclaimer-content">
+        <span> 简体中文版经机器翻译而成，仅供参考。如与英语版出现任何冲突，应以英语版为准。 </span>
+      </div>
+      <div style="clear:both;"></div>
+    </div>
+  </span>
+</div><div class="n-doc__component-detail-heading-wrap">
+  <h1 class="n-doc__component-detail-heading">VDS 组件和权限</h1>
+</div>
+
+
+<p class="page-details">
+  
+    
+    <time datetime="2021-08-11 06:00:53 +0000">08/11/2021</time>
+    
+  
+
+<span>提供者
+</span>
+
+
+</p>
+
+
+<div class="sect1">
+<h2 id="avd-和-vds-安全实体和服务">AVD 和 VDS 安全实体和服务</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Azure Virtual Desktop （ AVD ）需要 Azure AD 和本地 Active Directory 中的安全帐户和组件来执行自动化操作。NetApp 的虚拟桌面服务（ Virtual Desktop Service ， VDS ）可在部署过程中创建组件和安全设置，以使管理员能够控制 AVD 环境。本文档介绍了这两种环境中的相关 VDS 帐户，组件和安全设置。</p>
+</div>
+<div class="paragraph">
+<p>部署自动化流程的组件和权限主要与最终部署的环境的组件不同。因此，本文分为两个主要部分：部署自动化部分和已部署环境部分。</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="Reference%20Architecture%20AVD%20v1.jpg" alt="宽度 = 75%"></span></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="avd-部署自动化组件和权限">AVD 部署自动化组件和权限</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>VDS 部署利用多个 Azure 和 NetApp 组件以及安全权限来实施部署和工作空间。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="vds-部署服务">VDS 部署服务</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="企业级应用程序">企业级应用程序</h3>
+<div class="paragraph">
+<p>VDS 利用租户 Azure AD 域中的企业级应用程序和应用程序注册。企业应用程序是从 Azure AD 实例安全上下文中调用 Azure Resource Manager ， Azure 图形和（如果使用 AVD 秋季版本） AVD API 端点的管道，并使用授予关联服务主体的委派角色和权限。根据租户通过 VDS 获得的 AVD 服务的初始化状态，可以创建应用程序注册。</p>
+</div>
+<div class="paragraph">
+<p>为了能够创建和管理这些 VM ， VDS 会在 Azure 订阅中创建多个支持组件：</p>
+</div>
+<div class="sect3">
+<h4 id="云工作空间">云工作空间</h4>
+<div class="paragraph">
+<p>这是企业级应用程序管理员最初授予的许可，并在 VDS 设置向导的部署过程中使用。</p>
+</div>
+<div class="paragraph">
+<p>在 VDS 设置过程中， Cloud Workspace Enterprise 应用程序会请求一组特定的权限。这些权限包括：</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>以登录用户身份访问目录（已委派）</p>
+</li>
+<li>
+<p>读写目录数据（已委派）</p>
+</li>
+<li>
+<p>登录并读取用户配置文件（已委派）</p>
+</li>
+<li>
+<p>对用户进行签名（已委派）</p>
+</li>
+<li>
+<p>查看用户的基本配置文件（已委派）</p>
+</li>
+<li>
+<p>以组织用户身份访问 Azure 服务管理（已委派）</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="云工作空间-api">云工作空间 API</h4>
+<div class="paragraph">
+<p>处理 Azure PaaS 功能的常规管理调用。Azure PaaS 功能的示例包括 Azure Compute ， Azure Backup ， Azure Files 等。此服务主体要求在初始部署期间拥有目标 Azure 订阅的所有者权限，并要求为持续管理提供贡献者权限（注： 使用 Azure Files 需要订阅所有者权限才能为 Azure 文件对象设置每个用户的权限。</p>
+</div>
+<div class="paragraph">
+<p>在 VDS 设置过程中， Cloud Workspace API Enterprise 应用程序会请求一组特定的权限。这些权限包括：</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>订阅贡献者（如果使用 Azure 文件，则为订阅所有者）</p>
+</li>
+<li>
+<p>Azure AD 图形</p>
+<div class="ulist">
+<ul>
+<li>
+<p>读取和写入所有应用程序（应用程序）</p>
+</li>
+<li>
+<p>管理此应用程序创建或拥有的应用程序（应用程序）</p>
+</li>
+<li>
+<p>读写设备（应用程序）</p>
+</li>
+<li>
+<p>以登录用户身份访问目录（已委派）</p>
+</li>
+<li>
+<p>读取目录数据（应用程序）</p>
+</li>
+<li>
+<p>读取目录数据（已委派）</p>
+</li>
+<li>
+<p>读写目录数据（应用程序）</p>
+</li>
+<li>
+<p>读写目录数据（已委派）</p>
+</li>
+<li>
+<p>读取和写入域（应用程序）</p>
+</li>
+<li>
+<p>读取所有组（已委派）</p>
+</li>
+<li>
+<p>读取和写入所有组（已委派）</p>
+</li>
+<li>
+<p>读取所有隐藏的成员资格（应用程序）</p>
+</li>
+<li>
+<p>读取隐藏的成员资格（已委派）</p>
+</li>
+<li>
+<p>登录并读取用户配置文件（已委派）</p>
+</li>
+<li>
+<p>读取所有用户的完整配置文件（已委派）</p>
+</li>
+<li>
+<p>读取所有用户的基本配置文件（已委派）</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Azure 服务管理</p>
+<div class="ulist">
+<ul>
+<li>
+<p>以组织用户身份访问 Azure 服务管理（已委派）</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="netapp-vds">NetApp VDS</h3>
+<div class="paragraph">
+<p>NetApp VDS 组件可通过 VDS 控制平面来自动部署和配置 AVD 角色，服务和资源。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="自定义角色">自定义角色</h3>
+<div class="paragraph">
+<p>创建自动化贡献者角色的目的是，通过特权最少的方法来促进部署。此角色允许 CMGR1 虚拟机访问 Azure 自动化帐户。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="自动化帐户">自动化帐户</h3>
+<div class="paragraph">
+<p>自动化帐户会在部署期间创建，并且是配置过程中所需的组件。Automation 帐户包含变量，凭据，模块和所需状态配置，并引用密钥存储。</p>
+</div>
+<div class="sect3">
+<h4 id="所需状态配置">所需状态配置</h4>
+<div class="paragraph">
+<p>这是用于构建 CMGR1 配置的方法。配置文件会下载到虚拟机中，并通过虚拟机上的本地 Configuration Manager 应用。配置要素的示例包括：</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>安装 Windows 功能</p>
+</li>
+<li>
+<p>正在安装软件</p>
+</li>
+<li>
+<p>正在应用软件配置</p>
+</li>
+<li>
+<p>确保应用正确的权限集</p>
+</li>
+<li>
+<p>应用 Let 的加密证书</p>
+</li>
+<li>
+<p>确保 DNS 记录正确无误</p>
+</li>
+<li>
+<p>确保已将 CMGR1 加入此域</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="模块">模块：</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>ActiveDirectoryDsc ：部署和配置 Active Directory 所需的状态配置资源。通过这些资源，您可以配置新域，子域和高可用性域控制器，建立跨域信任并管理用户，组和 OU 。</p>
+</li>
+<li>
+<p>AZ 帐户： Microsoft 提供的一个模块，用于管理 Azure 模块的凭据和通用配置元素</p>
+</li>
+<li>
+<p>AZ-Automation ： Microsoft 为 Azure Automation 命令集提供了一个模块</p>
+</li>
+<li>
+<p>Az.Compute:A Microsoft 为 Azure 计算命令小程序提供了模块</p>
+</li>
+<li>
+<p>AZ-KeyVault ： Microsoft 为 Azure Key Vault 命令集提供的模块</p>
+</li>
+<li>
+<p>AZ 资源： Microsoft 为 Azure Resource Manager 命令集提供的模块</p>
+</li>
+<li>
+<p>cChoca ：使用 chocolatey 下载和安装软件包所需的状态配置资源</p>
+</li>
+<li>
+<p>cjAz ：此 NetApp 创建的模块可为 Azure 自动化模块提供自动化工具</p>
+</li>
+<li>
+<p>cjAzACS ：此 NetApp 创建的模块包含在用户环境中运行的环境自动化功能和 PowerShell 进程。</p>
+</li>
+<li>
+<p>cjAzBuild ：此 NetApp 创建的模块包含在系统环境中运行的构建和维护自动化以及 PowerShell 流程。</p>
+</li>
+<li>
+<p>cNtfsAccessControl ： NTFS 访问控制管理所需的状态配置资源</p>
+</li>
+<li>
+<p>ComputerManagementDsc ：所需的状态配置资源，用于执行计算机管理任务，例如加入域和计划任务，以及配置虚拟内存，事件日志，时区和电源设置等项。</p>
+</li>
+<li>
+<p>cUserRightsAssignment ：允许管理用户权限（例如登录权限和特权）的所需状态配置资源</p>
+</li>
+<li>
+<p>NetworkingDsc ：网络所需的状态配置资源</p>
+</li>
+<li>
+<p>xCertificate ：用于简化 Windows Server 上证书管理的所需状态配置资源。</p>
+</li>
+<li>
+<p>xDnsServer ：用于配置和管理 Windows Server DNS 服务器的所需状态配置资源</p>
+</li>
+<li>
+<p>xNetworking ：与网络连接相关的所需状态配置资源。</p>
+</li>
+<li>
+<p><a href="https://github.com/PowerShell/xRemoteDesktopAdmin">"xRemoteDesktopAdmin"</a>：此模块利用一个存储库，其中包含在本地或远程计算机上配置远程桌面设置和 Windows 防火墙所需的状态配置资源。</p>
+</li>
+<li>
+<p>xRemoteDesktopSessionHost ：所需的状态配置资源（ xRDSessionDeployment ， xRDSessionCollection ， xRDSessionCollectionConfiguration 和 xRDRemoteApp ），用于创建和配置远程桌面会话主机（ RDSH ）实例</p>
+</li>
+<li>
+<p>xSmbShare ：配置和管理 SMB 共享所需的状态配置资源</p>
+</li>
+<li>
+<p>xSystemSecurity ：用于管理 UAC 和 IE Esc 的所需状态配置资源</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/virtual-desktop-service/images/note.svg" alt="注">
+</td>
+<td class="content">
+Azure Virtual Desktop 还会安装 Azure 组件，包括适用于 Azure Virtual Desktop 和 Azure Virtual Desktop Client ， AVD 租户， AVD 主机池， AVD 应用程序组和 AVD 注册虚拟机的企业级应用程序和应用程序注册。虽然 VDS Automation 组件负责管理这些组件，但 AVD 会控制其默认配置和属性集，因此，有关详细信息，请参见 AVD 文档。
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="混合-ad-组件">混合 AD 组件</h3>
+<div class="paragraph">
+<p>为了便于与现有的公有云中运行的现有 AD 进行集成，现有 AD 环境还需要其他组件和权限。</p>
+</div>
+<div class="sect3">
+<h4 id="域控制器">域控制器</h4>
+<div class="paragraph">
+<p>现有域控制器可通过 AD Connect 和 / 或站点到站点 VPN （或 Azure ExpressRoute ）集成到 AVD 部署中。</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="ad-connect">AD Connect</h4>
+<div class="paragraph">
+<p>为了便于通过 AVD PaaS 服务成功进行用户身份验证，可以使用 AD 连接将域控制器与 Azure AD 同步。</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="安全组">安全组</h4>
+<div class="paragraph">
+<p>VDS 使用名为 CW-Infrastructure 的 Active Directory 安全组来提供自动执行域加入和 GPO 策略附件等与 Active Directory 相关的任务所需的权限。</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="服务帐户">服务帐户</h4>
+<div class="paragraph">
+<p>VDS 使用名为 CloudworkspaceSVC 的 Active Directory 服务帐户，该帐户用作 VDS Windows 服务和 IIS 应用程序服务的标识。此帐户为非交互式帐户（不允许 RDP 登录），是 CW-Infrastructure 帐户的主要成员</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="vpn-或-expressroute">VPN 或 ExpressRoute</h4>
+<div class="paragraph">
+<p>可以使用站点到站点 VPN 或 Azure ExpressRoute 直接将 Azure VM 加入现有域。这是一种可选配置，可在项目要求需要时使用。</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="本地-ad-权限委派">本地 AD 权限委派</h4>
+<div class="paragraph">
+<p>NetApp 提供了一种可简化混合 AD 流程的可选工具。如果使用 NetApp 的可选工具， IT 必须：</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>在服务器操作系统上运行，而不是在工作站操作系统上运行</p>
+</li>
+<li>
+<p>在加入域或作为域控制器的服务器上运行</p>
+</li>
+<li>
+<p>在运行此工具的服务器（如果未在域控制器上运行）和域控制器上安装 PowerShell 5.0 或更高版本</p>
+</li>
+<li>
+<p>由具有域管理员权限的用户运行，或者由具有本地管理员权限并能够提供域管理员凭据的用户运行（用于 RunA ）</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>无论是手动创建还是通过 NetApp 的工具应用，所需权限均为：</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>CW-Infrastructure 组</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Cloud Workspace Infrastructure （ * CW-Infrastructure* ）安全组被授予对 Cloud Workspace OU 级别和所有后代对象的完全控制权限</p>
+</li>
+<li>
+<p>&lt;deployment code&gt;.cloudworkworkspace .app DNS Zone — CW-Infrastructure 组授予 Create儿童 ， Delete儿童 ， ListChildren&#8217;s ， ReadProperty ， DeleteTree ， ExtendedRight ， Delete ， GenericWrite</p>
+</li>
+<li>
+<p>DNS 服务器— CW-Infrastructure Group 授予 ReadProperty 和 GenericExecute 权限</p>
+</li>
+<li>
+<p>已创建 VM 的本地管理员访问（ CMGR1 ， AVD 会话 VM ）（通过受管 AVD 系统上的组策略完成）</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>CW-CVMGRAccess 组此组为所有模板，单个服务器，新的原生 Active Directory 模板利用内置的组服务器操作员远程桌面用户和网络配置操作员向 CMGR1 提供本地管理权限。</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="avd-环境组件和权限">AVD 环境组件和权限</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>部署自动化流程完成后，持续使用和管理部署和工作空间需要一组不同的组件和权限，如下所述。上述的许多组件和权限仍然相关，但本节重点介绍了如何定义已部署的的结构。</p>
+</div>
+<div class="paragraph">
+<p>VDS 部署和工作空间的组件可以分为多个逻辑类别：</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>最终用户客户端</p>
+</li>
+<li>
+<p>VDS 控制面板组件</p>
+</li>
+<li>
+<p>Microsoft Azure AVD-PaaS 组件</p>
+</li>
+<li>
+<p>VDS 平台组件</p>
+</li>
+<li>
+<p>Azure 租户中的 VDS 工作空间组件</p>
+</li>
+<li>
+<p>混合 AD 组件</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="最终用户客户端">最终用户客户端</h3>
+<div class="paragraph">
+<p>用户可以连接到其 AVD 桌面和 / 或各种端点类型。Microsoft 已发布适用于 Windows ， macOS ， Android 和 iOS 的客户端应用程序。此外，还可以使用 Web 客户端进行无客户端访问。</p>
+</div>
+<div class="paragraph">
+<p>有些 Linux 瘦客户端供应商已经发布了适用于 AVD 的端点客户端。这些信息在中列出 <a href="https://docs.microsoft.com/en-us/azure/virtual-desktop/linux-overview" class="bare">https://docs.microsoft.com/en-us/azure/virtual-desktop/linux-overview</a></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="vds-控制面板组件">VDS 控制面板组件</h3>
+<div class="sect3">
+<h4 id="vds-rest-api">VDS REST API</h4>
+<div class="paragraph">
+<p>VDS 基于完整记录的 REST API 构建，因此 Web 应用程序中的所有可用操作也可通过 API 来执行。API 文档如下所示： <a href="https://api.cloudworkspace.com/5.4/swagger/ui/index#" class="bare">https://api.cloudworkspace.com/5.4/swagger/ui/index#</a></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="vds-web-应用程序">VDS Web 应用程序</h4>
+<div class="paragraph">
+<p>VDS 管理员可以通过 VDS Web 应用程序与 ADS 应用程序进行交互。此 Web 门户位于： <a href="https://manage.cloudworkspace.com" class="bare">https://manage.cloudworkspace.com</a></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="控制平面数据库">控制平面数据库</h4>
+<div class="paragraph">
+<p>VDS 数据和设置存储在 NetApp 托管和管理的控制平面 SQL 数据库中。</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="vds-通信">VDS 通信</h4>
+
+</div>
+</div>
+<div class="sect2">
+<h3 id="azure-租户组件">Azure 租户组件</h3>
+<div class="paragraph">
+<p>VDS 部署自动化会创建一个 Azure 资源组来包含其他 AVD 组件，包括 VM ，网络子网，网络安全组以及 Azure 文件容器或 Azure NetApp Files 容量池。注意—默认情况下为单个资源组，但如果需要， VDS 可通过工具在其他资源组中创建资源。</p>
+</div>
+<div class="sect3">
+<h4 id="microsoft-azure-avd-paas-组件">Microsoft Azure AVD-PaaS 组件</h4>
+<div class="sect4">
+<h5 id="avd-rest-api">AVD REST API</h5>
+<div class="paragraph">
+<p>Microsoft AVD 可通过 API 进行管理。VDS 广泛利用这些 API 来自动化和管理 AVD 环境。文档位于： <a href="https://docs.microsoft.com/en-us/rest/api/desktopvirtualization/" class="bare">https://docs.microsoft.com/en-us/rest/api/desktopvirtualization/</a></p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="会话代理">会话代理</h5>
+<div class="paragraph">
+<p>代理将确定为用户授权的资源，并编排用户与网关的连接。</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="azure-诊断">Azure 诊断</h5>
+<div class="paragraph">
+<p>Azure 诊断专为支持 AVD 部署而构建。</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="avd-web-客户端">AVD Web 客户端</h5>
+<div class="paragraph">
+<p>Microsoft 提供了一个 Web 客户端，用户无需在本地安装客户端即可连接到其 AVD 资源。</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="会话网关">会话网关</h5>
+<div class="paragraph">
+<p>本地安装的 RD 客户端连接到网关，以便安全地与 AVD 环境进行通信。</p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="vds-平台组件">VDS 平台组件</h4>
+<div class="sect4">
+<h5 id="cmgr1">CMGR1</h5>
+<div class="paragraph">
+<p>CMWGR1 是每个部署的 VDS 控制 VM 。默认情况下，它会在目标 Azure 订阅中创建为 Windows 2019 Server VM 。有关安装在 CMGR1 上的 VDS 和第三方组件的列表，请参见 " 本地部署 " 一节。</p>
+</div>
+<div class="paragraph">
+<p>AVD 要求 AVD VM 加入 Active Directory 域。为了便于执行此过程并提供用于管理 VDS 环境的自动化工具，上述的 CMGR1 VM 上安装了多个组件，并向 AD 实例添加了多个组件。这些组件包括：</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>* Windows 服务 * — VDS 使用 Windows 服务在部署中执行自动化和管理操作：</p>
+<div class="ulist">
+<ul>
+<li>
+<p>* 连续运行自动化服务 * 是在每个 AVD 部署中部署在 CMGR1 上的一项 Windows 服务，用于在环境中执行许多面向用户的自动化任务。此服务在 * CloudWorkspaceSVc* AD 帐户下运行。</p>
+</li>
+<li>
+<p>* 四路虚拟机自动化服务 * 是在每个 AVD 部署中部署在 CMGR1 上的一项 Windows 服务，用于执行虚拟机管理功能。此服务在 * CloudWorkspaceSVc* AD 帐户下运行。</p>
+</li>
+<li>
+<p><strong>CW Agent Service</strong> 是一种 Windows 服务，部署在 VDS 管理下的每个虚拟机上，包括 CMGR1 。此服务在虚拟机上的 * 本地系统 * 环境下运行。</p>
+</li>
+<li>
+<p>* 在每个 AVD 部署中， WCMGR1 上安装了一个基于 IIS 应用程序池的侦听器。此操作将处理来自全局控制平台的入站请求，并在 * CloudWorkspaceSVC/ AD 帐户下运行。</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>* SQL Server 2017 Express* — VDS 在 CMGR1 VM 上创建一个 SQL Server Express 实例，用于管理自动化组件生成的元数据。</p>
+</li>
+<li>
+<p>* 互联网信息服务（ Internet Information Services ， IIS ） * —在 CMGR1 上启用了 IIS 以托管 CWManagerX 和 CWApps IIS 应用程序（仅当启用了 RDS RemoteApp 功能时）。VDS 需要使用 IIS 7.5 或更高版本。</p>
+</li>
+<li>
+<p>* HTML5 Portal （可选） * — VDS 安装了 Spark 网关服务，以便在部署中和从 VDS Web 应用程序对 VM 进行 HTML5 访问。这是一个基于 Java 的应用程序，如果不需要使用此访问方法，可以禁用并删除此应用程序。</p>
+</li>
+<li>
+<p>* RD 网关（可选） * — VDS 使 CMGR1 上的 RD 网关角色能够为基于 RDS 收集的资源池提供 RDP 访问。如果仅需要 AVD 反向连接访问，则可以禁用 / 卸载此角色。</p>
+</li>
+<li>
+<p>* RD Web （可选） * — VDS 启用 RD Web 角色并创建 CWApps IIS Web 应用程序。如果只需要 AVD 访问，则可以禁用此角色。</p>
+</li>
+<li>
+<p>* DC Config* —一种 Windows 应用程序，用于执行部署和 VDS 站点专用配置以及高级配置任务。</p>
+</li>
+<li>
+<p>* 测试 VDC 工具 * —一种 Windows 应用程序，支持直接执行虚拟机任务和客户端级别配置更改，在极少数情况下需要修改 API 或 Web 应用程序任务以进行故障排除。</p>
+</li>
+<li>
+<p>* 我们来加密通配符证书（可选） * —由 VDS 创建和管理—所有需要通过 TLS 传输 HTTPS 流量的虚拟机每晚都使用证书进行更新。续订也通过自动任务来处理（证书为 90 天，因此不久将开始续订）。如果需要，客户可以提供自己的通配符证书。VDS 还需要多个 Active Directory 组件来支持自动化任务。设计目的是利用最少数量的 AD 组件和权限添加，同时仍支持环境的自动化管理。这些组件包括：</p>
+</li>
+<li>
+<p>* 云工作空间组织单位（ OU ） * —此组织单位将充当所需子组件的主 AD 容器。CW-Infrastructure 和客户端 DHP 访问组的权限将在此级别及其子组件进行设置。有关在此 OU 中创建的子 OU ，请参见附录 A 。</p>
+</li>
+<li>
+<p>* 云工作空间基础架构组（ CW-Infrastructure ） * 是在本地 AD 中创建的一个安全组，用于将所需的委派权限分配给 VDS 服务帐户（ * CloudWorkspaceSVC* ）</p>
+</li>
+<li>
+<p>* 客户端 DHP 访问组（ ClientDHPAccess ） * 是在本地 AD 中创建的一个安全组，可通过 VDS 控制公司共享数据，用户主目录数据和配置文件数据所在的位置。</p>
+</li>
+<li>
+<p>* CloudWorkspaceSVC/ 服务帐户（ Cloud Workspace Infrastructure Group 成员）</p>
+</li>
+<li>
+<p>部署代码 &gt;.cloudworkworkspace .app 域 * 的 * DNS 分区（此域管理会话主机 VM 的自动创建 DNS 名称）—由 Deploy 配置创建。</p>
+</li>
+<li>
+<p>链接到云工作空间组织单位的各个子 OU 的 * NetApp 专用 GPO * 。这些 GPO 包括：</p>
+<div class="ulist">
+<ul>
+<li>
+<p>* 云工作空间 GPO （链接到云工作空间 OU ） * —定义 CW-Infrastructure 组成员的访问协议和方法。此外，还会将该组添加到 AVD 会话主机上的本地管理员组。</p>
+</li>
+<li>
+<p>* 云工作空间防火墙 GPO * （链接到专用客户服务器，远程桌面和暂存 OU ）—创建一个策略，用于确保与平台服务器的会话主机连接并将其隔离。</p>
+</li>
+<li>
+<p>* 云工作空间 RDS* （专用客户服务器，远程桌面和暂存 OU ）—会话质量，可靠性和断开连接超时限制的策略集限制。对于 RDS 会话，定义了 TS 许可服务器值。</p>
+</li>
+<li>
+<p>* 云工作空间公司 * （默认情况下不链接）—可选的 GPO ，用于通过阻止访问管理工具和区域来 " 锁定 " 用户会话 / 工作空间。可以通过链接 / 启用来提供受限活动工作空间。</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/virtual-desktop-service/images/note.svg" alt="注">
+</td>
+<td class="content">
+可以根据请求提供默认组策略设置配置。
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="vds-工作空间组件">VDS 工作空间组件</h4>
+<div class="sect4">
+<h5 id="数据层">数据层</h5>
+<div class="sect5">
+<h6 id="azure-netapp-files">Azure NetApp Files</h6>
+<div class="paragraph">
+<p>如果您在 VDS 设置中选择 Azure NetApp Files 作为数据层选项，则会创建 Azure NetApp Files 容量池和关联的卷。卷托管用户配置文件（通过 FSLogix 容器），用户个人文件夹和企业数据共享文件夹的共享归档存储。</p>
+</div>
+</div>
+<div class="sect5">
+<h6 id="azure-文件">Azure 文件</h6>
+<div class="paragraph">
+<p>如果您在 CWS 设置中选择 Azure 文件作为数据层选项，则会创建 Azure 文件共享及其关联的 Azure 存储帐户。Azure 文件共享托管用户配置文件（通过 FSLogix 容器），用户个人文件夹和企业数据共享文件夹的共享归档存储。</p>
+</div>
+</div>
+<div class="sect5">
+<h6 id="具有受管磁盘的文件服务器">具有受管磁盘的文件服务器</h6>
+<div class="paragraph">
+<p>如果您在 VDS 设置中选择文件服务器作为数据层选项，则会使用受管磁盘创建 Windows Server VM 。文件服务器托管用户配置文件（通过 FSLogix 容器），用户个人文件夹和企业数据共享文件夹的共享归档存储。</p>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="azure-网络">Azure 网络</h5>
+<div class="sect5">
+<h6 id="azure-虚拟网络">Azure 虚拟网络</h6>
+<div class="paragraph">
+<p>VDS 创建 Azure 虚拟网络并支持子网。VDS 要求为 CMGR1 ， AVD 主机和 Azure 域控制器使用单独的子网，并在子网之间建立对等关系。请注意， AD 控制器子网通常已存在，因此 VDS 部署的子网需要与现有子网建立对等关系。</p>
+</div>
+</div>
+<div class="sect5">
+<h6 id="网络安全组">网络安全组</h6>
+<div class="paragraph">
+<p>系统会创建一个网络安全组来控制对 CMGR1 虚拟机的访问。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>租户：包含用于会话主机和数据 VM 的 IP 地址</p>
+</li>
+<li>
+<p>服务：包含供 PaaS 服务（例如 Azure NetApp Files ）使用的 IP 地址</p>
+</li>
+<li>
+<p>平台：包含用作 NetApp 平台 VM （ CMGR1 和任何网关服务器）的 IP 地址</p>
+</li>
+<li>
+<p>目录：包含用作 Active Directory VM 的 IP 地址</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="azure-ad">Azure AD</h5>
+<div class="paragraph">
+<p>VDS 自动化和流程编排会将虚拟机部署到目标 Active Directory 实例中，然后将这些虚拟机加入指定的主机池。AVD 虚拟机在计算机级别由 AD 结构（组织单位，组策略，本地计算机管理员权限等）和 AVD 结构中的成员资格（主机池，工作空间应用程序组成员资格）进行管理，这些结构由 Azure AD 实体和权限管理。VDS 通过使用 VDS Enterprise 应用程序 /Azure 服务主体执行 AVD 操作以及使用本地 AD 服务帐户（ CloudWorkspaceSVC ）执行本地 AD 和本地计算机操作来处理此 " 双重控制 " 环境。</p>
+</div>
+<div class="paragraph">
+<p>创建 AVD 虚拟机并将其添加到 AVD 主机池的具体步骤包括：</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>从 Azure 创建虚拟机模板对与 AVD 关联的 Azure 订阅可见（使用 Azure 服务主体权限）</p>
+</li>
+<li>
+<p>使用 VDS 部署期间指定的 Azure vNet 检查 / 配置新虚拟机的 DNS 地址（需要本地 AD 权限（所有权限均委派给上述 CW-Infrastructure ）使用标准 VDS 命名方案 * _ ｛ companycode ｝ TS ｛ sequencenumber ｝ _* 设置虚拟机名称。示例： XYZTS3 。（需要本地 AD 权限（置于我们在内部创建的 OU 结构中）（远程桌面 / 公司代码 / 共享）（与上述权限 / 组问题描述相同）</p>
+</li>
+<li>
+<p>将虚拟机放置在指定的 Active Directory 组织单位（ AD ）中（需要向 OU 结构委派权限（在上述手动过程中指定））</p>
+</li>
+<li>
+<p>使用新计算机名称 /IP 地址更新内部 AD DNS 目录（需要本地 AD 权限）</p>
+</li>
+<li>
+<p>将新虚拟机加入本地 AD 域（需要本地 AD 权限）</p>
+</li>
+<li>
+<p>使用新的服务器信息更新 VDS 本地数据库（不需要其他权限）</p>
+</li>
+<li>
+<p>将 VM 加入指定的 AVD 主机池（需要 AVD 服务主体权限）</p>
+</li>
+<li>
+<p>将 chocolatey 组件安装到新虚拟机（需要为 * CloudWorkspaceSVS* 帐户提供本地计算机管理权限）</p>
+</li>
+<li>
+<p>为 AVD 实例安装 FSLogix 组件（需要对本地 AD 中的 AVD OU 具有本地计算机管理权限）</p>
+</li>
+<li>
+<p>更新 AD Windows 防火墙 GPO 以允许流量传输到新虚拟机（需要为与 AVD OU 及其关联虚拟机关联的策略创建 / 修改 AD GPO 。需要在本地 AD 的 AVD OU 上创建 / 修改 AD GPO 策略。如果不通过 VDS 管理 VM ，则可以在安装后关闭。）</p>
+</li>
+<li>
+<p>在新虚拟机上设置 " 允许新连接 " 标志（需要 Azure 服务主体权限）</p>
+</li>
+</ul>
+</div>
+<div class="sect5">
+<h6 id="将-vm-加入-azure-ad">将 VM 加入 Azure AD</h6>
+<div class="paragraph">
+<p>Azure 租户中的虚拟机需要加入域，但 VM 无法直接加入 Azure AD 。因此， VDS 会在 VDS 平台中部署域控制器角色，然后使用 AD Connect 将该 DC 与 Azure AD 同步。其他配置选项包括使用 Azure AD 域服务（ AADDS ），使用 AD Connect 同步到混合 DC （内部或其他位置的 VM ），或者通过站点到站点 VPN 或 Azure ExpressRoute 将 VM 直接加入到混合 DC 。</p>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="avd-主机池">AVD 主机池</h5>
+<div class="paragraph">
+<p>主机池是 Azure Virtual Desktop 环境中一个或多个相同虚拟机（ VM ）的集合。每个主机池可以包含一个应用程序组，用户可以像在物理桌面上一样与该应用程序组进行交互。</p>
+</div>
+<div class="sect5">
+<h6 id="会话主机">会话主机</h6>
+<div class="paragraph">
+<p>在任何主机池中，都是一个或多个相同的虚拟机。这些连接到此主机池的用户会话由 AVD 负载平衡器服务进行负载平衡。</p>
+</div>
+</div>
+<div class="sect5">
+<h6 id="应用程序组">应用程序组</h6>
+<div class="paragraph">
+<p>默认情况下， <em>Desktop Users</em> 应用程序组会在部署时创建。此应用程序组中的所有用户均可获得完整的 Windows 桌面体验。此外，还可以创建应用程序组来提供流式应用程序服务。</p>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="日志分析工作空间">日志分析工作空间</h5>
+<div class="paragraph">
+<p>此时将创建日志分析工作空间，用于存储部署和 DSC 进程以及其他服务的日志。此功能可以在部署后删除，但不建议这样做，因为它可以启用其他功能。默认情况下，日志保留 30 天，不会产生任何保留费用。</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="可用性集">可用性集</h5>
+<div class="paragraph">
+<p>在部署过程中设置了可用性集，以便在故障域之间隔离共享 VM （共享 AVD 主机池， RDS 资源池）。如果需要，可以在部署后删除此选项，但会禁用为共享 VM 提供额外容错的选项。</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="azure-恢复存储">Azure 恢复存储</h5>
+<div class="paragraph">
+<p>恢复服务存储是由 VDS Automation 在部署期间创建的。默认情况下，此功能当前处于激活状态，因为在部署过程中， Azure Backup 会应用于 CMGR1 。如果需要，可以停用并删除此设置，但如果在环境中启用了 Azure Backup ，则会重新创建此设置。</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="azure-密钥存储">Azure 密钥存储</h5>
+<div class="paragraph">
+<p>Azure 密钥存储在部署过程中创建，用于存储 Azure 自动化帐户在部署期间使用的证书， API 密钥和凭据。</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="附录-a-默认云工作空间组织单位结构">附录 A —默认云工作空间组织单位结构</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>云工作空间</p>
+<div class="ulist">
+<ul>
+<li>
+<p>云工作空间公司</p>
+</li>
+<li>
+<p>云工作空间服务器</p>
+<div class="ulist">
+<ul>
+<li>
+<p>专用客户服务器</p>
+</li>
+<li>
+<p>基础架构</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>CWMGR 服务器</p>
+</li>
+<li>
+<p>网关服务器</p>
+</li>
+<li>
+<p>FTP 服务器</p>
+</li>
+<li>
+<p>模板 VM</p>
+<div class="ulist">
+<ul>
+<li>
+<p>远程桌面</p>
+</li>
+<li>
+<p>暂存</p>
+<div class="ulist">
+<ul>
+<li>
+<p>云工作空间服务帐户</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>客户端服务帐户</p>
+</li>
+<li>
+<p>基础架构服务帐户</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Cloud Workspace 技术用户</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>组</p>
+</li>
+<li>
+<p>技术 3 技术人员</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+    </article>
+    <!-- Page Container -->
+  </div>
+
+  
+  <!-- Start Page Toolbar -->
+  <div class="page-nav-toolbar">
+    <div id="version-dropdown"></div>
+    <div class="page-nav-contribute"  >
+      <a target="_blank" href="https://github.com/NetAppDocs/virtual-desktop-service/issues/new?body=Page%3A%20[VDS 组件和权限](https://docs.netapp.com/zh-cn/virtual-desktop-service/Deploying.Azure.AVD.vds_v5.4_components_and_permissions.html)" class="page-nav-contribute-link" role="button"><img src="/zh-cn/virtual-desktop-service/images/discuss-sm.svg" class="github-icon" />请求文档变更</a>
+      <a target="_blank" href="https://github.com/NetAppDocs/virtual-desktop-service/blob/main/sub.Deploying.Azure.AVD.vds_v5.4_components_and_permissions.adoc" class="page-nav-contribute-link" role="button"><img src="/zh-cn/virtual-desktop-service/images/edit-sm.svg" class="github-icon" />在 GitHub 上编辑</a>
+      <a target="_blank" href="https://docs.netapp.com/us-en/contribute/" class="page-nav-contribute-link"  ><img src="/zh-cn/virtual-desktop-service/images/article-sm.svg" class="github-icon" />提供者指南</a>
+    </div>
+    <div class="page-nav-container">
+      <nav class="page-nav-fixed">
+        <div class="page-nav-title">在此页面上</div>
+        <div class="page-nav-links">
+          <ul class="page-nav-inner" id="page-menu"></ul>
+        </div>
+      </nav>
+    </div>
+  </div>
+  
+  <div style="clear: both"></div><!-- Main needs to have height -->
+</div>
+
+        </main>
+
+        <footer class="n-footer">
+  <div class="n-footer__bottom">
+    <div class="n-container">
+      <div class="n-footer__bottom-left">
+
+        <div class="n-footer__copyright">
+          <ul class="n-footer__copyright-list">
+            <li class="n-footer__copyright-link">
+            <a href="https://www.netapp.com/us/legal/copyright.aspx">© 2022 NetApp, Inc.</a>
+            </li>
+
+</ul>
+</div>
+<div class="n-footer__social-links">
+<ul class="n-footer__social-link-list">
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-blog" href="https://blog.netapp.com" target="_blank" title="blog" alt="blog">
+<span class="n-footer__social-link-text">blog</span>
+<svg class="n-icon-blog n-footer__social-link-icon" aria-labelledby="title">
+  <title>blog@</title>
+  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/zh-cn/virtual-desktop-service/common/svg/sprite.svg#blog"></use>
+</svg>
+
+</a>
+</li>
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-community" href="https://community.netapp.com/" target="_blank" title="community" alt="community">
+<span class="n-footer__social-link-text">community</span>
+<svg class="n-icon-community n-footer__social-link-icon" aria-labelledby="title">
+<title>community@</title>
+<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/zh-cn/virtual-desktop-service/common/svg/sprite.svg#comments"></use>
+</svg>
+
+</a>
+</li>
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-twitter" href="https://twitter.com/netapp" target="_blank" title="twitter" alt="twitter">
+<span class="n-footer__social-link-text">twitter</span>
+<svg class="n-icon-twitter n-footer__social-link-icon" aria-labelledby="title">
+<title>twitter@</title>
+<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/zh-cn/virtual-desktop-service/common/svg/sprite.svg#twitter"></use>
+</svg>
+
+</a>
+</li>
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-facebook" href="https://www.facebook.com/NetApp" target="_blank" title="facebook" alt="facebook">
+<span class="n-footer__social-link-text">facebook</span>
+<svg class="n-icon-facebook n-footer__social-link-icon" aria-labelledby="title">
+<title>facebook@</title>
+<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/zh-cn/virtual-desktop-service/common/svg/sprite.svg#facebook"></use>
+</svg>
+
+</a>
+</li>
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-linkedin" href="https://www.linkedin.com/company/netapp" target="_blank" title="linkedin" alt="linkedin">
+<span class="n-footer__social-link-text">linkedin</span>
+<svg class="n-icon-linkedin n-footer__social-link-icon" aria-labelledby="title">
+<title>linkedin@</title>
+<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/zh-cn/virtual-desktop-service/common/svg/sprite.svg#linkedin"></use>
+</svg>
+
+</a>
+</li>
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-youtube" href="https://www.youtube.com/user/NetAppTV" target="_blank" title="youtube" alt="youtube">
+<span class="n-footer__social-link-text">youtube</span>
+<svg class="n-icon-youtube n-footer__social-link-icon" aria-labelledby="title">
+<title>youtube@</title>
+<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/zh-cn/virtual-desktop-service/common/svg/sprite.svg#youtube"></use>
+</svg>
+
+</a>
+</li>
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-slideshare" href="https://www.slideshare.net/NetApp" target="_blank" title="slideshare" alt="slideshare">
+<span class="n-footer__social-link-text">slideshare</span>
+<svg class="n-icon-slideshare n-footer__social-link-icon" aria-labelledby="title">
+<title>slideshare@</title>
+<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/zh-cn/virtual-desktop-service/common/svg/sprite.svg#slideshare"></use>
+</svg>
+
+</a>
+</li>
+</ul>
+</div>
+
+</div>
+<div class="n-footer__bottom-right">
+  <p class="n-footer__fine-print">想就我们的网站提供反馈?<a target="_self" href="javascript:netapp_mailto()" class="n-footer__copyright">请告诉我们</a>
+  <a href="https://docs.netapp.com/zh-cn/announcements/" class="n-footer__copyright">通知</a>
+  </p>
+</div>
+</div>
+</div>
+</footer>
+
+      </div>
+
+      <!-- Elasticsearch JS -->
+      <script type="text/javascript" src='/zh-cn/virtual-desktop-service/js/bundle.js'></script>
+
+      <!-- Syntax Highlighting -->
+      <script type="text/javascript" src='/zh-cn/virtual-desktop-service/js/prism.js'></script>
+      <script type="text/javascript" src='/zh-cn/virtual-desktop-service/js/prism-curl.js'></script>
+    </div>
+    <script>
+      document.body.offsetWidth=1903;
+      cookieLaw = {}
+      cookieLaw.euCountry = "US";
+      cookieLaw.invoke = function(){return false;}
+    </script>
+    <script src='/zh-cn/virtual-desktop-service/js/www-ntap.js'></script>
+    <script src='/zh-cn/virtual-desktop-service/js/tabbed-blocks.js'></script>
+  </body>
+
+  
+</html>
