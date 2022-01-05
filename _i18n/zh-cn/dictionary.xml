@@ -26,7 +26,6 @@
   <block id="9e0469ab1b8f18cd57fdfcaaa2d6b47f" category="list-text">* 名称： * 为此活动命名</block>
   <block id="8e83f6aadc0939e24b033df07e69851d" category="list-text">* 问题描述： * 可选择输入问题描述</block>
   <block id="34cadc09b2c4d022bfb350f7f7d4b769" category="list-text">* 部署 * 从下拉列表中选择所需部署</block>
-  <block id="6986a05b492f69090e7525dc1775cfbd" category="list-text">* 脚本： * 从下拉列表中选择安装（或卸载）脚本。这可能是您已克隆和自定义的全局脚本或客户脚本。</block>
   <block id="0ee89bcafd2efcca731201a092c053c3" category="list-text">* 参数： * 留空</block>
   <block id="65442f5cfec5e18bfff9391c3b87f7e7" category="list-text">* 已启用复选框： * `选中` 复选框</block>
   <block id="aa0084e0f5b950d9583f4d133275eb85" category="list-text">* 事件类型： * 从下拉列表中选择 `Manual`</block>
@@ -259,7 +258,6 @@
   <block id="2d86848c2fd08aa1659518c452e3d29c" category="list-text">接下来，运行 setup.exe /download Configuration.xml （更改 "Configuration.xml " 以匹配您在第 10 步中导出的 XML 文件），如果似乎未发生任何情况，请勿担心，此步骤可能需要一段时间。</block>
   <block id="b54037fe38104140f51b5c6d2e287846" category="list-text">最后，运行 setup.exe /configure Configuration.xml （再次调整 XML 文件名以匹配您的文件）。</block>
   <block id="d9b3e29ab2ccadb1f5eaec4669e15054" category="section-title">不支持的自动部署</block>
-  <block id="dc5144f2c52953cf6f52ba4f57c9b163" category="admonition">此自动化过程依赖于自定义 ps1 和预构建的 xml 。不支持此功能，因为 NetApp 不保证它可以正常工作或对任何目标计算机造成影响。ps1 由 NetApp 托管，可能随时更改 / 消失。我们建议将此方法用作构建和托管您自己的自动化流程的模板。此过程已于 2019 年 8 月 30 日在 Azure 中的 Windows Server 2016 Datacenter 10.0.14393 和 Windows 10 Enterprise for Virtual Desktop 10.0.18362 上进行了验证。</block>
   <block id="a3390af8e1276c394e3bbf9a6532d194" category="list-text">运行命令以下载并运行托管的 .ps1</block>
   <block id="eaa5666ff70b797b355a9dcc47d099fd" category="list-text">ps1 下载托管 Office 部署配置 .xml （此处为用于此 XML 的 Office 配置工具设置的屏幕截图）</block>
   <block id="822fe97444088a12ef605425b5a2879c" category="list-text">ps1 使用 .xml 运行 ProPlus 安装</block>
@@ -273,14 +271,12 @@
   <block id="2ab7d79e351843c1c6b88f79ede998c7" category="list-text">将编辑后的 ps1 文件上传到您自己的托管 URL</block>
   <block id="bb3de07032932e9f23424cd8bc7535c6" category="list-text">编辑脚本化事件脚本以下载并运行自定义的自行托管 ps1 （步骤 3.1 。。</block>
   <block id="e9e4ac709c598f563fdb6c453d273a70" category="section-title">脚本化事件步骤</block>
-  <block id="ec64f56eeb9d4461fa75be9d2e339158" category="paragraph">此操作遵循与普通应用程序安装脚本事件相同的工作流。以下说明假定已按照应用程序管理计划中的步骤安装了 chocolatey 。Office 365 ProPlus 自动安装，含巧克力</block>
   <block id="375c1d06d8fd3cb671e0442c9526e875" category="paragraph">要安装 O365 ProPlus ，您将使用以下设置创建一个新脚本：</block>
   <block id="70031512165dd89b18f1b7881e5ea04a" category="list-text">无脚本文件</block>
   <block id="d1517a4ecb193e896e4b4f56f2b2fc54" category="list-text">运行方式： powershell.exe</block>
   <block id="a801e91305ad6efd050a7aa89e11415e" category="list-text">参数（可选）： Set-ExecutionPolicy Bypass -scope process -Force ； EX （（ New-Object System.Net.WebClient).DownloadString(‘http://getAVD.com/proplus_minus_onedrive.ps1’ ））</block>
   <block id="6b87e95328b5a09052cc674fb24b4372" category="list-text">编辑<block ref="91abb941a52e49854bbdfd1b3e4db307" category="inline-link-rx"></block> 并替换为您自己托管的 ps1 文件的 URL 。</block>
   <block id="b9462cbfc9904e24e05f57943cb37910" category="paragraph"><block ref="b9462cbfc9904e24e05f57943cb37910" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="3e54d9209811c059152ce1bbbf830137" category="paragraph">保存脚本后，下一步是将该脚本与触发器关联。在这种情况下，在 VDS 中请求应用程序安装时，我们将触发该脚本。有关详细信息，请参见《应用程序管理指南》。</block>
   <block id="f76378eedde875a9ba21c2a6173d2a08" category="summary">脚本文档— Google Chrome</block>
   <block id="0a3a314366b7a6336d9141df56dc4056" category="doc">脚本化事件文档— Google Chrome</block>
   <block id="88bc6760918ea47b9938c680aed120f8" category="section-title">Google Chrome 概述</block>
@@ -292,7 +288,6 @@
   <block id="9796d9093d04b992ba28c09bc63e8de6" category="paragraph">要使存储库中的脚本执行任何操作，必须创建一个活动，以便将该脚本与选定触发器关联。在本示例中，如果将此应用程序添加到工作空间或从工作空间中删除（在 VDS 中的 _Workspace &gt; Applications_ 页面中），则会安装 / 卸载此应用程序。</block>
   <block id="39f03b220ae0be62e3d2db7db9c9c96f" category="paragraph">VDS 脚本化事件提供了许多其他类型的活动触发器，例如 _Create Server_ ，可用作 _Application Install_ （或 _Application Uninstall_ ）事件类型的替代项。使用 _Create Server_ 只需对 VDS 中所有新创建的 VM 运行此应用程序安装即可。_Create Server_ 和其他触发器均已记录，可供探讨 <block ref="de7b0b235a74fc34c3151150bdd2d11c" category="inline-link-macro-rx"></block>。</block>
   <block id="73d5342eba070f636ac3246f319bf77f" category="inline-link-macro">部分。</block>
-  <block id="9f8526a67fa44fc4a97f2eee2a679f0e" category="admonition">此应用程序需要位于 VDS 应用程序库中。这 <block ref="bf3bed7e9c33f406222a0da03c1c9b87" category="inline-link-macro-rx"></block> 有关将应用程序添加到库的信息，请查看有关 RDS 应用程序授权的文章。</block>
   <block id="661e9f71644c958b31c23007f17a0918" category="list-title">要创建活动并将此脚本链接到操作，请执行以下操作：</block>
   <block id="d245bbd1593bbe1e0a07e5b484719064" category="list-text">导航到 VDS 中的 _Scripted Events_部分</block>
   <block id="12ec4f8e0b10ed85dcc3a3291700ee0c" category="list-text">* 事件类型： * 从下拉列表中选择 `Application Install` （或 Application 卸载）</block>
@@ -302,7 +297,6 @@
   <block id="bd0b5fc7d3accf1c9c23f50664070008" category="doc">应用程序授权</block>
   <block id="bd7126ad8633377189420bb62c058bdc" category="paragraph">VDS 内置了强大的应用程序自动化和授权功能。通过此功能，用户可以在连接到同一会话主机时访问不同的应用程序。这是通过一些自定义 GPO 隐藏快捷方式以及自动化有选择地在用户桌面上放置快捷方式来实现的。</block>
   <block id="324f8f4a5778c6ea5ba9868e8b8a6ecd" category="inline-link-macro">适用于 AVD 的应用程序授权工作流</block>
-  <block id="65be13b73db9986c105cffb5a7b1e257" category="admonition">此工作流仅适用于适用场景 RDS 部署。有关 AVD 应用程序授权文档，请参见 <block ref="74176c341779afa5ab584577d5c6e491" category="inline-link-macro-rx"></block></block>
   <block id="b1b55ab1a1c6b74c0bf15e237870315e" category="paragraph">可以直接将应用程序分配给用户，也可以通过 VDS 中管理的安全组分配应用程序。</block>
   <block id="f6e701775ed84523ced6013ccc1c55e7" category="list-title">总体而言，应用程序配置过程遵循以下步骤。</block>
   <block id="7536fe5ad5d43c0130226971039e4cce" category="list-text">将应用程序添加到应用程序目录</block>
@@ -386,16 +380,10 @@
   <block id="23e00296f6657081755eaabedacbdb86" category="list-text">当系统要求您提供运行 DNS 的 DNS 服务器时，您需要输入您的域名（在我们使用的示例中，此名称将为 _netapp.com ）。</block>
   <block id="1d7efe34a1fb9bfa0208431f5378276f" category="paragraph">在 Azure Virtual Desktop （ AVD ）环境中，应用程序访问由应用程序组成员资格管理。</block>
   <block id="496917925ff1bca95756bf15fe5caaad" category="inline-link-macro">适用于 RDS 的应用程序授权工作流</block>
-  <block id="43ba0971ba3818465a0e1b57765337dd" category="admonition">此工作流仅适用于适用场景 AVD 部署。有关 RDS 应用程序授权文档，请参见 <block ref="0ab43ecb3f8f5a1bd44a7cd9813b2e41" category="inline-link-macro-rx"></block></block>
   <block id="5dd1e6505d3c04401fd454b5ffb9dc85" category="inline-link-macro">有关信息，请参见公有资源</block>
-  <block id="495e6c2cd86f427b95918dc7f7658ba5" category="admonition">AVD 是一项记录完善的服务，其中包括许多服务 <block ref="ef37fc637501cb1b64c849d5e95b4c7b" category="inline-link-macro-rx"></block>。VDS 不会为 AVD 的标准运行方式提供超群支持。相反，本文旨在说明 VDS 如何采用所有 AVD 部署中的标准概念。</block>
   <block id="0e7e254a7d4e2a858d09ff79fdccd52b" category="inline-link-macro">VDS 逻辑层次结构概述</block>
   <block id="50a23d7ebe892b26bd7b0552230ac621" category="admonition">查看 <block ref="05ae7d1d442f957aa820e98576a0863c" category="inline-link-macro-rx"></block> 在阅读本文之前或期间，文章可能很有用。</block>
   <block id="376779f7fa41bf17d051f3319d5493a9" category="section-title">最终用户视图</block>
-  <block id="6dd02028a6b947d7c2577bc5747e3c87" category="paragraph">在 Azure 虚拟桌面中，每个最终用户都由其 AVD 管理员分配对 RemoteApp 和 / 或桌面的访问权限。这可通过 VDS 中的应用程序组分配来实现。</block>
-  <block id="beb173d7ce84bfc931c94b09d09cf88b" category="paragraph">* 远程应用程序 * 是指在会话主机上远程运行但在本地设备上显示而不具有桌面环境的应用程序。这些应用程序通常称为 " 流式应用程序 " ，看起来像本地设备上的本地应用程序，但在安全上下文中以及会话主机的存储和计算层中运行。</block>
-  <block id="c8fe1c628cadc46ecf02adfb20b36571" category="paragraph">* 桌面 * 是指在会话主机上运行并在本地设备上显示的完整 Windows 体验，通常在全屏窗口中显示。此桌面本身通常称为 " 远程桌面 " ，它包含安装在该会话主机上的任何应用程序，用户可以从桌面会话窗口中启动这些应用程序。</block>
-  <block id="16f9214a810a38f9bdfb64ccd95395b5" category="paragraph">登录时，最终用户会看到其管理员为其分配的资源。以下是最终用户使用其 AVD 客户端登录时可能看到的视图示例。这是一个更复杂的示例，通常最终用户只会分配一个 Dingle 桌面或 RemoteApp 。最终用户可以双击其中任何资源来启动该应用程序 / 桌面。</block>
   <block id="bcfc9a1d3d5c7d85ca3668f7b580b1bd" category="image-alt">management.deployments.vDS 站点 0e49c</block>
   <block id="ccd0db95f33eda669eeb53de8cfbd8a7" category="paragraph">在此更复杂的示例中，此用户可以访问两个不同的桌面会话和 4 个不同的流式应用程序：</block>
   <block id="5e28132e18129a459dbfbccb6ce2fd40" category="list-text">* 可用桌面 *</block>
@@ -410,9 +398,7 @@
   <block id="5ab5dbb66bfc3c54ee3978a6d57f1304" category="paragraph">在后台，这些应用程序和桌面托管在各种会话主机和 AVD 工作空间中，甚至可以托管在不同的 Azure 区域。</block>
   <block id="81082c76742ab056ac7a81e234bad9f6" category="paragraph">下图显示了这些资源中每个资源的托管位置以及如何将其分配给此最终用户。</block>
   <block id="59aec6518c484ba78e0a00ee2aaad732" category="image-alt">management.deployments.vDS 站点 0e880</block>
-  <block id="464925bfbaa0b5a6ce19e4d15b3ad700" category="paragraph">如上所示，此最终用户可用的各种资源托管在不同的会话主机，不同的主机池中，并且可能由不同的 IT 组织在不同的 AVD 工作空间中进行管理。虽然此示例中未显示这些资源，但也可以使用 VDS 站点功能在不同的 Azure 区域和 / 或订阅中托管。</block>
   <block id="c90a7d1e1da84682e02f4747838b15ae" category="section-title">提供桌面访问</block>
-  <block id="ca0655b1e1179c320612ca3e9cc2d6a1" category="paragraph">默认情况下，每个主机池都从一个应用程序组开始，该应用程序组用于分配对 Windows 桌面体验的访问权限。分配给此应用程序组的最终用户可以访问这些会话主机上安装的所有应用程序。</block>
   <block id="1973c675e440465f67198c5c6a06af65" category="list-title">要在 VDS 中为用户启用桌面资源，请执行以下操作：</block>
   <block id="4976a77bf3f5152bc054082a6f0307ae" category="list-text">导航到 Workspaces &gt; AVD &gt; Host Pool &gt; App Groups 页面，然后单击 "Desktop" 资源的应用组。</block>
   <block id="3a9159413b8c5248957238ae412ac8d3" category="image-alt">Management.Applications.AVD 应用程序授权工作流 349fe</block>
@@ -421,8 +407,6 @@
   <block id="b7f126ce5e82a2008a4e482580ea8ae0" category="list-text">在编辑对话框中，您可以按用户和 / 或组向此应用程序组添加或删除用户。</block>
   <block id="8dd96d112e4daa5e5cbdd2e088cc1538" category="image-alt">Management.Applications.AVD 应用程序授权工作流 07ff0</block>
   <block id="0aeea781bb4573e7a7b80d9e0959a102" category="section-title">提供 RemoteApp 访问</block>
-  <block id="c8be41097d9c5bac80502416347cfc76" category="paragraph">要配置对 RemoteApp 的访问，需要在主机池中创建一个新的应用程序组。创建应用程序后，需要将相应的应用程序分配给此应用程序组。</block>
-  <block id="b3fe74a0079928f138f9de43b257cf18" category="admonition">分配给此主机池的 " 桌面 "AppGroup 的任何用户都可以使用这些会话主机上的任何应用程序。此外，也无需通过 RemoteApp 应用程序组来配置访问权限，只需提供对应用程序的访问权限即可。只有在启用以流式应用程序的形式在本地设备上运行的应用程序时，才需要使用 RemoteApp 应用程序组。</block>
   <block id="5433662a54506604d2c01b4c71d4e834" category="section-title">创建新应用程序组</block>
   <block id="f5a55acd43f8d93045189303323088e0" category="list-text">导航到 Workspaces &gt; AVD &gt; Host Pool &gt; App Groups 页面，然后单击 _+ Add App Group_ 按钮</block>
   <block id="4827d1cb4a1c718653466145675decb0" category="image-alt">management.Applications.AVD 应用程序授权工作流 d33da</block>
@@ -432,7 +416,6 @@
   <block id="474fdb99403b967e01f54886073db222" category="list-text">导航到 Workspaces &gt; AVD &gt; Host Pool &gt; App Groups 页面，然后单击 "RemoteApp" 资源的应用程序组。</block>
   <block id="aa48cfc5de9c883c19cf67592140446a" category="image-alt">Management.Applications.AVD 应用程序授权工作流 3dcde</block>
   <block id="6c3e4645a69cdcb7d8eabf8fd67340f7" category="image-alt">Management.Applications.AVD 应用程序授权工作流 27a41</block>
-  <block id="1b2e4bd4d3b0a81e5b975d602a171c35" category="list-text">向下滚动到 " 远程应用程序 " 部分。由于 VDS 正在直接查询会话主机以显示可用于流式传输的应用程序，因此可能需要一段时间才能填充此部分。</block>
   <block id="6c7c9b816af581d8b27f9aa09850ca3f" category="image-alt">Management.Applications.AVD 应用程序授权工作流 1e9f2</block>
   <block id="2c986f5e26a059d90f20656e8c46ba09" category="list-text">搜索并选择此应用程序组中的用户应作为 RemoteApp 资源访问的任何应用程序。</block>
   <block id="3a9c20318a590aab6689c74493fa46ed" category="summary">AVD 和 VDS 前提条件</block>
@@ -666,16 +649,11 @@
   <block id="205a59db4036e74f9b83e4ba73b6de5f" category="inline-link-macro">应用程序授权指南</block>
   <block id="d7abef2c5d8e354bd0b66c917ff457e4" category="paragraph">有关正在执行的脚本化事件的详细示例，请参见 <block ref="40f0d0f069e2cf1b61b4e53e6fcaf47b" category="inline-link-macro-rx"></block>。</block>
   <block id="b3372e7e58f7df8bea213a36d972936a" category="paragraph">此外，通过脚本化事件，可以创建不需要处理脚本的自动化，而是通过系统触发器启动自动化流，并使用可选参数运行现有程序或系统实用程序。</block>
-  <block id="f549b42c4d5b54609f13082f40a1e191" category="paragraph">脚本事件包含脚本的 * 存储库 * 和 * 活动 * 。脚本包含有关活动将脚本与脚本的相应触发器和目标（ * 何时及何地 * ）链接时要执行的 * 操作 * 的说明。</block>
   <block id="33fcf2b3ec4686d9cd06051c726d0ba2" category="section-title">存储库</block>
-  <block id="1ac92087421cb7f41ac786f7534a01e6" category="paragraph">存储库选项卡显示了可从 VDS 帐户中部署的所有脚本的列表。这是一个自定义存储库，由 VDS 实例中的所有管理员共享。可以在 _VDS &gt; 管理员 &gt; 权限页面 _ 上管理对脚本化事件的访问。</block>
   <block id="451dd8e9460817f0bd8acc6140d4df8c" category="image-alt">sub.Management.Scripted events.Scripted events 1ce76.</block>
   <block id="c0b481b22467d01000ac83cb497c62eb" category="section-title">客户筛选器</block>
-  <block id="e9778d7b3db63f39f09e77e69842d466" category="paragraph">每个 VDS 管理员组织都有一个专用的脚本库，其中包含由其组织创建和 / 或自定义的脚本。这些脚本定义为脚本类型 " 客户 " 。 任何对脚本事件部分具有适当管理员权限的 VDS 管理员都可以删除和编辑客户脚本。</block>
   <block id="268f4ab25bfc3581635010dddf4a8193" category="section-title">全局筛选器</block>
-  <block id="927358d2c17095b86840f8f4cbfe5a9d" category="paragraph">NetApp 还会发布和维护一个 " 全局 " 脚本库，这些脚本在所有 VDS 管理员组织中都是相同的。这些脚本定义为脚本类型 " 全局 " 。 任何 VDS 管理员都无法编辑或删除全局脚本。而是可以 " 克隆 " 全局脚本，生成的脚本是一个 " 客户 " 脚本，可以进行编辑和使用。</block>
   <block id="05ed7636fa67bb70fab414f58c790051" category="section-title">下载脚本</block>
-  <block id="f34457412e81203e528746359a1115e8" category="paragraph">由于可以下载与脚本化事件关联的脚本文件，因此 VDS 管理员可以在部署之前查看和编辑底层脚本文件。运行您不完全了解的脚本永远不可取。</block>
   <block id="13fb1f89829192e4a445af884f6a82fc" category="image-alt">sub.Management.Scripted Events.Scripted Events 02a9b</block>
   <block id="ab79ad502000f4b8eb72d5e67b0cb3c5" category="section-title">添加脚本</block>
   <block id="a05746f77c12d2ddeb109fb2cf77ebb0" category="paragraph">单击 _ + Add Script_ 按钮可打开一个新页面，用于创建脚本并将其保存到存储库。</block>
@@ -1052,9 +1030,7 @@
   <block id="12091a16585e61c1f3929f80b54a3c5a" category="paragraph">如果将每日维护配置为运行，则会运行自动克隆过程。默认值为午夜，但可以编辑此值。日常维护的一部分是为每个资源池运行 " 更改资源 " 线程。更改资源线程根据池配置的用户数（可自定义；每个服务器可以是 10 ， 21 ， 30 等用户）确定所需的共享服务器数量。</block>
   <block id="a8fbacc32ba95611b3d3b06b0ec0757b" category="section-title">按需自动创建新服务器</block>
   <block id="82f7dc06df0d3ad59f2d7f9b7b4d51e1" category="paragraph">通过此 VDS 功能，可以自动将其他服务器 " 按需 " 克隆到可用资源池。</block>
-  <block id="a5fd83775adcc31b654c0b8c47335575" category="paragraph">VDS 管理员登录到 VDS ，然后在组织或工作空间模块下找到特定客户端并打开概述选项卡。" 服务器 " 图块列出了所有服务器（ TSD1 ， TS1 ， D1 等）。要克隆任何单个服务器，只需单击服务器名称最右侧的代码并选择克隆选项即可。</block>
   <block id="0aef5cba860b290ab24729bab2231c8a" category="paragraph">通常，此过程需要大约一个小时。但是，持续时间取决于虚拟机的大小以及底层虚拟机管理程序的可用资源。请注意，要克隆的服务器需要重新启动，因此合作伙伴通常会在非工作时间或计划的维护时段执行。</block>
-  <block id="999002602de9a58ea51ec4b54bb8e4d7" category="paragraph">克隆 TSData 服务器时，其中一个步骤是删除 c ： \Home ， c ： \Data 和 c ： \Pro 文件夹，使其不是任何重复文件。在这种情况下，克隆进程失败，删除这些文件时出现问题。此错误不明确。通常，这意味着克隆事件失败，因为存在打开的文件或进程。下次尝试，请禁用任何 AV （因为这可能会解释此错误）。</block>
   <block id="676d86763051d0dbf2cfb7c04b9d4db6" category="summary">NetApp VDS 发行说明 v5.2</block>
   <block id="0c06cfd592100f5f40c2c4b08a8d16ee" category="doc">Cloud Workspace Management Suite —版本 5.2</block>
   <block id="d53ce049874147e1e93a6d044e3602eb" category="admonition">对于 WCMS 5.2 版，不再重复发布任何版本—所有版本都将视为修补程序。</block>
@@ -1351,7 +1327,6 @@
   <block id="1706835c91ab08069908303b289cbe1d" category="list-text">自动化服务和新的 SSL 通配符证书（ RDP 连接）：更新命令顺序，以确保始终刷新 RDS 网关上更新的 RDP 证书（即不缓存）</block>
   <block id="f1dbf86a84eb68de825a59b3273e05f9" category="section-title">CWS ® 5.1 初始版本概述</block>
   <block id="9b90c1aca16c828db70c8df88d6e17e4" category="paragraph">云工作空间套件 5.1 从 2017 年第 3 季度开始，目前已推出公有测试版。此版本更新了 CWS API 和管理控制界面。此版本是对 CWS 5.0 （ 2016 年第 4 季度发布）的更新，与 4.x 版实体不 " 向后兼容 " 。</block>
-  <block id="9b20c519dc0a743a42cd92e7ee33b0cb" category="paragraph">在 2017 年第 4 季度正式发布之后，过渡到 CWS 5.1 无需支付升级费用或实施成本。Cloud跳 线将与每个合作伙伴协调完成升级，不会中断现有服务。CWS 5.1 继续支持先前版本的所有功能，并扩展了可增强管理员和最终用户体验的新功能，同时进一步改进了以前版本的 Cloud Workspace Suite 中屡获殊荣的自动化和流程编排功能。</block>
   <block id="2ca6ef09be695ac497490dbd54b0b0ed" category="paragraph">通过扩展和利用 CWS 5.0 中引入的更新的架构和 REST API 平台， CWS 5.1 升级是迄今为止速度最快且最简单的。CWS 5.1 延续了 Cloud跳 线对更友好的环境的承诺，允许外部开发人员基于 Cloud Workspace 扩展其服务和产品。</block>
   <block id="70bd9f9c3ca71770710be675bf7a580c" category="admonition">CWS 4.x 将于 2017 年 12 月 31 日正式停产。如果合作伙伴仍然使用 CWS 4.x 平台，则他们将不再获得 4.x 部署的直接支持，也不会再提供 4.x 更新或错误修复。</block>
   <block id="5f76e43cf1c0d776e656e94980b71057" category="section-title">5.1 亮点：</block>
@@ -1392,7 +1367,6 @@
   <block id="3a580f142203677f1f0bc30898f63f53" category="section-title">Azure 酒店</block>
   <block id="2d5dc75ae0469095c0637f057c402dd9" category="inline-link-macro">Azure Cloud Backup</block>
   <block id="8913cc7788b298aa780f3224869e4a04" category="paragraph">在 Azure 中， VDS 可以使用原生自动配置备份 <block ref="ec91135da0e64bcbb6a4909a510f9421" category="inline-link-macro-rx"></block> 使用本地冗余存储（ LRS ）。如果需要，可以在 Azure 管理门户中配置地区冗余存储（ GRS ）。</block>
-  <block id="3b0d4c04dc0d4c377f2542dba48388fd" category="list-text">可以为每种服务器类型定义单个备份策略（含默认建议）。此外，可以在 VDS UI 中为各个计算机分配独立于其服务器类型的计划，可以通过在 Workspace 页面上单击 Server name （服务器名称）导航到 Server Detail 视图来应用此设置（请参见以下视频：设置单个备份策略）</block>
   <block id="f6068daa29dbb05a7ead1e3b5a48bbee" category="list-text">数据</block>
   <block id="f99ed0e8f70c8446786b799b8eee4030" category="list-text">备份，包括 7 个每日备份， 5 个每周备份和 2 个每月备份。根据业务需求延长保留期限。</block>
   <block id="2e47d8c99a88c73e87d55c3a97a75c83" category="list-text">专用数据服务器以及应用程序和数据库的附加 VPS VM 都是如此。</block>
@@ -1879,7 +1853,6 @@
   <block id="ec042dfa22465eef7af61dd76df8883b" category="paragraph"><block ref="ec042dfa22465eef7af61dd76df8883b" category="inline-image-macro-rx" type="image"></block></block>
   <block id="cb2ef55a4c597199f2c2cdb9b735b40d" category="section-title">其他活动资源</block>
   <block id="7763b00636c6efdd417ae95dd3c98b7e" category="paragraph">工作负载计划不会控制诸如 CMGR1 等平台服务器，因为需要这些服务器来触发按需唤醒功能并协助执行其他平台任务，因此，正常环境运行时应全天候运行。</block>
-  <block id="b951cb137c024520eacebdd9211a593f" category="paragraph">停用整个环境可以节省更多空间，但仅建议在非生产环境中使用。这是一项手动操作，可在 VDS 的 " 部署 " 部分执行。要将环境恢复为正常状态，还需要在同一页面上执行手动步骤。</block>
   <block id="db8821fec66fe5401765408d885bd7af" category="paragraph"><block ref="a465fc361e27d7a8f0a5a1a4e74c4d93" category="inline-image-macro-rx" type="image"></block>
 <block ref="a572e7bd9333f94adc37c8d478645009" category="inline-image-macro-rx" type="image"></block></block>
   <block id="2b8b8fa764769363d08d026e7a10acea" category="summary">NetApp TV 上的视频内容</block>
@@ -2218,7 +2191,6 @@
   <block id="e95bc2ac4c5245d6acfac76806228d6a" category="cell"><block ref="e95bc2ac4c5245d6acfac76806228d6a" category="inline-link-rx"></block></block>
   <block id="c08c272bc5648735d560f0ba5114a256" category="cell">请联系支持部门</block>
   <block id="efa3c8b9f6b061603cf89b98cd2a2322" category="section-title">VDS 成本估算工具</block>
-  <block id="17bd5e26ae7dcbc2018a8b92bc995c1b" category="paragraph">VDS 成本估算工具是一款专门构建的增值工具，可让企业估算其公有云在 Azure 或 Google Cloud 中的成本。该工具包括更改和优化预算的方法，以便在组织预算范围内提供所需的解决方案。</block>
   <block id="13148717f8faa9037f37d28971dfc219" category="cell">验证</block>
   <block id="58a0f2575d22246e5f81bca54977485e" category="cell">预览即将发布的版本</block>
   <block id="024957c905c934855715e4a4ffb541d5" category="cell"><block ref="024957c905c934855715e4a4ffb541d5" category="inline-link-rx"></block></block>
@@ -3393,17 +3365,12 @@
   <block id="231cf4c70d866b616c21baddaeed0696" category="section-title">故障排除</block>
   <block id="9865338f841174f4b55b7c9659b0f0ad" category="paragraph">如果最终用户看到映射的驱动器带有红色 X ，请右键单击该驱动器并选择 "disconnect （断开连接） " 。注销并重新登录驱动器将正确存在。<block ref="ebe95739f908b108224503abc00fdf12" category="inline-image-macro-rx" type="image"></block></block>
   <block id="df200579946b94e2c86f53f4a3051323" category="summary">脚本文档— AMD Radeon 虚拟驱动程序</block>
-  <block id="b28e1a59b4ceaba90e82d7b098dacbb8" category="paragraph">VDS 将概念组织到逻辑层次结构的不同层中。本文有助于概述它们如何组合在一起。</block>
   <block id="a2d8b472e559dda415f47cf3f5ba8ffe" category="section-title">VDS 组织方案</block>
-  <block id="074fc983726d3b6c180e990bf37c27cf" category="paragraph">VDS 管理门户位于<block ref="69f1bdc58d8e8591f3ab0c4640b0f810" category="inline-link-rx"></block>。此 Web 界面是一个单一管理平台，用于管理所有与 VDS 相关的对象。在 VDS Web UI 中，存在以下组件和逻辑容器层次结构。</block>
   <block id="ee90c5300db796c65c21d407a90aa32a" category="section-title">VDS 部署</block>
-  <block id="234b95d6c5df55dced0af9d48ee84b2b" category="paragraph">_Deployment_ 是一个 VDS 概念，它经过组织并包含 _VDS Workspace （ s ） _ 。在某些部署架构中，一个部署可以包含多个 VDS 工作空间。</block>
   <block id="9f0f80b56ec6303113add15468417d02" category="admonition">在一个部署中运行多个 VDS 工作空间称为 " 多租户 " ，这只是 RDS 部署中的一个选项， AVD 部署不支持此方法。</block>
   <block id="b1d870541567d334843bc17b5d63abdc" category="paragraph">部署由其 Active Directory 域定义， AD 域和部署之间存在 1 ： 1 关系。</block>
-  <block id="caa8bddee5349cba1196a03fe5da4c8e" category="paragraph">为了支持在部署中的所有 VDS 工作空间之间共享的部署，部署了某些 VM 资源。例如，每个部署都包含一个名为 "cvgr1" 的 VM ，该 VM 是一个运行 VDS 应用程序的服务器，一个 SQL Express 数据库，便于在部署中管理 VDS 工作空间（以及包含的资源）。</block>
   <block id="2bb89fd3673dd7c95c44c1b9f3af00f7" category="section-title">VDS 工作空间</block>
   <block id="c903cea40ddac1ba3514455162f25d49" category="admonition">"* VDS* 工作空间 " 与 "* AVD* 工作空间 " 之间存在差异。</block>
-  <block id="ffe7c8c3ede46e63132fc3be73067892" category="paragraph">VDS 工作空间是部署中用于客户端（最终用户）资源的逻辑容器。这些资源包括虚拟机（用于会话主机，应用程序服务器，数据库服务器，文件服务器等），虚拟网络， 存储和其他虚拟机管理程序基础架构。</block>
   <block id="3a61e2ca6ebb314d11e9bafa754d4976" category="paragraph">VDS 工作空间还包含管理功能，用于管理用户，安全组，工作负载计划，应用程序，自动化， VM 和 AVD 配置。</block>
   <block id="0d411c026a5dddf6bde7d12a6a34ae10" category="paragraph">通常， VDS 工作空间与一家公司或（在企业部署中）一个业务单位保持一致。</block>
   <block id="43409894baffdadb0be966a0d3bdc0b0" category="section-title">VDS 站点</block>
@@ -3414,8 +3381,6 @@
   <block id="5c9e5a60ab9b54f944a262b39d09b585" category="section-title">AVD 主机池</block>
   <block id="96c80efe5d69060054226bdaa8b00022" category="paragraph">AVD 主机池是一个逻辑容器，位于 AVD 工作空间中，用于存放会话主机和应用程序组用户，以便为用户会话提供服务器并控制对各个资源的访问。</block>
   <block id="2057a4af9bb28a4cbc3b202149549520" category="section-title">AVD 应用程序组</block>
-  <block id="a11216afb41d50aa3ef5ddded717591b" category="paragraph">每个 AVD 主机池都以一个 " 桌面 " 应用程序组开头。可以将用户和 / 或组分配给此（或其他）应用程序组，以允许分配的用户访问应用程序组中的资源。</block>
-  <block id="5ed3c516c0914d432e415c249a0753a2" category="paragraph">可以在 VDS 的主机池中创建其他应用程序组。所有其他应用程序组均为 "RemoteApp" 应用程序组，可提供 RemoteApp 资源，而不是提供完整的 Windows 桌面体验。</block>
   <block id="62cbdd6ad8d30a7461fd5bb43d1470fa" category="summary">脚本文档— Microsoft Teams for AVD</block>
   <block id="3bf910bda727d33aab2dc7f73ad934d3" category="doc">脚本化事件文档— Microsoft Teams for AVD</block>
   <block id="51482112197d082f8787326328121e65" category="section-title">Microsoft Teams for AVD 概述</block>
@@ -3427,7 +3392,6 @@
   <block id="be50f46ed7a6154338fa8575af41e85b" category="summary">脚本文档— Microsoft Edge Chromium 优化</block>
   <block id="d62994dc13f2447f5c4436a74a9a6dae" category="doc">脚本化事件文档— Microsoft Edge Chromium 优化</block>
   <block id="64bf57ef1eb695ae728c9a143c30fb5d" category="section-title">Microsoft Edge Chromium 优化</block>
-  <block id="c2327a645c37d3671b1b4ccb7accf25e" category="paragraph">在 Microsoft Edge Chromium 89 中， Microsoft 增加了一项功能，用于限制 Microsoft Edge Chromium 浏览器选项卡的资源消耗。此全局脚本会应用设置，将后台选项卡限制为超时，并在 15 分钟后停止占用资源。播放音频的后台选项卡不受影响。</block>
   <block id="7dff833b5a4b20d205011db88a6471ef" category="paragraph">可以找到详细信息 <block ref="3665b1433878c477744478feb00a7de8" category="inline-link-macro-rx"></block>。</block>
   <block id="1bf0164b6c8572c44528a5df55ca0539" category="doc">Microsoft 团队概述</block>
   <block id="b2f2f13d734d96abe956c686f3007fde" category="paragraph">此脚本软件包使用 chocolatey 软件包管理器安装 / 卸载 _Microsoft teams_ <block ref="c5ec4b919c462535a88ca6c450c12437" category="inline-link-rx"></block> 以执行部署。创建 VM 时， VDS 会部署 chocolatey ，但如果缺少 chocolatey ，则此脚本还会检查并安装它作为前提条件。</block>
@@ -3764,7 +3728,6 @@
   <block id="bc5c0a9c8c1f7c35a3cd02398b2c003b" category="doc">&lt;Strong&gt; 更改数据 / 专业 / 主文件夹 &lt;/Strong&gt; 概述</block>
   <block id="fa89c329e4778ffa596cc0556838b7fc" category="section-title">更改数据 / 专业 / 主文件夹概述</block>
   <block id="53d42f8e1d72593ab06f78acb02df418" category="image-alt">Management.command center.operations.change data home pro 文件夹 678cd</block>
-  <block id="6975e1571fbfc61560ea954792c9a50f" category="paragraph">数据，配置文件和用户主文件夹的存储位置由 Active Directory 管理。命令中心提供了一个用于更改这些位置的操作。</block>
   <block id="0e25d1512498bd6c0d0bc89e8ea68b36" category="image-alt">Management.command center.operations.copy 模板到库 ed821</block>
   <block id="2f2b6fe7c362f2583e3f0b220feaec1f" category="section-title">选择资源池</block>
   <block id="c7319855ff827f5a834dc2b7310954d5" category="paragraph">如果 " 资源池 " 选项为空，则这些设置将全局应用。</block>
@@ -3784,7 +3747,6 @@
   <block id="a6156ea9d66fef24e87e841fbabf7cca" category="section-title">共享</block>
   <block id="4aa45f3bd7449c2db60b20294c364346" category="paragraph">* 共享 _* 类型是一组 VM 映像，用于部署具有多个不同 VM 映像和 VM 角色的整个环境。</block>
   <block id="d6544351055e99d60ae43a571204dd50" category="section-title">VDI</block>
-  <block id="27058b58931d4de258ef8afe2aa0f1ff" category="paragraph">*_VDI_* 类型是一个 VM 映像，用于部署多个相同的 VM ，通常用于托管用户会话。对于所有类型的 AVD 会话主机，应选择 _VDI_ 类型，即使对于每个 VM 运行多个会话的主机也是如此。</block>
   <block id="e1a98a8b5a80dfe9df7d792ba6f956ea" category="section-title">创建新的配置收集</block>
   <block id="3d05d2abc0888d1966e34de8718d6d48" category="paragraph">配置集合位于每个部署的 VDS 界面的 * 配置集合 _* 子选项卡下。</block>
   <block id="79cb9336d6185581f8150defa59268f2" category="paragraph"><block ref="79cb9336d6185581f8150defa59268f2" category="inline-image-macro-rx" type="image"></block></block>
@@ -3802,7 +3764,6 @@
   <block id="28c4090f5add8a39eb45ebc1815369a0" category="list-text">* 数据 * - 此虚拟机不会托管任何用户会话</block>
   <block id="d606c0e654c3e62ddbc3c51149ab36f4" category="list-text">* TSData* - 此 VM 既是会话主机，又是存储主机（最多：每个工作空间一个 TSData ）</block>
   <block id="f20483d0b860e7b5221a4e55770ccbd6" category="list-text">* 虚拟机模板 * - 从可用列表中选择，可以选择现有虚拟机管理程序映像和先前保存的配置收集。</block>
-  <block id="e7b3941e457506e15222b70242356366" category="list-text">注意： Azure Marketplace 中的 Windows 7 映像未启用 PowerShell 远程处理。要使用 Windows 7 映像，您需要在启用了 PowerShell 重新映射的情况下在共享映像库中提供自定义映像。</block>
   <block id="121fdbb3bdc3555f82dd48a88f257cb7" category="list-text">注意：通过使用现有配置集合，您可以在计划的映像升级过程中更新和重新部署现有映像。</block>
   <block id="51b8fda98790da8de324cfba4470a65d" category="list-text">* 存储类型 * —根据成本和性能选择操作系统磁盘的速度</block>
   <block id="83659f9f7e3256f3af4abad8013b7796" category="list-text">* 数据驱动器 * —可选择启用附加到此映像的第二个磁盘，通常适用于上述 2.e 中引用的数据存储层</block>
@@ -4230,15 +4191,12 @@
   <block id="88b2d89c67d85e84558bba0ee5d22344" category="doc">&lt;Strong&gt; 将模板复制到图库 &lt;/Strong&gt; 概述</block>
   <block id="f00d5902f085f4a525f7729a2d183fb7" category="section-title">将模板复制到图库概述</block>
   <block id="69a85df46de1c9f673b252704b33bd24" category="image-alt">Management.command center.operations.copy template to gallery 67ea4.</block>
-  <block id="21087e268f5fce23262dd7168c7f70a8" category="paragraph">VDI 配置收集完成后，此映像将作为映像存储在 Azure 中，并可部署在同一个 VDS 站点中。为了使映像可在同一订阅中的另一个 Azure 区域中部署，使用了 " 将模板复制到图库 " 功能。此操作会将虚拟机映像复制到共享库，并将其复制到所有选定区域。</block>
   <block id="83032ce12981580e4cdc1d253de8ebf1" category="section-title">VDS 中的 VM 模板可用性下拉列表</block>
-  <block id="ac846f4b92b33a50794d612c2808a51e" category="paragraph">复制完成后，此映像将显示在 VDS 的下拉列表中，用于在部署新 VM 时选择 VM 模板。共享映像可部署到复制时选择的任何区域。</block>
   <block id="ea719ca9599866e7aae2fe126bb0863e" category="image-alt">Management.command center.operations.copy 模板到库 04bd8</block>
   <block id="8c817667da8f9cd7827a37014ddc8131" category="paragraph">存储在共享库中的 VM 映像将以 "-x.x.x" 的形式附加其版本，其中版本与 Azure 门户中的映像版本匹配。</block>
   <block id="906d07732233f71dc2ff1080bdd9f46f" category="image-alt">Management.command center.operations.copy template to gallery ee598</block>
   <block id="77fc932b03b30b3966ed2910fce14651" category="admonition">复制映像可能需要一段时间（取决于映像大小），单击版本（例如 #1.0.0# ）。</block>
   <block id="816fdf069f69753e87cf798424e069c4" category="section-title">区域可用性</block>
-  <block id="b032995a26d9ecc2fbb8b16b625647c9" category="paragraph">只能在已复制映像的区域中执行部署。可以在 Azure 门户中单击 #1.x.x# ，然后单击 _Update Replication_ 进行检查，如下所示：</block>
   <block id="e0a7b22350d041179d5abc9503ca6ef6" category="image-alt">Management.command center.operations.copy template to gallery 9b63a</block>
   <block id="aaacdf95ba2b1f61a2950d234fcc67ab" category="paragraph">Nick Woolard</block>
   <block id="c6f89f26926a9c16573e5dc704918f72" category="doc">RDS 会话主机更新过程</block>
@@ -4537,13 +4495,11 @@
   <block id="3f1c80cc6dd134b4494c50673ad245d1" category="admonition">最佳做法是，在已建立的维护窗口期间执行此操作，在此窗口中，系统会指示最终用户不要登录（或者 VM 设置为不允许用户连接），因为在执行此操作期间，最终用户桌面将无法访问。</block>
   <block id="b7d7d6510062e208f7c5c8e8390cf5f4" category="doc">WCMS 5.1 次要版本： 2018 年 10 月 18 日星期四</block>
   <block id="7fff39c69ffed509befc703a10849155" category="paragraph">命令中心是在部署中的 CMGR1 平台服务器上运行的可执行文件。可以通过连接到 CMGR1 虚拟机并在该虚拟机上本地执行来访问此虚拟机。</block>
-  <block id="23645cfa260589c8a00cc2f4dd692cbd" category="paragraph">此应用程序专为故障排除，诊断和高级管理功能而设计。此应用程序主要由 NetApp 的内部开发和支持团队使用，但某些功能有时由客户管理员使用。本文档旨在为选择功能的使用提供支持。使用这些命令时应小心，并与 NetApp 支持团队协作。</block>
   <block id="e446863d235a9e2417e5f5023e30dab0" category="section-title">正在运行 Command Center</block>
   <block id="4397d7e6a3f72ecfbfa6253e0c017843" category="list-title">要运行 Command Center 应用程序，请执行以下操作：</block>
   <block id="12a951eb22e2c512abf9383da11b139b" category="list-text">从 _VDS &gt; 部署 &gt; 平台服务器 _ 页面连接到服务器单击 _Actions_ 图标并选择 "Connect"</block>
   <block id="9469d638b1ca05c1af605f0db5e97aca" category="image-alt">Management.command 中心概述 68087</block>
   <block id="78d2654735926eea6a74c018b02639f1" category="list-text">当系统提示输入凭据时，输入域管理员凭据</block>
-  <block id="fe9d5646a734af5727b395278e4ca0cd" category="list-text">用户需要是 "CW-Infrastructure" 安全组的成员。为了保持一致性，我们建议将此用户设置为 _AD &gt; Cloud Workspace &gt; Cloud Workspace Tech Users &gt; Groups_ 中 "3 级技术人员 " 组的成员</block>
   <block id="ac6641cdaac1900cbe92e65d25dcb0c8" category="image-alt">Management.command 中心概述 1c42d</block>
   <block id="dbf0d1256a58215c66213b42406103c3" category="list-text">找到 _Command Center_ 的桌面图标并运行它</block>
   <block id="c84c918c7f9212c2f6f131a5badbd56e" category="image-alt">Management.command 中心概述 3C860</block>
@@ -4551,14 +4507,11 @@
   <block id="381d5d3cfd644c6ee01e73424974e853" category="section-title">操作选项卡</block>
   <block id="4245ce4359e4f2f8d84ba49abe34ce08" category="image-alt">Management.command 中心概述 b614e</block>
   <block id="e00b53ac36f1ab67bd55b503f7433384" category="paragraph">从 * 命令 * 菜单中，您可以从操作列表中进行选择（如下所示）。</block>
-  <block id="70de3c0324ce606fe88d45c88ba059b4" category="paragraph">选择命令后，可以通过 * 加载数据 * 按钮使用部署数据填充数据。加载数据按钮还可用于在先前选择后查询虚拟机管理程序中的数据（例如 从下拉列表中选择特定虚拟机后加载可用备份日期列表）</block>
   <block id="2e9f0f0555eeb57a7748d178aa4f439c" category="image-alt">Management.command 中心概述 85417</block>
   <block id="583fe57e461614c357aeae3fc4114eee" category="paragraph">在对命令进行选择后，单击 * 执行命令 * 将运行选定进程。</block>
-  <block id="a0a5351369a69f519811ab4d0f826555" category="paragraph">要查看日志，请单击 * 查看所有日志 * 按钮。此时将打开原始文本文件，并在底部显示最新条目。</block>
   <block id="96207966c5b77825eb147e108f5b7785" category="section-title">命令列表</block>
   <block id="2c995eb5052e706144080b36e01ac6db" category="inline-link-macro">将模板复制到图库</block>
   <block id="17623da53c49870f351d31dca02a49b5" category="list-text"><block ref="17623da53c49870f351d31dca02a49b5" category="inline-link-macro-rx"></block></block>
-  <block id="90f4ea8cb8191a9a925e35ae28a776dc" category="paragraph">VDS 具有一个内置的配置文件缩减操作，该操作在夜间运行。如果可以节省 5 GB 或更多空间，此自动化功能将自动缩减用户配置文件的 FSLogix 容器。此自动化功能每晚在中午 12 ： 01 运行。5 GB 阈值可在 CCMGR1 服务器上的 DCConfig 中配置。</block>
   <block id="8b72c2bc5db9966dc7dc3e2692e70ebc" category="image-alt">advanced.fslogix 配置文件缩减 ea982</block>
   <block id="abb96039c045d19f71a6a95315ac6c92" category="doc">AMD Radeon" 虚拟驱动程序 " 概述</block>
   <block id="47166dc97a9eea9403c57bcbb1fdee69" category="paragraph">此脚本软件包可使用 chocolatey 软件包管理器安装 / 卸载 _AMD Radeoney instalm Drivers_ <block ref="c5ec4b919c462535a88ca6c450c12437" category="inline-link-rx"></block> 以执行部署。创建 VM 时， VDS 会部署 chocolatey ，但如果缺少 chocolatey ，则此脚本还会检查并安装它作为前提条件。</block>
@@ -4595,7 +4548,6 @@
   <block id="5f44fd9279cc181cc6a2ba58dc33abcf" category="doc">命令中心命令：将模板复制到图库</block>
   <block id="bc7663567c22abd2e4b4784f8d5f7678" category="section-title">命令中心警告</block>
   <block id="46433f623976c5af8ebdc7ab92816a48" category="inline-link-macro">命令中心概述</block>
-  <block id="2c8ba1178f78e5412cd75bc1ca7e8dac" category="admonition">命令中心是一个在部署中的 CMGR1 平台服务器上运行的应用程序。此应用程序专为故障排除，诊断和高级管理功能而设计。此应用程序主要由 NetApp 的内部开发和支持团队使用，但某些功能有时由客户管理员使用。本文档旨在为选择功能的使用提供支持。使用这些命令时应小心，并与 NetApp 支持团队协作。有关详细信息，请参见 <block ref="a48f4703e36280df80993e60ba576b79" category="inline-link-macro-rx"></block> 文章。</block>
   <block id="85fe10f5d1b1fd0371e1131d6540f41d" category="doc">脚本化事件文档—启用 AVD 短路径</block>
   <block id="657c4461e228bd4628647c9bba441cb2" category="paragraph">有关此 AVD 功能的 Microsoft 文档，请参见：<block ref="ce8abb3ebcad935b317f33e57160d38f" category="inline-link-rx"></block>== 添加手动活动要使存储库中的脚本执行任何操作，必须创建一个活动以将该脚本与选定触发器关联。在本示例中， VDS 管理员手动触发脚本时会运行活动。</block>
   <block id="779d6d9f46a352cebccf44b836a44271" category="summary">FSLogix 配置文件缩减功能摘要</block>
@@ -4731,4 +4683,53 @@
   <block id="303a34eec2182a2a22c6448a3e5eafbb" category="doc">VDS v6 版本： 2022 年 1 月 6 日星期四</block>
   <block id="d64473aae9849f968a75d27d0d4d1350" category="paragraph">_ 组件： _ Virtual Desktop Service v6_when ： _ 2022 年 1 月 6 日星期四晚上 10 点至晚上 11 点东部 _ 影响： _ 最终用户对桌面和应用程序服务的访问将保持不间断。仍然可以访问虚拟桌面服务。</block>
   <block id="1cf2ecc6b20f83f56b8cd96d3c14f028" category="list-text">在部署过程开始时修复唯一 Azure 授权问题描述的错误。</block>
+  <block id="df1d7646cadbf91ab7859121ccadd9e0" category="admonition">此应用程序需要位于 VDS 应用程序库中。这 <block ref="bf3bed7e9c33f406222a0da03c1c9b87" category="inline-link-macro-rx"></block> 有关将应用程序添加到库的信息，请查看有关 RDS 应用程序授权的文章。</block>
+  <block id="5c3b032da8f2919a4c721171ab43debf" category="list-text">* 脚本： * 从下拉列表中选择安装（或卸载）脚本。这可能是您已克隆和自定义的全局脚本或客户脚本。</block>
+  <block id="7f21ec8a76adcc10e03f03272dc55989" category="admonition">此工作流仅适用于适用场景 RDS 部署。有关 AVD 应用程序授权文档，请参见 <block ref="74176c341779afa5ab584577d5c6e491" category="inline-link-macro-rx"></block></block>
+  <block id="4a6dcab2ea23046fa6acb9c972fc722f" category="paragraph">VDS 管理员登录到 VDS ，然后在组织或工作空间模块下找到特定客户端并打开概述选项卡。" 服务器 " 图块列出了所有服务器（ TSD1 ， TS1 ， D1 等）。要克隆任何单个服务器，只需单击服务器名称最右侧的代码并选择克隆选项即可。</block>
+  <block id="5327b77165f2952e493ceffcb00fc97d" category="paragraph">克隆 TSData 服务器时，其中一个步骤是删除 c ： \Home ， c ： \Data 和 c ： \Pro 文件夹，使其不是任何重复文件。在这种情况下，克隆进程失败，删除这些文件时出现问题。此错误不明确。通常，这意味着克隆事件失败，因为存在打开的文件或进程。下次尝试，请禁用任何 AV （因为这可能会解释此错误）。</block>
+  <block id="8275473225fce2fd7038755af7026f6b" category="admonition">此自动化过程依赖于自定义 ps1 和预构建的 xml 。不支持此功能，因为 NetApp 不保证它可以正常工作或对任何目标计算机造成影响。ps1 由 NetApp 托管，可能随时更改 / 消失。我们建议将此方法用作构建和托管您自己的自动化流程的模板。此过程已于 2019 年 8 月 30 日在 Azure 中的 Windows Server 2016 Datacenter 10.0.14393 和 Windows 10 Enterprise for Virtual Desktop 10.0.18362 上进行了验证。</block>
+  <block id="ca7e1fe8d8bc4eba505de64e7681c52b" category="paragraph">此操作遵循与普通应用程序安装脚本事件相同的工作流。以下说明假定已按照应用程序管理计划中的步骤安装了 chocolatey 。Office 365 ProPlus 自动安装，含巧克力</block>
+  <block id="441b124e320f6694d4d5723f0dce4b32" category="paragraph">保存脚本后，下一步是将该脚本与触发器关联。在这种情况下，在 VDS 中请求应用程序安装时，我们将触发该脚本。有关详细信息，请参见《应用程序管理指南》。</block>
+  <block id="468efc6451a2aa4ae307b4b4ba81988d" category="paragraph">此应用程序专为故障排除，诊断和高级管理功能而设计。此应用程序主要由 NetApp 的内部开发和支持团队使用，但某些功能有时由客户管理员使用。本文档旨在为选择功能的使用提供支持。使用这些命令时应小心，并与 NetApp 支持团队协作。</block>
+  <block id="425b6f8ad1e8479b9498381236759446" category="list-text">用户需要是 "CW-Infrastructure" 安全组的成员。为了保持一致性，我们建议将此用户设置为 _AD &gt; Cloud Workspace &gt; Cloud Workspace Tech Users &gt; Groups_ 中 "3 级技术人员 " 组的成员</block>
+  <block id="c8b0179c7723fa9612a5afc30f09c235" category="paragraph">选择命令后，可以通过 * 加载数据 * 按钮使用部署数据填充数据。加载数据按钮还可用于在先前选择后查询虚拟机管理程序中的数据（例如 从下拉列表中选择特定虚拟机后加载可用备份日期列表）</block>
+  <block id="1991b3a8bd038ca8b28dbf7ec9416cbb" category="paragraph">要查看日志，请单击 * 查看所有日志 * 按钮。此时将打开原始文本文件，并在底部显示最新条目。</block>
+  <block id="3c7074eb608a559df4e7529502ada582" category="list-text">可以为每种服务器类型定义单个备份策略（含默认建议）。此外，可以在 VDS UI 中为各个计算机分配独立于其服务器类型的计划，可以通过在 Workspace 页面上单击 Server name （服务器名称）导航到 Server Detail 视图来应用此设置（请参见以下视频：设置单个备份策略）</block>
+  <block id="5329adaf1322063c572cbceaf8ab9c38" category="paragraph">VDS 成本估算工具是一款专门构建的增值工具，可让企业估算其公有云在 Azure 或 Google Cloud 中的成本。该工具包括更改和优化预算的方法，以便在组织预算范围内提供所需的解决方案。</block>
+  <block id="7b8eccd09dfe8569fc96e78f5da6579d" category="paragraph">在 2017 年第 4 季度正式发布之后，过渡到 CWS 5.1 无需支付升级费用或实施成本。Cloud跳 线将与每个合作伙伴协调完成升级，不会中断现有服务。CWS 5.1 继续支持先前版本的所有功能，并扩展了可增强管理员和最终用户体验的新功能，同时进一步改进了以前版本的 Cloud Workspace Suite 中屡获殊荣的自动化和流程编排功能。</block>
+  <block id="e5e4078c31f5ab3bf1fa6e7b2dcfcaf3" category="paragraph">*_VDI_* 类型是一个 VM 映像，用于部署多个相同的 VM ，通常用于托管用户会话。对于所有类型的 AVD 会话主机，应选择 _VDI_ 类型，即使对于每个 VM 运行多个会话的主机也是如此。</block>
+  <block id="d28368185145227a8585afcf383c8cb2" category="list-text">注意： Azure Marketplace 中的 Windows 7 映像未启用 PowerShell 远程处理。要使用 Windows 7 映像，您需要在启用了 PowerShell 重新映射的情况下在共享映像库中提供自定义映像。</block>
+  <block id="c31198a443d2cbef15eecb743db35f4a" category="paragraph">VDS 具有一个内置的配置文件缩减操作，该操作在夜间运行。如果可以节省 5 GB 或更多空间，此自动化功能将自动缩减用户配置文件的 FSLogix 容器。此自动化功能每晚在中午 12 ： 01 运行。5 GB 阈值可在 CCMGR1 服务器上的 DCConfig 中配置。</block>
+  <block id="209825a877e11121de0007d470cdda0c" category="list-text">为合作伙伴和子合作伙伴介绍自助服务密码重置报告</block>
+  <block id="77f90cd15185be8a841a6cd4f59e16b7" category="paragraph">VDI 配置收集完成后，此映像将作为映像存储在 Azure 中，并可部署在同一个 VDS 站点中。为了使映像可在同一订阅中的另一个 Azure 区域中部署，使用了 " 将模板复制到图库 " 功能。此操作会将虚拟机映像复制到共享库，并将其复制到所有选定区域。</block>
+  <block id="8462a715b527225e20aecada75c5ec58" category="paragraph">复制完成后，此映像将显示在 VDS 的下拉列表中，用于在部署新 VM 时选择 VM 模板。共享映像可部署到复制时选择的任何区域。</block>
+  <block id="adf4ce32e74a99820885998c87332e14" category="paragraph">只能在已复制映像的区域中执行部署。可以在 Azure 门户中单击 #1.x.x# ，然后单击 _Update Replication_ 进行检查，如下所示：</block>
+  <block id="8d2b99382183b4f2efedee98698e5461" category="paragraph">停用整个环境可以节省更多空间，但仅建议在非生产环境中使用。这是一项手动操作，可在 VDS 的 " 部署 " 部分执行。要将环境恢复为正常状态，还需要在同一页面上执行手动步骤。</block>
+  <block id="c87453bc3b09ec6fe9e4d0cdb6bbe8cc" category="paragraph">在 Microsoft Edge Chromium 89 中， Microsoft 增加了一项功能，用于限制 Microsoft Edge Chromium 浏览器选项卡的资源消耗。此全局脚本会应用设置，将后台选项卡限制为超时，并在 15 分钟后停止占用资源。播放音频的后台选项卡不受影响。</block>
+  <block id="7d753bd86a0c85f6e73b68f6dbedf2de" category="admonition">此工作流仅适用于适用场景 AVD 部署。有关 RDS 应用程序授权文档，请参见 <block ref="0ab43ecb3f8f5a1bd44a7cd9813b2e41" category="inline-link-macro-rx"></block></block>
+  <block id="25b39771f06304178c47b965c8baf65d" category="admonition">AVD 是一项记录完善的服务，其中包括许多服务 <block ref="ef37fc637501cb1b64c849d5e95b4c7b" category="inline-link-macro-rx"></block>。VDS 不会为 AVD 的标准运行方式提供超群支持。相反，本文旨在说明 VDS 如何采用所有 AVD 部署中的标准概念。</block>
+  <block id="629e86be310a4074f7f96e8053f58d24" category="paragraph">在 Azure 虚拟桌面中，每个最终用户都由其 AVD 管理员分配对 RemoteApp 和 / 或桌面的访问权限。这可通过 VDS 中的应用程序组分配来实现。</block>
+  <block id="31277e1c8a1002a04b82c23689937668" category="paragraph">* 远程应用程序 * 是指在会话主机上远程运行但在本地设备上显示而不具有桌面环境的应用程序。这些应用程序通常称为 " 流式应用程序 " ，看起来像本地设备上的本地应用程序，但在安全上下文中以及会话主机的存储和计算层中运行。</block>
+  <block id="01858c5473d7f75d1c4554d388d91137" category="paragraph">* 桌面 * 是指在会话主机上运行并在本地设备上显示的完整 Windows 体验，通常在全屏窗口中显示。此桌面本身通常称为 " 远程桌面 " ，它包含安装在该会话主机上的任何应用程序，用户可以从桌面会话窗口中启动这些应用程序。</block>
+  <block id="bf6ac29ade6cf8e14d89dc08b6bf1761" category="paragraph">登录时，最终用户会看到其管理员为其分配的资源。以下是最终用户使用其 AVD 客户端登录时可能看到的视图示例。这是一个更复杂的示例，通常最终用户只会分配一个 Dingle 桌面或 RemoteApp 。最终用户可以双击其中任何资源来启动该应用程序 / 桌面。</block>
+  <block id="77a84148666c82542584e57d0c6ec43d" category="paragraph">如上所示，此最终用户可用的各种资源托管在不同的会话主机，不同的主机池中，并且可能由不同的 IT 组织在不同的 AVD 工作空间中进行管理。虽然此示例中未显示这些资源，但也可以使用 VDS 站点功能在不同的 Azure 区域和 / 或订阅中托管。</block>
+  <block id="098b02c52f0db3d5ddbdd0288ca7ec20" category="paragraph">默认情况下，每个主机池都从一个应用程序组开始，该应用程序组用于分配对 Windows 桌面体验的访问权限。分配给此应用程序组的最终用户可以访问这些会话主机上安装的所有应用程序。</block>
+  <block id="0a14f1535ea14c5bd93244bb6dbf4792" category="paragraph">要配置对 RemoteApp 的访问，需要在主机池中创建一个新的应用程序组。创建应用程序后，需要将相应的应用程序分配给此应用程序组。</block>
+  <block id="3d2884c0236d13ed6261947f4b728fcc" category="admonition">分配给此主机池的 " 桌面 "AppGroup 的任何用户都可以使用这些会话主机上的任何应用程序。此外，也无需通过 RemoteApp 应用程序组来配置访问权限，只需提供对应用程序的访问权限即可。只有在启用以流式应用程序的形式在本地设备上运行的应用程序时，才需要使用 RemoteApp 应用程序组。</block>
+  <block id="7ae4c2ef09690aa217f7605a240c3da4" category="list-text">向下滚动到 " 远程应用程序 " 部分。由于 VDS 正在直接查询会话主机以显示可用于流式传输的应用程序，因此可能需要一段时间才能填充此部分。</block>
+  <block id="37282db4103868ec297ff1f434418904" category="paragraph">脚本事件包含脚本的 * 存储库 * 和 * 活动 * 。脚本包含有关活动将脚本与脚本的相应触发器和目标（ * 何时及何地 * ）链接时要执行的 * 操作 * 的说明。</block>
+  <block id="f6fd2aeb180289469f1049467a0516b4" category="paragraph">存储库选项卡显示了可从 VDS 帐户中部署的所有脚本的列表。这是一个自定义存储库，由 VDS 实例中的所有管理员共享。可以在 _VDS &gt; 管理员 &gt; 权限页面 _ 上管理对脚本化事件的访问。</block>
+  <block id="e18bab607917db0b6015f8eb5eef52ae" category="paragraph">每个 VDS 管理员组织都有一个专用的脚本库，其中包含由其组织创建和 / 或自定义的脚本。这些脚本定义为脚本类型 " 客户 " 。 任何对脚本事件部分具有适当管理员权限的 VDS 管理员都可以删除和编辑客户脚本。</block>
+  <block id="9d72345d70a945d837bf3572115fa240" category="paragraph">NetApp 还会发布和维护一个 " 全局 " 脚本库，这些脚本在所有 VDS 管理员组织中都是相同的。这些脚本定义为脚本类型 " 全局 " 。 任何 VDS 管理员都无法编辑或删除全局脚本。而是可以 " 克隆 " 全局脚本，生成的脚本是一个 " 客户 " 脚本，可以进行编辑和使用。</block>
+  <block id="4f59d45cbca68020170a8684b5b8886d" category="paragraph">由于可以下载与脚本化事件关联的脚本文件，因此 VDS 管理员可以在部署之前查看和编辑底层脚本文件。运行您不完全了解的脚本永远不可取。</block>
+  <block id="6772d4a7f270c4743310d726d916f19e" category="paragraph">VDS 将概念组织到逻辑层次结构的不同层中。本文有助于概述它们如何组合在一起。</block>
+  <block id="7b8733b8d4d97267675a429a1c09c452" category="paragraph">VDS 管理门户位于<block ref="69f1bdc58d8e8591f3ab0c4640b0f810" category="inline-link-rx"></block>。此 Web 界面是一个单一管理平台，用于管理所有与 VDS 相关的对象。在 VDS Web UI 中，存在以下组件和逻辑容器层次结构。</block>
+  <block id="f5c59dac168d8d477cbfff4db5c43c19" category="paragraph">_Deployment_ 是一个 VDS 概念，它经过组织并包含 _VDS Workspace （ s ） _ 。在某些部署架构中，一个部署可以包含多个 VDS 工作空间。</block>
+  <block id="2dd797c702553872201c4a3863f765cc" category="paragraph">为了支持在部署中的所有 VDS 工作空间之间共享的部署，部署了某些 VM 资源。例如，每个部署都包含一个名为 "cvgr1" 的 VM ，该 VM 是一个运行 VDS 应用程序的服务器，一个 SQL Express 数据库，便于在部署中管理 VDS 工作空间（以及包含的资源）。</block>
+  <block id="dda8bc8718cc6eb90dfc0629c5be11c1" category="paragraph">VDS 工作空间是部署中用于客户端（最终用户）资源的逻辑容器。这些资源包括虚拟机（用于会话主机，应用程序服务器，数据库服务器，文件服务器等），虚拟网络， 存储和其他虚拟机管理程序基础架构。</block>
+  <block id="f7c2cc4ea52fa0930a3bf06522f84b8c" category="paragraph">每个 AVD 主机池都以一个 " 桌面 " 应用程序组开头。可以将用户和 / 或组分配给此（或其他）应用程序组，以允许分配的用户访问应用程序组中的资源。</block>
+  <block id="f7c1c070d65b6ccf74bca5345b3ff6ed" category="paragraph">可以在 VDS 的主机池中创建其他应用程序组。所有其他应用程序组均为 "RemoteApp" 应用程序组，可提供 RemoteApp 资源，而不是提供完整的 Windows 桌面体验。</block>
+  <block id="2bf46ad58410756ffcf2ab58406d5151" category="paragraph">数据，配置文件和用户主文件夹的存储位置由 Active Directory 管理。命令中心提供了一个用于更改这些位置的操作。</block>
+  <block id="2a56e61a4cdc8f4df5f2f537a46b206a" category="admonition">命令中心是一个在部署中的 CMGR1 平台服务器上运行的应用程序。此应用程序专为故障排除，诊断和高级管理功能而设计。此应用程序主要由 NetApp 的内部开发和支持团队使用，但某些功能有时由客户管理员使用。本文档旨在为选择功能的使用提供支持。使用这些命令时应小心，并与 NetApp 支持团队协作。有关详细信息，请参见 <block ref="a48f4703e36280df80993e60ba576b79" category="inline-link-macro-rx"></block> 文章。</block>
 </blocks>
