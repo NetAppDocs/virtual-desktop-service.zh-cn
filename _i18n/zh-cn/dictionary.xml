@@ -4732,4 +4732,7 @@
   <block id="f7c1c070d65b6ccf74bca5345b3ff6ed" category="paragraph">可以在 VDS 的主机池中创建其他应用程序组。所有其他应用程序组均为 "RemoteApp" 应用程序组，可提供 RemoteApp 资源，而不是提供完整的 Windows 桌面体验。</block>
   <block id="2bf46ad58410756ffcf2ab58406d5151" category="paragraph">数据，配置文件和用户主文件夹的存储位置由 Active Directory 管理。命令中心提供了一个用于更改这些位置的操作。</block>
   <block id="2a56e61a4cdc8f4df5f2f537a46b206a" category="admonition">命令中心是一个在部署中的 CMGR1 平台服务器上运行的应用程序。此应用程序专为故障排除，诊断和高级管理功能而设计。此应用程序主要由 NetApp 的内部开发和支持团队使用，但某些功能有时由客户管理员使用。本文档旨在为选择功能的使用提供支持。使用这些命令时应小心，并与 NetApp 支持团队协作。有关详细信息，请参见 <block ref="a48f4703e36280df80993e60ba576b79" category="inline-link-macro-rx"></block> 文章。</block>
+  <block id="4e917b35b838b3848cee837317813f4c" category="doc">VDS v6 版本： 2022 年 1 月 20 日星期四</block>
+  <block id="bd2897c731517d781c517e8a96ea7911" category="paragraph">_ 组件： _ Virtual Desktop Service v6 _when ： _ 2022 年 1 月 20 日星期四晚上 10 点至晚上 11 点东部 _ 影响： _ 最终用户对桌面和应用程序服务的访问将保持不间断。仍然可以访问虚拟桌面服务。</block>
+  <block id="e6b63d30bde9b8adedb3ce2ec1e54cb2" category="list-text">使用 Azure 成本估算工具（ ACE ）修复链接重定向问题描述的错误</block>
 </blocks>
