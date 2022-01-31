@@ -4,7 +4,7 @@ permalink: Unlisted.Whats_with_all_these_emails.html
 summary: 所有这些电子邮件都有哪些功能？ 
 keywords:  
 ---
-= 所有这些电子邮件都包含哪些内容？
+= 所有这些电子邮件都有哪些功能？
 
 
 

@@ -4,7 +4,7 @@ permalink: Troubleshooting.dns_forwarding_for_azure_aadds_sso.html
 summary: ADDS nds 和 SSO 故障排除分步指南 
 keywords:  
 ---
-= 适用于 Azure 的 DNS 转发通过 O365 身份添加了 &amp ； SSO
+= 通过 O365 身份为 Azure 添加和 SSO 转发 DNS
 
 
 

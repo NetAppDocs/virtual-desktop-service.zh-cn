@@ -362,7 +362,6 @@
   <block id="edbc625659e0f9bb4f4d89e6e41211da" category="list-text">添加新组或编辑现有组。</block>
   <block id="5de0364f79671d7894f7e436f5d6b909" category="list-text">将用户和应用程序分配给组。</block>
   <block id="d31b827b6e7b04377e23a70451a9b414" category="summary">ADDS nds 和 SSO 故障排除分步指南</block>
-  <block id="31e85cf5188638ca8ecc54488f5807d3" category="doc">适用于 Azure 的 DNS 转发通过 O365 身份添加了 &amp;amp ； SSO</block>
   <block id="c2ecd163592833db8cf7047686a0bc27" category="paragraph">用户无法访问主电子邮件域上的公司网站。</block>
   <block id="1437e89fe4f9155122c0cc20fd399ec8" category="paragraph">_例如 ，如果 VDS 工作空间中的 NetApp 员工的 SSO 帐户为 user@netapp.com_ ，则他们无法访问 netapp.com</block>
   <block id="2eaf5aa7aab82397bcfad0a70f17f773" category="paragraph">专用 VDS 部署使用 Azure 租户的内部域。</block>
@@ -2141,7 +2140,6 @@
   <block id="dccb0d2b442426ba8bd60031596d2402" category="section-title">用户详细信息页面</block>
   <block id="42adcf20cb0be61922dbe94eeb374a65" category="paragraph"><block ref="42adcf20cb0be61922dbe94eeb374a65" category="inline-image-macro-rx" type="image"></block></block>
   <block id="0d4b0025d1c6bffdb44842810e5a52a8" category="summary">所有这些电子邮件都有哪些功能？</block>
-  <block id="f3a92793815a97180a94673fdc3a7009" category="doc">所有这些电子邮件都包含哪些内容？</block>
   <block id="b5b4be478e80fe42cfbd68f0ada755b8" category="paragraph">VDS 会发送各种每晚电子邮件报告。这些信息旨在每晚汇总环境的各个方面，以确定错误和异常情况。它们经过调整，可以帮助大型部署，其中单独监控每个租户可能是一项重要任务。</block>
   <block id="67222c3ad22de22cf22ecc1cf9c3351c" category="paragraph">对于较小的环境，这些电子邮件可能过多或不必要。</block>
   <block id="c6cb8f560cfcac716ae9d4a2732ed529" category="paragraph">接收这些报告的电子邮件地址在帐户步骤的 VDS 设置向导中定义。</block>
@@ -3725,7 +3723,6 @@
   <block id="8f24270094753ebbc66650db1da752c7" category="doc">启用 AVD 短路径</block>
   <block id="1d6ffc609b12ff2761f0903af359abcd" category="paragraph">此脚本软件包可通过对原生执行（相关）命令来启用 / 禁用 PowerShell AVD 功能 _RDP Shortpath_ ：</block>
   <block id="19d7a86475f639fc81e2eaeb9460a3f0" category="paragraph">有关此 AVD 功能的 Microsoft 文档，请参见：<block ref="ce8abb3ebcad935b317f33e57160d38f" category="inline-link-rx"></block></block>
-  <block id="bc5c0a9c8c1f7c35a3cd02398b2c003b" category="doc">&lt;Strong&gt; 更改数据 / 专业 / 主文件夹 &lt;/Strong&gt; 概述</block>
   <block id="fa89c329e4778ffa596cc0556838b7fc" category="section-title">更改数据 / 专业 / 主文件夹概述</block>
   <block id="53d42f8e1d72593ab06f78acb02df418" category="image-alt">Management.command center.operations.change data home pro 文件夹 678cd</block>
   <block id="0e25d1512498bd6c0d0bc89e8ea68b36" category="image-alt">Management.command center.operations.copy 模板到库 ed821</block>
@@ -4188,7 +4185,6 @@
   <block id="09de6cc93acfa9bdb902f5a721e99854" category="section-title">WCMS 5.3 版本： 2019 年 8 月 8 日</block>
   <block id="f5a466a8ed69d939bff4037082a26684" category="paragraph">_ 组件： _ 5.3 Cloud Workspace Management Suite _ 时间： _ 2019 年 8 月 8 日星期四晚上 10 点至晚上 11 点东部 _ 影响： _ 最终用户对 Cloud Workspace 桌面和应用程序服务的访问将保持无中断。您仍可访问 Cloud Workspace Management Suite 。</block>
   <block id="9391ca9caacc3c8781678352cbd8ee12" category="list-text">错误修复了从 CWMS 连接到 CMGR1 的部分情形未按预期运行</block>
-  <block id="88b2d89c67d85e84558bba0ee5d22344" category="doc">&lt;Strong&gt; 将模板复制到图库 &lt;/Strong&gt; 概述</block>
   <block id="f00d5902f085f4a525f7729a2d183fb7" category="section-title">将模板复制到图库概述</block>
   <block id="69a85df46de1c9f673b252704b33bd24" category="image-alt">Management.command center.operations.copy template to gallery 67ea4.</block>
   <block id="83032ce12981580e4cdc1d253de8ebf1" category="section-title">VDS 中的 VM 模板可用性下拉列表</block>
@@ -4493,7 +4489,6 @@
   <block id="afb275d8b27dc1975f85cc9cfee04fdf" category="image-alt">scriptlibrary.active.InstallAdobeReader</block>
   <block id="4fb4d4a9329eca7327f80a9a57371955" category="paragraph">值得注意的是， NetApp 的虚拟桌面服务可以导入现有主机池，因此，即使最初未使用 VDS 部署主机池，客户也可以利用 VDS 执行原位升级。</block>
   <block id="3f1c80cc6dd134b4494c50673ad245d1" category="admonition">最佳做法是，在已建立的维护窗口期间执行此操作，在此窗口中，系统会指示最终用户不要登录（或者 VM 设置为不允许用户连接），因为在执行此操作期间，最终用户桌面将无法访问。</block>
-  <block id="b7d7d6510062e208f7c5c8e8390cf5f4" category="doc">WCMS 5.1 次要版本： 2018 年 10 月 18 日星期四</block>
   <block id="7fff39c69ffed509befc703a10849155" category="paragraph">命令中心是在部署中的 CMGR1 平台服务器上运行的可执行文件。可以通过连接到 CMGR1 虚拟机并在该虚拟机上本地执行来访问此虚拟机。</block>
   <block id="e446863d235a9e2417e5f5023e30dab0" category="section-title">正在运行 Command Center</block>
   <block id="4397d7e6a3f72ecfbfa6253e0c017843" category="list-title">要运行 Command Center 应用程序，请执行以下操作：</block>
@@ -4735,4 +4730,5 @@
   <block id="4e917b35b838b3848cee837317813f4c" category="doc">VDS v6 版本： 2022 年 1 月 20 日星期四</block>
   <block id="bd2897c731517d781c517e8a96ea7911" category="paragraph">_ 组件： _ Virtual Desktop Service v6 _when ： _ 2022 年 1 月 20 日星期四晚上 10 点至晚上 11 点东部 _ 影响： _ 最终用户对桌面和应用程序服务的访问将保持不间断。仍然可以访问虚拟桌面服务。</block>
   <block id="e6b63d30bde9b8adedb3ce2ec1e54cb2" category="list-text">使用 Azure 成本估算工具（ ACE ）修复链接重定向问题描述的错误</block>
+  <block id="db08c00bb57132c028bffad5152677a4" category="doc">通过 O365 身份为 Azure 添加和 SSO 转发 DNS</block>
 </blocks>
