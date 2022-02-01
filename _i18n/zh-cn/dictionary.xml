@@ -4731,4 +4731,7 @@
   <block id="bd2897c731517d781c517e8a96ea7911" category="paragraph">_ 组件： _ Virtual Desktop Service v6 _when ： _ 2022 年 1 月 20 日星期四晚上 10 点至晚上 11 点东部 _ 影响： _ 最终用户对桌面和应用程序服务的访问将保持不间断。仍然可以访问虚拟桌面服务。</block>
   <block id="e6b63d30bde9b8adedb3ce2ec1e54cb2" category="list-text">使用 Azure 成本估算工具（ ACE ）修复链接重定向问题描述的错误</block>
   <block id="db08c00bb57132c028bffad5152677a4" category="doc">通过 O365 身份为 Azure 添加和 SSO 转发 DNS</block>
+  <block id="8a92fe96e3b6ce1519fb08d694c4177c" category="doc">VDS v6 版本： 2022 年 2 月 3 日星期四</block>
+  <block id="9e331e61b4691f5e61f2e99dcb3dff3b" category="paragraph">_ 组件： _ Virtual Desktop Service v6 _when ： _ 2022 年 2 月 3 日星期四晚上 10 点至晚上 11 点东部 _ 影响： _ 最终用户对桌面和应用程序服务的访问将保持不间断。仍然可以访问虚拟桌面服务。</block>
+  <block id="365a3b510bb41f1a84144bc4291a3f7b" category="list-text">配置文件漫游搜索增强功能</block>
 </blocks>
