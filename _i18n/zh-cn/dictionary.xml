@@ -93,7 +93,6 @@
   <block id="a52ac08ae4d07f05a995fa807fe68756" category="paragraph"><block ref="a52ac08ae4d07f05a995fa807fe68756" category="inline-image-macro-rx" type="image"></block></block>
   <block id="f7cd53d88d604de6f5f913c26420bd4d" category="list-text">所需的 " 发件人 " 地址（必须有效）</block>
   <block id="714c982f3a51e3b0e556412e1f6e897d" category="list-text">此设置应应用于哪些客户端（或全部应用）</block>
-  <block id="f23c22d118174cbb45febe6e23021749" category="paragraph">要创建支持案例，请发送电子邮件至： VDSsupport@netapp.com</block>
   <block id="9fc3b6578e202985e3091b3313385ef1" category="paragraph">收到此消息后， VDS 支持将使用我们的 SMTP 服务验证此地址并激活此设置。理想情况下，您可以更新源地址域上的公有 DNS 记录，以最大程度地提高电子邮件传送能力。</block>
   <block id="6f30b85bb1a4277a75da7a383c5118f7" category="section-title">密码复杂度</block>
   <block id="cc7b7104ec932b941820f8f4f84c583e" category="paragraph">可以配置 VDS 以强制实施密码复杂性。此设置位于云工作空间设置部分的工作空间详细信息页面上。</block>
@@ -150,7 +149,6 @@
   <block id="09aec712e8c7dc0f067aa78021250718" category="list-text"><block ref="09aec712e8c7dc0f067aa78021250718" category="inline-link-macro-rx"></block></block>
   <block id="6c0305575fb55798e7104b46cc095d14" category="summary">从 AVD 中删除 VDS 的分步指南</block>
   <block id="026762681803b0b54c05c75c5d569298" category="doc">AVD 拆卸指南</block>
-  <block id="0be4b6e6da48ad5cabf39106a217d56a" category="paragraph">本文介绍如何在保留 AVD 最终用户访问权限的同时删除 VDS 和 NetApp 控制。未来的管理将借助原生 Azure/Windows 管理工具进行。完成此过程后，建议您联系 VDSsupport@netapp.com ，以便 NetApp 能够清理我们的后端和计费系统。</block>
   <block id="27e9db240004b05007ee4eeefd910984" category="section-title">初始状态</block>
   <block id="33c7300390dcfab4d74d3a725d17fbd4" category="list-text">AVD 部署</block>
   <block id="2970bf7ec93a730b8e0fe2ef1e42725f" category="list-text">HDDS1 是 FS Logix 文件共享</block>
@@ -2209,7 +2207,6 @@
   <block id="846cfd57afaf8469152ebdd6a21cbe89" category="paragraph">通过一个门户来控制技术堆栈的每一层，最大限度地提高业务灵活性。</block>
   <block id="71ad52d349f6fc3c22edb56da50b7300" category="paragraph">了解更多信息。<block ref="fe0b001fc1844a11f38bc5eb2c9398f3" category="inline-link-rx"></block></block>
   <block id="a29672185d73dcf6d2ddc1aef91bb364" category="section-title">获取支持</block>
-  <block id="8b5916065a046e9dcfc0a86ec2effceb" category="paragraph">电子邮件支持： VDSsupport@netapp.com</block>
   <block id="88cc9e245d04dc16592a51f8acaca39e" category="paragraph">电话支持： 844.645.6789</block>
   <block id="f1f12b2afaf19ca6628af96787f70622" category="inline-link-macro">VDS 支持门户</block>
   <block id="c0c6ed3b421e3e68c5af66c287e10eab" category="paragraph"><block ref="c0c6ed3b421e3e68c5af66c287e10eab" category="inline-link-macro-rx"></block></block>
@@ -4738,4 +4735,7 @@
   <block id="a30deb188ffb2252655d9d92edfca79e" category="paragraph">_ 组件： _ Virtual Desktop Service v6 _when ： _ 2022 年 2 月 17 日星期四晚上 10 点 - 晚上 11 点东部 _ 影响： _ 最终用户对桌面和应用程序服务的访问将保持不间断。仍然可以访问虚拟桌面服务。</block>
   <block id="7cf4dc0da4aaa884f4ffeff1d15fce34" category="list-text">引入应用程序实例，从而改进对同一软件不同版本的管理</block>
   <block id="8a8fa72e6038a0fab54f22ca58c27de2" category="list-text">各种主动式安全增强功能和错误修复</block>
+  <block id="0fc8d44a910622a70a5db1690b734048" category="paragraph">电子邮件支持： support@spotpc.netapp.com</block>
+  <block id="0e759b5faf907f44ba11f26893de416a" category="paragraph">要创建支持案例，请发送电子邮件至： support@spotpc.netapp.com</block>
+  <block id="d2778cf2b9c1fbc4daf229157e9e211c" category="paragraph">本文介绍如何在保留 AVD 最终用户访问权限的同时删除 VDS 和 NetApp 控制。未来的管理将借助原生 Azure/Windows 管理工具进行。完成此过程后，建议您联系 support@spotpc.netapp.com ，以便 NetApp 能够清理我们的后端和计费系统。</block>
 </blocks>

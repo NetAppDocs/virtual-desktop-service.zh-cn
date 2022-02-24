@@ -45,7 +45,7 @@ NetApp 的虚拟桌面服务（ Virtual Desktop Service ， VDS ）可以解决�
 
 == 获取支持
 
-电子邮件支持： VDSsupport@netapp.com
+电子邮件支持： support@spotpc.netapp.com
 
 电话支持： 844.645.6789
 

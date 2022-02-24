@@ -5,7 +5,7 @@
 
 == 概述
 
-本文介绍如何在保留 AVD 最终用户访问权限的同时删除 VDS 和 NetApp 控制。未来的管理将借助原生 Azure/Windows 管理工具进行。完成此过程后，建议您联系 VDSsupport@netapp.com ，以便 NetApp 能够清理我们的后端和计费系统。
+本文介绍如何在保留 AVD 最终用户访问权限的同时删除 VDS 和 NetApp 控制。未来的管理将借助原生 Azure/Windows 管理工具进行。完成此过程后，建议您联系 support@spotpc.netapp.com ，以便 NetApp 能够清理我们的后端和计费系统。
 
 
 
