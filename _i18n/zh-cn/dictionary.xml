@@ -4738,4 +4738,9 @@
   <block id="0fc8d44a910622a70a5db1690b734048" category="paragraph">电子邮件支持： support@spotpc.netapp.com</block>
   <block id="0e759b5faf907f44ba11f26893de416a" category="paragraph">要创建支持案例，请发送电子邮件至： support@spotpc.netapp.com</block>
   <block id="d2778cf2b9c1fbc4daf229157e9e211c" category="paragraph">本文介绍如何在保留 AVD 最终用户访问权限的同时删除 VDS 和 NetApp 控制。未来的管理将借助原生 Azure/Windows 管理工具进行。完成此过程后，建议您联系 support@spotpc.netapp.com ，以便 NetApp 能够清理我们的后端和计费系统。</block>
+  <block id="8b9a4a08873c5c870575086fb699c10a" category="doc">VDS v6 版本： 3 月，星期四17 ， 2022</block>
+  <block id="f66ce27a4d0050402dd86bc778435c6d" category="paragraph">_ 组件： _ Virtual Desktop Service v6 _when ： _ 2022 年 3 月 17 日星期四晚上 10 点 - 晚上 11 点东部 _ 影响： _ 最终用户对桌面和应用程序服务的访问将保持不间断。仍然可以访问虚拟桌面服务。</block>
+  <block id="f6502fb800f842c72c1e4ae553783b8b" category="section-title">VDS v6 版本： 3 月，星期四3 ， 2022</block>
+  <block id="7a4f19598c2ff520ad7cb48c3dd3c492" category="paragraph">_ 组件： _ Virtual Desktop Service v6 _when ： _ 2022 年 3 月 3 日星期四晚上 10 点 - 晚上 11 点东部 _ 影响： _ 最终用户对桌面和应用程序服务的访问将保持不间断。仍然可以访问虚拟桌面服务。</block>
+  <block id="672f8bd701c0fdf84358a0f197cfee8b" category="list-text">在使用连接到服务器功能后，改善了与服务器断开连接的体验</block>
 </blocks>
