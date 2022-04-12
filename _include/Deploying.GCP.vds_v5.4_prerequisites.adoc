@@ -185,9 +185,9 @@ VDS 创建的 Windows 共享允许从 RDS 会话主机访问用户配置文件�
 GCP 项目中的 VDS 组件与 Azure 中托管的 VDS 全局控制平面组件进行通信，包括 VDS Web 应用程序和 VDS API 端点。要进行访问，需要在端口 443 上安全列出以下基本 URI 地址，以便进行双向访问：
 
 link:api.cloudworkspace.com[""]
-
-
-
+link:autoprodb.database.windows.net[""]
+link:vdctoolsapi.trafficmanager.net[""]
+link:cjbootstrap3.cjautomate.net[""]
 
 如果您的访问控制设备只能按 IP 地址安全列出，则应将以下 IP 地址列表列入安全列表。请注意， VDS 使用具有冗余公有 IP 地址的负载平衡器，因此此列表可能会随时间而变化：
 

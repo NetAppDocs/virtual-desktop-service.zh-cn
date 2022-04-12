@@ -354,7 +354,7 @@ _ 组件： _ 5.3 Cloud Workspace Management Suite _ 时间： _ 2020 年 4 月 
 
 === HTML5 登录体验
 
-* 后台托管增强功能 https://login.cloudworkspace.com[] 和。注意：自定义品牌 HTML5 登录门户不会受到任何影响。
+* 后台托管增强功能 https://login.cloudworkspace.com[] 和 https://login.cloudjumper.com[]。注意：自定义品牌 HTML5 登录门户不会受到任何影响。
 * 针对未提供自助服务密码重置的部分情形的错误修复
 
 
@@ -631,7 +631,7 @@ _ 组件： _ 5.3 Cloud Workspace Management Suite _ 时间： _ 2020 年 1 月 
 
 === 云工作空间管理套件
 
-* 重定向旧的 https://iit.hostwindow.net[] 从站点到现代
+* 重定向旧的 https://iit.hostwindow.net[] 从站点到现代 https://manage.cloudworkspace.com[]
 * 修复了通过 IE 11 登录的部分 CCMS 管理员的错误
 * 更正一个可视问题描述，其中删除 API 用户会在后台正确删除这些用户，但在 WCMS 中未显示为已删除
 * 简化清除订阅的过程，以便您可以重新配置新的 / 测试环境

@@ -4745,4 +4745,6 @@
   <block id="672f8bd701c0fdf84358a0f197cfee8b" category="list-text">在使用连接到服务器功能后，改善了与服务器断开连接的体验</block>
   <block id="65451e078b7f33780f43b604636f44cd" category="doc">VDS v6 版本： 3 月，星期四2022 年 3 月 31 日</block>
   <block id="203ea606be3e7013af19653b4d153708" category="paragraph">_ 组件： _ Virtual Desktop Service v6 _when ： _ 2022 年 3 月 31 日星期四晚上 10 点 - 晚上 11 点东部 _ 影响： _ 最终用户对桌面和应用程序服务的访问将保持不间断。仍然可以访问虚拟桌面服务。</block>
+  <block id="81fc8d50d0382cd9f531c124b6e697ee" category="doc">VDS v6 版本： 4 月星期四2022 年第 14 日</block>
+  <block id="259e7e1014b8441e884dba1ee826163e" category="paragraph">_ 组件： _ Virtual Desktop Service v6 _when ： _ 2022 年 4 月 14 日星期四晚上 10 点 - 晚上 11 点东部 _ 影响： _ 最终用户对桌面和应用程序服务的访问将保持不间断。仍然可以访问虚拟桌面服务。</block>
 </blocks>

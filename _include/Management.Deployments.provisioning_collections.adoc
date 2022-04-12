@@ -9,7 +9,7 @@
 
 .总体而言，配置收集工作流如下所示：
 . 临时虚拟机（例如 "WFT1" ）是基于现有映像（即常用映像或先前保存的配置集合）构建的。
-. VDS 管理员使用自定义临时虚拟机以满足其要求 link:Management.Scripted_Events.scripted_events.html["脚本化事件"]，  和 / 或第三方管理工具。
+. VDS 管理员使用自定义临时虚拟机以满足其要求 link:Management.Scripted_Events.scripted_events.html["脚本化事件"]， link:#customizing-the-temporary-vm["连接到服务器"] 和 / 或第三方管理工具。
 . 自定义后， VDS 管理员单击 * 验证 * 并触发验证过程，以自动完成映像，运行 SysPrep ，删除临时虚拟机并使映像可在整个 VDS 中部署。
 
 

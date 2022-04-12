@@ -293,10 +293,10 @@ VDS 创建的 Windows 共享允许从 AVD 会话 VM 访问用户配置文件，�
 Azure 订阅中的 VDS 组件可与 VDS 全局控制平面组件进行通信，例如 VDS Web 应用程序和 VDS API 端点。要进行访问，需要在端口 443 上安全列出以下基本 URI 地址，以便进行双向访问：
 
 link:api.cloudworkspace.com[""]
-
-
-
-link:https://cjdownload3.file.core.windows.net/media[]
+link:autoprodb.database.windows.net[""]
+link:vdctoolsapiprimary.azurewebsites.net[""]
+link:cjbootstrap3.cjautomate.net[""]
+link:https://cjdownload3.file.core.windows.net/media[""]
 
 如果您的访问控制设备只能按 IP 地址安全列出，则应将以下 IP 地址列表列入安全列表。请注意， VDS 使用 Azure Traffic Manager 服务，因此此列表可能会随时间而变化：
 
