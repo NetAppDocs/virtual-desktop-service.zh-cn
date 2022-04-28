@@ -4,6 +4,7 @@ permalink: Deploying.GCP.vds_v5.4_prerequisites.html
 summary: GCP 和 VDS 前提条件 
 ---
 = Google Compute Platform （ GCP ）和 VDS 前提条件
+:allow-uri-read: 
 
 
 

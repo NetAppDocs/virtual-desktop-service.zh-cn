@@ -5,6 +5,7 @@ summary: 脚本文档—缩放 VDI AVD
 keywords:  
 ---
 = 脚本化事件文档—缩放 VDI AVD
+:allow-uri-read: 
 
 
 

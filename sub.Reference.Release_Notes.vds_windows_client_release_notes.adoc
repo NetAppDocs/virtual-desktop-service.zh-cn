@@ -5,6 +5,7 @@ summary: NetApp VDS 发行说明 Windows 客户端
 keywords:  
 ---
 = VDS Client for Windows 发行说明
+:allow-uri-read: 
 
 
 

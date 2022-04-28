@@ -5,6 +5,7 @@ summary: 配置多因素身份验证（ MFA ）
 keywords:  
 ---
 = 多因素身份验证（ MFA ）
+:allow-uri-read: 
 
 
 

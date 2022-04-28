@@ -5,6 +5,7 @@ summary: 下一步是什么？
 keywords:  
 ---
 = 祝贺您开始部署新的 VDS 环境！
+:allow-uri-read: 
 
 
 

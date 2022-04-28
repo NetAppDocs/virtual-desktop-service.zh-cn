@@ -5,6 +5,7 @@ summary: 更改存储平台的分步指南
 keywords:  
 ---
 = 正在重定向存储平台
+:allow-uri-read: 
 
 
 

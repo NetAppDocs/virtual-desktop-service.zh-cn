@@ -1,4 +1,5 @@
 = 启用 AVD 短路径
+:allow-uri-read: 
 
 
 

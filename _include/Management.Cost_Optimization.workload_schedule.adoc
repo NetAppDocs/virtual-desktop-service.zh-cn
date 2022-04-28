@@ -1,4 +1,5 @@
 = 工作负载计划
+:allow-uri-read: 
 
 
 

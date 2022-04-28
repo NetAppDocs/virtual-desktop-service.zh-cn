@@ -5,6 +5,7 @@ summary: NetApp VDS 发行说明 v5.2
 keywords:  
 ---
 = Cloud Workspace Management Suite —版本 5.2
+:allow-uri-read: 
 
 
 

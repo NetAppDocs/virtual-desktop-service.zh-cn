@@ -5,6 +5,7 @@ summary: 在 VDS 中管理最终用户的分步指南
 keywords:  
 ---
 = 管理用户帐户
+:allow-uri-read: 
 
 
 

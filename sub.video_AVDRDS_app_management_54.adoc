@@ -5,6 +5,7 @@ summary: 利用 NetApp VDS v5.4 自动管理 AVD 和 RDS 的应用程序
 keywords:  
 ---
 = 利用 NetApp VDS v5.4 自动管理 AVD 和 RDS 的应用程序
+:allow-uri-read: 
 
 
 

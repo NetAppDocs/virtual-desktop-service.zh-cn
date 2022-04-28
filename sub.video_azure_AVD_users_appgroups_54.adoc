@@ -5,6 +5,7 @@ summary: 使用 NetApp VDS v5.4 在 Azure 中添加和管理 AVD 用户和应用
 keywords:  
 ---
 = 使用 NetApp VDS v5.4 在 Azure 中添加和管理 AVD 用户和应用程序组
+:allow-uri-read: 
 
 
 

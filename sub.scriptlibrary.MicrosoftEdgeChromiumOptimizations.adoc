@@ -5,6 +5,7 @@ summary: 脚本文档— Microsoft Edge Chromium 优化
 keywords:  
 ---
 = 脚本化事件文档— Microsoft Edge Chromium 优化
+:allow-uri-read: 
 
 
 

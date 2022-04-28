@@ -5,6 +5,7 @@ summary: 将存储平台更改为 Azure Files 的分步指南
 keywords:  
 ---
 = 将存储平台重定向到 Azure Files
+:allow-uri-read: 
 
 
 

@@ -5,6 +5,7 @@ summary: 自动增加磁盘大小功能
 keywords:  
 ---
 = 自动增加磁盘空间功能
+:allow-uri-read: 
 
 
 

@@ -5,6 +5,7 @@ summary: 第三方访问指南
 keywords:  
 ---
 = 为第三方提供临时访问权限
+:allow-uri-read: 
 
 
 

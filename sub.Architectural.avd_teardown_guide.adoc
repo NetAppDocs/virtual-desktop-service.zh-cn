@@ -5,6 +5,7 @@ summary: 从 AVD 中删除 VDS 的分步指南
 keywords:  
 ---
 = AVD 拆卸指南
+:allow-uri-read: 
 
 
 

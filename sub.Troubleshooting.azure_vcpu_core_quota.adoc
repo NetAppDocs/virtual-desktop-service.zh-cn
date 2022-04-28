@@ -5,6 +5,7 @@ summary: Azure vCPU 核心配额故障排除分步指南
 keywords:  
 ---
 = Azure vCPU 核心配额
+:allow-uri-read: 
 
 
 

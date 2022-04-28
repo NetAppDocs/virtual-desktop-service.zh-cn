@@ -5,6 +5,7 @@ summary: 配置收集摘要
 keywords:  
 ---
 = 配置收集
+:allow-uri-read: 
 
 
 

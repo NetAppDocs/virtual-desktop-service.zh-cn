@@ -5,6 +5,7 @@ summary: 将 VDS v6 部署到 Azure 的分步指南
 keywords:  
 ---
 = AVD 部署指南 v6.
+:allow-uri-read: 
 
 
 

@@ -5,6 +5,7 @@ summary: 解锁用户帐户的分步指南
 keywords:  
 ---
 = 解除锁定用户帐户
+:allow-uri-read: 
 
 
 

@@ -5,6 +5,7 @@ summary: 为现有 AD 部署将 VDS 部署到 Azure 中的分步指南
 keywords:  
 ---
 = AVD 部署指南—现有 AD 补充
+:allow-uri-read: 
 
 
 

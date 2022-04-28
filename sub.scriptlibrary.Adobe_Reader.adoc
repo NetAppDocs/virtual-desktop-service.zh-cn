@@ -5,6 +5,7 @@ summary: 脚本文档— Adobe Reader DC
 keywords:  
 ---
 = 脚本化事件文档— Adobe Reader DC
+:allow-uri-read: 
 
 
 

@@ -1,4 +1,5 @@
 = 查看当前配额
+:allow-uri-read: 
 
 
 

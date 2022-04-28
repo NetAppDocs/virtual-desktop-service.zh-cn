@@ -5,6 +5,7 @@ summary: 使用 NetApp VDS v5.4 创建 AVD 主机池
 keywords:  
 ---
 = 使用 NetApp VDS v5.4 创建 AVD 主机池
+:allow-uri-read: 
 
 
 

@@ -1,4 +1,5 @@
 = NVIDIA 网格驱动程序概述
+:allow-uri-read: 
 
 
 

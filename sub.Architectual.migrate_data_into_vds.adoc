@@ -5,6 +5,7 @@ summary: 迁移数据时的注意事项摘要
 keywords:  
 ---
 = 数据迁移注意事项
+:allow-uri-read: 
 
 
 

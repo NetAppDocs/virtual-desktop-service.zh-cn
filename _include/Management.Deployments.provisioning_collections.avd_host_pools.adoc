@@ -1,4 +1,5 @@
 = AVD 会话主机更新过程
+:allow-uri-read: 
 
 
 

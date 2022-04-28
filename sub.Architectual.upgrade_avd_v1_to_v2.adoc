@@ -5,6 +5,7 @@ summary: 将 AVD 从 v1 更新到 v2 的指南
 keywords:  
 ---
 = 将 AVD 主机池从 v1 （ 2019 年秋季）更新到 v2 （ 2020 年春季）
+:allow-uri-read: 
 
 
 

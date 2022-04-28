@@ -5,6 +5,7 @@ summary: VDS 组件和权限
 keywords:  
 ---
 = VDS 组件和权限
+:allow-uri-read: 
 
 
 

@@ -5,6 +5,7 @@ summary: FSLogix 配置文件缩减功能摘要
 keywords:  
 ---
 = FSLogix 配置文件缩减
+:allow-uri-read: 
 
 
 

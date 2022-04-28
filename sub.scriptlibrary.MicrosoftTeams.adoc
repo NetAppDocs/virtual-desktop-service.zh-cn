@@ -5,6 +5,7 @@ summary: 脚本文档— Microsoft 团队
 keywords:  
 ---
 = 脚本化事件文档— Microsoft 团队
+:allow-uri-read: 
 
 
 

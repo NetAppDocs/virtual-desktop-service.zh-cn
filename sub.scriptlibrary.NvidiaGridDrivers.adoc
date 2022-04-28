@@ -5,6 +5,7 @@ summary: 脚本文档— Nvidia 网格驱动程序
 keywords:  
 ---
 = 脚本化事件文档— Nvidia 网格驱动程序
+:allow-uri-read: 
 
 
 

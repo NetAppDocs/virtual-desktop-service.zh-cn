@@ -5,6 +5,7 @@ summary: 脚本文档— Google Chrome
 keywords:  
 ---
 = 脚本化事件文档— Google Chrome
+:allow-uri-read: 
 
 
 

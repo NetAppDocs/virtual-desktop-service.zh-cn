@@ -1,4 +1,5 @@
 = 添加手动活动
+:allow-uri-read: 
 
 
 

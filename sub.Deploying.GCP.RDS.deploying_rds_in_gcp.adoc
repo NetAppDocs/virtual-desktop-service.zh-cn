@@ -4,6 +4,7 @@ permalink: Deploying.GCP.RDS.deploying_rds_in_gcp.html
 summary: 将 RDS 部署到 GCP 的分步指南 
 ---
 = 适用于 Google Cloud 的 RDS 部署指南（ GCP ）
+:allow-uri-read: 
 
 
 

@@ -5,6 +5,7 @@ summary: 解决 Internet 质量问题的分步指南
 keywords:  
 ---
 = Internet 连接质量故障排除
+:allow-uri-read: 
 
 
 

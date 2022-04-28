@@ -5,6 +5,7 @@ summary: 通过 Azure Marketplace 购买 VDS 的分步指南
 keywords:  
 ---
 = Azure Marketplace 步骤
+:allow-uri-read: 
 
 
 VDS 团队很高兴地报告，自 2021 年 1 月 15 日星期五起，此服务已上线，并可通过 Azure Marketplace 进行交易。作为 NetApp/Microsoft 的联合客户，这项新的市场功能为您带来了多项主要优势：

@@ -5,6 +5,7 @@ summary: 在 VDS 中为最终用户部署应用程序的分步指南
 keywords:  
 ---
 = 应用程序授权
+:allow-uri-read: 
 
 
 

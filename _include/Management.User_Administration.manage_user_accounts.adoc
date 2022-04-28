@@ -1,4 +1,5 @@
 = 创建新用户
+:allow-uri-read: 
 
 
 

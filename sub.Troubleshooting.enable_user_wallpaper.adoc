@@ -5,6 +5,7 @@ summary: 如何启用用户墙纸
 keywords:  
 ---
 = 为用户会话启用桌面墙纸
+:allow-uri-read: 
 
 
 

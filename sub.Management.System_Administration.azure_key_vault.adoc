@@ -5,6 +5,7 @@ summary: 在 Az 中访问 VDS 凭据
 keywords:  
 ---
 = 在 Azure 密钥存储中访问 VDS 凭据
+:allow-uri-read: 
 
 
 

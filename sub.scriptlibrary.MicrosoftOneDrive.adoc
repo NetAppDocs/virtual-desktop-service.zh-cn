@@ -5,6 +5,7 @@ summary: 脚本文档— Microsoft OneDrive
 keywords:  
 ---
 = 脚本化事件文档— Microsoft OneDrive
+:allow-uri-read: 
 
 
 

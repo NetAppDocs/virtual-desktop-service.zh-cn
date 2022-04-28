@@ -1,4 +1,5 @@
 = Adobe Reader DC 概述
+:allow-uri-read: 
 
 
 

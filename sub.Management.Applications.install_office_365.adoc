@@ -5,6 +5,7 @@ summary: Office 365 安装指南
 keywords:  
 ---
 = 安装 Microsoft Office 365
+:allow-uri-read: 
 
 
 

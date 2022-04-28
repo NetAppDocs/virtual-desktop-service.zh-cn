@@ -5,6 +5,7 @@ summary: VDS 命令中心概述
 keywords:  
 ---
 = Command Center 命令：概述
+:allow-uri-read: 
 
 
 

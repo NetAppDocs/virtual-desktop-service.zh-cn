@@ -5,6 +5,7 @@ summary: 欢迎使用 Virtual Desktop Service 文档门户。
 keywords:  
 ---
 = 虚拟桌面服务文档
+:allow-uri-read: 
 
 
 

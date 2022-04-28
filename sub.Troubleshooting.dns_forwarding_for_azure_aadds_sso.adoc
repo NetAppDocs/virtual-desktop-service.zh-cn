@@ -5,6 +5,7 @@ summary: ADDS nds 和 SSO 故障排除分步指南
 keywords:  
 ---
 = 通过 O365 身份为 Azure 添加和 SSO 转发 DNS
+:allow-uri-read: 
 
 
 

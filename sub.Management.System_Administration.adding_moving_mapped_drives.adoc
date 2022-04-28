@@ -5,6 +5,7 @@ summary: 添加和移动映射的驱动器
 keywords:  
 ---
 = 添加和移动映射的驱动器
+:allow-uri-read: 
 
 
 

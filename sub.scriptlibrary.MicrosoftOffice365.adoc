@@ -5,6 +5,7 @@ summary: 脚本文档— Microsoft Office
 keywords:  
 ---
 = 脚本化事件文档— Microsoft Office 365
+:allow-uri-read: 
 
 
 

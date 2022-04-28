@@ -5,6 +5,7 @@ summary: 脚本文档— AMD Radeon 虚拟驱动程序
 keywords:  
 ---
 = 脚本化事件文档— AMD Radeon 虚拟驱动程序
+:allow-uri-read: 
 
 
 

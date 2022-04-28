@@ -5,6 +5,7 @@ summary: 脚本文档— Microsoft Edge Chromium
 keywords:  
 ---
 = 脚本化事件文档— Microsoft Edge Chromium
+:allow-uri-read: 
 
 
 

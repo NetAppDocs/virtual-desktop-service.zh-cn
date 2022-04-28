@@ -4,6 +4,7 @@ permalink: Deploying.Azure.AVD.vds_v6.0_prerequisites.html
 summary: AVD 和 VDS 前提条件 
 ---
 = AVD 和 VDS v6.0 的前提条件
+:allow-uri-read: 
 
 
 

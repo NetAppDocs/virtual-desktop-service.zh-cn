@@ -5,6 +5,7 @@ summary: 脚本文档— Ezeep Print 应用程序
 keywords:  
 ---
 = 脚本化事件文档— Ezeep Print 应用程序
+:allow-uri-read: 
 
 
 

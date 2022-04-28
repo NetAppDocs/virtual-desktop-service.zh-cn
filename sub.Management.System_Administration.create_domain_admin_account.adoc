@@ -5,6 +5,7 @@ summary: 如何创建 3 级管理员帐户
 keywords:  
 ---
 = 创建域管理员（ " 级别 3" ）帐户
+:allow-uri-read: 
 
 
 

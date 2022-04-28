@@ -5,6 +5,7 @@ summary: 脚本文档— Microsoft Teams for AVD
 keywords:  
 ---
 = 脚本化事件文档— Microsoft Teams for AVD
+:allow-uri-read: 
 
 
 

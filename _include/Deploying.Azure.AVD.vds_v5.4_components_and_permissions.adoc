@@ -1,4 +1,5 @@
 = AVD 和 VDS 安全实体和服务
+:allow-uri-read: 
 
 
 

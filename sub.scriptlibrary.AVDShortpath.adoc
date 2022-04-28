@@ -5,6 +5,7 @@ summary: 脚本文档— AVD 屏幕捕获保护
 keywords:  
 ---
 = 脚本化事件文档—启用 AVD 短路径
+:allow-uri-read: 
 
 
 

@@ -5,6 +5,7 @@ summary: 脚本文档— AMD Radeon 虚拟驱动程序
 keywords:  
 ---
 = VDS 逻辑层次结构概述
+:allow-uri-read: 
 
 
 

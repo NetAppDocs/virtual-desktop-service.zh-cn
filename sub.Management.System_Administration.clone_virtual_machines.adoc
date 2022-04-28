@@ -5,6 +5,7 @@ summary: VM 克隆
 keywords:  
 ---
 = 克隆虚拟机
+:allow-uri-read: 
 
 
 
