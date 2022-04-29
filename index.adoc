@@ -50,7 +50,7 @@ NetApp 的虚拟桌面服务（ Virtual Desktop Service ， VDS ）可以解决�
 
 电话支持： 844.645.6789
 
-link:https://cloudjumper.zendesk.com["VDS 支持门户"]
+link:https://support.spot.io["VDS 支持门户"]
 
 正常支持工作时间：星期一到星期五，中部时间上午 7 ： 00 到晚上 7 ： 00 。
 

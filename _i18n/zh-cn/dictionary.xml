@@ -2209,7 +2209,6 @@
   <block id="a29672185d73dcf6d2ddc1aef91bb364" category="section-title">获取支持</block>
   <block id="88cc9e245d04dc16592a51f8acaca39e" category="paragraph">电话支持： 844.645.6789</block>
   <block id="f1f12b2afaf19ca6628af96787f70622" category="inline-link-macro">VDS 支持门户</block>
-  <block id="c0c6ed3b421e3e68c5af66c287e10eab" category="paragraph"><block ref="c0c6ed3b421e3e68c5af66c287e10eab" category="inline-link-macro-rx"></block></block>
   <block id="0b7ecd3f16fdb38fd9df7824bc8d7b1f" category="paragraph">正常支持工作时间：星期一到星期五，中部时间上午 7 ： 00 到晚上 7 ： 00 。</block>
   <block id="d13c2f018ea5180520061bfbbc26db45" category="list-text">非工作时间（电话）支持仅通过电话提供。</block>
   <block id="8cd58c89ff3d51a256ecfe3fe8bab20f" category="section-title">其他资源</block>
@@ -4749,4 +4748,5 @@
   <block id="259e7e1014b8441e884dba1ee826163e" category="paragraph">_ 组件： _ Virtual Desktop Service v6 _when ： _ 2022 年 4 月 14 日星期四晚上 10 点 - 晚上 11 点东部 _ 影响： _ 最终用户对桌面和应用程序服务的访问将保持不间断。仍然可以访问虚拟桌面服务。</block>
   <block id="48ec1b6ca4060e9afc6dbe33558f4bcb" category="doc">VDS v6 版本： 4 月星期四2022 年第 28 日</block>
   <block id="e4d6f09426e41b980d4a3f3266790d19" category="paragraph">_ 组件： _ Virtual Desktop Service v6 _when ： _ 2022 年 4 月 28 日星期四晚上 10 点 - 晚上 11 点东部 _ 影响： _ 最终用户对桌面和应用程序服务的访问将保持不间断。仍然可以访问虚拟桌面服务。</block>
+  <block id="89409045b0da12074a8c0b7efe465d1b" category="paragraph"><block ref="89409045b0da12074a8c0b7efe465d1b" category="inline-link-macro-rx"></block></block>
 </blocks>
