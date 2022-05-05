@@ -398,22 +398,14 @@
   <block id="c90a7d1e1da84682e02f4747838b15ae" category="section-title">提供桌面访问</block>
   <block id="1973c675e440465f67198c5c6a06af65" category="list-title">要在 VDS 中为用户启用桌面资源，请执行以下操作：</block>
   <block id="4976a77bf3f5152bc054082a6f0307ae" category="list-text">导航到 Workspaces &gt; AVD &gt; Host Pool &gt; App Groups 页面，然后单击 "Desktop" 资源的应用组。</block>
-  <block id="3a9159413b8c5248957238ae412ac8d3" category="image-alt">Management.Applications.AVD 应用程序授权工作流 349fe</block>
   <block id="71480c203ed7b59af7a7e9e6318c3c98" category="list-text">进入应用程序组后，单击编辑</block>
-  <block id="e55b52acdc0847fa119a08a20ec465ee" category="image-alt">Management.Applications.AVD 应用程序授权工作流 3bcfc</block>
   <block id="b7f126ce5e82a2008a4e482580ea8ae0" category="list-text">在编辑对话框中，您可以按用户和 / 或组向此应用程序组添加或删除用户。</block>
-  <block id="8dd96d112e4daa5e5cbdd2e088cc1538" category="image-alt">Management.Applications.AVD 应用程序授权工作流 07ff0</block>
   <block id="0aeea781bb4573e7a7b80d9e0959a102" category="section-title">提供 RemoteApp 访问</block>
   <block id="5433662a54506604d2c01b4c71d4e834" category="section-title">创建新应用程序组</block>
   <block id="f5a55acd43f8d93045189303323088e0" category="list-text">导航到 Workspaces &gt; AVD &gt; Host Pool &gt; App Groups 页面，然后单击 _+ Add App Group_ 按钮</block>
-  <block id="4827d1cb4a1c718653466145675decb0" category="image-alt">management.Applications.AVD 应用程序授权工作流 d33da</block>
   <block id="f3d6d092150d8d04d31f44e77e0ac3a7" category="list-text">输入此应用程序组的名称，工作空间和友好名称。选择应分配的用户和 / 或组，然后单击 _Save_</block>
-  <block id="973b2fc8ea2aeaa2d778153f723b7ec4" category="image-alt">Management.Applications.AVD 应用程序授权工作流 242eb</block>
   <block id="fe21569904a64074304530d0d7b3834f" category="section-title">将应用程序添加到应用程序组</block>
   <block id="474fdb99403b967e01f54886073db222" category="list-text">导航到 Workspaces &gt; AVD &gt; Host Pool &gt; App Groups 页面，然后单击 "RemoteApp" 资源的应用程序组。</block>
-  <block id="aa48cfc5de9c883c19cf67592140446a" category="image-alt">Management.Applications.AVD 应用程序授权工作流 3dcde</block>
-  <block id="6c3e4645a69cdcb7d8eabf8fd67340f7" category="image-alt">Management.Applications.AVD 应用程序授权工作流 27a41</block>
-  <block id="6c7c9b816af581d8b27f9aa09850ca3f" category="image-alt">Management.Applications.AVD 应用程序授权工作流 1e9f2</block>
   <block id="2c986f5e26a059d90f20656e8c46ba09" category="list-text">搜索并选择此应用程序组中的用户应作为 RemoteApp 资源访问的任何应用程序。</block>
   <block id="3a9c20318a590aab6689c74493fa46ed" category="summary">AVD 和 VDS 前提条件</block>
   <block id="ffcad0c1020b989c0a62eade42890a56" category="doc">AVD 和 VDS v6.0 的前提条件</block>
@@ -3382,7 +3374,6 @@
   <block id="9ffb722e3fe3e0ace3a210d617242557" category="inline-link-macro">不同的 Microsoft Teams 脚本</block>
   <block id="a78af9cb5044239f2c73e401d610d15f" category="admonition">此 Microsoft 团队安装经过专门配置，可通过 Azure 中的 AVD 专用自定义和组件部署到 AVD 环境中。 <block ref="437c7738f20c22773a5ae4970a143474" category="inline-link-macro-rx"></block> 用于 RDS 部署。</block>
   <block id="99ac46c040fc2191fa765181ab6d5aac" category="paragraph">下面将输入默认快捷方式路径，对于此应用程序，快捷方式为： ` \\shortcut \Microsoft Teams AVD.lnk`</block>
-  <block id="edac1fb47b396115723f32b843b89a55" category="image-alt">scriptlibrary.active.InstallmicrosoftTeamsAVD</block>
   <block id="be50f46ed7a6154338fa8575af41e85b" category="summary">脚本文档— Microsoft Edge Chromium 优化</block>
   <block id="d62994dc13f2447f5c4436a74a9a6dae" category="doc">脚本化事件文档— Microsoft Edge Chromium 优化</block>
   <block id="64bf57ef1eb695ae728c9a143c30fb5d" category="section-title">Microsoft Edge Chromium 优化</block>
@@ -4749,4 +4740,13 @@
   <block id="48ec1b6ca4060e9afc6dbe33558f4bcb" category="doc">VDS v6 版本： 4 月星期四2022 年第 28 日</block>
   <block id="e4d6f09426e41b980d4a3f3266790d19" category="paragraph">_ 组件： _ Virtual Desktop Service v6 _when ： _ 2022 年 4 月 28 日星期四晚上 10 点 - 晚上 11 点东部 _ 影响： _ 最终用户对桌面和应用程序服务的访问将保持不间断。仍然可以访问虚拟桌面服务。</block>
   <block id="89409045b0da12074a8c0b7efe465d1b" category="paragraph"><block ref="89409045b0da12074a8c0b7efe465d1b" category="inline-link-macro-rx"></block></block>
+  <block id="d75afdafc6f7225842e083ec218d848b" category="image-alt">Management.Applications.AVD应用程序授权工作流349fe</block>
+  <block id="7b719da5fae273115c3fe35eb79582f1" category="image-alt">Management.Applications.AVD应用程序授权工作流3bcfc</block>
+  <block id="f592ebe1f3f1646e8f20b2c2fa1dbd61" category="image-alt">Management.Applications.AVD应用程序授权工作流07ff0</block>
+  <block id="249122c2d8a6270528965d090670bb01" category="image-alt">management.Applications.AVD应用程序授权工作流d33da</block>
+  <block id="bee50d9bdee1e6b1f7e8ee84532418c2" category="image-alt">Management.Applications.AVD应用程序授权工作流242eb</block>
+  <block id="ad0c47a5f55e9205bdf8bf8b85043167" category="image-alt">Management.Applications.AVD应用程序授权工作流3dcde</block>
+  <block id="a7dab824482b734079866a316af7ae4a" category="image-alt">Management.Applications.AVD应用程序授权工作流27a41</block>
+  <block id="b6c688be79377537acc1844f52e4ad41" category="image-alt">Management.Applications.AVD应用程序授权工作流1e9f2</block>
+  <block id="e943abf86369cd490191063c26874ded" category="image-alt">scriptlibrary.script.InstallmicrosoftTeamsAVD</block>
 </blocks>

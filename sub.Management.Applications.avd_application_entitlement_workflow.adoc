@@ -73,15 +73,15 @@ image::Management.Deployments.vds_sites-0e880.png[management.deployments.vDS 站
 .要在 VDS 中为用户启用桌面资源，请执行以下操作：
 . 导航到 Workspaces > AVD > Host Pool > App Groups 页面，然后单击 "Desktop" 资源的应用组。
 +
-image::Management.Applications.AVD_application_entitlement_workflow-349fe.png[Management.Applications.AVD 应用程序授权工作流 349fe]
+image::Management.Applications.avd_application_entitlement_workflow-349fe.png[Management.Applications.AVD应用程序授权工作流349fe]
 
 . 进入应用程序组后，单击编辑
 +
-image::Management.Applications.AVD_application_entitlement_workflow-3bcfc.png[Management.Applications.AVD 应用程序授权工作流 3bcfc]
+image::Management.Applications.avd_application_entitlement_workflow-3bcfc.png[Management.Applications.AVD应用程序授权工作流3bcfc]
 
 . 在编辑对话框中，您可以按用户和 / 或组向此应用程序组添加或删除用户。
 +
-image::Management.Applications.AVD_application_entitlement_workflow-07ff0.png[Management.Applications.AVD 应用程序授权工作流 07ff0]
+image::Management.Applications.avd_application_entitlement_workflow-07ff0.png[Management.Applications.AVD应用程序授权工作流07ff0]
 
 
 
@@ -100,11 +100,11 @@ NOTE: 分配给此主机池的 " 桌面 "AppGroup 的任何用户都可以使用
 
 . 导航到 Workspaces > AVD > Host Pool > App Groups 页面，然后单击 _+ Add App Group_ 按钮
 +
-image::Management.Applications.AVD_application_entitlement_workflow-d33da.png[management.Applications.AVD 应用程序授权工作流 d33da]
+image::Management.Applications.avd_application_entitlement_workflow-d33da.png[management.Applications.AVD应用程序授权工作流d33da]
 
 . 输入此应用程序组的名称，工作空间和友好名称。选择应分配的用户和 / 或组，然后单击 _Save_
 +
-image::Management.Applications.AVD_application_entitlement_workflow-242eb.png[Management.Applications.AVD 应用程序授权工作流 242eb]
+image::Management.Applications.avd_application_entitlement_workflow-242eb.png[Management.Applications.AVD应用程序授权工作流242eb]
 
 
 
@@ -114,15 +114,15 @@ image::Management.Applications.AVD_application_entitlement_workflow-242eb.png[Ma
 
 . 导航到 Workspaces > AVD > Host Pool > App Groups 页面，然后单击 "RemoteApp" 资源的应用程序组。
 +
-image::Management.Applications.AVD_application_entitlement_workflow-3dcde.png[Management.Applications.AVD 应用程序授权工作流 3dcde]
+image::Management.Applications.avd_application_entitlement_workflow-3dcde.png[Management.Applications.AVD应用程序授权工作流3dcde]
 
 . 进入应用程序组后，单击编辑
 +
-image::Management.Applications.AVD_application_entitlement_workflow-27a41.png[Management.Applications.AVD 应用程序授权工作流 27a41]
+image::Management.Applications.avd_application_entitlement_workflow-27a41.png[Management.Applications.AVD应用程序授权工作流27a41]
 
 . 向下滚动到 " 远程应用程序 " 部分。由于 VDS 正在直接查询会话主机以显示可用于流式传输的应用程序，因此可能需要一段时间才能填充此部分。
 +
-image::Management.Applications.AVD_application_entitlement_workflow-1e9f2.png[Management.Applications.AVD 应用程序授权工作流 1e9f2]
+image::Management.Applications.avd_application_entitlement_workflow-1e9f2.png[Management.Applications.AVD应用程序授权工作流1e9f2]
 
 . 搜索并选择此应用程序组中的用户应作为 RemoteApp 资源访问的任何应用程序。
 

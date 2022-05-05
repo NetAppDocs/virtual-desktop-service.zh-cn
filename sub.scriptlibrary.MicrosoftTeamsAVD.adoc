@@ -47,7 +47,7 @@ WARNING: 此 Microsoft 团队安装经过专门配置，可通过 Azure 中的 A
 
 === 添加活动对话框窗口屏幕截图
 
-image::scriptlibrary.activity.InstallMicrosoftTeamsAVD.png[scriptlibrary.active.InstallmicrosoftTeamsAVD]
+image::scriptlibrary.script.InstallMicrosoftTeamsAVD.png[scriptlibrary.script.InstallmicrosoftTeamsAVD]
 
 
 
