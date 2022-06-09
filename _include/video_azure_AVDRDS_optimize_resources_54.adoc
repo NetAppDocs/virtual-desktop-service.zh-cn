@@ -6,4 +6,4 @@
 
 == 概述
 
-video::IABgjxLCWkI[youtube, ]
+video::IABgjxLCWkI[youtube]

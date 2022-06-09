@@ -24,7 +24,7 @@ keywords:
 
 === 视频演示—管理 VDI 会话主机的 VM 映像
 
-video::rRDPnDzVBTw[youtube, ]
+video::rRDPnDzVBTw[youtube]
 
 
 === 配置收集类型

@@ -31,7 +31,7 @@
 
 === 删除顺时针代理服务视频
 
-video::l9ASmM5aap0[youtube, ]
+video::l9ASmM5aap0[youtube]
 
 
 == 删除顺时针代理目录
@@ -43,7 +43,7 @@ video::l9ASmM5aap0[youtube, ]
 
 === 删除 CW Agent 目录视频
 
-video::hMM_z4K2-iI[youtube, ]
+video::hMM_z4K2-iI[youtube]
 
 
 == 删除启动快捷方式
@@ -58,7 +58,7 @@ video::hMM_z4K2-iI[youtube, ]
 
 === 删除启动快捷方式视频
 
-video::U0YLZ3Qfu9w[youtube, ]
+video::U0YLZ3Qfu9w[youtube]
 
 
 == 取消链接 ‘Users ' 和 ‘公司 ' GPO
@@ -80,7 +80,7 @@ VDS 实施了三个 GPO 。我们建议取消其中两个链接并查看第三�
 
 === 取消链接 ‘Users ' 和 ‘公司的 GPO 视频
 
-video::cb68ri3HKUw[youtube, ]
+video::cb68ri3HKUw[youtube]
 
 
 == 关闭 CMGR1
@@ -98,7 +98,7 @@ video::cb68ri3HKUw[youtube, ]
 
 === 关闭 CMGR1 视频
 
-video::avk9HyIiC_s[youtube, ]
+video::avk9HyIiC_s[youtube]
 
 
 == 删除 NetApp VDS 服务帐户
@@ -120,7 +120,7 @@ video::avk9HyIiC_s[youtube, ]
 
 === 删除 NetApp VDS 服务帐户视频
 
-video::_VToVNp49cg[youtube, ]
+video::_VToVNp49cg[youtube]
 
 
 == 删除应用程序注册
@@ -135,7 +135,7 @@ video::_VToVNp49cg[youtube, ]
 
 === 删除应用程序注册视频
 
-video::iARz2nw1Oks[youtube, ]
+video::iARz2nw1Oks[youtube]
 
 
 == 删除企业级应用程序
@@ -150,7 +150,7 @@ video::iARz2nw1Oks[youtube, ]
 
 === 删除企业应用程序视频
 
-video::3eQzTPdilWk[youtube, ]
+video::3eQzTPdilWk[youtube]
 
 
 == 确认已停止 CMGR1
@@ -161,7 +161,7 @@ video::3eQzTPdilWk[youtube, ]
 
 === 确认 CMGR1 已停止视频
 
-video::Ux9nkDk5lU4[youtube, ]
+video::Ux9nkDk5lU4[youtube]
 
 
 == 登录和最终用户
@@ -172,4 +172,4 @@ video::Ux9nkDk5lU4[youtube, ]
 
 === 登录和最终用户视频
 
-video::SuS-OTHJz7Y[youtube, ]
+video::SuS-OTHJz7Y[youtube]

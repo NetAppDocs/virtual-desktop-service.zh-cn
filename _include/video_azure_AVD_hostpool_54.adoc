@@ -6,4 +6,4 @@
 
 == 概述
 
-video::kaHZm9yCv8g[youtube, ]
+video::kaHZm9yCv8g[youtube]

@@ -31,7 +31,7 @@ NOTE: 此工作流仅适用于适用场景 RDS 部署。有关 AVD 应用程序�
 NOTE: 步骤 3 和 4 可以通过脚本化事件完全自动化，如下图所示
 
 .视频演练
-video::19NpO8v15BE[youtube, ]
+video::19NpO8v15BE[youtube]
 
 
 == 将应用程序添加到应用程序目录
